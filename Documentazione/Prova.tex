@@ -1,0 +1,61 @@
+\documentclass[italian,master]{unibg}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{matlab-prettifier}
+\usepackage{tikz}
+
+\title{A Seclab Thesis}
+\subtitle{A Seclab Subtitle}
+\advisor{Chiar.mo Prof.~John Smith}
+% \coadvisor{Chiar.mo Prof.~Ed Smith}
+
+\department{Ingegneria Gestionale, dell'Informazione e della Produzione}
+\course{Ingegneria Informatica}
+\class{LM-32}
+
+\author{John Doe}
+\studentid{177013}
+\academicyear{2021/2022}
+
+\begin{document}
+\maketitle
+\emptypage
+
+\begin{abstract}
+    Questa tesi si propone di identificare il miglior controllore PID per il 
+    controllo della tensione di rete di un islanded microgrid, utilizzando
+    criteri di taratura noti come Ziegler-Nichols e Cohen-Coon ed altri meno conosciuti.
+    Un microgrid, o microrete, è un sistema energetico locale che integra varie
+    fonti di generazione di energia(pannelli solari, turbine eoliche,  generatori a combustibile, ecc..) 
+    con sistemi di accumulo(batterie) e dispositivi di gestione dell'energia(inverter)
+    per alimentare un'area geografica circoscritta.
+    \\Quando una microrete opera in modalità "in isola"(islanded), è disconnessa dalla rete elettrica
+    principale e funziona autonomamente con microsorgenti e carichi propri.
+    \\
+    \\La procedura adottata inizia con la progettazione dello schema elettrico
+    del sistema monofase del microgrid. Successivamente, viene sviluppato un sistema dinamico
+    dal quale si ricava la funzione di trasferimento. Utilizzando quest'ultima, si impiega
+    il software MATLAB/SIMULINK per eseguire la taratura del regolatore PID attraverso
+    algoritmi di autotuning.
+    \\I risultati dei test indicano che il PID con le migliori performance sia quello
+    tarato secondo la metodologia di Cohen-Coon, con un tempo di salita di 0.00491 ms, 
+    un tempo di picco di 0.0178 ms, un tempo di assestamento di 0.0267 ms ed un overshoot di 2.18 s.
+
+\end{abstract}
+
+\emptypage
+\toc
+\listoffigures
+\listoftables
+\emptypage
+
+\clearpage
+\pagenumbering{arabic}
+
+\input{Iterazione 0/Cap.tex}
+
+\nocite{*}
+\printbibliography[heading=bibintoc]
+
+\end{document}
