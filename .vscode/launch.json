@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SpendlyApplication",
+            "request": "launch",
+            "mainClass": "spendly.spendly.models.SpendlyApplication",
+            "projectName": "spendly"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SpendlyApplication<spendly>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
