@@ -1,27 +1,7 @@
-\chapter{Iterazione 0}
-\section{Introduzione}
-\textbf{Cos'è Spendly?}
-Spendly è una web-app progettata per semplificare la gestione delle spese, sia personali che di gruppo. Che si tratti di dividere le spese di una cena tra amici, gestire un budget familiare o monitorare le tue finanze personali, Spendly offre un ambiente intuitivo e funzionalità avanzate per mantenere tutto sotto controllo.
-\\
-\\Spendly si distingue grazie all'utilizzo di un algoritmo basato sui minimi cammini Dijkstra, che consente di ottimizzare la distribuzione dei debiti all'interno di un gruppo. Questo significa che, invece di calcoli complessi o confusioni legate ai rimborsi, la web-app genera un sistema chiaro e diretto per regolare i debiti tra i partecipanti, in questo modo, Spendly semplifica la gestione finanziaria, riduce le complessità e promuove la trasparenza.
-\\
-\\
-Spendly è strutturata attorno a una serie di funzionalità che coprono ogni aspetto della gestione delle spese. Queste funzionalità sono state sviluppate con l'obiettivo di offrire la massima flessibilità, sia per gli utenti individuali che per i gruppi di condivisione spese
-\\
-\\
-\textbf{Perché scegliere Spendly?}
-Spendly è più di una semplice applicazione di gestione delle spese. È una soluzione completa che integra funzionalità avanzate, come il calcolo automatico dei debiti e la gestione centralizzata delle spese. Questo la rende ideale per ogni tipo di utente, dai gruppi di amici che vogliono semplificare la divisione delle spese, alle famiglie che desiderano tenere sotto controllo i propri budget.
-\\
-\\Con una piattaforma sicura, flessibile e facile da usare, Spendly trasforma il modo in cui le persone gestiscono i loro soldi, riducendo lo stress finanziario e migliorando la trasparenza nelle relazioni economiche.
-\\
-Spendly è lo strumento perfetto per chi desidera una gestione semplice, efficace e organizzata delle spese. Con funzionalità pensate per rispondere alle esigenze di utenti individuali e gruppi, questa web-app rappresenta una soluzione innovativa e accessibile per migliorare la vita quotidiana di chiunque voglia un controllo totale sulle proprie finanze.
 
-\section{Casi d'Uso}
-    \begin{figure}[h]
-        \centering
-        \includegraphics[scale=0.65]{C:/Users/loris/OneDrive/Desktop/PACproject/Documentazione/images/casousoprova.png}
-        \caption{Diagramma casi d'uso }
-    \end{figure}
+
+\subsection{Casi d'Uso}
+
 Di seguito sono riportati alcuni casi d'uso principali:
 \begin{itemize}
     \item \textbf{UC1 - Login}: Come utente, voglio poter accedere al mio account per gestire le mie spese.
@@ -51,7 +31,7 @@ Di seguito sono riportati alcuni casi d'uso principali:
     \item \textbf{UC25 - Visualizza budget}: Voglio poter visualizzare i budget di risparmio.
 \end{itemize}
 
-\section{Priorità casi d'uso}
+\subsection{Priorità casi d'uso}
     I casi d'uso possono essere suddivisi in tre categorie, a seconda della loro priorità nel processo di sviluppo:
     \begin{itemize}
         \item \textbf{Coda ad alta priorità:} 
@@ -116,7 +96,7 @@ Di seguito sono riportati alcuni casi d'uso principali:
     \end{table}
 
 
-\section{Architettura}
+\subsection{Architettura}
     L'architettura del sistema è basata su un'architettura a microservizi con i seguenti componenti principali:
     \begin{itemize}
         \item \textbf{Client/Frontend}: Implementato in React.js, il frontend fornisce un'interfaccia utente intuitiva per la gestione delle spese.
@@ -130,22 +110,22 @@ Di seguito sono riportati alcuni casi d'uso principali:
         \item \textbf{Database}: Utilizzo di PostgreSQL per la gestione dei dati relazionali.
     \end{itemize}
 
-\section{Toolchain}
+\subsection{Toolchain}
 Per la realizzazione della piattaforma \textbf{Spendly} verranno utilizzati i seguenti strumenti:
 
-\subsection*{Modellazione}
+\subsubsection*{Modellazione}
 \begin{itemize}
     \item Diagrammi (casi d'uso, deployment, componenti, classi, flussi, entità-relazione): \textbf{Draw.io}, \textbf{StarUML}.
 \end{itemize}
 
-\subsection*{Implementazione Applicazione Client}
+\subsubsection*{Implementazione Applicazione Client}
 \begin{itemize}
     \item Linguaggio di programmazione: \textbf{Java};
     \item IDE: \textbf{Visual Studio Code};
     \item Framework: \textbf{Spring}.
 \end{itemize}
 
-\subsection*{Implementazione Web Server}
+\subsubsection*{Implementazione Web Server}
 \begin{itemize}
     \item Linguaggio di programmazione: \textbf{Java};
     \item IDE: \textbf{Visual Studio Code};
@@ -154,14 +134,14 @@ Per la realizzazione della piattaforma \textbf{Spendly} verranno utilizzati i se
     \item Testing e analisi dinamica: \textbf{JUnit}.
 \end{itemize}
 
-\subsection*{Implementazione Database}
+\subsubsection*{Implementazione Database}
 \begin{itemize}
     \item Tipologia: \textbf{Relazionale};
     \item Database: \textbf{MySQL};
     \item Gestione: \textbf{MySQL Workbench}.
 \end{itemize}
 
-\subsection*{Documentazione, Versioning e Organizzazione del Team}
+\subsubsection*{Documentazione, Versioning e Organizzazione del Team}
 \begin{itemize}
     \item Documentazione: \textbf{LaTeX};
     \item Versioning: \textbf{GitHub};

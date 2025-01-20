@@ -1,8 +1,9 @@
-\contentsline {subsection}{\numberline {0.1}Requisiti}{2}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Casi d'Uso}{2}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Architettura}{4}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Priorità casi d'uso}{4}{subsection.0.4}%
-\contentsline {subsection}{\numberline {0.5}Topologia del Sistema}{5}{subsection.0.5}%
-\contentsline {subsubsection}{\numberline {0.5.1}Gestione delle comunicazioni}{6}{subsubsection.0.5.1}%
-\contentsline {subsubsection}{\numberline {0.5.2}Architettura a Microservizi}{6}{subsubsection.0.5.2}%
-\contentsline {section}{Tool Chain}{6}{subsubsection.0.5.2}%
+\contentsline {subsection}{\numberline {0.1}Introduzione}{2}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Requisiti}{2}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Casi d'Uso}{3}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Architettura}{4}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.5}Priorità casi d'uso}{5}{subsection.0.5}%
+\contentsline {subsection}{\numberline {0.6}Topologia del Sistema}{6}{subsection.0.6}%
+\contentsline {subsubsection}{\numberline {0.6.1}Gestione delle comunicazioni}{7}{subsubsection.0.6.1}%
+\contentsline {subsubsection}{\numberline {0.6.2}Architettura a Microservizi}{7}{subsubsection.0.6.2}%
+\contentsline {section}{Tool Chain}{7}{subsubsection.0.6.2}%

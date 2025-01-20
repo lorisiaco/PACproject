@@ -1,13 +1,20 @@
 \subsection{Architettura}
-L'architettura del sistema è basata su un'architettura a microservizi con i seguenti componenti principali:
+L'architettura del sistema è basata su un'architettura MVC (Model View Controller) con le seguenti componenti principali:
 \begin{itemize}
-    \item \textbf{Client/Frontend}: Implementato in React.js, il frontend fornisce un'interfaccia utente intuitiva per la gestione delle spese.
-    \item \textbf{API Gateway}: Un punto di ingresso unico per tutte le richieste del client, responsabile dell'instradamento verso i microservizi corretti.
-    \item \textbf{Backend (Microservizi)}: I microservizi sono sviluppati in Spring Boot e includono:
+    \item \textbf{Frontend}: Implementato in HTML e CSS, il frontend fornisce un'interfaccia utente intuitiva per la gestione delle spese.
+    \item \textbf{Database}: Utilizza PostgreSQL come sistema di gestione dei dati.
+    \item \textbf{Backend}: Implementato in Spring Boot e include:
     \begin{itemize}
         \item \textbf{Servizio Utente}: Gestisce la registrazione, l'autenticazione e il profilo utente.
         \item \textbf{Servizio Gestione Spese}: Gestisce le operazioni CRUD sulle spese.
         \item \textbf{Servizio Gruppi}: Gestisce la creazione e la modifica dei gruppi.
     \end{itemize}
-    \item \textbf{Database}: Utilizzo di PostgreSQL per la gestione dei dati relazionali.
+    
+    \item \textbf{Flusso delle richieste}: 
+    \begin{itemize}
+        \item \textbf{} L'utente interagisce con il frontend (browser) tramite pagine HTML.
+        \item \textbf{} Le richieste vengono inviate al backend (controller Spring Boot) attraverso HTTP.
+        \item \textbf{} Il backend elabora la richiesta, utilizza i servizi per applicare la logica di business e accede al database.
+        \item \textbf{}La risposta (dati o una nuova pagina HTML) viene inviata al frontend e presentata all'utente.
+    \end{itemize}
 \end{itemize}
