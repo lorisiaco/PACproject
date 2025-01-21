@@ -81,4 +81,16 @@ public class UserApp {
     public void setPassword(String password) {
         this.password = password;
     }
+    @Override
+    public String toString(){
+        return "Id="+ this.getId()+ "Nome="+this.getNome()+"Cognome"+this.getCognonome();
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserApp userApp = (UserApp) o;
+        return id != null && id.equals(userApp.id);
+    }
 }
