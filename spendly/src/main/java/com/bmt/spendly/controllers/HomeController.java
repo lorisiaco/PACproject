@@ -1,4 +1,4 @@
-package spendly.controllers;
+package com.bmt.spendly.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -36,3 +36,36 @@ public class HomeController {
 		return "admin";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

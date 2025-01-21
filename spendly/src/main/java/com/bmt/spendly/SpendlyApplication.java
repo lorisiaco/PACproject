@@ -1,4 +1,4 @@
-package spendly.spendly;
+package com.bmt.spendly;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

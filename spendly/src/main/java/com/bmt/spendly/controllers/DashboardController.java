@@ -1,11 +1,10 @@
-package spendly.controllers;
+package com.bmt.spendly.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
-public class DashBoardController {
+public class DashboardController {
 
 	@GetMapping("/user")
 	public String userDashboard() {

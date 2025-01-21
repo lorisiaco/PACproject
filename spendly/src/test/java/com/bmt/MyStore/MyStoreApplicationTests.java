@@ -1,10 +1,10 @@
-package spendly.spendly;
+package com.bmt.MyStore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpendlyApplicationTests {
+class MyStoreApplicationTests {
 
 	@Test
 	void contextLoads() {

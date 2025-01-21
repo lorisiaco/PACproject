@@ -35,20 +35,20 @@
             	<div class="row mb-3">
                     <label class="col-sm-4 col-form-label">First Name*</label>
                     <div class="col-sm-8">
-                        <input class="form-control" th:field="${registerDto.nome}" >
-	                    <p th:if="${#fields.hasErrors('nome')}" 
+                        <input class="form-control" th:field="${registerDto.firstName}" >
+	                    <p th:if="${#fields.hasErrors('firstName')}" 
 	                    	th:errorclass="text-danger" 
-	                    	th:errors="${registerDto.nome}" ></p>
+	                    	th:errors="${registerDto.firstName}" ></p>
                     </div>
                 </div>
                 
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Last Name*</label>
                     <div class="col-sm-8">
-                        <input class="form-control" th:field="${registerDto.cognome}" >
-	                    <p th:if="${#fields.hasErrors('cognome')}" 
+                        <input class="form-control" th:field="${registerDto.lastName}" >
+	                    <p th:if="${#fields.hasErrors('lastName')}" 
 	                    	th:errorclass="text-danger" 
-	                    	th:errors="${registerDto.cognome}" ></p>
+	                    	th:errors="${registerDto.lastName}" ></p>
                     </div>
                 </div>
 
@@ -65,10 +65,20 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Phone</label>
                     <div class="col-sm-8">
-                        <input class="form-control" th:field="${registerDto.telefono}" >
-	                    <p th:if="${#fields.hasErrors('telefono')}" 
+                        <input class="form-control" th:field="${registerDto.phone}" >
+	                    <p th:if="${#fields.hasErrors('phone')}" 
 	                    	th:errorclass="text-danger" 
-	                    	th:errors="${registerDto.telefono}" ></p>
+	                    	th:errors="${registerDto.phone}" ></p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Address</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" th:field="${registerDto.address}" >
+	                    <p th:if="${#fields.hasErrors('address')}" 
+	                    	th:errorclass="text-danger" 
+	                    	th:errors="${registerDto.address}" ></p>
                     </div>
                 </div>
 

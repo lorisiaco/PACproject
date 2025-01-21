@@ -1,4 +1,6 @@
-package spendly.controllers;
+package com.bmt.spendly.controllers;
+
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,22 +13,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.bmt.spendly.models.AppUser;
+import com.bmt.spendly.models.RegisterDto;
+import com.bmt.spendly.repositories.AppUserRepository;
+
 import jakarta.validation.Valid;
-import spendly.models.RegisterDto;
-import spendly.models.UserApp;
-import spendly.repositories.UserRepository;
 
 @Controller
 public class AccountController {
 
 	@Autowired
-	private UserRepository repo;
+	private AppUserRepository repo;
 	
 	
 	
 	@GetMapping("/profile")
 	public String profile(Authentication auth, Model model) {
-		UserApp user = repo.findByEmail(auth.getName());
+		AppUser user = repo.findByEmail(auth.getName());
 		model.addAttribute("appUser", user);
 		
 		return "profile";
@@ -63,7 +66,7 @@ public class AccountController {
     	}
 		
 		
-		UserApp appUser = repo.findByEmail(registerDto.getEmail());
+		AppUser appUser = repo.findByEmail(registerDto.getEmail());
 		if (appUser != null) {
 			result.addError(
     				new FieldError("registerDto", "email"
@@ -82,11 +85,14 @@ public class AccountController {
 			var bCryptEncoder = new BCryptPasswordEncoder();
 			
 			
-			UserApp newUser = new UserApp();
-			newUser.setNome(registerDto.getNome());
-			newUser.setCognonome(registerDto.getCognome());
+			AppUser newUser = new AppUser();
+			newUser.setFirstName(registerDto.getFirstName());
+			newUser.setLastName(registerDto.getLastName());
 			newUser.setEmail(registerDto.getEmail());
-			newUser.setTelefono(registerDto.getTelefono());
+			newUser.setPhone(registerDto.getPhone());
+			newUser.setAddress(registerDto.getAddress());
+			newUser.setRole("client");
+			newUser.setCreatedAt(new Date());
 			newUser.setPassword(bCryptEncoder.encode(registerDto.getPassword()));
 			
 			repo.save(newUser);
