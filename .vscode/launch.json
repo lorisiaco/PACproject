@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpendlyApplication<spendly>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.bmt.spendly.SpendlyApplication",
+            "projectName": "spendly",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
