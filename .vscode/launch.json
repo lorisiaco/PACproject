@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SpendlyApplication",
+            "request": "launch",
+            "mainClass": "com.bmt.spendly.SpendlyApplication",
+            "projectName": "prova3"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SpendlyApplication<spendly>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

@@ -3,6 +3,7 @@ package com.bmt.spendly.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bmt.spendly.models.AppUser;
 import com.bmt.spendly.models.Group;
@@ -10,7 +11,7 @@ import com.bmt.spendly.repositories.AppUserRepository;
 import com.bmt.spendly.repositories.GroupRepository;
 
 
-
+@Service
 public class GroupService {
 
     @Autowired

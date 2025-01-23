@@ -1,6 +1,8 @@
 package com.bmt.spendly.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.*;
@@ -25,6 +27,9 @@ public class AppUser {
 	private String role;
 	private Date createdAt;
 	
+	@ManyToMany(mappedBy = "membri")
+	private List<Group> gruppi = new ArrayList<>();
+
 	
 	public int getId() {
 		return id;
