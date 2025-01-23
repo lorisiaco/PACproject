@@ -1,6 +1,7 @@
 package com.bmt.spendly.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -79,6 +80,29 @@ public class AppUser {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	@Override
+	public String toString() {
+    return "Id=" + id + ", Nome=" + (firstName != null ? firstName : "N/A") 
+	           + ", Cognome=" + (lastName != null ? lastName : "N/A");
+	}
+
+
+    @Override
+	public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AppUser userApp = (AppUser) o;
+    return id == userApp.id; // Supponendo che `id` non sia `null`
+	}
+
+	@Override
+	public int hashCode() {
+    return Objects.hash(id);
+	}
+
+
+
 	
 	
 }
