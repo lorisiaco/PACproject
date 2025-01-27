@@ -1,5 +1,7 @@
 package com.bmt.spendly.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,11 @@ public class AppUserService implements UserDetailsService {
 	@Autowired
 	private AppUserRepository repo;
 
+	// Metodo per ottenere tutti gli utenti
+    public List<AppUser> getAllUsers() {
+        return repo.findAll();
+    }
+	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		AppUser appUser = repo.findByEmail(email);

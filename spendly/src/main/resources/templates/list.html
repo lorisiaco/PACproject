@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Spese</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    <h1>Lista delle Spese</h1>
+    <a href="/costs/new">Aggiungi Nuova Spesa</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Importo</th>
+                <th>Data</th>
+                <th>Tipologia</th>
+                <th>Gruppo</th>
+                <th>Utente</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cost : ${costs}">
+                <td th:text="${cost.costId}"></td>
+                <td th:text="${cost.importo}"></td>
+                <td th:text="${cost.data}"></td>
+                <td th:text="${cost.tipologia}"></td>
+                <td th:text="${cost.group.nome}"></td>
+                <td th:text="${cost.user.firstName} + ' ' + ${cost.user.lastName}"></td>
+                <td>
+                    <a th:href="@{'/costs/edit/' + ${cost.costId}}">Modifica</a>
+                    <a th:href="@{'/costs/delete/' + ${cost.costId}}" onclick="return confirm('Sei sicuro di voler eliminare questa spesa?')">Elimina</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
