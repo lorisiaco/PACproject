@@ -17,61 +17,25 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests( auth -> auth
-                		.requestMatchers("/").permitAll()
-                		.requestMatchers("/contact").permitAll()
-	                    .requestMatchers("/store/**").permitAll()
-	                    .requestMatchers("/register").permitAll()
-	                    .requestMatchers("/login").permitAll()
-	                    .requestMatchers("/logout").permitAll()
-	                    .requestMatchers("/client/**").hasRole("client")
-	                    .requestMatchers("/admin/**").hasRole("admin")
-	                    .anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth
+                        // Endpoints pubblici
+                        .requestMatchers("/", "/contact", "/store/**", "/register", "/login", "/logout").permitAll()
+                        // Tutti gli utenti autenticati possono accedere a /dashboard
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                		.loginPage("/login")
-                		.usernameParameter("email")
-                		.passwordParameter("password")
-                		.defaultSuccessUrl("/", true)
+                        .loginPage("/login")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        // Tutti gli utenti autenticati vanno su /dashboard
+                        .defaultSuccessUrl("/dashboard", true)
                 )
                 .logout(config -> config.logoutSuccessUrl("/"))
-        		.build();
+                .build();
     }
-
 
     @Bean
     PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
-	}
+        return new BCryptPasswordEncoder();
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

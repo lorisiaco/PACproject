@@ -7,47 +7,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-	@GetMapping({"", "/"})
-	public String home() {
-		return "index";
-	}
-	
-	@GetMapping("/contact")
-	public String contact() {
-		return "contact";
-	}
-	
-	
-	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/store/user")
-	public String userPage() {
-		return "user";
-	}
-	
-	@PreAuthorize("hasRole('client')")
-	@GetMapping("/store/client")
-	public String clientPage() {
-		return "client";
-	}
-	
-	@PreAuthorize("hasRole('admin')")
-	@GetMapping("/store/admin")
-	public String adminPage() {
-		return "admin";
-	}
+    @GetMapping({"", "/"})
+    public String home() {
+        return "index";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "Dashboard"; // Questo carica templates/Dashboard.html
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/gestione-spese")
+    public String gestioneSpese() {
+        return "gestione-spese";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/gestione-gruppi")
+    public String gestioneGruppi() {
+        return "gestione-gruppi";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/gestione-spese-gruppo")
+    public String gestioneSpeseGruppo() {
+        return "gestione-spese-gruppo";
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

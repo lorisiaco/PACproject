@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spendly Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js (per grafici) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #343a40;
+            color: white;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .sidebar a:hover {
+            background: #495057;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+        .dashboard-card {
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center"><i class="fas fa-wallet"></i> Spendly</h4>
+        <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user"></i> Gestione Account</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/gestione-spese">Gestione Spese</a></li>
+                <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-users"></i> Gestione Gruppi</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/gestione-gruppi">Visualizza Gruppi</a></li>
+            </ul>
+        </div>
+        <a href="#"><i class="fas fa-question-circle"></i> Aiuto</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1 class="mb-4">Dashboard Generale</h1>
+
+        <!-- Statistiche -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="dashboard-card bg-primary">
+                    <h3><i class="fas fa-euro-sign"></i> Totale Spese</h3>
+                    <p id="total-spent">€0.00</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card bg-success">
+                    <h3><i class="fas fa-coins"></i> Spesa Media</h3>
+                    <p id="average-spent">€0.00</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card bg-warning">
+                    <h3><i class="fas fa-history"></i> Ultima Spesa</h3>
+                    <p id="last-spent">N/D</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista Ultime Spese -->
+        <h2 class="mt-4">Ultime Spese</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrizione</th>
+                    <th>Importo (€)</th>
+                </tr>
+            </thead>
+            <tbody id="expenses-list">
+                <tr><td colspan="3" class="text-center">Nessuna spesa registrata</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Grafico delle Spese -->
+        <h2 class="mt-4">Spese per Categoria</h2>
+        <canvas id="expenseChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript per caricare dati -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/api/expenses")
+                .then(response => response.json())
+                .then(data => {
+                    let total = 0;
+                    let lastExpense = "N/D";
+                    let categories = {};
+                    let expensesList = document.getElementById("expenses-list");
+                    expensesList.innerHTML = "";
+
+                    if (data.length > 0) {
+                        lastExpense = `€${data[data.length - 1].amount.toFixed(2)}`;
+                    }
+
+                    data.forEach(expense => {
+                        total += expense.amount;
+
+                        let row = `<tr>
+                            <td>${expense.date}</td>
+                            <td>${expense.description}</td>
+                            <td>€${expense.amount.toFixed(2)}</td>
+                        </tr>`;
+                        expensesList.innerHTML += row;
+
+                        // Conta spese per categoria
+                        if (categories[expense.category]) {
+                            categories[expense.category] += expense.amount;
+                        } else {
+                            categories[expense.category] = expense.amount;
+                        }
+                    });
+
+                    let average = data.length > 0 ? total / data.length : 0;
+                    document.getElementById("total-spent").innerText = `€${total.toFixed(2)}`;
+                    document.getElementById("average-spent").innerText = `€${average.toFixed(2)}`;
+                    document.getElementById("last-spent").innerText = lastExpense;
+
+                    // Crea il grafico con Chart.js
+                    let ctx = document.getElementById('expenseChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: Object.keys(categories),
+                            datasets: [{
+                                data: Object.values(categories),
+                                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff']
+                            }]
+                        }
+                    });
+                })
+                .catch(error => console.error("Errore nel caricamento delle spese:", error));
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
