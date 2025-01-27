@@ -13,7 +13,7 @@ public class AppUser {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	private String firstName;
 	private String lastName;
@@ -31,10 +31,10 @@ public class AppUser {
 	private List<Group> gruppi = new ArrayList<>();
 
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFirstName() {

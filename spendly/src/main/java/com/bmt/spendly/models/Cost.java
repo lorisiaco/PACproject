@@ -1,6 +1,9 @@
 package com.bmt.spendly.models;
 
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,10 +19,13 @@ public class Cost {
     
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int CostId;
+	private Long CostId;
 
     private double importo;
-    private Date data;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate data;  // Changed from Date to LocalDate
+
     private String tipologia;   //Per ora metto string, magari poi fare Enum
 
     @ManyToOne
@@ -30,11 +36,11 @@ public class Cost {
     @JoinColumn(name = "user_id", nullable = false) // Chiave esterna per l'utente
     private AppUser user;
 
-    public int getCostId() {
+    public Long getCostId() {
         return CostId;
     }
 
-    public void setCostId(int costId) {
+    public void setCostId(Long costId) {
         CostId = costId;
     }
 
@@ -46,11 +52,11 @@ public class Cost {
         this.importo = importo;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

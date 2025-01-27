@@ -37,13 +37,13 @@ public class GroupController {
 
 
     @PostMapping("/{groupId}/membri")
-    public Group aggiungiMembro(@PathVariable Long groupId, @RequestParam Integer userId) {
+    public Group aggiungiMembro(@PathVariable Long groupId, @RequestParam Long userId) {
         return groupService.aggiungiMembro(groupId, userId);
     }
 
 
     @DeleteMapping("/{groupId}/membri")
-    public Group rimuoviMembro(@PathVariable Long groupId, @RequestParam Integer userId) {
+    public Group rimuoviMembro(@PathVariable Long groupId, @RequestParam Long userId) {
         return groupService.rimuoviMembro(groupId, userId);
     }
 

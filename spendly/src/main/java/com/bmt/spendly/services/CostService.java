@@ -25,7 +25,7 @@ public class CostService {
     private AppUserRepository userRepository;
 
     // Crea una nuova spesa associata a un gruppo e un utente
-    public Cost createCost(Cost cost, Long groupId, int userId) {
+    public Cost createCost(Cost cost, Long groupId, Long userId) {
         Group group = groupRepository.findById(groupId).orElse(null);
         AppUser user = userRepository.findById(userId).orElse(null);
 
@@ -49,24 +49,30 @@ public class CostService {
     }
 
     // Ottieni una spesa per ID
-    public Cost getCostById(int id) {
+    public Cost getCostById(Long id) {
         return costRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
     // Aggiorna una spesa
-    public Cost updateCost(int id, Cost updatedCost) {
+    public Cost updateCost(Long id, Cost updatedCost, Long groupId, Long userId) {
         Cost existingCost = getCostById(id);
-
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new IllegalArgumentException("Group not found"));
+        AppUser user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setData(updatedCost.getData());
         existingCost.setTipologia(updatedCost.getTipologia());
-
+        existingCost.setGroup(group);
+        existingCost.setUser(user);
+    
         return costRepository.save(existingCost);
     }
 
     // Elimina una spesa
-    public void deleteCost(int id) {
+    public void deleteCost(Long id) {
         if (!costRepository.existsById(id)) {
             throw new IllegalArgumentException("La spesa con ID " + id + " non esiste.");
         }
