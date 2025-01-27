@@ -6,7 +6,7 @@ import com.bmt.spendly.models.AppUser;
 
 
 
-public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
 	public AppUser findByEmail(String email);
 }

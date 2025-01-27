@@ -36,7 +36,7 @@ public class GroupService {
         groupRepository.deleteById(groupId);
     }
 
-    public Group aggiungiMembro(Long groupId, Integer UserId){
+    public Group aggiungiMembro(Long groupId, Long UserId){
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findById(UserId)
@@ -46,7 +46,7 @@ public class GroupService {
         return groupRepository.save(gruppo);
     }
 
-    public Group rimuoviMembro(Long groupId, Integer userId) {
+    public Group rimuoviMembro(Long groupId, Long userId) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findById(userId)

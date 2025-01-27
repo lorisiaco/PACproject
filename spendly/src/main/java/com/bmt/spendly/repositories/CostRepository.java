@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bmt.spendly.models.Cost;;
 
 @Repository
-public interface CostRepository extends JpaRepository<Cost,Integer> {
+public interface CostRepository extends JpaRepository<Cost,Long> {
     
 }

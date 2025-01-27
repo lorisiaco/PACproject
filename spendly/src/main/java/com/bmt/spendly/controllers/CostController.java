@@ -45,14 +45,14 @@ public class CostController {
     @PostMapping("/new")
     public String createCost(@ModelAttribute("cost") Cost cost,
                             @RequestParam("groupId") Long groupId,
-                            @RequestParam("userId") int userId) {
+                            @RequestParam("userId") Long userId) {
         costService.createCost(cost, groupId, userId);
     return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Mostra il form per aggiornare una spesa esistente
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable int id, Model model) {
+    public String showEditForm(@PathVariable Long id, Model model) {
         Cost cost = costService.getCostById(id);
         model.addAttribute("cost", cost);
         model.addAttribute("groups", groupService.getAllGroups());
@@ -62,14 +62,14 @@ public class CostController {
 
     // Gestisce l'invio del form per aggiornare una spesa
     @PostMapping("/edit/{id}")
-    public String updateCost(@PathVariable int id, @ModelAttribute("cost") Cost updatedCost) {
+    public String updateCost(@PathVariable Long id, @ModelAttribute("cost") Cost updatedCost) {
         costService.updateCost(id, updatedCost);
         return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Elimina una spesa
     @GetMapping("/delete/{id}")
-    public String deleteCost(@PathVariable int id) {
+    public String deleteCost(@PathVariable Long id) {
         costService.deleteCost(id);
         return "redirect:/costs"; // Reindirizza alla lista delle spese
     }

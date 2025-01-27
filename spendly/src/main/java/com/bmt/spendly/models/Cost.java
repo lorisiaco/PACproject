@@ -16,7 +16,7 @@ public class Cost {
     
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int CostId;
+	private Long CostId;
 
     private double importo;
     private Date data;
@@ -30,11 +30,11 @@ public class Cost {
     @JoinColumn(name = "user_id", nullable = false) // Chiave esterna per l'utente
     private AppUser user;
 
-    public int getCostId() {
+    public Long getCostId() {
         return CostId;
     }
 
-    public void setCostId(int costId) {
+    public void setCostId(Long costId) {
         CostId = costId;
     }
 

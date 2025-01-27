@@ -94,6 +94,35 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.getElementById("groupForm").addEventListener("submit", async function (event) {
+                event.preventDefault(); // Impedisce il comportamento predefinito del form (refresh della pagina)
+        
+                const groupName = document.getElementById("groupName").value;
+        
+                try {
+                    const response = await fetch(`/group/new?nome=${encodeURIComponent(groupName)}`, {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
+        
+                    if (response.ok) {
+                        const group = await response.json();
+                        alert(`Gruppo creato con successo! ID: ${group.id}, Nome: ${group.nome}`);
+                        // Chiudi il modale
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('createGroupModal'));
+                        modal.hide();
+                    } else {
+                        alert("Errore durante la creazione del gruppo.");
+                    }
+                } catch (error) {
+                    console.error("Errore:", error);
+                    alert("Si è verificato un errore durante la richiesta.");
+                }
+            });
+        </script>
 
         <!-- Grafico delle Spese per Gruppo -->
         <h2 class="mt-4">Distribuzione Spese per Gruppo</h2>
