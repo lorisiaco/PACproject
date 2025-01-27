@@ -6,15 +6,24 @@
 
 \begin{document}
 
-% Frontespizio
+% ======================
+% FRONTESPIZIO
+% ======================
 \maketitle
+\newpage % Pagina vuota dopo il titolo
+\thispagestyle{empty} % Rimuove numerazione pagina
+\mbox{} % Pagina bianca
+\newpage 
 
-% Indici
+% ======================
+% INDICI
+% ======================
 \tableofcontents
+\addtocontents{toc}{\protect\thispagestyle{plain}} % Forza la pagina con stile normale
+\newpage
 \listoffigures
 \listoftables
-\newpage
-
+\newpage 
 % ======================
 % ITERAZIONE 0
 % ======================
@@ -22,24 +31,29 @@
 Questa sezione analizza i requisiti iniziali del progetto Spendly.
 
 \input{Iterazione0/Introduzione.tex}
+\newpage
 \input{Iterazione0/Requisiti.tex}
+\newpage
 \input{Iterazione0/CasiDuso.tex}
 \input{Iterazione0/Architettura.tex}
 \input{Iterazione0/priorità.tex}
 \newpage
 \input{Iterazione0/Topologia.tex}
+\newpage
 \input{Iterazione0/ToolChain.tex}
 
-\newpage
+
 % ======================
 % ITERAZIONE 1
 % ======================
+\newpage
 \section*{Iterazione 1}
 In questa iterazione, ci concentriamo sul design e sull'implementazione iniziale del sistema.
-% ======================
-% CONCLUSIONI
-% ======================
-\section*{Conclusioni}
-Il progetto Spendly rappresenta un'applicazione concreta delle conoscenze tecniche e pratiche, offrendo un esempio di sviluppo software iterativo e modulare.
+
+\input{Iterazione1/CasiUsoImplementati.tex}
+\newpage
+\input{Iterazione1/ComponentDiagram.tex}
+
+
 
 \end{document}

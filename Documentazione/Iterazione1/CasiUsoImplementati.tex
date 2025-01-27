@@ -1,0 +1,117 @@
+\subsection{Casi d'Uso Implementati }
+
+In questa iterazione sono stati sviluppati i seguenti casi d’uso ritenuti prioritari per lo sviluppo di \textbf{Spendly}.
+
+\subsubsection{UC1: Login}
+\textbf{Attori}: Utente, Sistema.
+
+\textbf{Descrizione}: L'utente può autenticarsi nel sistema per accedere al proprio account.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L'utente accede alla pagina di login.
+    \item Inserisce email e password.
+    \item Il sistema verifica le credenziali e autentica l'utente.
+    \item L'utente viene reindirizzato alla dashboard.
+\end{enumerate}
+
+\subsubsection{UC2: Registrazione}
+\textbf{Attori}: Utente, Sistema.
+
+\textbf{Descrizione}: Un nuovo utente può registrarsi creando un account.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L'utente accede alla pagina di registrazione.
+    \item Inserisce nome, email e password.
+    \item Il sistema verifica che l’email non sia già registrata.
+    \item Se la verifica è superata, il sistema crea l’account e lo memorizza.
+    \item L'utente viene reindirizzato alla dashboard.
+\end{enumerate}
+
+\subsubsection{UC3: Logout}
+\textbf{Attori}: Utente, Sistema.
+
+\textbf{Descrizione}: L'utente può terminare la sessione ed effettuare il logout.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L'utente clicca su "Logout".
+    \item Il sistema invalida la sessione e mostra la schermata di login.
+\end{enumerate}
+
+\subsubsection{UC7: Creazione Gruppo}
+\textbf{Attori}: Utente amministratore, Sistema.
+
+\textbf{Descrizione}: L’utente può creare un nuovo gruppo di spese per la condivisione con altri membri.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente clicca su "Crea Gruppo".
+    \item Inserisce il nome del gruppo e una descrizione opzionale.
+    \item Il sistema crea il gruppo e assegna l’utente come amministratore.
+    \item L'utente viene reindirizzato alla pagina del gruppo.
+\end{enumerate}
+
+\subsubsection{UC8: Invita Membri}
+\textbf{Attori}: Utente amministratore, Sistema.
+
+\textbf{Descrizione}: L’amministratore di un gruppo può invitare altri utenti a unirsi al gruppo di spese.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla pagina del gruppo.
+    \item Clicca su "Invita Membri" e inserisce l’email degli utenti da invitare.
+    \item Il sistema invia un’email con l’invito e memorizza la richiesta.
+    \item Gli utenti ricevono l’invito e possono accettarlo per entrare nel gruppo.
+\end{enumerate}
+
+\subsubsection{UC9: Elimina Membri}
+\textbf{Attori}: Utente amministratore, Sistema.
+
+\textbf{Descrizione}: L’amministratore di un gruppo può rimuovere un membro dal gruppo.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla lista dei membri del gruppo.
+    \item Seleziona il membro da rimuovere e clicca su "Elimina".
+    \item Il sistema rimuove il membro e aggiorna la lista.
+\end{enumerate}
+
+\subsubsection{UC10: Modifica Membri}
+\textbf{Attori}: Utente amministratore, Sistema.
+
+\textbf{Descrizione}: L’amministratore di un gruppo può modificare i dettagli dei membri (ad esempio assegnare nuovi ruoli).
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla lista dei membri.
+    \item Seleziona un membro e modifica i dettagli (es. ruolo nel gruppo).
+    \item Il sistema aggiorna i dati e notifica il cambiamento.
+\end{enumerate}
+
+\subsubsection{UC11: Eliminazione Gruppo}
+\textbf{Attori}: Utente amministratore, Sistema.
+
+\textbf{Descrizione}: L’amministratore di un gruppo può eliminare definitivamente un gruppo di spese.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alle impostazioni del gruppo.
+    \item Clicca su "Elimina Gruppo".
+    \item Il sistema chiede conferma prima di procedere.
+    \item Se confermato, il gruppo e tutte le sue spese vengono eliminate.
+\end{enumerate}
+
+\subsubsection{UC12: Accesso a un Gruppo}
+\textbf{Attori}: Utente, Sistema.
+
+\textbf{Descrizione}: Un utente può accedere a un gruppo di spese a cui è stato invitato.
+
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L'utente riceve un invito via email o notifica nell’app.
+    \item Clicca sul link di invito e accede alla web-app.
+    \item Il sistema verifica la validità dell’invito e aggiunge l’utente al gruppo.
+    \item L'utente viene reindirizzato alla pagina del gruppo.
+\end{enumerate}
