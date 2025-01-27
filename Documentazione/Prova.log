@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.15)  27 JAN 2025 09:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.15)  27 JAN 2025 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -549,7 +549,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6] (./Iterazione0/CasiDuso.tex
-<images/casousoprova.png, id=145, 796.77675pt x 516.7305pt>
+<images/casousoprova.png, id=150, 796.77675pt x 516.7305pt>
 File: images/casousoprova.png Graphic file (type png)
 <use images/casousoprova.png>
 Package pdftex.def Info: images/casousoprova.png  used on input line 5.
@@ -587,7 +587,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9] (./Iterazione0/Topologia.tex
-<images/topologia.jpg, id=162, 2260.445pt x 548.0475pt>
+<images/topologia.jpg, id=167, 2260.445pt x 548.0475pt>
 File: images/topologia.jpg Graphic file (type jpg)
 <use images/topologia.jpg>
 Package pdftex.def Info: images/topologia.jpg  used on input line 7.
@@ -633,7 +633,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [14] (./Iterazione1/ComponentDiagram.tex
-<images/ComponentDiagramV1.1.png, id=217, 768.8725pt x 1004.75375pt>
+<images/ComponentDiagramV1.1.png, id=222, 768.8725pt x 1004.75375pt>
 File: images/ComponentDiagramV1.1.png Graphic file (type png)
 <use images/ComponentDiagramV1.1.png>
 Package pdftex.def Info: images/ComponentDiagramV1.1.png  used on input line 5.
@@ -646,27 +646,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[15 <./images/ComponentDiagramV1.1.png>] (./Prova.aux)
+[15 <./images/ComponentDiagramV1.1.png>] (./Iterazione1/DiagrammiClassiTipoDati.tex
+<images/TipoDatiClassDiagramV1.1.png, id=228, 543.02875pt x 335.2525pt>
+File: images/TipoDatiClassDiagramV1.1.png Graphic file (type png)
+<use images/TipoDatiClassDiagramV1.1.png>
+Package pdftex.def Info: images/TipoDatiClassDiagramV1.1.png  used on input line 4.
+(pdftex.def)             Requested size: 298.66672pt x 184.38943pt.
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16 <./images/TipoDatiClassDiagramV1.1.png>] (./Prova.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `Prova.out' has not changed.
-(rerunfilecheck)             Checksum: BD8014BBDAEC4A297A07726772DC5176;3084.
+(rerunfilecheck)             Checksum: 5C75AA1A07EB6BC0F61D31275EFD0253;3322.
  ) 
 Here is how much of TeX's memory you used:
- 13317 strings out of 474116
- 202236 string characters out of 5743682
+ 13333 strings out of 474116
+ 202813 string characters out of 5743682
  1940187 words of memory out of 5000000
- 35373 multiletter control sequences out of 15000+600000
+ 35384 multiletter control sequences out of 15000+600000
  618500 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,12n,93p,1258b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Prova.pdf (15 pages, 440399 bytes).
+Output written on Prova.pdf (16 pages, 450231 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 
