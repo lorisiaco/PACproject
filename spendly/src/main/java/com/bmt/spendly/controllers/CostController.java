@@ -13,7 +13,7 @@ import com.bmt.spendly.services.CostService;
 import com.bmt.spendly.services.GroupService;
 
 @Controller
-@RequestMapping("/cost")
+@RequestMapping("/costs")
 public class CostController {
 
     @Autowired
@@ -42,13 +42,12 @@ public class CostController {
         return "formboot"; // Mostra la pagina "formboot.html"
     }
 
-    // Gestisce l'invio del form per creare una nuova spesa
     @PostMapping("/new")
     public String createCost(@ModelAttribute("cost") Cost cost,
-                             @RequestParam("groupId") Long groupId,
-                             @RequestParam("userId") int userId) {
+                            @RequestParam("groupId") Long groupId,
+                            @RequestParam("userId") int userId) {
         costService.createCost(cost, groupId, userId);
-        return "redirect:/cost"; // Reindirizza alla lista delle spese
+    return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Mostra il form per aggiornare una spesa esistente
@@ -65,13 +64,13 @@ public class CostController {
     @PostMapping("/edit/{id}")
     public String updateCost(@PathVariable int id, @ModelAttribute("cost") Cost updatedCost) {
         costService.updateCost(id, updatedCost);
-        return "redirect:/cost"; // Reindirizza alla lista delle spese
+        return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Elimina una spesa
     @GetMapping("/delete/{id}")
     public String deleteCost(@PathVariable int id) {
         costService.deleteCost(id);
-        return "redirect:/cost"; // Reindirizza alla lista delle spese
+        return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 }
