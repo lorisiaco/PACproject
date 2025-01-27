@@ -27,6 +27,11 @@ public class GroupService {
         return groupRepository.save(gruppo);
     }
 
+     // Restituisce tutti i gruppi
+    public List<Group> getAllGroups() {
+        return groupRepository.findAll();
+    }
+
     public void eliminaGruppo(Long groupId){
         groupRepository.deleteById(groupId);
     }
