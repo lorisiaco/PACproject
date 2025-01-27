@@ -1,73 +1,57 @@
-bug Form Template
-
-<!DOCTYPE html>   
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form Spesa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     <div class="container py-5">
         <div class="card shadow-sm">
             <div class="card-header text-center">
-                <h2>Crea Nuova Spesa</h2>
+                <h2 th:text="${cost.costId != null ? 'Modifica Spesa' : 'Crea Nuova Spesa'}"></h2>
             </div>
-            
-            <!-- Error Messages -->
-            <div th:if="${error}" class="alert alert-danger m-3" role="alert">
-                <span th:text="${error}"></span>
-            </div>
-
             <div class="card-body">
-                <form th:action="@{/costs/new}" method="post">
+                <form th:action="@{${cost.costId != null ? '/costs/update/' + cost.costId : '/costs'}}" th:object="${cost}" method="post">
                     <div class="mb-3">
                         <label for="importo" class="form-label">Importo:</label>
-                        <input type="number" step="0.01" id="importo" name="importo" class="form-control" required>
+                        <input type="number" step="0.01" id="importo" th:field="*{importo}" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="data" class="form-label">Data:</label>
-                        <input type="date" id="data" name="data" class="form-control" required>
+                        <input type="date" id="data" th:field="*{data}" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="tipologia" class="form-label">Tipologia:</label>
-                        <input type="text" id="tipologia" name="tipologia" class="form-control" required>
+                        <input type="text" id="tipologia" th:field="*{tipologia}" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="group" class="form-label">Gruppo:</label>
                         <select id="group" name="groupId" class="form-select" required>
-                            <option value="">Seleziona un gruppo</option>
-                            <option th:each="group : ${groups}" 
-                                    th:value="${group.id}" 
-                                    th:text="${group.nome}">
-                            </option>
+                            <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.nome}"></option>
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="user" class="form-label">Utente:</label>
                         <select id="user" name="userId" class="form-select" required>
-                            <option value="">Seleziona un utente</option>
-                            <option th:each="user : ${users}" 
-                                    th:value="${user.id}" 
-                                    th:text="${user.firstName + ' ' + user.lastName}">
-                            </option>
+                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.firstName} + ' ' + ${user.lastName}"></option>
                         </select>
                     </div>
 
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salva</button>
-                        <a href="/costs" class="btn btn-secondary">Annulla</a>
+                        <a href="/costs/new" class="btn btn-secondary">Annulla</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

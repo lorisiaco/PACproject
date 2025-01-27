@@ -26,7 +26,7 @@ public class SecurityConfig {
 	                    .requestMatchers("/logout").permitAll()
 	                    .requestMatchers("/client/**").hasRole("client")
 	                    .requestMatchers("/admin/**").hasRole("admin")
-						.requestMatchers("/cost/**").authenticated()
+						.requestMatchers("/costs/**").authenticated()
 	                    .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

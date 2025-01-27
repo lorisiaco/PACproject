@@ -1,9 +1,6 @@
 package com.bmt.spendly.models;
 
-import java.time.LocalDate;
 import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +19,7 @@ public class Cost {
 	private Long CostId;
 
     private double importo;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate data;  // Changed from Date to LocalDate
-
+    private Date data;
     private String tipologia;   //Per ora metto string, magari poi fare Enum
 
     @ManyToOne
@@ -52,11 +46,11 @@ public class Cost {
         this.importo = importo;
     }
 
-    public LocalDate getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

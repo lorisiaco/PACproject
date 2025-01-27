@@ -45,22 +45,9 @@ public class CostController {
     @PostMapping("/new")
     public String createCost(@ModelAttribute("cost") Cost cost,
                             @RequestParam("groupId") Long groupId,
-                            @RequestParam("userId") Long userId,
-                            Model model) {
-        try {
-            System.out.println("Received cost: " + cost.getImporto() + ", " + cost.getData() + ", " + cost.getTipologia());
-            System.out.println("GroupId: " + groupId + ", UserId: " + userId);
-            costService.createCost(cost, groupId, userId);
-            return "redirect:/costs";
-        } catch (Exception e) {
-            System.out.println("Error creating cost: " + e.getMessage());
-            e.printStackTrace();
-            // Add error message to model and return to form
-            model.addAttribute("error", e.getMessage());
-            model.addAttribute("groups", groupService.getAllGroups());
-            model.addAttribute("users", userService.getAllUsers());
-            return "formboot";
-        }
+                            @RequestParam("userId") Long userId) {
+        costService.createCost(cost, groupId, userId);
+    return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Mostra il form per aggiornare una spesa esistente
@@ -75,12 +62,9 @@ public class CostController {
 
     // Gestisce l'invio del form per aggiornare una spesa
     @PostMapping("/edit/{id}")
-    public String updateCost(@PathVariable Long id, 
-                            @ModelAttribute("cost") Cost updatedCost,
-                            @RequestParam("groupId") Long groupId,
-                            @RequestParam("userId") Long userId) {
-        costService.updateCost(id, updatedCost, groupId, userId);
-        return "redirect:/costs";
+    public String updateCost(@PathVariable Long id, @ModelAttribute("cost") Cost updatedCost) {
+        costService.updateCost(id, updatedCost);
+        return "redirect:/costs"; // Reindirizza alla lista delle spese
     }
 
     // Elimina una spesa

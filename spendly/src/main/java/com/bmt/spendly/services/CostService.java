@@ -55,19 +55,13 @@ public class CostService {
     }
 
     // Aggiorna una spesa
-    public Cost updateCost(Long id, Cost updatedCost, Long groupId, Long userId) {
+    public Cost updateCost(Long id, Cost updatedCost) {
         Cost existingCost = getCostById(id);
-        Group group = groupRepository.findById(groupId)
-                .orElseThrow(() -> new IllegalArgumentException("Group not found"));
-        AppUser user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
-    
+
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setData(updatedCost.getData());
         existingCost.setTipologia(updatedCost.getTipologia());
-        existingCost.setGroup(group);
-        existingCost.setUser(user);
-    
+
         return costRepository.save(existingCost);
     }
 
