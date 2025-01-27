@@ -28,6 +28,10 @@ public class Group {
         joinColumns = @JoinColumn(name = "group_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
+
+
+
+    //private List<Cost> cost=new ArrayList<Cost>();
     private List<AppUser> membri=new ArrayList<AppUser>();
 
     public Group(){}

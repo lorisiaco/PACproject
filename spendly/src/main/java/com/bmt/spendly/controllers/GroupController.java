@@ -3,7 +3,9 @@ package com.bmt.spendly.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
 
 import com.bmt.spendly.models.AppUser;
 import com.bmt.spendly.models.Group;
@@ -17,16 +19,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@RestController
-@RequestMapping("/group")
+@Controller
+@RequestMapping("/groups")
 public class GroupController {
 
     @Autowired
     private GroupService groupService;
 
+    @GetMapping
+    public String getAllGroups(Model model) {
+        List<Group> groups = groupService.getAllGroups();
+        model.addAttribute("groups", groups);
+        return "ListGroup"; // Mostra la pagina "ListGroup.html"
+    }
+
     @GetMapping("/new")
-    public Group creaGruppo(@RequestParam String nome) {
-        return groupService.creaGruppo(nome);
+    public String showCreateGroupForm(Model model) {
+    return "GroupForm"; // Mostra la pagina "costform.html"
+    }
+
+    @PostMapping("/add")
+    public String addGroup(@RequestParam("name") String name, Model model) {
+        groupService.creaGruppo(name);
+        System.out.println("ciao");
+        model.addAttribute("success", true); // Aggiungi l'attributo success
+        return "redirect:/groups";
     }
 
 
