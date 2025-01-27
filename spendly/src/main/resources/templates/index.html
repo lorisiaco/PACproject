@@ -1,133 +1,85 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-				xmlns:sec="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spendly</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-  
-    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-	  <div class="container">
-	    <a class="navbar-brand" href="/">Best Store</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link text-dark" href="/">Home</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link text-dark" href="/contact">Contact</a>
-	        </li>
-	        
-	        <li class="nav-item">
-	          <a class="nav-link text-dark" href="/user">User</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link text-dark" href="/client">Client</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link text-dark" href="/admin">Admin</a>
-	        </li>
-	        
-	        
-	      </ul>
-	      
-	      
-	      <ul class="navbar-nav me-3" sec:authorize="hasRole('admin')">
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Admin
-	          </a>
-	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-	            <li><a class="dropdown-item" href="/">Home</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-	      
-	      
-	      <ul class="navbar-nav me-3" sec:authorize="hasRole('client')">
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Client
-	          </a>
-	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-	            <li><a class="dropdown-item" href="/">Home</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-	      
-	      <form sec:authorize="isAuthenticated()" method="post" action="/logout">
-	          <input type="hidden" th:name="${_csrf.parameterName}" 
-					th:value="${_csrf.token}" />
-  		
-	          <button type="submit" class="btn btn-danger">
-	          	Logout
-	          </button>
-          </form>
-	      
-	      <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-	        <li class="nav-item">
-                <a href="/register" class="btn btn-outline-primary me-2">Register</a>
-            </li>
-            <li class="nav-item">
-                <a href="/login" class="btn btn-primary">Login</a>
-            </li>
-	      </ul>
-	      
-	    </div>
-	  </div>
-	</nav>
-  
-    
-    <div class="container py-5">
-    	<h1 class="text-center">Hello, world!</h1>
-    	
-    	
-    	
-    	<a href="/store/user" class="me-3">User Page</a>
-        <a href="/store/client" class="me-3">Client Page</a>
-        <a href="/store/admin" class="me-3">Admin Page</a>
-    </div>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spendly - Il tuo Controllo Finanziario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-blue-400">💰 Spendly</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/login" class="hover:text-blue-300">Accedi</a>
+                <a href="/register" class="hover:text-blue-300">Registrati</a>
+                <a href="/contact" class="hover:text-blue-300">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-600 text-white text-center py-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-bold">Il tuo Controllo Finanziario, Semplice e Potente</h1>
+            <p class="mt-4 text-lg">Gestisci le tue spese, traccia i tuoi movimenti e ottimizza il tuo budget con Spendly.</p>
+            
+            <!-- Pulsanti -->
+            <div class="mt-6 flex justify-center space-x-4">
+                <a href="/register" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100">
+                    Inizia Ora
+                </a>
+                <a href="/login" class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700">
+                    Accedi
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Anteprima Dashboard -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800">Uno sguardo alla tua Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">📊 Resoconto Mensile</h3>
+                    <p class="mt-2 text-gray-600">Visualizza il tuo saldo e i tuoi trend finanziari.</p>
+                    <img src="https://placehold.co/250x150" alt="Grafico" class="mt-4 mx-auto">
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">📅 Pianificazione Spese</h3>
+                    <p class="mt-2 text-gray-600">Organizza i tuoi pagamenti e controlla le tue uscite.</p>
+                    <img src="https://placehold.co/250x150" alt="Calendario" class="mt-4 mx-auto">
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">💳 Gestione Gruppi</h3>
+                    <p class="mt-2 text-gray-600">Dividi spese con amici o colleghi in pochi click.</p>
+                    <img src="https://placehold.co/250x150" alt="Spese Gruppo" class="mt-4 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-blue-600 text-white text-center py-12">
+        <h2 class="text-3xl font-bold">Inizia a migliorare la tua gestione finanziaria oggi!</h2>
+        <div class="mt-6 flex justify-center space-x-4">
+            <a href="/register" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100">
+                Registrati Gratis
+            </a>
+            <a href="/login" class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700">
+                Accedi
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+        <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
+        <p><a href="/contact" class="text-blue-400 hover:underline">Contattaci</a></p>
+    </footer>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

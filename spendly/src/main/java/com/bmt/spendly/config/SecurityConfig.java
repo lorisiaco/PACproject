@@ -17,6 +17,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
+<<<<<<< HEAD
                 .authorizeHttpRequests( auth -> auth
                 		.requestMatchers("/").permitAll()
                 		.requestMatchers("/contact").permitAll()
@@ -28,51 +29,27 @@ public class SecurityConfig {
 	                    .requestMatchers("/admin/**").hasRole("admin")
 						.requestMatchers("/cost/**").authenticated()
 	                    .anyRequest().authenticated()
+=======
+                .authorizeHttpRequests(auth -> auth
+                        // Endpoints pubblici
+                        .requestMatchers("/", "/contact", "/store/**", "/register", "/login", "/logout").permitAll()
+                        // Tutti gli utenti autenticati possono accedere a /dashboard
+                        .anyRequest().authenticated()
+>>>>>>> 8a03ae09892bf6a9c179d75ccd1ddbb5ed093665
                 )
                 .formLogin(form -> form
-                		.loginPage("/login")
-                		.usernameParameter("email")
-                		.passwordParameter("password")
-                		.defaultSuccessUrl("/", true)
+                        .loginPage("/login")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        // Tutti gli utenti autenticati vanno su /dashboard
+                        .defaultSuccessUrl("/dashboard", true)
                 )
                 .logout(config -> config.logoutSuccessUrl("/"))
-        		.build();
+                .build();
     }
-
 
     @Bean
     PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
-	}
+        return new BCryptPasswordEncoder();
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
