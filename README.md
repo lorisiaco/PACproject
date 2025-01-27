@@ -1,49 +1,55 @@
 # 💸 Spendly – Web App di Gestione Spese
 
-**Spendly** è una web app avanzata per la gestione delle spese personali e di gruppo.  
-Traccia facilmente le tue entrate e uscite, dividi le spese con amici o coinquilini e mantieni il controllo del tuo budget in modo intuitivo! 🚀  
+**Spendly** è una **moderna web app** per la gestione delle spese personali e di gruppo.  
+Grazie a un'interfaccia intuitiva e a potenti strumenti di analisi, Spendly ti aiuta a monitorare le tue entrate e uscite, a dividere le spese con amici e a tenere sotto controllo il tuo budget. 🔥  
 
 ![Spendly Screenshot](https://placehold.co/1200x600)  
 
+---
+
 ## 🚀 **Caratteristiche Principali**
-✔ **Gestione Spese Personali** – Aggiungi e monitora le tue spese quotidiane.  
-✔ **Gestione Spese di Gruppo** – Dividi spese con amici, familiari o colleghi e bilancia automaticamente i debiti.  
-✔ **Dashboard Interattiva** – Visualizza grafici dettagliati delle tue spese per categoria e periodo.  
-✔ **Report Finanziari** – Scarica riepiloghi dettagliati delle tue finanze in formato CSV o PDF.  
-✔ **Notifiche e Promemoria** – Ricevi alert sulle scadenze dei pagamenti e sulle nuove transazioni.  
-✔ **Sicurezza e Privacy** – Protezione avanzata con crittografia e autenticazione multi-fattore.  
+✅ **Dashboard Interattiva** – Visualizza riepiloghi, grafici e analisi delle tue spese.  
+✅ **Gestione Spese Personali** – Registra, modifica e monitora ogni transazione.  
+✅ **Gestione Spese di Gruppo** – Dividi il conto con amici e colleghi senza problemi.  
+✅ **Grafici e Statistiche** – Analizza le tue abitudini di spesa nel tempo.  
+✅ **Interfaccia Responsive** – Design ottimizzato per desktop, tablet e mobile.  
+✅ **Sicurezza e Autenticazione** – Login sicuro con Spring Security e gestione utenti.  
 
 ---
 
 ## 🎯 **Casi d'Uso**
-- 💰 **Monitoraggio delle Spese Personali** – Organizza il tuo budget in modo efficace.  
-- 🍽️ **Spese Condivise con Amici** – Suddividi il conto dopo una cena o un viaggio.  
-- 🏠 **Gestione Spese per Coinquilini** – Mantieni il bilancio delle spese della casa senza problemi.  
-- ✈️ **Pianificazione di Viaggi** – Registra tutte le spese di un viaggio e tieni traccia di chi deve cosa.  
+- **📊 Controllo Finanziario** – Mantieni traccia delle tue entrate e uscite.  
+- **💰 Budgeting Familiare** – Organizza le spese di casa e risparmia con intelligenza.  
+- **🍽️ Divisione Spese** – Suddividi i costi delle cene, viaggi o affitti con gli amici.  
+- **✈️ Pianificazione di Viaggi** – Registra spese di gruppo e semplifica i rimborsi.  
 
 ---
 
-## 🛠️ **Tecnologie Utilizzate**
-Spendly è costruito con un **stack tecnologico moderno** per garantire scalabilità, efficienza e sicurezza.
+## 🛠️ **Stack Tecnologico**
+Spendly è costruito con tecnologie **moderne e scalabili**, garantendo elevate prestazioni e facilità di sviluppo.  
 
 ### **Frontend** 🖥️  
-- **React.js** ⚛️ – UI reattiva e performante  
-- **TailwindCSS** 🎨 – Design moderno e responsivo  
-- **Redux** 🗂️ – Gestione avanzata dello stato  
+- **Vue.js** 🖼️ – Framework JS per un'interfaccia reattiva e dinamica  
+- **TailwindCSS** 🎨 – Design moderno, flessibile e responsive  
+- **HTML5 + CSS3** 🌐 – Struttura semantica e accessibile  
 
-### **Backend** 🏗️  
-- **Spring Boot** ☕ – API REST scalabile e sicura  
-- **Spring Security** 🔒 – Autenticazione JWT e OAuth  
-- **PostgreSQL** 🐘 – Database relazionale per dati strutturati  
+### **Backend** 🚀  
+- **Spring Boot** ☕ – API REST robuste e scalabili  
+- **Spring Security** 🔒 – Autenticazione sicura con gestione utenti  
+- **Java 17+** 💡 – Linguaggio di programmazione stabile e performante  
 
-### **DevOps & Deployment** 🚀  
-- **Docker & Kubernetes** 🐳 – Deploy scalabile  
-- **GitHub Actions** 🤖 – CI/CD automatizzato  
-- **AWS / Heroku** ☁️ – Hosting su cloud  
+### **Database e Storage** 💾  
+- **PostgreSQL** 🐘 – Database relazionale ottimizzato per grandi quantità di dati  
+- **JPA/Hibernate** 📚 – ORM per una gestione fluida dei dati  
+
+### **Deployment e DevOps** ⚙️  
+- **Docker** 🐳 – Contenitori per una distribuzione facile e scalabile  
+- **GitHub Actions** 🤖 – CI/CD automatizzato per test e deploy  
+- **AWS / Heroku** ☁️ – Hosting cloud con scalabilità garantita  
 
 ---
 
-## 📦 **Come Installare Spendly (Localmente)**
+## 📦 **Installazione e Setup**
 ### **1️⃣ Clona il repository**
 ```bash
 git clone https://github.com/username/spendly.git
