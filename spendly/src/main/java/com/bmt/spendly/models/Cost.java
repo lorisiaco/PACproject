@@ -19,7 +19,6 @@ public class Cost {
 	private Long CostId;
 
     private double importo;
-    private Date data;
     private String tipologia;   //Per ora metto string, magari poi fare Enum
 
     @ManyToOne
@@ -44,14 +43,6 @@ public class Cost {
 
     public void setImporto(double importo) {
         this.importo = importo;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
 
     public String getTipologia() {

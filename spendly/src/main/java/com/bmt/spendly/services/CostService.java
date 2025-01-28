@@ -59,7 +59,6 @@ public class CostService {
         Cost existingCost = getCostById(id);
 
         existingCost.setImporto(updatedCost.getImporto());
-        existingCost.setData(updatedCost.getData());
         existingCost.setTipologia(updatedCost.getTipologia());
 
         return costRepository.save(existingCost);

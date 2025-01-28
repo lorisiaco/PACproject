@@ -44,10 +44,10 @@ public class CostController {
 
     @PostMapping("/new")
     public String createCost(@ModelAttribute("cost") Cost cost,
-                            @RequestParam("groupId") Long groupId,
-                            @RequestParam("userId") Long userId) {
+                             @RequestParam("groupId") Long groupId,
+                             @RequestParam("userId") Long userId) {
         costService.createCost(cost, groupId, userId);
-    return "redirect:/costs"; // Reindirizza alla lista delle spese
+        return "redirect:/costs"; // Assicurati che questo ritorno sia presente e corretto
     }
 
     // Mostra il form per aggiornare una spesa esistente
