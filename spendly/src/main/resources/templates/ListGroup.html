@@ -41,6 +41,7 @@
                     <input type="hidden" name="_method" value="delete" />
                     <button type="submit" class="btn btn-warning btn-sm">Delete</button>
                   </form>
+                  <a th:href="@{groups/edit/{groupId}(groupId=${group.id})}" class="btn btn-primary btn-sm">Edit</a>
                 </td>
               </tr>
             </tbody>

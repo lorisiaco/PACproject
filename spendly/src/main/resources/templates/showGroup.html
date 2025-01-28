@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dettagli Gruppo</title>
+</head>
+<body>
+    <h1>Dettagli del Gruppo</h1>
+    <p>ID: <span th:text="${group.id}"></span></p>
+    <p>Nome: <span th:text="${group.nome}"></span></p>
+
+    <a href="/groups" class="btn btn-secondary">Torna alla lista</a>
+</body>
+</html>

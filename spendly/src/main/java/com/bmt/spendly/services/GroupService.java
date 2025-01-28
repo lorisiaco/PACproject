@@ -33,6 +33,12 @@ public class GroupService {
         return groups;
     }
 
+    public Group getGroupById(Long id) {
+        return groupRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Gruppo non trovato con ID: " + id));
+    }
+    
+
     public void eliminaGruppo(Long groupId){
         groupRepository.deleteById(groupId);
     }

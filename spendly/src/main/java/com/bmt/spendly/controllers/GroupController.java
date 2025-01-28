@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 @Controller
@@ -59,6 +59,14 @@ public class GroupController {
                            .body("Failed to delete the group");
         }
     }
+
+    @GetMapping("/edit/{groupId}")
+    public String showGroup(@PathVariable Long groupId, Model model) {
+    Group group = groupService.getGroupById(groupId); // Recupera il gruppo con l'id specificato
+    model.addAttribute("group", group);
+    return "showGroup"; // Mostra la pagina "showGroup.html"
+}
+
 
     @PostMapping("/{groupId}/membri")
     public Group aggiungiMembro(@PathVariable Long groupId, @RequestParam Long userId) {
