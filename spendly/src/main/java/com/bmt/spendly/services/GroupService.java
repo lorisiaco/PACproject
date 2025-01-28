@@ -29,7 +29,8 @@ public class GroupService {
 
      // Restituisce tutti i gruppi
     public List<Group> getAllGroups() {
-        return groupRepository.findAll();
+        List<Group> groups = groupRepository.findAll();
+        return groups;
     }
 
     public void eliminaGruppo(Long groupId){

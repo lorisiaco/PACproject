@@ -33,12 +33,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="cost : ${Groups}">
-                <td th:text="${Groups.id}"></td>
-                <td th:text="${Groups.name}"></td>
+              <tr th:each="group : ${groups}">
+                <td th:text="${group.id}"></td>
+                <td th:text="${group.nome}"></td>
                 <td>
-                  <a th:href="@{/costs/edit/{id}(id=${cost.id})}" class="btn btn-warning btn-sm">Edit</a>
-                  <a th:href="@{/costs/delete/{id}(id=${cost.id})}" class="btn btn-danger btn-sm">Delete</a>
+                  <form th:action="@{/groups/delete/{groupId}(groupId=${group.id})}" method="post">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-warning btn-sm">Delete</button>
+                  </form>
                 </td>
               </tr>
             </tbody>
