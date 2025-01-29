@@ -17,23 +17,27 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests( auth -> auth
-                		.requestMatchers("/").permitAll()
-                		.requestMatchers("/contact").permitAll()
-	                    .requestMatchers("/store/**").permitAll()
-	                    .requestMatchers("/register").permitAll()
-	                    .requestMatchers("/login").permitAll()
-	                    .requestMatchers("/logout").permitAll()
-	                    .requestMatchers("/client/**").hasRole("client")
-	                    .requestMatchers("/admin/**").hasRole("admin")
-						.requestMatchers("/costs/**").authenticated()
-	                    .anyRequest().authenticated()
+                .authorizeHttpRequests(auth -> auth
+                        // Sblocca i contenuti statici
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
+                        
+                        // Le tue regole precedenti
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/contact").permitAll()
+                        .requestMatchers("/store/**").permitAll()
+                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/logout").permitAll()
+
+                        .requestMatchers("/client/**").hasRole("client")
+                        .requestMatchers("/admin/**").hasRole("admin")
+                        .requestMatchers("/costs/**").authenticated()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        // Tutti gli utenti autenticati vanno su /dashboard
                         .defaultSuccessUrl("/dashboard", true)
                 )
                 .logout(config -> config.logoutSuccessUrl("/"))
