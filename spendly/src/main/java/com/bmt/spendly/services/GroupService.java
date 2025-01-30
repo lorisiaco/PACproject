@@ -43,22 +43,24 @@ public class GroupService {
         groupRepository.deleteById(groupId);
     }
 
-    public Group aggiungiMembro(Long groupId, Long UserId){
+    public Group aggiungiMembro(Long groupId, String mail){
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
-        AppUser utente = userRepository.findById(UserId)
-        .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+        AppUser utente = userRepository.findByEmail(mail);
+
+        if(gruppo.ContieneMembro(utente)){
+            throw new IllegalArgumentException("L'utente è già un membro del gruppo!");
+        }
 
         gruppo.AggiungiMembro(utente);
         return groupRepository.save(gruppo);
     }
 
-    public Group rimuoviMembro(Long groupId, Long userId) {
+    public Group rimuoviMembro(Long groupId, String mail) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
-        AppUser utente = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
-
+        AppUser utente = userRepository.findByEmail(mail);
+                
         gruppo.RimuoviMembro(utente);
         return groupRepository.save(gruppo);
     }
