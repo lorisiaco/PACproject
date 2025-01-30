@@ -3,7 +3,7 @@
 **Spendly** è una **moderna web app** per la gestione delle spese personali e di gruppo.  
 Grazie a un'interfaccia intuitiva e a potenti strumenti di analisi, Spendly ti aiuta a monitorare le tue entrate e uscite, a dividere le spese con amici e a tenere sotto controllo il tuo budget. 🔥  
 
-![Spendly Screenshot](https://placehold.co/1200x600)  
+![Spendly Logo](spendly/src/main/resources/static/images/logo.png)  
 
 ---
 
