@@ -27,10 +27,16 @@ public class AppUser {
 	private String role;
 	private Date createdAt;
 	
+	/**
+	 * Campo nuovo per salvare il path dell’immagine di profilo.
+	 */
+	private String profileImage; 
+	
 	@ManyToMany(mappedBy = "membri")
 	private List<Group> gruppi = new ArrayList<>();
 
-	
+	// Getters & Setters
+
 	public Long getId() {
 		return id;
 	}
@@ -86,28 +92,29 @@ public class AppUser {
 		this.createdAt = createdAt;
 	}
 
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
 	@Override
 	public String toString() {
-    return "Id=" + id + ", Nome=" + (firstName != null ? firstName : "N/A") 
+    	return "Id=" + id + ", Nome=" + (firstName != null ? firstName : "N/A") 
 	           + ", Cognome=" + (lastName != null ? lastName : "N/A");
 	}
 
-
-    @Override
+	@Override
 	public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AppUser userApp = (AppUser) o;
-    return id == userApp.id; // Supponendo che `id` non sia `null`
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    AppUser userApp = (AppUser) o;
+	    return Objects.equals(id, userApp.id);
 	}
 
 	@Override
 	public int hashCode() {
-    return Objects.hash(id);
+	    return Objects.hash(id);
 	}
-
-
-
-	
-	
 }

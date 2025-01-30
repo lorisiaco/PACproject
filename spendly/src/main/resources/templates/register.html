@@ -50,16 +50,17 @@
         </div>
 
         <!-- Form -->
-        <form method="post" th:object="${registerDto}" class="bg-white p-6 rounded-md shadow-md">
+        <!-- ATTENZIONE QUI: serve multipart/form-data per poter inviare file -->
+        <form method="post" th:object="${registerDto}" enctype="multipart/form-data" class="bg-white p-6 rounded-md shadow-md">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
             <!-- First Name -->
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold mb-2">First Name*</label>
                 <input class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.firstName}"/>
+                       th:field="*{firstName}"/>
                 <p th:if="${#fields.hasErrors('firstName')}"
-                   th:errors="${registerDto.firstName}"
+                   th:errors="*{firstName}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -68,9 +69,9 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold mb-2">Last Name*</label>
                 <input class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.lastName}"/>
+                       th:field="*{lastName}"/>
                 <p th:if="${#fields.hasErrors('lastName')}"
-                   th:errors="${registerDto.lastName}"
+                   th:errors="*{lastName}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -79,9 +80,9 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold mb-2">Email*</label>
                 <input class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.email}"/>
+                       th:field="*{email}"/>
                 <p th:if="${#fields.hasErrors('email')}"
-                   th:errors="${registerDto.email}"
+                   th:errors="*{email}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -90,9 +91,9 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold mb-2">Phone</label>
                 <input class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.phone}"/>
+                       th:field="*{phone}"/>
                 <p th:if="${#fields.hasErrors('phone')}"
-                   th:errors="${registerDto.phone}"
+                   th:errors="*{phone}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -101,9 +102,9 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-semibold mb-2">Address</label>
                 <input class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.address}"/>
+                       th:field="*{address}"/>
                 <p th:if="${#fields.hasErrors('address')}"
-                   th:errors="${registerDto.address}"
+                   th:errors="*{address}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -113,9 +114,9 @@
                 <label class="block text-gray-700 font-semibold mb-2">Password*</label>
                 <input type="password"
                        class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.password}"/>
+                       th:field="*{password}"/>
                 <p th:if="${#fields.hasErrors('password')}"
-                   th:errors="${registerDto.password}"
+                   th:errors="*{password}"
                    class="text-red-500 text-sm mt-1">
                 </p>
             </div>
@@ -125,11 +126,20 @@
                 <label class="block text-gray-700 font-semibold mb-2">Confirm Password*</label>
                 <input type="password"
                        class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                       th:field="${registerDto.confirmPassword}"/>
+                       th:field="*{confirmPassword}"/>
                 <p th:if="${#fields.hasErrors('confirmPassword')}"
-                   th:errors="${registerDto.confirmPassword}"
+                   th:errors="*{confirmPassword}"
                    class="text-red-500 text-sm mt-1">
                 </p>
+            </div>
+
+            <!-- Profile Image (NUOVO) -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Profile Image</label>
+                <input type="file"
+                       class="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                       th:field="*{profileImage}"/>
+                <!-- Nessun vincolo di validazione rigido, opzionale -->
             </div>
 
             <!-- Bottoni -->
@@ -138,7 +148,7 @@
                         class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 mb-3 sm:mb-0">
                     Submit
                 </button>
-                <a href="/"
+                <a th:href="@{/}"
                    class="text-blue-700 hover:underline font-semibold text-center">
                     Cancel
                 </a>
@@ -158,15 +168,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
