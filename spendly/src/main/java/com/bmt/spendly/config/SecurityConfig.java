@@ -17,6 +17,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
+                //.csrf(csrf -> csrf.disable())  // 🔴 DISABILITA CSRF (solo per test)
                 .authorizeHttpRequests(auth -> auth
                         // Sblocca i contenuti statici
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
@@ -25,7 +26,7 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/store/**").permitAll()
-                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/register", "/register/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/logout").permitAll()
 
