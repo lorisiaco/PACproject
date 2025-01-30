@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spendly - Dashboard</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
     <!-- Navbar -->
     <nav class="bg-gray-900 text-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -20,9 +23,9 @@
                 <a th:href="@{/budget}" class="hover:text-blue-400 transition">Budget</a>
                 <a th:href="@{/alerts}" class="hover:text-blue-400 transition">Alert</a>
                 
-                <!-- Bottone Profilo (NUOVO) -->
+                <!-- Bottone Profilo -->
                 <a th:href="@{/profile}" class="hover:text-blue-400 transition flex items-center gap-1">
-                    <!-- Icona utente (Heroicon o simili) -->
+                    <!-- Icona utente -->
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" 
                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" 
@@ -47,31 +50,55 @@
     
     <!-- Contenuto principale -->
     <main class="flex-grow container mx-auto px-6 py-12">
+        <!-- Titolo principale -->
         <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">La Tua Dashboard Finanziaria</h1>
         
-        <!-- Sezione Statistiche -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Sezione Statistiche (3 box) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div class="p-6 bg-gradient-to-r from-red-500 to-red-700 text-white shadow-lg rounded-lg text-center">
                 <h3 class="text-xl font-bold">💰 Totale Spese</h3>
                 <p class="mt-2 text-3xl font-bold">€0.00</p>
+                <p class="text-sm mt-2 opacity-75">Aggiornato al: Oggi</p>
             </div>
             <div class="p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg rounded-lg text-center">
                 <h3 class="text-xl font-bold">🧑‍🤝‍🧑 Gruppi Attivi</h3>
                 <p class="mt-2 text-3xl font-bold">0</p>
+                <p class="text-sm mt-2 opacity-75">Totale gruppi</p>
             </div>
             <div class="p-6 bg-gradient-to-r from-green-500 to-green-700 text-white shadow-lg rounded-lg text-center">
                 <h3 class="text-xl font-bold">📅 Ultima Spesa</h3>
                 <p class="mt-2 text-3xl font-bold">€0.00</p>
+                <p class="text-sm mt-2 opacity-75">Data ultima registrazione</p>
             </div>
         </div>
         
-        <!-- Grafico Spese -->
-        <h2 class="text-2xl font-bold mt-12 text-gray-800 text-center">Andamento delle Spese</h2>
-        <div class="w-full md:w-3/4 lg:w-2/3 mx-auto mt-6">
-            <canvas id="expenseChart"></canvas>
+       <!-- Sezione Grafici con nuovo layout -->
+       <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Colonna Sinistra (50%): Grafico a Linee -->
+        <div class="p-6 bg-white rounded-xl shadow">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Andamento delle Spese (Line)</h2>
+            <canvas id="expenseLineChart"></canvas>
         </div>
         
-        <!-- Sezioni aggiuntive -->
+        <!-- Colonna Destra (50%): divisa in 2 colonne orizzontali per Istogramma e Torta -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Istogramma -->
+            <div class="p-6 bg-white rounded-xl shadow">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Spese per Categoria (Istogramma)</h2>
+                <canvas id="expenseBarChart"></canvas>
+            </div>
+            
+            <!-- Torta -->
+            <div class="p-6 bg-white rounded-xl shadow">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Distribuzione Spese (Torta)</h2>
+                <canvas id="expensePieChart"></canvas>
+            </div>
+    
+        </div>
+    </section>
+
+        <!-- Sezioni aggiuntive (3 box) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             <div class="p-6 bg-white shadow-lg rounded-lg text-center">
                 <h3 class="text-xl font-bold">📊 Spese Personali</h3>
@@ -96,26 +123,104 @@
         </p>
     </footer>
 
-    <!-- Script per il Grafico -->
+    <!-- Script per i Grafici -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let ctx = document.getElementById('expenseChart').getContext('2d');
-            new Chart(ctx, {
+            
+            // --- GRAFICO A LINEE (Andamento delle Spese) ---
+            const ctxLine = document.getElementById('expenseLineChart').getContext('2d');
+            const expenseLineChart = new Chart(ctxLine, {
                 type: 'line',
                 data: {
                     labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
                     datasets: [{
                         label: 'Spese Mensili',
-                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        data: [100, 200, 150, 300, 250, 400, 350, 500, 450, 400, 600, 700],
                         borderColor: '#4F46E5',
                         backgroundColor: 'rgba(79, 70, 229, 0.2)',
-                        tension: 0.3
+                        tension: 0.3,
+                        fill: true
                     }]
                 },
                 options: {
                     responsive: true,
                     plugins: {
                         legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // --- GRAFICO A TORTA (Distribuzione Spese) ---
+            const ctxPie = document.getElementById('expensePieChart').getContext('2d');
+            const expensePieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: ['Affitto', 'Spesa Alimentare', 'Trasporti', 'Svago', 'Bollette'],
+                    datasets: [{
+                        data: [500, 300, 100, 200, 150],
+                        backgroundColor: [
+                            '#EF4444', // Rosso
+                            '#3B82F6', // Blu
+                            '#F59E0B', // Giallo
+                            '#10B981', // Verde
+                            '#6366F1'  // Viola
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // --- GRAFICO A BARRE (Spese per Categoria) ---
+            const ctxBar = document.getElementById('expenseBarChart').getContext('2d');
+            const expenseBarChart = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag'],
+                    datasets: [
+                        {
+                            label: 'Affitto',
+                            data: [500, 500, 500, 500, 500],
+                            backgroundColor: 'rgba(239,68,68,0.8)'
+                        },
+                        {
+                            label: 'Spesa Alimentare',
+                            data: [200, 180, 220, 210, 190],
+                            backgroundColor: 'rgba(59,130,246,0.8)'
+                        },
+                        {
+                            label: 'Trasporti',
+                            data: [60, 70, 50, 80, 90],
+                            backgroundColor: 'rgba(245,158,11,0.8)'
+                        },
+                        {
+                            label: 'Svago',
+                            data: [100, 120, 90, 110, 130],
+                            backgroundColor: 'rgba(16,185,129,0.8)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
             });
