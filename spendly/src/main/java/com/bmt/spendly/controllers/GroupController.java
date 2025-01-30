@@ -13,7 +13,6 @@ import com.bmt.spendly.models.AppUser;
 import com.bmt.spendly.models.Group;
 import com.bmt.spendly.services.GroupService;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
