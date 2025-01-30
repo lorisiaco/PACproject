@@ -2,13 +2,135 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dettagli Gruppo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        button {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-delete {
+            background-color: #ffc107;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #e0a800;
+        }
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            background-color: #c82333;
+        }
+        .btn-add {
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .btn-add:hover {
+            background-color: #0056b3;
+        }
+        .form-inline {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        input[type="email"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dettagli del Gruppo</h1>
-    <p>ID: <span th:text="${group.id}"></span></p>
-    <p>Nome: <span th:text="${group.nome}"></span></p>
+    <div class="container">
+        <h1>Dettagli del Gruppo</h1>
+        <p><strong>ID:</strong> <span th:text="${group.id}"></span></p>
+        <p><strong>Nome:</strong> <span th:text="${group.nome}"></span></p>
 
-    <a href="/groups" class="btn btn-secondary">Torna alla lista</a>
+        <h2>Membri del Gruppo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="member : ${membri}">
+                    <td th:text="${member.email}"></td>
+                    <td>
+                        <form th:action="@{/groups/edit/{groupId}/removeMember(groupId=${group.id}, email=${member.email})}" method="post" style="display:inline;">
+                            <button class="btn-delete" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Aggiungi un Membro</h2>
+        <form th:action="@{/groups/edit/{groupId}/addMember(groupId=${group.id})}" method="post" class="form-inline">
+            <input type="email" name="email" placeholder="Inserisci email" required>
+            <button class="btn-add" type="submit">Aggiungi</button>
+        </form>
+
+        <br>
+        <a href="/groups" class="btn-secondary">Torna alla lista</a>
+    </div>
 </body>
 </html>

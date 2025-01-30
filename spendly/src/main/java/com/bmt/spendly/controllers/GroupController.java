@@ -62,21 +62,35 @@ public class GroupController {
 
     @GetMapping("/edit/{groupId}")
     public String showGroup(@PathVariable Long groupId, Model model) {
-    Group group = groupService.getGroupById(groupId); // Recupera il gruppo con l'id specificato
-    model.addAttribute("group", group);
+        Group group = groupService.getGroupById(groupId); // Recupera il gruppo
+        List<AppUser> membri = groupService.getMembri(groupId); // Recupera i membri del gruppo
+
+        model.addAttribute("group", group);
+        model.addAttribute("membri", membri); // Passa i membri alla vista
+
     return "showGroup"; // Mostra la pagina "showGroup.html"
-}
-
-
-    @PostMapping("/{groupId}/membri")
-    public Group aggiungiMembro(@PathVariable Long groupId, @RequestParam Long userId) {
-        return groupService.aggiungiMembro(groupId, userId);
     }
 
 
-    @DeleteMapping("/{groupId}/membri")
-    public Group rimuoviMembro(@PathVariable Long groupId, @RequestParam Long userId) {
-        return groupService.rimuoviMembro(groupId, userId);
+
+    @PostMapping("/edit/{groupId}/addMember")
+    public String addMemberToGroup(@PathVariable Long groupId, @RequestParam String email) {
+    groupService.aggiungiMembro(groupId, email); // Metodo per aggiungere un utente tramite email
+    return "redirect:/groups/edit/" + groupId;
+    }
+
+
+
+    @PostMapping("edit/{groupId}/removeMember")
+    public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId, @RequestParam String email) {
+        System.out.println("ciao");
+        try {
+            groupService.rimuoviMembro(groupId, email);
+            return ResponseEntity.ok("Group deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                               .body("Failed to delete the group");
+            }
     }
 
 
