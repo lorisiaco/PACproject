@@ -1,5 +1,6 @@
 package com.bookstore.BookStore.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,7 +8,7 @@ public class HomeController {
 
 	@GetMapping("/")
     public String home() {
-        return "home"; // Senza redirect, carica direttamente la vista
+        return "index"; // Senza redirect, carica direttamente la vista
     }
 	
 	@GetMapping("/store")

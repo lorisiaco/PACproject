@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BookStoreApplication",
+            "request": "launch",
+            "mainClass": "com.bookstore.BookStore.BookStoreApplication",
+            "projectName": "BookStore"
+        },
+        {
+            "type": "java",
             "name": "SpendlyApplication",
             "request": "launch",
             "mainClass": "com.bmt.spendly.SpendlyApplication",

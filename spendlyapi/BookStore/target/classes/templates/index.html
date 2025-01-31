@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spendly - Il tuo Controllo Finanziario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <!-- Logo (immagine) -->
+            <a th:href="@{/}" class="inline-block">
+                <img th:src="@{/images/logo.png}"
+                     alt="Spendly Logo"
+                     class="h-12 w-auto object-contain"/>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a th:href="@{/login}" class="hover:text-blue-300">Accedi</a>
+                <a th:href="@{/register}" class="hover:text-blue-300">Registrati</a>
+                <a th:href="@{/contact}" class="hover:text-blue-300">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-blue-600 text-white text-center py-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-bold">Il tuo Controllo Finanziario, Semplice e Potente</h1>
+            <p class="mt-4 text-lg">Gestisci le tue spese, traccia i tuoi movimenti e ottimizza il tuo budget con Spendly.</p>
+            
+            <!-- Pulsanti -->
+            <div class="mt-6 flex justify-center space-x-4">
+                <a th:href="@{/register}" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100">
+                    Inizia Ora
+                </a>
+                <a th:href="@{/login}" class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700">
+                    Accedi
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Anteprima Dashboard -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800">Uno sguardo alla tua Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">📊 Resoconto Mensile</h3>
+                    <p class="mt-2 text-gray-600">Visualizza il tuo saldo e i tuoi trend finanziari.</p>
+                    <img th:src="@{/images/isto.jpg}" alt="Grafico" class="mt-4 mx-auto" />
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">📅 Pianificazione Spese</h3>
+                    <p class="mt-2 text-gray-600">Organizza i tuoi pagamenti e controlla le tue uscite.</p>
+                    <img th:src="@{/images/maialino.jpg}" alt="Calendario" class="mt-4 mx-auto" />
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">💳 Gestione Gruppi</h3>
+                    <p class="mt-2 text-gray-600">Dividi spese con amici o colleghi in pochi click.</p>
+                    <img th:src="@{/images/mani.jpg}" alt="Spese Gruppo" class="mt-4 mx-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-blue-600 text-white text-center py-12">
+        <h2 class="text-3xl font-bold">Inizia a migliorare la tua gestione finanziaria oggi!</h2>
+        <div class="mt-6 flex justify-center space-x-4">
+            <a th:href="@{/register}" class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100">
+                Registrati Gratis
+            </a>
+            <a th:href="@{/login}" class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700">
+                Accedi
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+        <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
+        <p><a th:href="@{/contact}" class="text-blue-400 hover:underline">Contattaci</a></p>
+    </footer>
+
+</body>
+</html>
