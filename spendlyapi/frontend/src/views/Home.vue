@@ -1,90 +1,60 @@
 <template>
-  <div class="home bg-gray-50 text-gray-900">
-    <!-- Navbar -->
-    <nav class="bg-gray-900 text-white shadow-md py-4">
-      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-        <!-- Logo -->
-        <router-link to="/" class="inline-block">
-          <img src="/images/logo.png" alt="Spendly Logo" class="h-12 w-auto object-contain" />
-        </router-link>
-        <div class="hidden md:flex space-x-6">
-          <router-link to="/login" class="hover:text-blue-300">Accedi</router-link>
-          <router-link to="/register" class="hover:text-blue-300">Registrati</router-link>
-          <router-link to="/contact" class="hover:text-blue-300">Contatti</router-link>
-        </div>
-      </div>
-    </nav>
-
+  <div class="home">
     <!-- Hero Section -->
-    <header class="bg-blue-600 text-white text-center py-20">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold">Il tuo Controllo Finanziario, Semplice e Potente</h1>
-        <p class="mt-4 text-lg">Gestisci le tue spese, traccia i tuoi movimenti e ottimizza il tuo budget con Spendly.</p>
-        <!-- Pulsanti -->
-        <div class="mt-6 flex justify-center space-x-4">
-          <router-link
-            to="/register"
-            class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100"
-          >
-            Inizia Ora
-          </router-link>
-          <router-link
-            to="/login"
-            class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700"
-          >
-            Accedi
-          </router-link>
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Il tuo Controllo Finanziario, Semplice e Potente</h1>
+        <p class="hero-subtitle">
+          Gestisci le tue spese, traccia i tuoi movimenti e ottimizza il tuo budget con Spendly.
+        </p>
+        <div class="hero-buttons">
+          <router-link to="/register" class="btn btn-primary">Inizia Ora</router-link>
+          <router-link to="/login" class="btn btn-secondary">Accedi</router-link>
         </div>
       </div>
     </header>
 
-    <!-- Anteprima Dashboard -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-gray-800">Uno sguardo alla tua Dashboard</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-          <div class="p-6 bg-white rounded-lg shadow-md text-center">
-            <h3 class="text-xl font-bold">📊 Resoconto Mensile</h3>
-            <p class="mt-2 text-gray-600">Visualizza il tuo saldo e i tuoi trend finanziari.</p>
-            <img src="/images/isto.jpg" alt="Grafico" class="mt-4 mx-auto h-40 object-contain" />
+    <!-- Dashboard Preview -->
+    <section class="dashboard-preview">
+      <h2 class="section-title">Uno sguardo alla tua Dashboard</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>📊 Resoconto Mensile</h3>
+          <p>Visualizza il tuo saldo e i tuoi trend finanziari.</p>
+          <div class="feature-image">
+            <img src="/images/isto.jpg" alt="Resoconto Mensile" />
           </div>
-          <div class="p-6 bg-white rounded-lg shadow-md text-center">
-            <h3 class="text-xl font-bold">📅 Pianificazione Spese</h3>
-            <p class="mt-2 text-gray-600">Organizza i tuoi pagamenti e controlla le tue uscite.</p>
-            <img src="/images/maialino.jpg" alt="Calendario" class="mt-4 mx-auto h-40 object-contain" />
+        </div>
+        <div class="feature-card">
+          <h3>📅 Pianificazione Spese</h3>
+          <p>Organizza i tuoi pagamenti e controlla le tue uscite.</p>
+          <div class="feature-image">
+            <img src="/images/maialino.jpg" alt="Pianificazione Spese" />
           </div>
-          <div class="p-6 bg-white rounded-lg shadow-md text-center">
-            <h3 class="text-xl font-bold">💳 Gestione Gruppi</h3>
-            <p class="mt-2 text-gray-600">Dividi spese con amici o colleghi in pochi click.</p>
-            <img src="/images/mani.jpg" alt="Spese Gruppo" class="mt-4 mx-auto h-40 object-contain" />
+        </div>
+        <div class="feature-card">
+          <h3>💳 Gestione Gruppi</h3>
+          <p>Dividi spese con amici o colleghi in pochi click.</p>
+          <div class="feature-image">
+            <img src="/images/mani.jpg" alt="Gestione Gruppi" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class="bg-blue-600 text-white text-center py-12">
-      <h2 class="text-3xl font-bold">Inizia a migliorare la tua gestione finanziaria oggi!</h2>
-      <div class="mt-6 flex justify-center space-x-4">
-        <router-link
-          to="/register"
-          class="bg-white text-blue-600 font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100"
-        >
-          Registrati Gratis
-        </router-link>
-        <router-link
-          to="/login"
-          class="bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700"
-        >
-          Accedi
-        </router-link>
+    <section class="call-to-action">
+      <h2>Inizia a migliorare la tua gestione finanziaria oggi!</h2>
+      <div class="cta-buttons">
+        <router-link to="/register" class="btn btn-primary">Registrati Gratis</router-link>
+        <router-link to="/login" class="btn btn-secondary">Accedi</router-link>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-center py-6">
+    <footer class="footer">
       <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
-      <router-link to="/contact" class="text-blue-400 hover:underline">Contattaci</router-link>
+      <router-link to="/contact" class="footer-link">Contattaci</router-link>
     </footer>
   </div>
 </template>
@@ -96,5 +66,167 @@ export default {
 </script>
 
 <style scoped>
-/* Se hai bisogno di aggiungere stili personalizzati */
+/* Stile globale della pagina */
+.home {
+  font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.hero-buttons .btn {
+  margin: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+  background: white;
+  color: #2563eb;
+  font-weight: bold;
+  border: none;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #e2e8f0;
+}
+
+.hero-buttons .btn-secondary {
+  background: #1e40af;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.hero-buttons .btn-secondary:hover {
+  background: #1d4ed8;
+}
+
+/* Dashboard Preview */
+.dashboard-preview {
+  background: #f9fafb;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+/* Layout delle card con Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.feature-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Call to Action */
+.call-to-action {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.call-to-action h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.call-to-action .cta-buttons .btn {
+  margin: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.call-to-action .btn-primary {
+  background: white;
+  color: #2563eb;
+  font-weight: bold;
+  border: none;
+}
+
+.call-to-action .btn-primary:hover {
+  background: #e2e8f0;
+}
+
+.call-to-action .btn-secondary {
+  background: #1e40af;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.call-to-action .btn-secondary:hover {
+  background: #1d4ed8;
+}
+
+/* Footer */
+.footer {
+  background: #1e293b;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.footer-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
 </style>

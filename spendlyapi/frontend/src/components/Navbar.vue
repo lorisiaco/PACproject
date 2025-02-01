@@ -1,39 +1,29 @@
 <template>
   <nav class="navbar">
     <div class="navbar-container">
-      <!-- Logo -->
+      <!-- Logo con reindirizzamento -->
       <div class="navbar-logo">
-        <img src="/images/logo.png" alt="Spendly Logo" class="logo" />
+        <router-link to="/dashboard">
+          <img src="/images/logo.png" alt="Spendly Logo" class="logo" />
+        </router-link>
       </div>
       <!-- Links dinamici -->
       <ul class="navbar-links">
-        <li v-if="isAuthenticated">
-          <router-link to="/expenses">Le Tue Spese</router-link>
-        </li>
-        <li v-if="isAuthenticated">
-          <router-link to="/groups">I Tuoi Gruppi</router-link>
-        </li>
-        <li v-if="isAuthenticated">
-          <router-link to="/budget">Budget</router-link>
-        </li>
-        <li v-if="isAuthenticated">
-          <router-link to="/alerts">Alert</router-link>
-        </li>
-        <li v-if="isAuthenticated">
-          <router-link to="/profile">Profilo</router-link>
-        </li>
-        <li v-else>
-          <router-link to="/login">Login</router-link>
-        </li>
-        <li v-else>
-          <router-link to="/register">Registrati</router-link>
-        </li>
-        <li v-else>
-          <router-link to="/contact">Contatti</router-link>
-        </li>
+        <template v-if="isAuthenticated">
+          <li><router-link to="/expenses">Le Tue Spese</router-link></li>
+          <li><router-link to="/groups">I Tuoi Gruppi</router-link></li>
+          <li><router-link to="/budget">Budget</router-link></li>
+          <li><router-link to="/alerts">Alert</router-link></li>
+          <li><router-link to="/profile">Profilo</router-link></li>
+        </template>
+        <template v-else>
+          <li><router-link to="/login">Login</router-link></li>
+          <li><router-link to="/register">Registrati</router-link></li>
+          <li><router-link to="/contact">Contatti</router-link></li>
+        </template>
       </ul>
-      <!-- Logout o Nessuna azione -->
-      <button v-if="isAuthenticated" class="logout-button" @click="handleLogout">
+      <!-- Logout -->
+      <button v-if="isAuthenticated" class="logout-button" @click="logout">
         Logout
       </button>
     </div>
@@ -42,27 +32,19 @@
 
 <script>
 import { computed } from "vue";
-import { useRouter } from "vue-router"; // Per la navigazione
-import { useAuthStore } from "../stores/auth"; // Store dell'autenticazione
+import { useAuthStore } from "../stores/auth";
 
 export default {
   name: "Navbar",
   setup() {
-    const router = useRouter();
     const auth = useAuthStore();
+    const isAuthenticated = computed(() => !!auth.token); // Controlla se l'utente è loggato
 
-    // Computed property per verificare se l'utente è autenticato
-    const isAuthenticated = computed(() => !!auth.user);
-
-    const handleLogout = () => {
-      auth.logout(); // Funzione di logout nello store
-      router.push("/login"); // Reindirizza alla pagina di login
+    const logout = () => {
+      auth.logout(); // Esegui il logout dallo store
     };
 
-    return {
-      isAuthenticated,
-      handleLogout,
-    };
+    return { isAuthenticated, logout };
   },
 };
 </script>
@@ -70,7 +52,7 @@ export default {
 <style scoped>
 /* Navbar generale */
 .navbar {
-  background-color: #1e293b; /* Colore scuro */
+  background-color: #121828; /* Colore scuro */
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -90,6 +72,7 @@ export default {
 /* Logo */
 .navbar-logo .logo {
   height: 40px;
+  cursor: pointer;
 }
 
 /* Link */
@@ -113,12 +96,12 @@ export default {
 }
 
 .navbar-links a:hover {
-  color: #38bdf8; /* Colore azzurro chiaro per hover */
+  color: #2cb1ea; /* Colore hover */
 }
 
 /* Bottone logout */
 .logout-button {
-  background-color: #ef4444; /* Rosso per logout */
+  background-color: #d32f2f; /* Rosso */
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -130,6 +113,6 @@ export default {
 }
 
 .logout-button:hover {
-  background-color: #dc2626; /* Rosso scuro per hover */
+  background-color: #b71c1c; /* Rosso scuro */
 }
 </style>

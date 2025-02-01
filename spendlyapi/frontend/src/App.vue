@@ -7,7 +7,7 @@ import Navbar from './components/Navbar.vue';
 const route = useRoute();
 const showNavbar = computed(() => {
   // Aggiungi le route dove la navbar NON deve essere visibile
-  const noNavbarRoutes = ['/login', '/register'];
+  const noNavbarRoutes = ['/login',,'/register','/profile'];
   return !noNavbarRoutes.includes(route.path);
 });
 </script>
