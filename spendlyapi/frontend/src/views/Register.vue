@@ -1,83 +1,106 @@
 <!-- src/views/Register.vue -->
 <template>
-    <div class="register">
-      <h2>Registrazione</h2>
-      <form @submit.prevent="handleRegister">
-        <div>
-          <label>Nome</label>
-          <input v-model="form.firstName" type="text" required />
+  <div class="bg-gray-50 min-h-screen">
+    <!-- Navbar (o altro contenuto) -->
+    <nav class="bg-gray-900 text-white shadow-md py-4">
+      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <a href="/" class="inline-block">
+          <img src="/images/logo.png" alt="Spendly Logo" class="h-12 w-auto object-contain" />
+        </a>
+        <div class="hidden md:flex space-x-6">
+          <a href="/login" class="hover:text-blue-300">Accedi</a>
+          <a href="/register" class="hover:text-blue-300">Registrati</a>
+          <a href="/contact" class="hover:text-blue-300">Contatti</a>
         </div>
-        <div>
-          <label>Cognome</label>
-          <input v-model="form.lastName" type="text" required />
-        </div>
-        <div>
-          <label>Username</label>
-          <input v-model="form.username" type="text" required />
-        </div>
-        <div>
-          <label>Email</label>
-          <input v-model="form.email" type="email" required />
-        </div>
-        <div>
-          <label>Telefono</label>
-          <input v-model="form.phone" type="text" />
-        </div>
-        <div>
-          <label>Indirizzo</label>
-          <input v-model="form.address" type="text" />
-        </div>
-        <div>
-          <label>Password</label>
-          <input v-model="form.password" type="password" required minlength="6" />
-        </div>
-        <button type="submit">Registrati</button>
-      </form>
-      <div v-if="errors">
-        <ul>
-          <li v-for="(msg, field) in errors" :key="field">{{ field }}: {{ msg }}</li>
-        </ul>
       </div>
-    </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue'
-  import { useAuthStore } from '../stores/auth'
-  
-  export default {
-    name: 'Register',
-    setup() {
-      const auth = useAuthStore()
-      const form = ref({
-        firstName: '',
-        lastName: '',
-        username: '',
-        email: '',
-        phone: '',
-        address: '',
-        password: '',
-      })
-      const errors = ref(null)
-  
-      const handleRegister = async () => {
-        try {
-          await auth.register(form.value)
-        } catch (err) {
-          if (err.response && err.response.data) {
-            errors.value = err.response.data
+    </nav>
+
+    <!-- Contenuto principale (form di registrazione, ecc.) -->
+    <main class="max-w-3xl mx-auto mt-10 mb-16 px-4">
+      <!-- Il tuo form o altro contenuto -->
+    </main>
+
+    <!-- Footer -->
+    <Footer/>
+  </div>
+</template>
+
+<script>
+import { ref } from 'vue'
+import { useAuthStore } from '../stores/auth'
+import Footer from '@/components/Footer.vue'  // Assicurati che il percorso sia corretto
+
+export default {
+  name: 'Register',
+  components: {
+    Footer,
+  },
+  setup() {
+    // Il tuo codice per gestire il form, validazioni, ecc.
+    const auth = useAuthStore()
+    const form = ref({
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      phone: '',
+      address: '',
+      password: '',
+      confirmPassword: '',
+      profileImage: null,
+    })
+
+    const errors = ref({})
+
+    const isValidEmail = (email) => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return regex.test(email)
+    }
+
+    const handleFileUpload = (event) => {
+      form.value.profileImage = event.target.files[0]
+    }
+
+    const handleRegister = async () => {
+      errors.value = {}
+
+      if (form.value.password !== form.value.confirmPassword) {
+        errors.value.confirmPassword = 'Le password non coincidono'
+      }
+
+      if (!isValidEmail(form.value.email)) {
+        errors.value.email = 'Formato email non valido'
+      }
+
+      if (Object.keys(errors.value).length > 0) {
+        return
+      }
+
+      try {
+        const formData = new FormData()
+        Object.entries(form.value).forEach(([key, value]) => {
+          if (key === 'profileImage' && value) {
+            formData.append(key, value)
           } else {
-            errors.value = { general: 'Errore durante la registrazione' }
+            formData.append(key, value)
           }
+        })
+
+        await auth.register(formData)
+      } catch (err) {
+        if (err.response && err.response.data) {
+          errors.value = err.response.data
+        } else {
+          errors.value.general = 'Errore durante la registrazione'
         }
       }
-  
-      return { form, handleRegister, errors }
     }
-  }
-  </script>
-  
-  <style scoped>
-  /* Aggiungi il tuo stile qui */
-  </style>
-  
+
+    return { form, errors, handleRegister, handleFileUpload }
+  },
+}
+</script>
+
+<style scoped>
+/* Aggiungi eventuali stili personalizzati per questa pagina */
+</style>

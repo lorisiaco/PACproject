@@ -1,25 +1,24 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import Navbar from './components/Navbar.vue';
+
+// Usiamo la route corrente per determinare se la navbar deve essere visibile
+const route = useRoute();
+const showNavbar = computed(() => {
+  // Aggiungi le route dove la navbar NON deve essere visibile
+  const noNavbarRoutes = ['/login', '/register'];
+  return !noNavbarRoutes.includes(route.path);
+});
 </script>
 
 <template>
   <div id="app">
-    <Navbar />
+    <!-- Navbar visibile solo se `showNavbar` è true -->
+    <Navbar v-if="showNavbar" />
     <router-view />
   </div>
 </template>
-
-<script>
-import Navbar from './components/Navbar.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Navbar
-  }
-}
-</script>
 
 <style scoped>
 header {
