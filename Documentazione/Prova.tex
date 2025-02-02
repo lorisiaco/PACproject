@@ -1,32 +1,65 @@
 \documentclass{softwaredoc}
 
+% Impostazioni di codifica e lingua
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+% Pacchetti per la grafica
+\usepackage{graphicx}
+
+% Pacchetto per l'immagine di sfondo (che verrà applicata a tutte le pagine)
+\usepackage{background}
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  contents={\includegraphics[width=\paperwidth,height=\paperheight]{images/sfondolatex.png}}
+}
+
+% Informazioni sul documento
 \title{Spendly: Documentazione Tecnica}
 \author{Amin Borqal, Loris Iacoban, Diego Rossi}
 \date{\today}
 
 \begin{document}
 
-% ======================
-% FRONTESPIZIO
-% ======================
-\maketitle
-\newpage % Pagina vuota dopo il titolo
-\thispagestyle{empty} % Rimuove numerazione pagina
-\mbox{} % Pagina bianca
-\newpage 
+% =======================================================
+% TITOLI E MARCHIO NELLA PRIMA PAGINA (Title Page Personalizzata)
+% =======================================================
+\begin{titlepage}
+  \centering
+  \vspace*{2cm} % Spazio verticale iniziale
 
-% ======================
+  % Inserimento del logo "Marchio.jpg" centrato
+  \includegraphics[width=0.5\textwidth]{images/Marchio.jpg}\par
+  \vspace{1cm}
+  
+  % Titolo del documento
+  {\Huge \bfseries Spendly: Documentazione Tecnica\par}
+  \vspace{1cm}
+  
+  % Autori
+  {\Large Amin Borqal, Loris Iacoban, Diego Rossi\par}
+  \vspace{1cm}
+  
+  % Data
+  {\Large \today\par}
+  \vfill
+\end{titlepage}
+
+% =======================================================
 % INDICI
-% ======================
+% =======================================================
 \tableofcontents
-\addtocontents{toc}{\protect\thispagestyle{plain}} % Forza la pagina con stile normale
+\addtocontents{toc}{\protect\thispagestyle{plain}} % Forza lo stile "plain" per l'indice
 \newpage
 \listoffigures
 \listoftables
 \newpage 
-% ======================
+
+% =======================================================
 % ITERAZIONE 0
-% ======================
+% =======================================================
 \section*{Iterazione 0}
 Questa sezione analizza i requisiti iniziali del progetto Spendly.
 
@@ -42,10 +75,9 @@ Questa sezione analizza i requisiti iniziali del progetto Spendly.
 \newpage
 \input{Iterazione0/ToolChain.tex}
 
-
-% ======================
+% =======================================================
 % ITERAZIONE 1
-% ======================
+% =======================================================
 \newpage
 \section*{Iterazione 1}
 In questa iterazione, ci concentriamo sul design e sull'implementazione iniziale del sistema.
@@ -55,7 +87,5 @@ In questa iterazione, ci concentriamo sul design e sull'implementazione iniziale
 \input{Iterazione1/ComponentDiagram.tex}
 \newpage
 \input{Iterazione1/DiagrammiClassiTipoDati.tex}
-
-
 
 \end{document}

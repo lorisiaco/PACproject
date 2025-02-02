@@ -1,22 +1,24 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
 \thispagestyle {plain}
-\contentsline {subsection}{\numberline {0.1}Introduzione}{5}{subsection.0.1}%
-\contentsline {subsection}{\numberline {0.2}Requisiti}{6}{subsection.0.2}%
-\contentsline {subsection}{\numberline {0.3}Casi d'Uso}{7}{subsection.0.3}%
-\contentsline {subsection}{\numberline {0.4}Architettura}{8}{subsection.0.4}%
-\contentsline {subsection}{\numberline {0.5}Priorità casi d'uso}{9}{subsection.0.5}%
-\contentsline {subsection}{\numberline {0.6}Topologia del Sistema}{10}{subsection.0.6}%
-\contentsline {subsubsection}{\numberline {0.6.1}Gestione delle comunicazioni}{10}{subsubsection.0.6.1}%
-\contentsline {subsubsection}{\numberline {0.6.2}Architettura a Microservizi}{10}{subsubsection.0.6.2}%
-\contentsline {subsection}{\numberline {0.7}Tool Chain}{11}{subsection.0.7}%
-\contentsline {subsection}{\numberline {0.8}Casi d'Uso Implementati }{12}{subsection.0.8}%
-\contentsline {subsubsection}{\numberline {0.8.1}UC1: Login}{12}{subsubsection.0.8.1}%
-\contentsline {subsubsection}{\numberline {0.8.2}UC2: Registrazione}{12}{subsubsection.0.8.2}%
-\contentsline {subsubsection}{\numberline {0.8.3}UC3: Logout}{12}{subsubsection.0.8.3}%
-\contentsline {subsubsection}{\numberline {0.8.4}UC7: Creazione Gruppo}{13}{subsubsection.0.8.4}%
-\contentsline {subsubsection}{\numberline {0.8.5}UC8: Invita Membri}{13}{subsubsection.0.8.5}%
-\contentsline {subsubsection}{\numberline {0.8.6}UC9: Elimina Membri}{13}{subsubsection.0.8.6}%
-\contentsline {subsubsection}{\numberline {0.8.7}UC10: Modifica Membri}{13}{subsubsection.0.8.7}%
-\contentsline {subsubsection}{\numberline {0.8.8}UC11: Eliminazione Gruppo}{14}{subsubsection.0.8.8}%
-\contentsline {subsubsection}{\numberline {0.8.9}UC12: Accesso a un Gruppo}{14}{subsubsection.0.8.9}%
-\contentsline {subsection}{\numberline {0.9}UML Component Diagram}{15}{subsection.0.9}%
-\contentsline {subsection}{\numberline {0.10}UML Class Diagram per tipi di dato}{16}{subsection.0.10}%
+\contentsline {subsection}{\numberline {0.1}Introduzione}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Requisiti}{4}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Casi d'Uso}{5}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Architettura}{6}{subsection.0.4}%
+\contentsline {subsection}{\numberline {0.5}Priorità casi d'uso}{7}{subsection.0.5}%
+\contentsline {subsection}{\numberline {0.6}Topologia del Sistema}{8}{subsection.0.6}%
+\contentsline {subsubsection}{\numberline {0.6.1}Gestione delle comunicazioni}{8}{subsubsection.0.6.1}%
+\contentsline {subsubsection}{\numberline {0.6.2}Architettura a Microservizi}{8}{subsubsection.0.6.2}%
+\contentsline {subsection}{\numberline {0.7}Tool Chain}{9}{subsection.0.7}%
+\contentsline {subsection}{\numberline {0.8}Casi d'Uso Implementati }{10}{subsection.0.8}%
+\contentsline {subsubsection}{\numberline {0.8.1}UC1: Login}{10}{subsubsection.0.8.1}%
+\contentsline {subsubsection}{\numberline {0.8.2}UC2: Registrazione}{10}{subsubsection.0.8.2}%
+\contentsline {subsubsection}{\numberline {0.8.3}UC3: Logout}{10}{subsubsection.0.8.3}%
+\contentsline {subsubsection}{\numberline {0.8.4}UC7: Creazione Gruppo}{11}{subsubsection.0.8.4}%
+\contentsline {subsubsection}{\numberline {0.8.5}UC8: Invita Membri}{11}{subsubsection.0.8.5}%
+\contentsline {subsubsection}{\numberline {0.8.6}UC9: Elimina Membri}{11}{subsubsection.0.8.6}%
+\contentsline {subsubsection}{\numberline {0.8.7}UC10: Modifica Membri}{11}{subsubsection.0.8.7}%
+\contentsline {subsubsection}{\numberline {0.8.8}UC11: Eliminazione Gruppo}{12}{subsubsection.0.8.8}%
+\contentsline {subsubsection}{\numberline {0.8.9}UC12: Accesso a un Gruppo}{12}{subsubsection.0.8.9}%
+\contentsline {subsection}{\numberline {0.9}UML Component Diagram}{13}{subsection.0.9}%
+\contentsline {subsection}{\numberline {0.10}UML Class Diagram per tipi di dato}{14}{subsection.0.10}%
