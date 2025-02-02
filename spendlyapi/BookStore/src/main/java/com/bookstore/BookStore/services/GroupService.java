@@ -68,7 +68,9 @@ public class GroupService {
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByEmail(mail);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
-        
+        if (utente == null) {
+            throw new RuntimeException("Utente non trovato con l'email: " + mail);
+        }
 
         if(gruppo.ContieneMembro(utente)){
             throw new IllegalArgumentException("L'utente è già un membro del gruppo!");
@@ -87,6 +89,9 @@ public class GroupService {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByEmail(mail);
+        if (utente == null) {
+            throw new RuntimeException("Utente non trovato con l'email: " + mail);
+        }
 
         if(!gruppo.ContieneMembro(utente)){
             throw new IllegalArgumentException("L'utente è già un membro del gruppo!");

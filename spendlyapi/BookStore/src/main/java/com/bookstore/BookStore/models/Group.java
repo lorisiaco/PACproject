@@ -60,19 +60,33 @@ public class Group {
     }
 
     /**
+     * Set the Id ofr the Group
+     * @param id
+     */
+    public void setId( Long id){
+        this.id=id;
+    }
+
+
+    /**
      * 
      * @return return the name of the Group
      */
-
     public String getNome(){
         return this.nome;
+    }
+    /**
+     * Set the nome for the group
+     * @param s
+     */
+    public void setNome(String s){
+        this.nome=s;
     }
 
     /**
      * 
      * @return return the Members of the Group
      */
-
     public List<AppUser> getMembri(){   // la lista non è immutabile come nome e id, dovrei stare attento a ritornare la lista vera
         return this.membri;
     }
