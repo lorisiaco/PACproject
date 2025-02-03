@@ -52,8 +52,8 @@ export const useAuthStore = defineStore('auth', {
     async fetchProfile() {
       try {
         const response = await axios.get('http://localhost:8080/account/profile')
-        this.user = response.data.user
-        this.role = response.data.user.role
+        this.user = response.data.User
+        this.role = response.data.User.role
         localStorage.setItem('user', JSON.stringify(this.user))
         localStorage.setItem('role', this.role)
       } catch (error) {
