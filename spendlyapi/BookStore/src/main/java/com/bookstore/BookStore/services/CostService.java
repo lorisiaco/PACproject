@@ -24,24 +24,28 @@ public class CostService {
     private AppUserRepository userRepository;
 
     public Cost createCost(Cost cost, Long groupId, String username) {
-        System.out.println("DEBUG: Cerco l'utente con username: " + username);
+        username = username.trim(); // Rimuove spazi prima e dopo
+    
+        System.out.println("DEBUG: Cerco l'utente con username pulito: '" + username + "'");
     
         List<AppUser> users = userRepository.findAll();
         for (AppUser u : users) {
-            System.out.println("DEBUG: User in DB -> " + u.getUsername());
+            System.out.println("DEBUG: User in DB -> '" + u.getUsername() + "'");
         }
     
-        AppUser user = userRepository.findByUsername(username);
+        AppUser user = userRepository.findByUsernameIgnoreCase(username);
     
         if (user == null) {
+            System.out.println("ERROR: findByUsername() non ha trovato nulla per '" + username + "'");
             throw new IllegalArgumentException("L'utente con Username " + username + " non esiste.");
         }
     
-        System.out.println("DEBUG: Utente trovato -> " + user.getUsername());
+        System.out.println("DEBUG: Utente trovato -> '" + user.getUsername() + "'");
     
         cost.setUser(user);
         return costRepository.save(cost);
     }
+    
     
     
 

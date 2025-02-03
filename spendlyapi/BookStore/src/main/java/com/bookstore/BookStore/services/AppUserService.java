@@ -18,7 +18,7 @@ public class AppUserService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		AppUser appUser = repo.findByUsername(username);
+		AppUser appUser = repo.findByUsernameIgnoreCase(username);
 		
 		if (appUser != null) {
 			var springUser = User.withUsername(appUser.getUsername())

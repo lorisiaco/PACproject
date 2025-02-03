@@ -67,7 +67,7 @@ public class AccountController {
     	response.put("Username", auth.getName());
     	response.put("Authorities", auth.getAuthorities());
     	
-    	var appUser = appUserRepository.findByUsername(auth.getName());
+    	var appUser = appUserRepository.findByUsernameIgnoreCase(auth.getName());
     	response.put("User", appUser);
     	
 		return ResponseEntity.ok(response);
@@ -108,7 +108,7 @@ public class AccountController {
         
         try {
         	// check if username/email are used or not
-        	var otherUser = appUserRepository.findByUsername(registerDto.getUsername());
+        	var otherUser = appUserRepository.findByUsernameIgnoreCase(registerDto.getUsername());
         	if (otherUser != null) {
         		return ResponseEntity.badRequest().body("Username already used");
         	}
@@ -165,7 +165,7 @@ public class AccountController {
                     )
             );
         	
-        	AppUser appUser = appUserRepository.findByUsername(loginDto.getUsername());
+        	AppUser appUser = appUserRepository.findByUsernameIgnoreCase(loginDto.getUsername());
         	
         	String jwtToken = createJwtToken(appUser);
         	

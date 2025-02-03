@@ -1,8 +1,5 @@
 package com.bookstore.BookStore.models;
 
-import com.bookstore.BookStore.models.AppUser;
-import com.bookstore.BookStore.models.Group;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +20,8 @@ public class Cost {
     private String tipologia;   //Per ora metto string, magari poi fare Enum
 
     @ManyToOne
-    @JoinColumn(name = "group_id", nullable = false) // Chiave esterna per il gruppo
-    private Group group;
+    @JoinColumn(name = "group_id", nullable = true)
+    private Group group;    
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false) // Chiave esterna per l'utente
