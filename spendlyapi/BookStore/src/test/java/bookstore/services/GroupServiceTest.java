@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -58,15 +60,15 @@ public class GroupServiceTest {
 
     @Test
     void testGetAllGroups() {
-        // Arrange
+        
         Group group1 = new Group("Group 1");
         Group group2 = new Group("Group 2");
         when(groupRepository.findAll()).thenReturn(Arrays.asList(group1, group2));
 
-        // Act
+        
         List<Group> result = groupService.getAllGroups();
 
-        // Assert
+        
         assertNotNull(result);
         assertEquals(2, result.size());
         verify(groupRepository, times(1)).findAll();
@@ -74,15 +76,15 @@ public class GroupServiceTest {
 
     @Test
     void testGetGroupById_GroupExists() {
-        // Arrange
+        
         Group group = new Group("Test Group");
         group.setId(1L);
         when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
 
-        // Act
+        
         Group result = groupService.getGroupById(1L);
 
-        // Assert
+        
         assertNotNull(result);
         assertEquals(1L, result.getId());
         verify(groupRepository, times(1)).findById(1L);
@@ -90,10 +92,10 @@ public class GroupServiceTest {
 
     @Test
     void testGetGroupById_GroupDoesNotExist() {
-        // Arrange
+        
         when(groupRepository.findById(1L)).thenReturn(Optional.empty());
 
-        // Act & Assert
+        
         Exception exception = assertThrows(IllegalArgumentException.class, () -> groupService.getGroupById(1L));
         assertEquals("Gruppo non trovato con ID: 1", exception.getMessage());
         verify(groupRepository, times(1)).findById(1L);
@@ -101,16 +103,31 @@ public class GroupServiceTest {
 
     @Test
     void testEliminaGruppo() {
-        // Act
+        Group group = new Group("Test Group");
+        group.setId(1L);
+        when(groupRepository.existsById(1L)).thenReturn(true);  // Assicurati che il gruppo esista
+        doNothing().when(groupRepository).deleteById(1L);
         groupService.eliminaGruppo(1L);
-
-        // Assert
         verify(groupRepository, times(1)).deleteById(1L);
     }
 
     @Test
+    void testEliminaGruppo_GruppoNonEsiste() {
+    
+        when(groupRepository.existsById(1L)).thenReturn(false);
+
+    
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> groupService.eliminaGruppo(1L));
+    
+        assertEquals("Il gruppo con ID 1 non esiste.", exception.getMessage());
+    
+    
+        verify(groupRepository, never()).deleteById(1L);
+    }
+
+    @Test
     void testAggiungiMembro_Success() {
-        // Arrange
+        
         Group group = new Group("Test Group");
         group.setId(1L);
         AppUser user = new AppUser();
@@ -120,10 +137,10 @@ public class GroupServiceTest {
         when(userRepository.findByEmail("test@example.com")).thenReturn(user);
         when(groupRepository.save(group)).thenReturn(group);
 
-        // Act
+        
         Group result = groupService.aggiungiMembro(1L, "test@example.com");
 
-        // Assert
+        
         assertNotNull(result);
         assertTrue(result.ContieneMembro(user));
         verify(groupRepository, times(1)).findById(1L);
@@ -133,7 +150,7 @@ public class GroupServiceTest {
 
     @Test
     void testAggiungiMembro_UserAlreadyMember() {
-        // Arrange
+        
         Group group = new Group("Test Group");
         group.setId(1L);
         AppUser user = new AppUser();
@@ -143,7 +160,7 @@ public class GroupServiceTest {
         when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
         when(userRepository.findByEmail("test@example.com")).thenReturn(user);
 
-        // Act & Assert
+        
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> groupService.aggiungiMembro(1L, "test@example.com"));
         assertEquals("L'utente è già un membro del gruppo!", exception.getMessage());
@@ -153,7 +170,7 @@ public class GroupServiceTest {
 
     @Test
     void testRimuoviMembro_Success() {
-        // Arrange
+        
         Group group = new Group("Test Group");
         group.setId(1L);
         AppUser user = new AppUser();
@@ -164,10 +181,10 @@ public class GroupServiceTest {
         when(userRepository.findByEmail("test@example.com")).thenReturn(user);
         when(groupRepository.save(group)).thenReturn(group);
 
-        // Act
+        
         Group result = groupService.rimuoviMembro(1L, "test@example.com");
 
-        // Assert
+        
         assertNotNull(result);
         assertFalse(result.ContieneMembro(user));
         verify(groupRepository, times(1)).findById(1L);
@@ -177,7 +194,7 @@ public class GroupServiceTest {
 
     @Test
     void testGetMembri() {
-        // Arrange
+        
         Group group = new Group("Test Group");
         group.setId(1L);
         AppUser user1 = new AppUser();
@@ -187,10 +204,10 @@ public class GroupServiceTest {
 
         when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
 
-        // Act
+        
         List<AppUser> result = groupService.getMembri(1L);
 
-        // Assert
+        
         assertNotNull(result);
         assertEquals(2, result.size());
         verify(groupRepository, times(1)).findById(1L);
