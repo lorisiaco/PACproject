@@ -54,5 +54,5 @@ Spendly è costruito con tecnologie **moderne e scalabili**, garantendo elevate 
 ## 📦 **Installazione e Setup**
 ### **1️⃣ Clona il repository**
 ```bash
-git clone https://github.com/username/spendly.git
-cd spendly
+git clone [https://github.com/lorisiaco/PACproject.git]
+cd PACproject
