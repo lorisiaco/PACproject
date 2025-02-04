@@ -1,0 +1,139 @@
+\subsection{Casi d'Uso Implementati }
+
+In questa iterazione sono stati sviluppati i seguenti casi d’uso ritenuti prioritari per lo sviluppo di \textbf{Spendly}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}
+    \hline
+    \textbf{ID} & \textbf{Titolo} \\ \hline
+    UC4 & Crea alert di gruppo\\ \hline
+    UC5 & Modifica alert \\ \hline
+    UC6 & Elimina alert \\ \hline
+    UC12 & Accedi gruppo \\ \hline
+    UC13 & Inserisci spesa \\ \hline
+    UC14 & Elimina spesa \\ \hline
+    UC15 & Modifica spesa \\ \hline
+    UC16 & Visualizza spese \\ \hline
+    UC17 & Ricalcolo debiti \\ \hline
+    \end{tabular}
+    \caption{Iterazione2}
+\end{table}
+
+\subsubsection{UC4: Creazione Alert di Gruppo}
+\textbf{Attori}: Utente amministratore, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: L’amministratore di un gruppo può creare un alert per segnalare il raggiungimento di una soglia limite di spesa.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla pagina del gruppo.
+    \item Clicca su "Crea Alert".
+    \item Inserisce il limite di spesa e una descrizione opzionale.
+    \item Il sistema salva l’alert e lo associa al gruppo.
+\end{enumerate}
+
+\subsubsection{UC5: Modifica Alert}
+\textbf{Attori}: Utente amministratore, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: L’amministratore di un gruppo può modificare i valori di un alert già impostato.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla lista degli alert.
+    \item Seleziona un alert e modifica i parametri (soglia limite, descrizione).
+    \item Il sistema aggiorna le informazioni dell’alert.
+\end{enumerate}
+
+\subsubsection{UC6: Eliminazione Alert}
+\textbf{Attori}: Utente amministratore, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: L’amministratore di un gruppo può eliminare un alert impostato in precedenza.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’amministratore accede alla lista degli alert del gruppo.
+    \item Seleziona un alert e clicca su "Elimina".
+    \item Il sistema chiede conferma e poi rimuove l’alert.
+\end{enumerate}
+
+\subsubsection{UC13: Inserimento Spesa}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente appartenente a un gruppo può aggiungere una spesa condivisa.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla pagina del gruppo.
+    \item Clicca su "Aggiungi Spesa".
+    \item Inserisce l’importo, la descrizione e seleziona i partecipanti.
+    \item Il sistema registra la spesa e aggiorna il bilancio del gruppo.
+\end{enumerate}
+
+\subsubsection{UC14: Eliminazione Spesa}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente può eliminare una spesa precedentemente inserita.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla lista delle spese del gruppo.
+    \item Seleziona una spesa e clicca su "Elimina".
+    \item Il sistema chiede conferma e poi rimuove la spesa dal gruppo.
+\end{enumerate}
+
+\subsubsection{UC15: Modifica Spesa}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente può modificare i dettagli di una spesa condivisa nel gruppo.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla lista delle spese.
+    \item Seleziona una spesa e clicca su "Modifica".
+    \item Modifica i dati della spesa (importo, descrizione, partecipanti).
+    \item Il sistema aggiorna la spesa e ricalcola i bilanci.
+\end{enumerate}
+
+\subsubsection{UC16: Visualizzazione Spese}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente può visualizzare tutte le spese del gruppo di cui fa parte.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla pagina del gruppo.
+    \item Clicca su "Visualizza Spese".
+    \item Il sistema mostra l’elenco delle spese con dettagli su importo, data e partecipanti.
+\end{enumerate}
+
+\subsubsection{UC17: Ricalcolo Debiti}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente può calcolare il riepilogo dei debiti tra i membri del gruppo.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla pagina del gruppo.
+    \item Clicca su "Calcola Debiti".
+    \item Il sistema analizza le spese e genera un riepilogo dei debiti tra i membri.
+    \item L’utente visualizza il riepilogo e le modalità di saldo consigliate.
+\end{enumerate}
+
+

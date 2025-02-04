@@ -1,4 +1,9 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Diagramma casi d'uso }}{5}{figure.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Diagramma dell'architettura della webapp}}{8}{figure.2}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Diagramma casi d'uso }}{7}{}%
+\contentsline {figure}{\numberline {2}{\ignorespaces M-V-C Pattern }}{10}{}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Risultato API Registrazione}}{25}{}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Risultato API Login}}{26}{}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Risultato API Creazione Gruppo}}{27}{}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Risultato API Eliminazione Gruppo}}{28}{}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Risultato API Visualizzazione Gruppi}}{29}{}%
