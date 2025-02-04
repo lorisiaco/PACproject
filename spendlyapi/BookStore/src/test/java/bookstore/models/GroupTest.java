@@ -24,7 +24,7 @@ public class GroupTest {
         user2 = new AppUser();
     }
     /**
-     * 
+     *  Test for the Group constructor
      */
     @Test
     void testGroupConstructor() {
