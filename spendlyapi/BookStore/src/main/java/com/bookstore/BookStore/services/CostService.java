@@ -46,8 +46,14 @@ public class CostService {
         return costRepository.save(cost);
     }
     
-    
-    
+    public List<Cost> getCostsByUsername(String username) {
+        username = username.trim();
+        AppUser user = userRepository.findByUsernameIgnoreCase(username);
+        if (user == null) {
+            throw new IllegalArgumentException("L'utente con Username " + username + " non esiste.");
+        }
+        return costRepository.findByUser(user);
+    }
 
     // Ottieni tutte le spese
     public List<Cost> getAllCosts() {
@@ -55,14 +61,14 @@ public class CostService {
     }
 
     // Ottieni una spesa per ID
-    public Cost getCostById(Long id) {
+    public Cost getAllCostById(Long id) {
         return costRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
     // Aggiorna una spesa
     public Cost updateCost(Long id, Cost updatedCost) {
-        Cost existingCost = getCostById(id);
+        Cost existingCost = getAllCostById(id);
 
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setTipologia(updatedCost.getTipologia());

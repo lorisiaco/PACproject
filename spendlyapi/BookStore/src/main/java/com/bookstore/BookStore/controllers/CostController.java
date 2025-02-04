@@ -30,8 +30,13 @@ public class CostController {
     private CostService costService;
 
     @GetMapping
-    public ResponseEntity<List<Cost>> getAllCosts() {
-        List<Cost> costs = costService.getAllCosts();
+    public ResponseEntity<List<Cost>> getAllCosts(@RequestParam(value = "username", required = false) String username) {
+        List<Cost> costs;
+        if (username != null && !username.trim().isEmpty()) {
+            costs = costService.getCostsByUsername(username);
+        } else {
+            costs = costService.getAllCosts();
+        }
         return ResponseEntity.ok(costs);
     }
 
