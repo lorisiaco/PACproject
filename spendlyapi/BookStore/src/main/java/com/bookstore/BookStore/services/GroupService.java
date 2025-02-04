@@ -55,6 +55,9 @@ public class GroupService {
      * @param groupId
      */
     public void eliminaGruppo(Long groupId){
+        if (!groupRepository.existsById(groupId)) {
+            throw new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste.");
+        }
         groupRepository.deleteById(groupId);
     }
 
