@@ -66,11 +66,14 @@ export default {
 
     const handleLogin = async () => {
       try {
-        // Effettua il login tramite lo store
-        await auth.login(form.value.username, form.value.password);
-
-        // Reindirizza dopo il login (esempio: Dashboard)
-        window.location.href = "/dashboard"; // Sostituisci con il router se preferisci router.push()
+        // Effettua il login tramite lo store e ottieni il token
+        const token = await auth.login(form.value.username, form.value.password);
+        // Salva il token e lo username in localStorage
+        if (token) {
+          localStorage.setItem('token', token);
+        }
+        localStorage.setItem('username', form.value.username);
+        window.location.href = "/dashboard";
       } catch (err) {
         // Gestione degli errori
         if (err.response && err.response.data) {
