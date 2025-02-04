@@ -7,6 +7,7 @@ import Admin from '../views/Admin.vue';
 import Client from '../views/Client.vue';
 import Dashboard from '../views/Dashboard.vue'; // Importa il componente Dashboard
 import Contact from '../views/Contact.vue'; // Importa il componente Contact
+import GestioneSpese from '../views/GestioneSpese.vue'; // Importa il componente GestioneSpese
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -17,6 +18,7 @@ const routes = [
   { path: '/client', name: 'Client', component: Client, meta: { requiresAuth: true, roles: ['ROLE_client'] } },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard, meta: { requiresAuth: true } },
   { path: '/contact', name: 'Contact', component: Contact }, // Aggiunta della pagina contatti
+  { path: '/gestione-spese', name: 'GestioneSpese', component: GestioneSpese, meta: { requiresAuth: true } },
   { path: '/:pathMatch(.*)*', redirect: '/' }, // Reindirizza tutte le rotte non definite alla homepage
 ];
 

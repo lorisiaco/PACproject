@@ -15,6 +15,7 @@
           <li><router-link to="/budget">Budget</router-link></li>
           <li><router-link to="/alerts">Alert</router-link></li>
           <li><router-link to="/profile">Profilo</router-link></li>
+          <li><router-link to="/gestione-spese">Gestione Spese</router-link></li> <!-- Aggiungi il link a Gestione Spese -->
         </template>
         <template v-else>
           <li><router-link to="/login">Login</router-link></li>
