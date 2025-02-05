@@ -8,11 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.bookstore.BookStore.models.Cost;
 
 @Repository
-public interface CostRepository extends JpaRepository<Cost, Integer> {
+public interface CostRepository extends JpaRepository<Cost, Long> { // MODIFICATO da Integer a Long
 
-    List<Cost> findByUserId(Integer userId);
+    List<Cost> findByUserId(Integer userId); // MODIFICATO da Integer a Long
 
-    // Aggiungi questo metodo per trovare i costi di un gruppo
-    List<Cost> findByGroupId(Integer groupId);
+    List<Cost> findByGroupId(Long groupId); // MODIFICATO da Integer a Long
 }
 

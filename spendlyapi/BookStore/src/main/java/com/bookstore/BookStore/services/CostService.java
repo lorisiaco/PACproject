@@ -24,7 +24,7 @@ public class CostService {
     @Autowired
     private AppUserRepository userRepository;
 
-    public Cost createCost(Cost cost, Integer groupId, String username) {
+    public Cost createCost(Cost cost, Long groupId, String username) { // MODIFICATO da Integer a Long
         username = username.trim();
         System.out.println("DEBUG: Cerco l'utente con username pulito: '" + username + "'");
     
@@ -59,7 +59,7 @@ public class CostService {
     }
 
     // ✅ Metodo per ottenere i costi di un gruppo specifico
-    public List<Cost> getCostsByGroup(Integer groupId) {
+    public List<Cost> getCostsByGroup(Long groupId) { // MODIFICATO da Integer a Long
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste."));
         return costRepository.findByGroupId(group.getId());  // 🔥 FIX QUI
@@ -69,19 +69,19 @@ public class CostService {
         return costRepository.findAll();
     }
 
-    public Cost getCostById(int id) {
+    public Cost getCostById(Long id) { // MODIFICATO da int a Long
         return costRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
-    public Cost updateCost(int id, Cost updatedCost) {
+    public Cost updateCost(Long id, Cost updatedCost) { // MODIFICATO da int a Long
         Cost existingCost = getCostById(id);
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setTipologia(updatedCost.getTipologia());
         return costRepository.save(existingCost);
     }
 
-    public void deleteCost(int id) {
+    public void deleteCost(Long id) { // MODIFICATO da int a Long
         if (!costRepository.existsById(id)) {
             throw new IllegalArgumentException("La spesa con ID " + id + " non esiste.");
         }

@@ -61,7 +61,7 @@ public class GroupService {
      * @param id
      * @return return the Group through the Id 
      */
-    public Group getGroupById(int id) {
+    public Group getGroupById(Long id) { // MODIFICATO da int a Long
         return groupRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Gruppo non trovato con ID: " + id));
     }
@@ -70,7 +70,7 @@ public class GroupService {
      * Metohod for Deleting a Group
      * @param groupId
      */
-    public void eliminaGruppo(int groupId){
+    public void eliminaGruppo(Long groupId){ // MODIFICATO da int a Long
         if (!groupRepository.existsById(groupId)) {
             throw new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste.");
         }
@@ -83,7 +83,7 @@ public class GroupService {
      * @param mail
      * @return Return the Group with the User added
      */
-    public Group aggiungiMembro(int groupId, String username){
+    public Group aggiungiMembro(Long groupId, String username){ // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByUsernameIgnoreCase(username);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
@@ -104,7 +104,7 @@ public class GroupService {
      * @param mail
      * @return return the Group with the User removed
      */
-    public Group rimuoviMembro(int groupId, String username) {
+    public Group rimuoviMembro(Long groupId, String username) { // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByUsernameIgnoreCase(username);
@@ -113,7 +113,7 @@ public class GroupService {
         }
 
         if(!gruppo.ContieneMembro(utente)){
-            throw new IllegalArgumentException("L'utente è già un membro del gruppo!");
+            throw new IllegalArgumentException("L'utente non è nel gruppo!");
         }
                 
         gruppo.RimuoviMembro(utente);
@@ -126,7 +126,7 @@ public class GroupService {
      * @return reutnr the members's list of the Group
      */
 
-    public List<AppUser> getMembri(int groupId) {
+    public List<AppUser> getMembri(Long groupId) { // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         return gruppo.getMembri();
