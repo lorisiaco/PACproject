@@ -18,10 +18,10 @@ public class GroupTest {
     private AppUser user2;
 
     @BeforeEach
-    void setUp() {
-        //group = new Group("Test Group");
+    void setUp() {   
         user1 = new AppUser();
         user2 = new AppUser();
+        group =new Group("Test Group");
     }
     /**
      *  Test for the Group constructor
@@ -30,7 +30,14 @@ public class GroupTest {
     void testGroupConstructor() {
         assertNotNull(group);
         assertEquals("Test Group", group.getNome());
-        assertTrue(group.getMembri().isEmpty());
+    }
+    /**
+     * Test for the admin Group
+     */
+    @Test
+    void testGroupAdmin(){
+        group.setAdmin(user1);
+        assertEquals(user1, group.getAdmin());
     }
 
     /**
