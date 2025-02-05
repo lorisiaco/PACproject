@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.14)  4 FEB 2025 14:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.14)  5 FEB 2025 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -23,18 +23,25 @@ File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
+) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count196
+\float@exts=\toks17
+\float@box=\box51
+\@float@everytoks=\toks18
+\@floatcapt=\box52
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
+\inpenc@prehook=\toks19
+\inpenc@posthook=\toks20
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2024/02/07 v24.2 The Babel package
-\babel@savecnt=\count196
+\babel@savecnt=\count197
 \U@D=\dimen141
 \l@unhyphenated=\language79
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count197
+\bbl@dirlevel=\count198
 
 *************************************
 * Local config file bblopts.cfg used
@@ -43,20 +50,20 @@ Package: babel 2024/02/07 v24.2 The Babel package
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
 Language: italian 2024/01/03 v.1.5.00 Italian support for the babel system
-\it@lettering=\count198
-\it@doublequoteactive=\count199
-\it@ISOcompliance=\count266
+\it@lettering=\count199
+\it@doublequoteactive=\count266
+\it@ISOcompliance=\count267
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex
 Package babel Info: Importing font and identification data for italian
 (babel)             from babel-it.ini. Reported on input line 11.
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count267
+\etb@tempcnta=\count268
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
+\KV@toks@=\toks21
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
@@ -75,17 +82,17 @@ Package: background 2014/03/04 v2.1 background material
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
-\XKV@toks=\toks20
-\XKV@tempa@toks=\toks21
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
 )
-\XKV@depth=\count268
+\XKV@depth=\count269
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks22
+\pgfutil@everybye=\toks24
 \pgfutil@tempdima=\dimen144
 \pgfutil@tempdimb=\dimen145
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
-\pgfutil@abb=\box51
+\pgfutil@abb=\box53
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -93,10 +100,10 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks25
+\pgfkeys@tmptoks=\toks27
 ))
 \pgf@x=\dimen146
 \pgf@y=\dimen147
@@ -110,14 +117,14 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen155
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count269
-\c@pgf@countb=\count270
-\c@pgf@countc=\count271
-\c@pgf@countd=\count272
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count273
+\c@pgf@counta=\count270
+\c@pgf@countb=\count271
+\c@pgf@countc=\count272
+\c@pgf@countd=\count273
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count274
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -128,8 +135,8 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count274
-\pgfsyssoftpath@bigbuffer@items=\count275
+\pgfsyssoftpath@smallbuffer@items=\count275
+\pgfsyssoftpath@bigbuffer@items=\count276
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -152,13 +159,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen156
-\pgfmath@count=\count276
-\pgfmath@box=\box52
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+\pgfmath@count=\count277
+\pgfmath@box=\box54
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count277
+\c@pgfmathroundto@lastzeros=\count278
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen157
@@ -185,10 +192,10 @@ File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@start@additional=\dimen174
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box53
-\pgf@hbox=\box54
-\pgf@layerbox@main=\box55
-\pgf@picture@serial@count=\count278
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count279
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen175
@@ -209,13 +216,13 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen180
-\pgf@sys@shading@range@num=\count279
-\pgf@shadingcount=\count280
+\pgf@sys@shading@range@num=\count280
+\pgf@shadingcount=\count281
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box56
+\pgfexternal@startupbox=\box58
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
@@ -226,7 +233,7 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box57
+\pgfnodeparttextbox=\box59
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
@@ -239,13 +246,13 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen183
 \pgffor@skip=\dimen184
-\pgffor@stack=\toks32
-\pgffor@toks=\toks33
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count281
+\pgf@plot@mark@count=\count282
 \pgfplotmarksize=\dimen185
 )
 \tikz@lastx=\dimen186
@@ -256,21 +263,21 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@lastmovetoy=\dimen191
 \tikzleveldistance=\dimen192
 \tikzsiblingdistance=\dimen193
-\tikz@figbox=\box58
-\tikz@figbox@bg=\box59
-\tikz@tempbox=\box60
-\tikz@tempbox@bg=\box61
-\tikztreelevel=\count282
-\tikznumberofchildren=\count283
-\tikznumberofcurrentchild=\count284
-\tikz@fig@count=\count285
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count283
+\tikznumberofchildren=\count284
+\tikznumberofcurrentchild=\count285
+\tikz@fig@count=\count286
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count286
-\pgfmatrixcurrentcolumn=\count287
-\pgf@matrix@numberofcolumns=\count288
+\pgfmatrixcurrentrow=\count287
+\pgfmatrixcurrentcolumn=\count288
+\pgf@matrix@numberofcolumns=\count289
 )
-\tikz@expandcount=\count289
+\tikz@expandcount=\count290
  (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/everypage\everypage.sty
@@ -293,32 +300,32 @@ Package everypage Warning: You appear to be running a version of LaTeX
 
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
-\AP@output=\toks34
-\AP@partial=\box62
-\AP@footins=\box63
+\AP@output=\toks36
+\AP@partial=\box64
+\AP@footins=\box65
 )) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count290
-\l__pdf_internal_box=\box64
+\l__color_backend_stack_int=\count291
+\l__pdf_internal_box=\box66
 ) (Prova.aux)
 \openout1 = `Prova.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Info: Redefining \it@ocap on input line 25.
-LaTeX Info: Redefining \it@ccap on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Info: Redefining \it@ocap on input line 26.
+LaTeX Info: Redefining \it@ccap on input line 26.
 
 
 File italian.ldf warning: 
@@ -326,21 +333,21 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting
-italian.ldf    on input line 25.
+italian.ldf    on input line 26.
 
 (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count291
+\scratchcounter=\count292
 \scratchdimen=\dimen194
-\scratchbox=\box65
-\nofMPsegments=\count292
-\nofMParguments=\count293
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count294
+\scratchbox=\box67
+\nofMPsegments=\count293
+\nofMParguments=\count294
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count295
 \MPscratchDim=\dimen195
-\MPnumerator=\count295
-\makeMPintoPDFobject=\count296
-\everyMPtoPDFconversion=\toks36
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
+\everyMPtoPDFconversion=\toks38
 ) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -350,12 +357,12 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 <images/Marchio.jpg, id=4, 375.3222pt x 325.215pt>
 File: images/Marchio.jpg Graphic file (type jpg)
 <use images/Marchio.jpg>
-Package pdftex.def Info: images/Marchio.jpg  used on input line 35.
+Package pdftex.def Info: images/Marchio.jpg  used on input line 36.
 (pdftex.def)             Requested size: 195.0pt x 168.96886pt.
 <images/sfondolatex.png, id=5, 2890.8pt x 2890.8pt>
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 49.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 50.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [1
 
@@ -376,7 +383,7 @@ Package pdftex.def Info: images/sfondolatex.png  used on input line 44.
 
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 56.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 57.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [2] (Prova.lof)
 \tf@lof=\write5
@@ -388,26 +395,31 @@ Package pdftex.def Info: images/sfondolatex.png  used on input line 56.
 
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 59.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 60.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [3] (Iterazione0/Introduzione.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 19--68
+Underfull \hbox (badness 10000) in paragraph at lines 16--69
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--69
 
  []
 
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 68.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 69.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
 [4]
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 68.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 69.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [5] (Iterazione0/Requisiti.tex)
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 70.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 71.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [6] (Iterazione0/CasiDuso.tex
 <images/casousoprova.png, id=35, 796.77675pt x 516.7305pt>
@@ -433,80 +445,170 @@ Package pdftex.def Info: images/sfondolatex.png  used on input line 32.
 <images/mvc.png, id=43, 396.48125pt x 371.3875pt>
 File: images/mvc.png Graphic file (type png)
 <use images/mvc.png>
-Package pdftex.def Info: images/mvc.png  used on input line 6.
-(pdftex.def)             Requested size: 237.89058pt x 222.83421pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (3.86346pt too wide) in paragraph at lines 16--17
+Package pdftex.def Info: images/mvc.png  used on input line 7.
+(pdftex.def)             Requested size: 178.4149pt x 167.12282pt.
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 13.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [9 <./images/mvc.png>]
+Overfull \hbox (3.86346pt too wide) in paragraph at lines 17--18
 []\OT1/cmr/bx/n/12 Servizio Uten-te\OT1/cmr/m/n/12 : ge-stio-ne del-la re-gi-stra-zio-ne, au-ten-ti-ca-zio-ne (tra-
  []
 
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 18.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 36.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[9]
-File: images/sfondolatex.png Graphic file (type png)
-<use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 34.
-(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [10 <./images/mvc.png>]) (Iterazione0/priorità.tex
+[10]) (Iterazione0/priorità.tex
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 9.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [11]
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 51.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [12]
+Underfull \hbox (badness 10000) in paragraph at lines 64--72
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
 )
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 76.
-(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [12] (Iterazione0/ToolChain.tex
-File: images/sfondolatex.png Graphic file (type png)
-<use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 14.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 77.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [13]
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 29.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 77.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [14])
+ [14] (Iterazione0/ToolChain.tex
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 82.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 21.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [15] (Iterazione1/CasiUsoImplementati.tex
+ [15]
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 41.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 37.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [16]
+ [16])
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 79.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 83.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [17]
+ [17] (Iterazione1/CasiUsoImplementati.tex
+Underfull \hbox (badness 10000) in paragraph at lines 24--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--46
+
+ []
+
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 115.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 46.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [18])
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 55--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--90
+
+ []
+
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 90.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 98--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--119
+
+ []
+
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 123.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 126--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--148
+
+ []
+
+)
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 87.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [19] (Iterazione1/ComponentDiagram.tex
-<images/ComponentDiagramV1.1.png, id=80, 768.8725pt x 1004.75375pt>
+ [21] (Iterazione1/ComponentDiagram.tex
+<images/ComponentDiagramV1.1.png, id=86, 768.8725pt x 1004.75375pt>
 File: images/ComponentDiagramV1.1.png Graphic file (type png)
 <use images/ComponentDiagramV1.1.png>
 Package pdftex.def Info: images/ComponentDiagramV1.1.png  used on input line 5.
@@ -515,13 +617,13 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 13.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [20 <./images/ComponentDiagramV1.1.png>])
+ [22 <./images/ComponentDiagramV1.1.png>])
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 89.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [21] (Iterazione1/DiagrammiClassiTipoDati.tex
-<images/TipoDatiClassDiagramV1.1.png, id=88, 543.02875pt x 335.2525pt>
+ [23] (Iterazione1/DiagrammiClassiTipoDati.tex
+<images/TipoDatiClassDiagramV1.1.png, id=94, 543.02875pt x 335.2525pt>
 File: images/TipoDatiClassDiagramV1.1.png Graphic file (type png)
 <use images/TipoDatiClassDiagramV1.1.png>
 Package pdftex.def Info: images/TipoDatiClassDiagramV1.1.png  used on input line 4.
@@ -531,78 +633,64 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 91.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [22 <./images/TipoDatiClassDiagramV1.1.png>] (Iterazione1/Test.tex
+ [24 <./images/TipoDatiClassDiagramV1.1.png>] (Iterazione1/Test.tex
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 17.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [23]
-<images/registerapi.png, id=96, 600.44325pt x 460.119pt>
+ [25]
+<images/registerapi.png, id=103, 600.44325pt x 460.119pt>
 File: images/registerapi.png Graphic file (type png)
 <use images/registerapi.png>
 Package pdftex.def Info: images/registerapi.png  used on input line 40.
 (pdftex.def)             Requested size: 350.99762pt x 268.96843pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 55.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 44.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[24]
-<images/loginapi.png, id=102, 667.293pt x 460.119pt>
+ [26]
+<images/loginapi.png, id=108, 667.293pt x 460.119pt>
 File: images/loginapi.png Graphic file (type png)
 <use images/loginapi.png>
 Package pdftex.def Info: images/loginapi.png  used on input line 58.
 (pdftex.def)             Requested size: 350.99762pt x 242.02245pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 74.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 62.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[25 <./images/registerapi.png>]
+ [27 <./images/registerapi.png>]
 File: images/registerapi.png Graphic file (type png)
 <use images/registerapi.png>
 Package pdftex.def Info: images/registerapi.png  used on input line 77.
 (pdftex.def)             Requested size: 312.00119pt x 239.08774pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 81.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [28 <./images/loginapi.png>]
 File: images/registerapi.png Graphic file (type png)
 <use images/registerapi.png>
 Package pdftex.def Info: images/registerapi.png  used on input line 94.
 (pdftex.def)             Requested size: 312.00119pt x 239.08774pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 103.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 98.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[26 <./images/loginapi.png>]
+ [29]
 File: images/registerapi.png Graphic file (type png)
 <use images/registerapi.png>
 Package pdftex.def Info: images/registerapi.png  used on input line 111.
 (pdftex.def)             Requested size: 312.00119pt x 239.08774pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-)
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 115.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [30])
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 97.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [27] (Iterazione2/CasiUsoImpl.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
+ [31] (Iterazione2/CasiUsoImpl.tex
 Underfull \hbox (badness 10000) in paragraph at lines 24--31
 
  []
@@ -612,21 +700,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--31
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--46
+
+ []
+
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 35.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 46.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 39--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--46
-
- []
-
-
+[32]
 Underfull \hbox (badness 10000) in paragraph at lines 53--60
 
  []
@@ -636,11 +724,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--60
 
  []
 
-File: images/sfondolatex.png Graphic file (type png)
-<use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 60.
-(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[29]
+
 Underfull \hbox (badness 10000) in paragraph at lines 67--74
 
  []
@@ -654,7 +738,7 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 79.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[30]
+[33]
 Underfull \hbox (badness 10000) in paragraph at lines 82--89
 
  []
@@ -688,7 +772,7 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 119.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[31]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 125--132
 
  []
@@ -703,24 +787,24 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 100.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [32] (Prova.aux)
+ [35] (Prova.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 13874 strings out of 474436
- 289223 string characters out of 5741954
- 1938190 words of memory out of 5000000
- 35935 multiletter control sequences out of 15000+600000
+ 13954 strings out of 474436
+ 290501 string characters out of 5741954
+ 1939190 words of memory out of 5000000
+ 36011 multiletter control sequences out of 15000+600000
  563435 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,107p,574b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,13n,107p,574b,874s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\loris\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Prova.pdf (33 pages, 837551 bytes).
+Output written on Prova.pdf (36 pages, 840452 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
+ 161 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
