@@ -1,9 +1,10 @@
+
 \subsection{Architettura del Sistema}
 
 Il sistema segue il pattern architetturale \textbf{Model-View-Controller (MVC)}, un'architettura software che separa la logica di presentazione, la logica di business e la gestione dei dati. Questa separazione consente una maggiore modularità e facilita la manutenzione e l'estendibilità del sistema. Le tre componenti principali sono:
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{images/mvc.png}
+    \includegraphics[scale=0.45]{images/mvc.png}
     \caption{M-V-C Pattern }
 \end{figure}
 \subsubsection{Model}
@@ -46,6 +47,5 @@ Il flusso di una tipica richiesta utente segue questi passi:
     \item La risposta viene inviata al frontend in formato JSON.
     \item Il frontend aggiorna dinamicamente l'interfaccia utente con i nuovi dati.
 \end{enumerate}
-
 Questa architettura garantisce una chiara separazione delle responsabilità, facilitando lo sviluppo, la scalabilità e la manutenzione del sistema.
 
