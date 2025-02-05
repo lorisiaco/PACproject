@@ -1,5 +1,7 @@
 package com.bookstore.BookStore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Spese") 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Cost {
     
 	@Id
@@ -21,8 +24,10 @@ public class Cost {
 
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = true)
+
     private Group group;    
 
+    
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false) // Chiave esterna per l'utente
     private AppUser user;

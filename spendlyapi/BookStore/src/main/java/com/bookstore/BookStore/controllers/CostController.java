@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookstore.BookStore.models.Cost;
+import com.bookstore.BookStore.repositories.CostRepository;
 import com.bookstore.BookStore.services.CostService;
 
 @RestController
@@ -28,6 +29,9 @@ public class CostController {
 
     @Autowired
     private CostService costService;
+
+    @Autowired
+    private CostRepository costRepository;
 
     @GetMapping
     public ResponseEntity<List<Cost>> getAllCosts(@RequestParam(value = "username", required = false) String username) {
@@ -40,17 +44,26 @@ public class CostController {
         return ResponseEntity.ok(costs);
     }
 
+    @GetMapping("/group/{groupId}")
+    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
+        List<Cost> costs = costRepository.findByGroupId(groupId);
+        return ResponseEntity.ok(costs);
+    }
+    
+
     @PostMapping
     public ResponseEntity<?> createCost(@RequestBody Cost cost,
-                                       @RequestParam(value = "groupId", required = false) Long groupId,
                                        @RequestParam(value = "username", required = true) String username) {
-        logger.info("Creating cost: {}, GroupId: {}, Username: {}", cost, groupId, username);
-
+        logger.info("Creating cost: {}, GroupId: {}, Username: {}", cost, cost.getGroup(), username);
+    
         if (username == null || username.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username is required.");
         }
-
+    
         try {
+            // Assicuriamoci di passare il corretto groupId a createCost
+            Long groupId = (cost.getGroup() != null) ? cost.getGroup().getId() : null;
+    
             Cost newCost = costService.createCost(cost, groupId, username);
             return ResponseEntity.status(HttpStatus.CREATED).body(newCost);
         } catch (Exception e) {
@@ -58,6 +71,7 @@ public class CostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating cost.");
         }
     }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCostById(@PathVariable Long id) {

@@ -2,6 +2,8 @@ package com.bookstore.BookStore.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -38,7 +40,8 @@ public class Group {
     /**
      * Members of the Group
      */
-    private List<AppUser> membri=new ArrayList<AppUser>();
+    @JsonIgnore // ✅ Evita problemi di Lazy Loading su membri
+    private List<AppUser> membri = new ArrayList<>();
 
 
     /**

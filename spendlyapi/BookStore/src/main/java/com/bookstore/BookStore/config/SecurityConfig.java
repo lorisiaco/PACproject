@@ -40,6 +40,8 @@ public class SecurityConfig {
                 		.requestMatchers("/client/**").hasAnyRole("client")
 	                    .requestMatchers("/seller/**").hasAnyRole("seller")
 	                    .requestMatchers("/").permitAll()
+						.requestMatchers("/api/**").permitAll()
+						.requestMatchers("/api/groups/**").permitAll()
 	                    .requestMatchers("/store/**").permitAll()
 	                    .requestMatchers("/account").permitAll()
 	                    .requestMatchers("/account/login").permitAll()

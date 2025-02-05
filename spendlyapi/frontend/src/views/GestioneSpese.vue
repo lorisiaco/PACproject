@@ -32,17 +32,19 @@
           <th>Data</th>
           <th>Descrizione</th>
           <th>Importo (€)</th>
+          <th>Gruppo</th>
           <th>Azioni</th>
         </tr>
       </thead>
       <tbody>
         <tr v-if="expenses.length === 0">
-          <td colspan="4" class="text-center">Nessuna spesa registrata</td>
+          <td colspan="5" class="text-center">Nessuna spesa registrata</td>
         </tr>
         <tr v-for="expense in expenses" :key="expense.costId">
-          <td>{{ expense.date || 'N/D' }}</td>
+          <td>{{ formatDate(expense.date) }}</td>
           <td>{{ expense.tipologia }}</td>
-          <td>€{{ expense.importo.toFixed(2) }}</td>
+          <td>€{{ expense.importo ? expense.importo.toFixed(2) : "0.00" }}</td>
+          <td>{{ expense.group ? expense.group.id : 'N/A' }}</td>
           <td>
             <button class="btn btn-danger btn-sm" @click="deleteExpense(expense.costId)">
               Elimina
@@ -68,6 +70,8 @@
           <div class="modal-body">
             <input v-model="newExpense.tipologia" type="text" class="form-control mb-2" placeholder="Descrizione" required />
             <input v-model.number="newExpense.importo" type="number" class="form-control mb-2" placeholder="Importo (€)" required />
+            <input v-model="newExpense.date" type="date" class="form-control mb-2" placeholder="Data" required />
+            <input v-model="newExpense.groupId" type="number" class="form-control mb-2" placeholder="ID Gruppo (facoltativo)" />
           </div>
           <div class="modal-footer">
             <button class="btn btn-success" @click="addExpense">Salva</button>
@@ -81,21 +85,19 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-// Stati reattivi
 const expenses = ref([]);
 const totalSpent = ref(0);
 const averageSpent = ref(0);
 const lastSpent = ref("N/D");
 const showModal = ref(false);
-const newExpense = ref({ tipologia: "", importo: null });
+const newExpense = ref({ tipologia: "", importo: null, date: "", groupId: null });
 
-// **Recupero le spese solo dell'utente loggato**
 const fetchExpenses = async () => {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
 
   if (!username || !token) {
-    console.error("Utente non autenticato!");
+    console.error("Utente non autenticato! Username o token mancante.");
     return;
   }
 
@@ -103,10 +105,14 @@ const fetchExpenses = async () => {
     const response = await fetch(`http://localhost:8080/api/costs?username=${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    if (!response.ok) throw new Error("Errore nel recupero delle spese");
+
+    if (!response.ok) {
+      throw new Error("Errore nel recupero delle spese");
+    }
 
     const data = await response.json();
-    console.log("Fetched expenses:", data); // Debug log
+    console.log("Spese ricevute:", data); 
+
     expenses.value = data;
     updateDashboard();
   } catch (error) {
@@ -114,15 +120,26 @@ const fetchExpenses = async () => {
   }
 };
 
-// **Aggiunta nuova spesa**
 const addExpense = async () => {
-  const username = localStorage.getItem("username");
-  const token = localStorage.getItem("token");
-
-  if (!newExpense.value.tipologia || !newExpense.value.importo) {
-    alert("Compila tutti i campi!");
+  if (!newExpense.value.tipologia || !newExpense.value.importo || !newExpense.value.date) {
+    alert("Compila tutti i campi obbligatori!");
     return;
   }
+
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+
+  if (!token || !username) {
+    alert("Utente non autenticato.");
+    return;
+  }
+
+  const payload = {
+    importo: newExpense.value.importo,
+    tipologia: newExpense.value.tipologia,
+    date: newExpense.value.date,
+    groupId: newExpense.value.groupId || null // Se l'utente non inserisce un ID gruppo, inviamo null
+  };
 
   try {
     const response = await fetch(`http://localhost:8080/api/costs?username=${username}`, {
@@ -131,15 +148,12 @@ const addExpense = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        importo: newExpense.value.importo,
-        tipologia: newExpense.value.tipologia,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (response.ok) {
       fetchExpenses();
-      newExpense.value = { tipologia: "", importo: null };
+      newExpense.value = { tipologia: "", importo: null, date: "", groupId: null };
       showModal.value = false;
     } else {
       const errorData = await response.json();
@@ -150,36 +164,46 @@ const addExpense = async () => {
   }
 };
 
-// **Eliminazione spesa**
 const deleteExpense = async (id) => {
   const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Utente non autenticato.");
+    return;
+  }
 
   try {
     const response = await fetch(`http://localhost:8080/api/costs/${id}`, {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (response.ok) {
-      expenses.value = expenses.value.filter((expense) => expense.costId !== id);
-      updateDashboard();
+      fetchExpenses();
     } else {
-      console.error("Errore nella cancellazione della spesa");
+      alert("Errore nella cancellazione della spesa.");
     }
   } catch (error) {
     console.error("Errore nella cancellazione della spesa:", error);
   }
 };
 
-// **Aggiornamento delle statistiche**
 const updateDashboard = () => {
   let total = expenses.value.reduce((sum, e) => sum + e.importo, 0);
   totalSpent.value = total.toFixed(2);
   averageSpent.value = expenses.value.length > 0 ? (total / expenses.value.length).toFixed(2) : 0;
-  lastSpent.value = expenses.value.length > 0 ? `€${expenses.value[expenses.value.length - 1].importo.toFixed(2)}` : "N/D";
+  lastSpent.value =
+    expenses.value.length > 0 ? `€${expenses.value[expenses.value.length - 1].importo.toFixed(2)}` : "N/D";
 };
 
-// **Avvio il fetch delle spese al montaggio della pagina**
+// ✅ Funzione per formattare la data nel formato leggibile
+const formatDate = (date) => {
+  if (!date) return "N/D";
+  return new Date(date).toLocaleDateString();
+};
+
 onMounted(fetchExpenses);
 </script>
 

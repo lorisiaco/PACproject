@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookstore.BookStore.models.Cost;
 import com.bookstore.BookStore.models.Group;
+import com.bookstore.BookStore.services.CostService;
 import com.bookstore.BookStore.services.GroupService;
 
 @RestController
@@ -26,6 +28,9 @@ public class GroupController {
 
     @Autowired
     private GroupService groupService;
+
+    @Autowired
+    private CostService costService;
 
     /**
      * Return all the groups in the DB
@@ -104,6 +109,12 @@ public class GroupController {
     public ResponseEntity<Group> showGroup(@PathVariable Long groupId) {
         Group group = groupService.getGroupById(groupId);
         return ResponseEntity.ok(group);
+    }
+
+    @GetMapping("/costs/{groupId}")
+    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
+        List<Cost> costs = costService.getCostsByGroup(groupId);
+        return ResponseEntity.ok(costs);
     }
 
 
