@@ -41,16 +41,17 @@ public class GroupServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+        AppUser u=new AppUser();
     }
 
     @Test
     void testCreaGruppo() {
         // Arrange
-        Group newGroup = new Group("Test Group");
+        Group newGroup = new Group();
         when(groupRepository.save(any(Group.class))).thenReturn(newGroup);
 
         // Act
-        Group result = groupService.creaGruppo("Test Group");
+        Group result = groupService.creaGruppo("Test Group","ciao");
 
         // Assert
         assertNotNull(result);

@@ -26,8 +26,13 @@ public class GroupService {
      * @param nome
      * @return Return the new Group created
      */
-    public Group creaGruppo(String nome){
-        Group gruppo=new Group(nome);
+    public Group creaGruppo(String nome,String username){
+        AppUser user = userRepository.findByUsernameIgnoreCase(username);
+    
+        if (user == null) {
+            throw new IllegalArgumentException("L'utente con Username " + username + " non esiste.");
+        }
+        Group gruppo=new Group(nome,user);
         return groupRepository.save(gruppo);
     }
 
@@ -39,6 +44,18 @@ public class GroupService {
         List<Group> groups = groupRepository.findAll();
         return groups;
     }
+
+    public List<Group> getAllGroupsForUser(String username) {
+        AppUser utente = userRepository.findByUsernameIgnoreCase(username);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
+        if (utente == null) {
+            throw new RuntimeException("Utente non trovato con l'email: " + username);
+        }
+        List<Group> groups = groupRepository.findByMembriContains(utente);
+        return groups;
+    }
+    
+
+
 
     /**
      * 
@@ -67,12 +84,12 @@ public class GroupService {
      * @param mail
      * @return Return the Group with the User added
      */
-    public Group aggiungiMembro(Long groupId, String mail){
+    public Group aggiungiMembro(Long groupId, String username){
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
-        AppUser utente = userRepository.findByEmail(mail);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
+        AppUser utente = userRepository.findByUsernameIgnoreCase(username);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
         if (utente == null) {
-            throw new RuntimeException("Utente non trovato con l'email: " + mail);
+            throw new RuntimeException("Utente non trovato con l'email: " + username);
         }
 
         if(gruppo.ContieneMembro(utente)){
@@ -88,12 +105,12 @@ public class GroupService {
      * @param mail
      * @return return the Group with the User removed
      */
-    public Group rimuoviMembro(Long groupId, String mail) {
+    public Group rimuoviMembro(Long groupId, String username) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
-        AppUser utente = userRepository.findByEmail(mail);
+        AppUser utente = userRepository.findByUsernameIgnoreCase(username);
         if (utente == null) {
-            throw new RuntimeException("Utente non trovato con l'email: " + mail);
+            throw new RuntimeException("Utente non trovato con l'email: " + username);
         }
 
         if(!gruppo.ContieneMembro(utente)){
@@ -114,5 +131,9 @@ public class GroupService {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         return gruppo.getMembri();
+    }
+
+    public AppUser getUserByUsername(String username){
+        return userRepository.findByUsernameIgnoreCase(username);
     }
 }
