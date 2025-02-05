@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -18,18 +19,13 @@ import jakarta.persistence.Table;
 @Table(name = "Gruppi")
 public class Group {
 
-     /**
-     * Id of the Group
-     */
+     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    /**
-     * Group Name
-     */
     private String nome;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "group_members",
@@ -40,65 +36,55 @@ public class Group {
     /**
      * Members of the Group
      */
-    @JsonIgnore // ✅ Evita problemi di Lazy Loading su membri
-    private List<AppUser> membri = new ArrayList<>();
+    private List<AppUser> membri=new ArrayList<AppUser>();
 
+    @ManyToOne
+    @JoinColumn(name = "admin_id", nullable = false)
+    private AppUser admin;
 
-    /**
-     * Constructors
-     */
-    public Group(){}
+    //costruttori
+    public Group() {}
 
-    public Group(String n){
-        super();
-        this.nome=n;
+    public Group(String nome, AppUser admin) {
+        this.nome = nome;
+        this.admin = admin;
     }
+    public Group(String nome) {
+        this.nome = nome;
+        
+    }
+    
 
-    /**
-     * 
-     * @return return the Id of the Group
-     */
     public  Long getId(){
         return this.id;
     }
 
-    /**
-     * Set the Id ofr the Group
-     * @param id
-     */
     public void setId( Long id){
         this.id=id;
     }
 
-
-    /**
-     * 
-     * @return return the name of the Group
-     */
     public String getNome(){
         return this.nome;
     }
-    /**
-     * Set the nome for the group
-     * @param s
-     */
+    
     public void setNome(String s){
         this.nome=s;
     }
 
-    /**
-     * 
-     * @return return the Members of the Group
-     */
-    public List<AppUser> getMembri(){   // la lista non è immutabile come nome e id, dovrei stare attento a ritornare la lista vera
+    public List<AppUser> getMembri(){  
         return this.membri;
     }
 
+    public AppUser getAdmin(){
+        return this.admin;
+    }
 
-    /**
-     * Adding new member
-     * @param utente
-     */
+    public void setAdmin(AppUser Admin){
+        this.admin=Admin;
+    }
+
+
+    
     public void AggiungiMembro(AppUser utente){
         if(!membri.contains(utente)){
             membri.add(utente);
@@ -106,10 +92,7 @@ public class Group {
             throw new IllegalArgumentException("L'utente è già nel gruppo");
         }
     }
-    /**
-     * Removing member method
-     * @param utente
-     */
+    
 
     public void RimuoviMembro(AppUser utente){
         if(membri.contains(utente)){
@@ -118,12 +101,6 @@ public class Group {
             throw new IllegalArgumentException ("L'utente non è nel gruppo");
         }
     }
-
-    /**
-     * 
-     * @param utente
-     * @return a boolean to check if an user is a member of the group
-     */
 
     public boolean ContieneMembro(AppUser utente){
         return membri.contains(utente);

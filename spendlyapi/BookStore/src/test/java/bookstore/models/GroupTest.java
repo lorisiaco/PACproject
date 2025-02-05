@@ -19,7 +19,7 @@ public class GroupTest {
 
     @BeforeEach
     void setUp() {
-        group = new Group("Test Group");
+        //group = new Group("Test Group");
         user1 = new AppUser();
         user2 = new AppUser();
     }

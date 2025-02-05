@@ -70,7 +70,7 @@ public class GroupControllerTest {
     newGroup.setId(3L); // Imposta un ID
 
     // Simula il comportamento del servizio
-    when(groupService.creaGruppo("New Group")).thenReturn(newGroup);
+    when(groupService.creaGruppo("New Group","b")).thenReturn(newGroup);
 
     // Esegui la richiesta POST
     mockMvc.perform(post("/api/groups")
