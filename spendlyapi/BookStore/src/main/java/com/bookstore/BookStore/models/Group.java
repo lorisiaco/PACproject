@@ -22,7 +22,7 @@ public class Group {
      
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String nome;
 
     @JsonIgnore
@@ -55,11 +55,11 @@ public class Group {
     }
     
 
-    public  Long getId(){
+    public  int getId(){
         return this.id;
     }
 
-    public void setId( Long id){
+    public void setId( int id){
         this.id=id;
     }
 

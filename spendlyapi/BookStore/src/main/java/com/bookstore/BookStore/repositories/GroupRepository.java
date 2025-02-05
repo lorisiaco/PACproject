@@ -9,7 +9,7 @@ import com.bookstore.BookStore.models.AppUser;
 import com.bookstore.BookStore.models.Group;
 
 @Repository
-public interface GroupRepository extends JpaRepository<Group,Long> {
+public interface GroupRepository extends JpaRepository<Group,Integer> {
 
         List<Group> findByMembriContains(AppUser user); // Cerca tutti i gruppi in cui l'utente è membro
 }

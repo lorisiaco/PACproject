@@ -1,8 +1,10 @@
 package com.bookstore.BookStore.services;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.bookstore.BookStore.models.AppUser;
 import com.bookstore.BookStore.models.Cost;
 import com.bookstore.BookStore.models.Group;
@@ -22,9 +24,8 @@ public class CostService {
     @Autowired
     private AppUserRepository userRepository;
 
-    public Cost createCost(Cost cost, Long groupId, String username) {
-        username = username.trim(); // Rimuove spazi prima e dopo
-    
+    public Cost createCost(Cost cost, Integer groupId, String username) {
+        username = username.trim();
         System.out.println("DEBUG: Cerco l'utente con username pulito: '" + username + "'");
     
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
@@ -33,33 +34,21 @@ public class CostService {
             System.out.println("ERROR: findByUsername() non ha trovato nulla per '" + username + "'");
             throw new IllegalArgumentException("L'utente con Username " + username + " non esiste.");
         }
-    
-        System.out.println("DEBUG: Utente trovato -> '" + user.getUsername() + "'");
+
         cost.setUser(user);
-    
-        // ✅ Debugging: Controlliamo se il groupId è effettivamente passato
+
         if (groupId != null) {
             System.out.println("DEBUG: groupId ricevuto -> " + groupId);
-    
             Group group = groupRepository.findById(groupId)
                     .orElseThrow(() -> new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste."));
-    
             cost.setGroup(group);
-            System.out.println("DEBUG: Gruppo assegnato -> " + group.getNome() + " (ID: " + group.getId() + ")");
         } else {
             System.out.println("DEBUG: Nessun gruppo assegnato, groupId è null");
         }
     
-        Cost savedCost = costRepository.save(cost);
-        System.out.println("DEBUG: Costo salvato con ID -> " + savedCost.getCostId() + ", Group: " + savedCost.getGroup());
-    
-        return savedCost;
+        return costRepository.save(cost);
     }
-    
-    
-    
-    
-    
+
     public List<Cost> getCostsByUsername(String username) {
         username = username.trim();
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
@@ -70,34 +59,33 @@ public class CostService {
     }
 
     // ✅ Metodo per ottenere i costi di un gruppo specifico
-    public List<Cost> getCostsByGroup(Long groupId) {
-        Group group = groupRepository.findById(groupId).orElse(null);
-        if (group == null) {
-            throw new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste.");
-        }
-        return costRepository.findByGroup(group);
+    public List<Cost> getCostsByGroup(Integer groupId) {
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste."));
+        return costRepository.findByGroupId(group.getId());  // 🔥 FIX QUI
     }
 
     public List<Cost> getAllCosts() {
         return costRepository.findAll();
     }
 
-    public Cost getCostById(Long id) {
+    public Cost getCostById(int id) {
         return costRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
-    public Cost updateCost(Long id, Cost updatedCost) {
+    public Cost updateCost(int id, Cost updatedCost) {
         Cost existingCost = getCostById(id);
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setTipologia(updatedCost.getTipologia());
         return costRepository.save(existingCost);
     }
 
-    public void deleteCost(Long id) {
+    public void deleteCost(int id) {
         if (!costRepository.existsById(id)) {
             throw new IllegalArgumentException("La spesa con ID " + id + " non esiste.");
         }
         costRepository.deleteById(id);
     }
 }
+

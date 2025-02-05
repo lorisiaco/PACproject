@@ -45,7 +45,7 @@ public class CostController {
     }
 
     @GetMapping("/group/{groupId}")
-    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
+    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable int groupId) {
         List<Cost> costs = costRepository.findByGroupId(groupId);
         return ResponseEntity.ok(costs);
     }
@@ -62,7 +62,7 @@ public class CostController {
     
         try {
             // Assicuriamoci di passare il corretto groupId a createCost
-            Long groupId = (cost.getGroup() != null) ? cost.getGroup().getId() : null;
+            int groupId = (cost.getGroup() != null) ? cost.getGroup().getId() : null;
     
             Cost newCost = costService.createCost(cost, groupId, username);
             return ResponseEntity.status(HttpStatus.CREATED).body(newCost);
@@ -74,7 +74,7 @@ public class CostController {
     
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getCostById(@PathVariable Long id) {
+    public ResponseEntity<?> getCostById(@PathVariable int id) {
         try {
             Cost cost = costService.getCostById(id);
             return ResponseEntity.ok(cost);
@@ -84,7 +84,7 @@ public class CostController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCost(@PathVariable Long id, @RequestBody Cost updatedCost) {
+    public ResponseEntity<?> updateCost(@PathVariable int id, @RequestBody Cost updatedCost) {
         try {
             Cost cost = costService.updateCost(id, updatedCost);
             return ResponseEntity.ok(cost);
@@ -94,7 +94,7 @@ public class CostController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCost(@PathVariable Long id) {
+    public ResponseEntity<?> deleteCost(@PathVariable int id) {
         try {
             costService.deleteCost(id);
             return ResponseEntity.ok("Cost deleted successfully.");

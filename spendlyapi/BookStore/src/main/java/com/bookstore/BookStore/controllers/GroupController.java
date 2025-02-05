@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookstore.BookStore.models.Cost;
 import com.bookstore.BookStore.models.AppUser;
+import com.bookstore.BookStore.models.Cost;
 import com.bookstore.BookStore.models.Group;
 import com.bookstore.BookStore.services.CostService;
 import com.bookstore.BookStore.services.GroupService;
@@ -74,7 +74,7 @@ public class GroupController {
      * @return
      */
     @DeleteMapping("/{groupId}")
-    public ResponseEntity<String> eliminaGruppo(@PathVariable Long groupId, @RequestParam String username) {
+    public ResponseEntity<String> eliminaGruppo(@PathVariable int groupId, @RequestParam String username) {
         try {
             Group group = groupService.getGroupById(groupId);
         if (group == null) {
@@ -103,7 +103,7 @@ public class GroupController {
      */
     @PostMapping("/{groupId}/members")
     @Transactional
-    public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId, @RequestParam String adminUsername,
+    public ResponseEntity<String> addMemberToGroup(@PathVariable int groupId, @RequestParam String adminUsername,
                                                    @RequestParam String memberUsername) {
         try{
             Group group = groupService.getGroupById(groupId);
@@ -138,7 +138,7 @@ public class GroupController {
      */
     @DeleteMapping("/{groupId}/members")
     @Transactional
-    public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId, @RequestParam String adminUsername,
+    public ResponseEntity<String> removeMemberFromGroup(@PathVariable int groupId, @RequestParam String adminUsername,
                                                         @RequestParam String memberUsername) {
         try {
             Group group = groupService.getGroupById(groupId);
@@ -171,7 +171,7 @@ public class GroupController {
      * @return
      */
     @GetMapping("/{groupId}")
-    public ResponseEntity<?> showGroup(@PathVariable Long groupId) {
+    public ResponseEntity<?> showGroup(@PathVariable int groupId) {
        try{
         Group group = groupService.getGroupById(groupId);
         return ResponseEntity.ok(group);
@@ -181,7 +181,7 @@ public class GroupController {
     }
 
     @GetMapping("/costs/{groupId}")
-    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
+    public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable int groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.bookstore.BookStore.models.AppUser;
 import com.bookstore.BookStore.models.Group;
 import com.bookstore.BookStore.repositories.AppUserRepository;
@@ -62,7 +61,7 @@ public class GroupService {
      * @param id
      * @return return the Group through the Id 
      */
-    public Group getGroupById(Long id) {
+    public Group getGroupById(int id) {
         return groupRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Gruppo non trovato con ID: " + id));
     }
@@ -71,7 +70,7 @@ public class GroupService {
      * Metohod for Deleting a Group
      * @param groupId
      */
-    public void eliminaGruppo(Long groupId){
+    public void eliminaGruppo(int groupId){
         if (!groupRepository.existsById(groupId)) {
             throw new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste.");
         }
@@ -84,7 +83,7 @@ public class GroupService {
      * @param mail
      * @return Return the Group with the User added
      */
-    public Group aggiungiMembro(Long groupId, String username){
+    public Group aggiungiMembro(int groupId, String username){
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByUsernameIgnoreCase(username);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
@@ -105,7 +104,7 @@ public class GroupService {
      * @param mail
      * @return return the Group with the User removed
      */
-    public Group rimuoviMembro(Long groupId, String username) {
+    public Group rimuoviMembro(int groupId, String username) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         AppUser utente = userRepository.findByUsernameIgnoreCase(username);
@@ -127,7 +126,7 @@ public class GroupService {
      * @return reutnr the members's list of the Group
      */
 
-    public List<AppUser> getMembri(Long groupId) {
+    public List<AppUser> getMembri(int groupId) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         return gruppo.getMembri();
