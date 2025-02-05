@@ -1,0 +1,38 @@
+[
+  {
+    "importo": 15.0,
+    "tipologia": "BISKOTTI",
+    "group": null,
+    "user": {
+      "id": 10,
+      "firstName": "Giorgio",
+      "lastName": "Bianchi",
+      "username": "giorgio_bianchi_85",
+      "email": "giorgio.bianchi85@example.com",
+      "phone": null,
+      "address": null,
+      "password": "$2a$10$XykR3R0mAxkUcYCBOVL/wefrcMebuUDhH0RONJcCuNnfk5Fj7y46",
+      "role": "client",
+      "createdAt": "2025-02-04T17:28:05.363+00:00"
+    },
+    "costId": 18
+  },
+  {
+    "importo": 2.0,
+    "tipologia": "KAFE",
+    "group": null,
+    "user": {
+      "id": 10,
+      "firstName": "Giorgio",
+      "lastName": "Bianchi",
+      "username": "giorgio_bianchi_85",
+      "email": "giorgio.bianchi85@example.com",
+      "phone": null,
+      "address": null,
+      "password": "$2a$10$XykR3R0mAxkUcYCBOVL/wefrcMebuUDhH0RONJcCuNnfk5Fj7y46",
+      "role": "client",
+      "createdAt": "2025-02-04T17:28:05.363+00:00"
+    },
+    "costId": 19
+  }
+]
