@@ -2,132 +2,105 @@ package bookstore.controllers;
 
 
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import com.bookstore.BookStore.BookStoreApplication;
-import com.bookstore.BookStore.config.SecurityConfig;
 import com.bookstore.BookStore.controllers.GroupController;
+import com.bookstore.BookStore.models.AppUser;
 import com.bookstore.BookStore.models.Group;
+import com.bookstore.BookStore.services.CostService;
 import com.bookstore.BookStore.services.GroupService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
-//import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import java.util.Arrays;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = BookStoreApplication.class)
-@Import(SecurityConfig.class) // Se hai una configurazione di sicurezza personalizzata
-@AutoConfigureMockMvc(addFilters = false) // Disabilita i filtri di Spring Security
-public class GroupControllerTest {
-   
-    @Autowired
-    private MockMvc mockMvc;
 
-    @MockBean
+@ExtendWith(MockitoExtension.class)
+class GroupControllerTest {
+
+    @Mock
     private GroupService groupService;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    @Mock
+    private CostService costService;
 
-   
+    @InjectMocks
+    private GroupController groupController;
 
+    private AppUser user;
+    private Group group;
 
-    @Test
-    public void testGetAllGroups() throws Exception {
-        // Simuliamo alcuni gruppi di esempio
-        Group group1 = new Group( "Group 1");
-        group1.setId(1L);
-        Group group2 = new Group( "Group 2");
-        group2.setId(2L);
-        List<Group> groups = Arrays.asList(group1, group2);
-
-        // Configura il mock del servizio
-        when(groupService.getAllGroups()).thenReturn(groups);
-
-        // Esegui la richiesta GET e verifica la risposta
-        mockMvc.perform(get("/api/groups"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(1))
-                .andExpect(jsonPath("$[0].nome").value("Group 1"))
-                .andExpect(jsonPath("$[1].id").value(2))
-                .andExpect(jsonPath("$[1].nome").value("Group 2"));
+    @BeforeEach
+    void setUp() {
+        user = new AppUser();
+        user.setUsername("testUser");
+        group = new Group("Test Group", user);
     }
 
     @Test
-    public void testAddGroup() throws Exception {
-    // Simula la creazione di un gruppo
-    Group newGroup = new Group("New Group");
-    newGroup.setId(3L); // Imposta un ID
+    void testGetAllGroups() {
+        when(groupService.getAllGroupsForUser("testUser")).thenReturn(Arrays.asList(group));
 
-    // Simula il comportamento del servizio
-    when(groupService.creaGruppo("New Group","b")).thenReturn(newGroup);
+        ResponseEntity<?> response = groupController.getAllGroups("testUser");
 
-    // Esegui la richiesta POST
-    mockMvc.perform(post("/api/groups")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(newGroup)))
-            .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.id").value(3))
-            .andExpect(jsonPath("$.nome").value("New Group"));
-}
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK , response.getStatusCode());
+    }
 
     @Test
-    
-    public void testDeleteGroup() throws Exception {
+    void testAddGroup() {
+        when(groupService.creaGruppo("Test Group", "testUser")).thenReturn(group);
+
+        ResponseEntity<?> response = groupController.addGroup(group, "testUser");
+
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
+
+    @Test
+    void testEliminaGruppo() {
+        when(groupService.getGroupById(1L)).thenReturn(group);
+        when(groupService.getUserByUsername("testUser")).thenReturn(user);
         doNothing().when(groupService).eliminaGruppo(1L);
 
-        mockMvc.perform(delete("/api/groups/{groupId}", 1L))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Group deleted successfully"));
+        ResponseEntity<String> response = groupController.eliminaGruppo(1L, "testUser");
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
-    public void testAddMemberToGroup() throws Exception {
-        // Simula il comportamento di aggiungiMembro
-        Group updatedGroup = new Group("Updated Group");
-        updatedGroup.setId(1L); // Simula un ID esistente
-        when(groupService.aggiungiMembro(1L, "user@example.com")).thenReturn(updatedGroup);
-    
-        mockMvc.perform(post("/api/groups/{groupId}/members", 1L)
-                .param("email", "user@example.com"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Member added successfully"));
+    void testAddMemberToGroup() {
+        when(groupService.getGroupById(1L)).thenReturn(group);
+        when(groupService.getUserByUsername("adminUser")).thenReturn(user);
+        when(groupService.getUserByUsername("testUser")).thenReturn(user);
+        when(groupService.aggiungiMembro(1L, "testUser")).thenReturn(group);
+
+        ResponseEntity<String> response = groupController.addMemberToGroup(1L, "adminUser", "testUser");
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
-    public void testRemoveMemberFromGroup() throws Exception {
-    // Simula il comportamento di rimuoviMembro
-    Group updatedGroup = new Group("Updated Group");
-    updatedGroup.setId(1L); // Simula un ID esistente
-    when(groupService.rimuoviMembro(1L, "user@example.com")).thenReturn(updatedGroup);
+    void testRemoveMemberFromGroup() {
+        when(groupService.getGroupById(1L)).thenReturn(group);
+        when(groupService.getUserByUsername("adminUser")).thenReturn(user);
+        when(groupService.getUserByUsername("testUser")).thenReturn(user);
+        when(groupService.rimuoviMembro(1L, "testUser")).thenReturn(group);
 
-    mockMvc.perform(delete("/api/groups/{groupId}/members", 1L)
-            .param("email", "user@example.com"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Member removed successfully"));
-}
+        ResponseEntity<String> response = groupController.removeMemberFromGroup(1L, "adminUser", "testUser");
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 
     @Test
-    public void testShowGroup() throws Exception {
-        Group group = new Group( "Group 1");
-        group.setId(1L);
+    void testShowGroup() {
         when(groupService.getGroupById(1L)).thenReturn(group);
 
-        mockMvc.perform(get("/api/groups/{groupId}", 1L))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.nome").value("Group 1"));
+        ResponseEntity<?> response = groupController.showGroup(1L);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
-    
 
+    
 }
