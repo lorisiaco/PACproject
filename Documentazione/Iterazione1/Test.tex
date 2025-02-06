@@ -67,33 +67,33 @@ Questa sezione documenta le API principali del sistema \textbf{Spendly}, include
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{name} (string) - Nome del gruppo.
-        \item \texttt{description} (string, opzionale) - Descrizione del gruppo.
-        \item \texttt{user\_id} (integer) - ID dell'utente che crea il gruppo.
+        \item \texttt{username} (string) - Username dell'utente che crea il gruppo.
     \end{itemize}
     \item \textbf{Risultato:}
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/registerapi.png}
+    \includegraphics[width=0.8\textwidth]{images/CreateGroupAPI.png}
     \caption{Risultato API Creazione Gruppo}
     \label{fig:api_create_group}
 \end{figure}
 
-\paragraph{Eliminazione di un Gruppo}
+\paragraph{Inserimento di un utente in un gruppo}
 \begin{itemize}
-    \item \textbf{Endpoint:} \texttt{DELETE /api/groups/}
-    \item \textbf{Descrizione:} Permette di eliminare un gruppo esistente.
+    \item \textbf{Endpoint:} \texttt{POST /api/groups/{group\_id}/members}
+    \item \textbf{Descrizione:} Permette all'amministratore di inserire un utente in un gruppo.
     \item \textbf{Parametri:}
     \begin{itemize}
-        \item \texttt{group\_id} (integer) - ID del gruppo da eliminare.
+        \item \texttt{adminUsername} (string) - Username dell'admin del gruppo.
+        \item \texttt{memberUsername} (string) - Username dell'utente da inserire.
     \end{itemize}
     \item \textbf{Risultato:}
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/registerapi.png}
-    \caption{Risultato API Eliminazione Gruppo}
-    \label{fig:api_delete_group}
+    \includegraphics[width=0.8\textwidth]{images/AddMemberAPI.png}
+    \caption{Risultato API Inserimento utente}
+    \label{fig:api_add_member}
 \end{figure}
 
 \paragraph{Visualizzazione dei Gruppi}
@@ -102,13 +102,13 @@ Questa sezione documenta le API principali del sistema \textbf{Spendly}, include
     \item \textbf{Descrizione:} Restituisce la lista di tutti i gruppi a cui l'utente appartiene.
     \item \textbf{Parametri:}
     \begin{itemize}
-        \item \texttt{user\_id} (integer) - ID dell'utente.
+        \item \texttt{username} (string) - Username dell'utente.
     \end{itemize}
     \item \textbf{Risultato:}
 \end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/registerapi.png}
+    \includegraphics[width=0.8\textwidth]{images/GetAPI.png}
     \caption{Risultato API Visualizzazione Gruppi}
     \label{fig:api_view_groups}
 \end{figure}

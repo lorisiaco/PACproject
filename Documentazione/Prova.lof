@@ -5,5 +5,9 @@
 \contentsline {figure}{\numberline {3}{\ignorespaces Risultato API Registrazione}}{27}{}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Risultato API Login}}{28}{}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Risultato API Creazione Gruppo}}{29}{}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Risultato API Eliminazione Gruppo}}{30}{}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Risultato API Inserimento utente}}{30}{}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Risultato API Visualizzazione Gruppi}}{31}{}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Risultato API Aggiunta Costo}}{33}{}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Risultato API Eliminazione Costo}}{33}{}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Risultato API Visualizzazione Costi Utente}}{34}{}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Risultato API Visualizzazione Costi Gruppo}}{35}{}%
