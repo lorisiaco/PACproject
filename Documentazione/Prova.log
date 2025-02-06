@@ -1,108 +1,108 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.14)  6 FEB 2025 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.29)  6 FEB 2025 11:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/loris/OneDrive/Desktop/PACproject/Documentazione/Prova.tex
-(c:/Users/loris/OneDrive/Desktop/PACproject/Documentazione/Prova.tex
+**c:/Users/diego/Desktop/PROGETTO/PACproject/Documentazione/Prova.tex
+(c:/Users/diego/Desktop/PROGETTO/PACproject/Documentazione/Prova.tex
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
-(C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2024-01-04>
+(C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+(C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
 File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count188
-\c@section=\count189
-\c@subsection=\count190
-\c@subsubsection=\count191
-\c@paragraph=\count192
-\c@subparagraph=\count193
-\c@figure=\count194
-\c@table=\count195
+\c@part=\count187
+\c@section=\count188
+\c@subsection=\count189
+\c@subsubsection=\count190
+\c@paragraph=\count191
+\c@subparagraph=\count192
+\c@figure=\count193
+\c@table=\count194
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count196
+\c@float@type=\count195
 \float@exts=\toks17
 \float@box=\box51
 \@float@everytoks=\toks18
 \@floatcapt=\box52
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks19
 \inpenc@posthook=\toks20
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2024/02/07 v24.2 The Babel package
-\babel@savecnt=\count197
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count196
 \U@D=\dimen141
 \l@unhyphenated=\language79
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count198
+\bbl@dirlevel=\count197
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
-Language: italian 2024/01/03 v.1.5.00 Italian support for the babel system
-\it@lettering=\count199
-\it@doublequoteactive=\count266
-\it@ISOcompliance=\count267
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
+Language: italian 2024/10/10 v.1.5.01 Italian support for the babel system
+\it@lettering=\count198
+\it@doublequoteactive=\count199
+\it@ISOcompliance=\count266
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex
 Package babel Info: Importing font and identification data for italian
 (babel)             from babel-it.ini. Reported on input line 11.
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count268
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+\etb@tempcnta=\count267
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen142
 \Gin@req@width=\dimen143
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/background\background.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/background\background.sty
 Package: background 2014/03/04 v2.1 background material
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks22
 \XKV@tempa@toks=\toks23
 )
-\XKV@depth=\count269
+\XKV@depth=\count268
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
 \pgfutil@everybye=\toks24
 \pgfutil@tempdima=\dimen144
 \pgfutil@tempdimb=\dimen145
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
 \pgfutil@abb=\box53
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks25
 \pgfkeys@temptoks=\toks26
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks27
 ))
 \pgf@x=\dimen146
@@ -117,35 +117,35 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen155
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count270
-\c@pgf@countb=\count271
-\c@pgf@countc=\count272
-\c@pgf@countd=\count273
+\c@pgf@counta=\count269
+\c@pgf@countb=\count270
+\c@pgf@countc=\count271
+\c@pgf@countd=\count272
 \t@pgf@toka=\toks28
 \t@pgf@tokb=\toks29
 \t@pgf@tokc=\toks30
-\pgf@sys@id@count=\count274
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+\pgf@sys@id@count=\count273
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+))) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count275
-\pgfsyssoftpath@bigbuffer@items=\count276
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+\pgfsyssoftpath@smallbuffer@items=\count274
+\pgfsyssoftpath@bigbuffer@items=\count275
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
 Package xcolor Info: Model `RGB' extended on input line 1366.
@@ -155,18 +155,18 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen156
-\pgfmath@count=\count277
+\pgfmath@count=\count276
 \pgfmath@box=\box54
 \pgfmath@toks=\toks31
 \pgfmath@stack@operand=\toks32
 \pgfmath@stack@operation=\toks33
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count278
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count277
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen157
 \pgf@picmaxx=\dimen158
@@ -182,77 +182,77 @@ File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yy=\dimen168
 \pgf@zx=\dimen169
 \pgf@zy=\dimen170
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@path@lastx=\dimen171
 \pgf@path@lasty=\dimen172
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@end@additional=\dimen173
 \pgf@shorten@start@additional=\dimen174
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box55
 \pgf@hbox=\box56
 \pgf@layerbox@main=\box57
-\pgf@picture@serial@count=\count279
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+\pgf@picture@serial@count=\count278
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen175
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@pt@x=\dimen176
 \pgf@pt@y=\dimen177
 \pgf@pt@temp=\dimen178
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowsep=\dimen179
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen180
-\pgf@sys@shading@range@num=\count280
-\pgf@shadingcount=\count281
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+\pgf@sys@shading@range@num=\count279
+\pgf@shadingcount=\count280
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfexternal@startupbox=\box58
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+))) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box59
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen181
 \pgf@nodesepend=\dimen182
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen183
 \pgffor@skip=\dimen184
 \pgffor@stack=\toks34
 \pgffor@toks=\toks35
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count282
+\pgf@plot@mark@count=\count281
 \pgfplotmarksize=\dimen185
 )
 \tikz@lastx=\dimen186
@@ -267,20 +267,20 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@figbox@bg=\box61
 \tikz@tempbox=\box62
 \tikz@tempbox@bg=\box63
-\tikztreelevel=\count283
-\tikznumberofchildren=\count284
-\tikznumberofcurrentchild=\count285
-\tikz@fig@count=\count286
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+\tikztreelevel=\count282
+\tikznumberofchildren=\count283
+\tikznumberofcurrentchild=\count284
+\tikz@fig@count=\count285
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count287
-\pgfmatrixcurrentcolumn=\count288
-\pgf@matrix@numberofcolumns=\count289
+\pgfmatrixcurrentrow=\count286
+\pgfmatrixcurrentcolumn=\count287
+\pgf@matrix@numberofcolumns=\count288
 )
-\tikz@expandcount=\count290
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+\tikz@expandcount=\count289
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/everypage\everypage.sty
+))) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/everypage\everypage.sty
 Package: everypage 2020/10/17 R2.0b Hooks to run on every page
 
 
@@ -298,14 +298,14 @@ Package everypage Warning: You appear to be running a version of LaTeX
 (everypage)                If truly needed, Use `everypage-1x` to force the
 (everypage)                loading of an older code base.
 
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
 \AP@output=\toks36
 \AP@partial=\box64
 \AP@footins=\box65
-)) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count291
+)) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count290
 \l__pdf_internal_box=\box66
 ) (Prova.aux)
 \openout1 = `Prova.aux'.
@@ -335,23 +335,23 @@ italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting
 italian.ldf    on input line 26.
 
-(C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+(C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count292
+\scratchcounter=\count291
 \scratchdimen=\dimen194
 \scratchbox=\box67
-\nofMPsegments=\count293
-\nofMParguments=\count294
+\nofMPsegments=\count292
+\nofMParguments=\count293
 \everyMPshowfont=\toks37
-\MPscratchCnt=\count295
+\MPscratchCnt=\count294
 \MPscratchDim=\dimen195
-\MPnumerator=\count296
-\makeMPintoPDFobject=\count297
+\MPnumerator=\count295
+\makeMPintoPDFobject=\count296
 \everyMPtoPDFconversion=\toks38
-) (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+) (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\loris\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+ (C:\Users\diego\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 <images/Marchio.jpg, id=4, 375.3222pt x 325.215pt>
@@ -366,7 +366,7 @@ Package pdftex.def Info: images/sfondolatex.png  used on input line 50.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [1
 
-{C:/Users/loris/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images/sfondolatex.png> <./images/Marchio.jpg>] (Prova.toc
+{C:/Users/diego/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./images/sfondolatex.png> <./images/Marchio.jpg>] (Prova.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -634,66 +634,96 @@ File: images/sfondolatex.png Graphic file (type png)
 Package pdftex.def Info: images/sfondolatex.png  used on input line 91.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [24 <./images/TipoDatiClassDiagramV1.1.png>] (Iterazione1/Test.tex
+<images/CodeMR_graph1.png, id=100, 928.6695pt x 385.44pt>
+File: images/CodeMR_graph1.png Graphic file (type png)
+<use images/CodeMR_graph1.png>
+Package pdftex.def Info: images/CodeMR_graph1.png  used on input line 8.
+(pdftex.def)             Requested size: 350.99762pt x 145.68062pt.
+<images/CodeMR_graph2.png, id=101, 476.982pt x 449.88075pt>
+File: images/CodeMR_graph2.png Graphic file (type png)
+<use images/CodeMR_graph2.png>
+Package pdftex.def Info: images/CodeMR_graph2.png  used on input line 15.
+(pdftex.def)             Requested size: 234.00238pt x 220.71121pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 17.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 25.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [25]
-<images/registerapi.png, id=103, 600.44325pt x 460.119pt>
+ [25 <./images/CodeMR_graph1.png> <./images/CodeMR_graph2.png>]
+<images/TestGroup.png, id=107, 363.15675pt x 106.59825pt>
+File: images/TestGroup.png Graphic file (type png)
+<use images/TestGroup.png>
+Package pdftex.def Info: images/TestGroup.png  used on input line 28.
+(pdftex.def)             Requested size: 350.99762pt x 103.03745pt.
+<images/TestGroupService.png, id=108, 681.747pt x 145.14224pt>
+File: images/TestGroupService.png Graphic file (type png)
+<use images/TestGroupService.png>
+Package pdftex.def Info: images/TestGroupService.png  used on input line 35.
+(pdftex.def)             Requested size: 350.99762pt x 74.72804pt.
+<images/TestGroupController.png, id=109, 688.37175pt x 93.951pt>
+File: images/TestGroupController.png Graphic file (type png)
+<use images/TestGroupController.png>
+Package pdftex.def Info: images/TestGroupController.png  used on input line 42.
+(pdftex.def)             Requested size: 350.99762pt x 47.90578pt.
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 52.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [26 <./images/TestGroup.png> <./images/TestGroupService.png> <./images/TestGroupController.png>]
+<images/registerapi.png, id=116, 600.44325pt x 460.119pt>
 File: images/registerapi.png Graphic file (type png)
 <use images/registerapi.png>
-Package pdftex.def Info: images/registerapi.png  used on input line 40.
+Package pdftex.def Info: images/registerapi.png  used on input line 70.
 (pdftex.def)             Requested size: 350.99762pt x 268.96843pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 44.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 74.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [26]
-<images/loginapi.png, id=108, 667.293pt x 460.119pt>
+ [27]
+<images/loginapi.png, id=121, 667.293pt x 460.119pt>
 File: images/loginapi.png Graphic file (type png)
 <use images/loginapi.png>
-Package pdftex.def Info: images/loginapi.png  used on input line 58.
+Package pdftex.def Info: images/loginapi.png  used on input line 88.
 (pdftex.def)             Requested size: 350.99762pt x 242.02245pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 62.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 92.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [27 <./images/registerapi.png>]
-<images/CreateGroupAPI.png, id=113, 504.08325pt x 486.01575pt>
+ [28 <./images/registerapi.png>]
+<images/CreateGroupAPI.png, id=126, 504.08325pt x 486.01575pt>
 File: images/CreateGroupAPI.png Graphic file (type png)
 <use images/CreateGroupAPI.png>
-Package pdftex.def Info: images/CreateGroupAPI.png  used on input line 76.
+Package pdftex.def Info: images/CreateGroupAPI.png  used on input line 106.
 (pdftex.def)             Requested size: 312.00119pt x 300.82977pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 80.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 110.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [28 <./images/loginapi.png>]
-<images/AddMemberAPI.png, id=118, 537.207pt x 317.38576pt>
+ [29 <./images/loginapi.png>]
+<images/AddMemberAPI.png, id=131, 537.207pt x 317.38576pt>
 File: images/AddMemberAPI.png Graphic file (type png)
 <use images/AddMemberAPI.png>
-Package pdftex.def Info: images/AddMemberAPI.png  used on input line 94.
+Package pdftex.def Info: images/AddMemberAPI.png  used on input line 124.
 (pdftex.def)             Requested size: 312.00119pt x 184.3357pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 98.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 128.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [29 <./images/CreateGroupAPI.png>]
-<images/GetAPI.png, id=123, 531.1845pt x 486.618pt>
+ [30 <./images/CreateGroupAPI.png>]
+<images/GetAPI.png, id=137, 531.1845pt x 486.618pt>
 File: images/GetAPI.png Graphic file (type png)
 <use images/GetAPI.png>
-Package pdftex.def Info: images/GetAPI.png  used on input line 111.
+Package pdftex.def Info: images/GetAPI.png  used on input line 141.
 (pdftex.def)             Requested size: 312.00119pt x 285.83241pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 115.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 145.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [30 <./images/AddMemberAPI.png>])
+ [31 <./images/AddMemberAPI.png>])
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 97.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [31 <./images/GetAPI.png>] (Iterazione2/CasiUsoImpl.tex
+ [32 <./images/GetAPI.png>] (Iterazione2/CasiUsoImpl.tex
 Underfull \hbox (badness 10000) in paragraph at lines 24--31
 
  []
@@ -717,7 +747,7 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 46.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[32]
+[33]
 Underfull \hbox (badness 10000) in paragraph at lines 53--60
 
  []
@@ -741,7 +771,7 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 79.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[33]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 82--89
 
  []
@@ -775,7 +805,7 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 119.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[34]
+[35]
 Underfull \hbox (badness 10000) in paragraph at lines 125--132
 
  []
@@ -790,12 +820,12 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 100.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [35] (Iterazione2/Test2.tex
+ [36] (Iterazione2/Test2.tex
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 17.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [36]
+ [37]
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 25.
 LaTeX Font Info:    No file OMScmtt.fd. on input line 25.
 
@@ -808,13 +838,13 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 34.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
-[37]
-<images/createCost.jpeg, id=153, 1606.0pt x 959.585pt>
+[38]
+<images/createCost.jpeg, id=166, 1606.0pt x 959.585pt>
 File: images/createCost.jpeg Graphic file (type jpg)
 <use images/createCost.jpeg>
 Package pdftex.def Info: images/createCost.jpeg  used on input line 37.
 (pdftex.def)             Requested size: 350.99762pt x 209.71835pt.
-<images/deleteCost.jpeg, id=154, 1606.0pt x 375.4025pt>
+<images/deleteCost.jpeg, id=167, 1606.0pt x 375.4025pt>
 File: images/deleteCost.jpeg Graphic file (type jpg)
 <use images/deleteCost.jpeg>
 Package pdftex.def Info: images/deleteCost.jpeg  used on input line 55.
@@ -823,13 +853,13 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 64.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [38 <./images/createCost.jpeg> <./images/deleteCost.jpeg>]
-<images/getUserCosts.jpeg, id=158, 1606.0pt x 1143.27126pt>
+ [39 <./images/createCost.jpeg> <./images/deleteCost.jpeg>]
+<images/getUserCosts.jpeg, id=171, 1606.0pt x 1143.27126pt>
 File: images/getUserCosts.jpeg Graphic file (type jpg)
 <use images/getUserCosts.jpeg>
 Package pdftex.def Info: images/getUserCosts.jpeg  used on input line 69.
 (pdftex.def)             Requested size: 350.99762pt x 249.86319pt.
-<images/getGroupCosts.jpeg, id=159, 1606.0pt x 624.3325pt>
+<images/getGroupCosts.jpeg, id=172, 1606.0pt x 624.3325pt>
 File: images/getGroupCosts.jpeg Graphic file (type jpg)
 <use images/getGroupCosts.jpeg>
 Package pdftex.def Info: images/getGroupCosts.jpeg  used on input line 83.
@@ -843,15 +873,15 @@ File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 103.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [39 <./images/getUserCosts.jpeg>]
+ [40 <./images/getUserCosts.jpeg>]
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 103.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [40 <./images/getGroupCosts.jpeg>] (Prova.aux)
+ [41 <./images/getGroupCosts.jpeg>] (Prova.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
+L3 programming layer <2024-01-04>
  ***********
 
 
@@ -859,17 +889,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 14032 strings out of 474436
- 292573 string characters out of 5741954
- 1939190 words of memory out of 5000000
+ 14082 strings out of 474486
+ 294013 string characters out of 5743755
+ 1937542 words of memory out of 5000000
  36086 multiletter control sequences out of 15000+600000
  563435 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,575b,874s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\loris\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Prova.pdf (41 pages, 1670391 bytes).
+ <C:\Users\diego\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Prova.pdf (42 pages, 2124106 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 207 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
