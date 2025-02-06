@@ -25,13 +25,16 @@ public class GroupService {
      * @param nome
      * @return Return the new Group created
      */
-    public Group creaGruppo(String nome,String username){
+    public Group creaGruppo(String nome, String username){
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
-    
         if (user == null) {
             throw new IllegalArgumentException("L'utente con Username " + username + " non esiste.");
         }
-        Group gruppo=new Group(nome,user);
+    
+        Group gruppo = new Group(nome, user);
+        // Oltre a impostare l'admin, aggiungiamo user ai membri
+        gruppo.AggiungiMembro(user);
+    
         return groupRepository.save(gruppo);
     }
 
