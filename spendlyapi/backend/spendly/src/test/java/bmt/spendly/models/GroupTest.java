@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import bmt.spendly.models.AppUser;
-import bmt.spendly.models.Group;
+
 
 public class GroupTest {
     private Group group;
