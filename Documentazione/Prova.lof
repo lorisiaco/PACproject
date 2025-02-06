@@ -3,10 +3,10 @@
 \contentsline {figure}{\numberline {1}{\ignorespaces Diagramma casi d'uso }}{7}{}%
 \contentsline {figure}{\numberline {2}{\ignorespaces M-V-C Pattern }}{9}{}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Metriche del progetto}}{26}{}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Struttura dei package}}{26}{}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Struttura dei package}}{27}{}%
 \contentsline {figure}{\numberline {5}{\ignorespaces Test per la classe Group}}{27}{}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Test per la classe GroupService}}{27}{}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Test per la classe GroupController}}{27}{}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Test per la classe GroupService}}{28}{}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Test per la classe GroupController}}{28}{}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Risultato API Registrazione}}{29}{}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Risultato API Login}}{30}{}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Risultato API Creazione Gruppo}}{31}{}%
