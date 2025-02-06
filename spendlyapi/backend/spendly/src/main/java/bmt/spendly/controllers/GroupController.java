@@ -8,14 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
@@ -25,7 +18,6 @@ import bmt.spendly.services.GroupService;
 
 @RestController
 @RequestMapping("/api/groups")  // Modificato per seguire best practice REST
-
 public class GroupController {
     
     private static final Logger logger = LoggerFactory.getLogger(GroupController.class);
@@ -36,10 +28,9 @@ public class GroupController {
     @Autowired
     private CostService costService;
 
-    /**
-     * Return all the groups in the DB
-     * @return
-     */
+    // ===========================
+    // 1) Recupera i gruppi di un utente
+    // ===========================
     @GetMapping
     public ResponseEntity<?> getAllGroups(@RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -49,96 +40,96 @@ public class GroupController {
         return ResponseEntity.ok(groups);
     }
 
-    /**
-     * Create a new Group in the DB
-     * @param group
-     * @return
-     */
+    // ===========================
+    // 2) Crea un nuovo gruppo
+    // ===========================
     @PostMapping
     public ResponseEntity<?> addGroup(@RequestBody Group group, @RequestParam String username) {
         if (username == null || username.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username is required.");
         }
-        try{
-        Group newGroup = groupService.creaGruppo(group.getNome(),username);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newGroup);
-        } catch(Exception e){
-            logger.error("Error creating Group: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating cost.");
+        try {
+            Group newGroup = groupService.creaGruppo(group.getNome(), username);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newGroup);
+        } catch (Exception e) {
+            logger.error("Error creating Group: " + e.getMessage(), e);
+            // Se vuoi restituire il messaggio specifico dell'eccezione:
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Impossibile creare il gruppo: " + e.getMessage());
         }
     }
 
-    /**
-     * Delete a Group on the Id
-     * @param groupId
-     * @return
-     */
+    // ===========================
+    // 3) Elimina un gruppo
+    // ===========================
     @DeleteMapping("/{groupId}")
     public ResponseEntity<String> eliminaGruppo(@PathVariable Long groupId, @RequestParam String username) {
         try {
             Group group = groupService.getGroupById(groupId);
-        if (group == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
-        }
-        AppUser user = groupService.getUserByUsername(username);
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
-        }
-        if (group.getAdmin().getId() != user.getId()) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete this group.");
-        }
+            if (group == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
+            }
+            AppUser user = groupService.getUserByUsername(username);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            }
+            if (group.getAdmin().getId() != user.getId()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete this group.");
+            }
+
             groupService.eliminaGruppo(groupId);
             return ResponseEntity.ok("Group deleted successfully");
         } catch (Exception e) {
+            logger.error("Error deleting Group: " + e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Failed to delete the group");
+                                 .body("Failed to delete the group: " + e.getMessage());
         }
     }
 
-    /**
-     * Add a User to a Group on the Id and the email of the User
-     * @param groupId
-     * @param email
-     * @return
-     */
+    // ===========================
+    // 4) Aggiunge un membro a un gruppo
+    // ===========================
     @PostMapping("/{groupId}/members")
     @Transactional
-    public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId, @RequestParam String adminUsername,
+    public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId,
+                                                   @RequestParam String adminUsername,
                                                    @RequestParam String memberUsername) {
-        try{
+        try {
             Group group = groupService.getGroupById(groupId);
             if (group == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
             }
             AppUser admin = groupService.getUserByUsername(adminUsername);
-            AppUser utente=groupService.getUserByUsername(memberUsername);
+            AppUser utente = groupService.getUserByUsername(memberUsername);
             if (admin == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
             }
-            if (utente==null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            if (utente == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User to add not found");
             }
 
             if (group.getAdmin().getId() != admin.getId()) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete this group.");
-            }        
-                                                   
-        groupService.aggiungiMembro(groupId, memberUsername);
-        return ResponseEntity.ok("Member added successfully");
-        }catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add member.");
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                                     .body("Only the admin can add members to this group.");
+            }
+
+            groupService.aggiungiMembro(groupId, memberUsername);
+            return ResponseEntity.ok("Member added successfully");
+        } catch (Exception e) {
+            logger.error("Error adding member to Group: " + e.getMessage(), e);
+            // Ritorniamo direttamente l'eccezione, se vuoi
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to add member: " + e.getMessage());
         }
     }
 
-    /**
-     * Remove an user from a Group 
-     * @param groupId
-     * @param email
-     * @return
-     */
+    // ===========================
+    // 5) Rimuove un membro
+    // ===========================
     @DeleteMapping("/{groupId}/members")
     @Transactional
-    public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId, @RequestParam String adminUsername,
+    public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId,
+                                                        @RequestParam String adminUsername,
                                                         @RequestParam String memberUsername) {
         try {
             Group group = groupService.getGroupById(groupId);
@@ -146,48 +137,49 @@ public class GroupController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
             }
             AppUser admin = groupService.getUserByUsername(adminUsername);
-            AppUser utente=groupService.getUserByUsername(memberUsername);
+            AppUser utente = groupService.getUserByUsername(memberUsername);
             if (admin == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
             }
-            if (utente==null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            if (utente == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User to remove not found");
             }
 
             if (group.getAdmin().getId() != admin.getId()) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete this group.");
-            }   
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                                     .body("Only the admin can remove members from this group.");
+            }
+
             groupService.rimuoviMembro(groupId, memberUsername);
             return ResponseEntity.ok("Member removed successfully");
         } catch (Exception e) {
+            logger.error("Error removing member from Group: " + e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Failed to remove the member");
+                                 .body("Failed to remove the member: " + e.getMessage());
         }
     }
 
-    /**
-     * Get 
-     * @param groupId
-     * @return
-     */
+    // ===========================
+    // 6) Restituisce un gruppo singolo
+    // ===========================
     @GetMapping("/{groupId}")
     public ResponseEntity<?> showGroup(@PathVariable Long groupId) {
-       try{
-        Group group = groupService.getGroupById(groupId);
-        return ResponseEntity.ok(group);
-       }catch (Exception e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found.");
-       }
+        try {
+            Group group = groupService.getGroupById(groupId);
+            return ResponseEntity.ok(group);
+        } catch (Exception e) {
+            logger.error("Error retrieving Group: " + e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                 .body("Group not found: " + e.getMessage());
+        }
     }
 
+    // ===========================
+    // 7) Restituisce i Cost di un gruppo
+    // ===========================
     @GetMapping("/costs/{groupId}")
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }
-
-
-
-
-
 }

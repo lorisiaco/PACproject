@@ -3,6 +3,7 @@ package bmt.spendly.controllers;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -202,6 +203,18 @@ public class AccountController {
 				JwsHeader.with(MacAlgorithm.HS256).build(), claims);
 				
 		return encoder.encode(params).getTokenValue();
+	}
+
+	@GetMapping("/users")
+	public ResponseEntity<?> getAllUsers() {
+		// Recupera tutti gli utenti
+		List<AppUser> users = appUserRepository.findAll();
+		
+		// Se vuoi nascondere la password prima di restituirli, lo puoi fare qui
+		// ad esempio, impostandola a null
+		users.forEach(u -> u.setPassword(null));
+		
+		return ResponseEntity.ok(users);
 	}
 }
 

@@ -1,10 +1,12 @@
 package bmt.spendly.models;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,97 +16,88 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "Gruppi")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Group {
 
-     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // MODIFICATO da int a Long
+    private Long id;
+    
     private String nome;
 
-    @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "group_members",
         joinColumns = @JoinColumn(name = "group_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-
-    /**
-     * Members of the Group
-     */
-    private List<AppUser> membri=new ArrayList<AppUser>();
+    @JsonIgnoreProperties({"groups"}) 
+    // Se in AppUser hai una relazione inversa con Group (ad es. `private List<Group> groups;`),
+    // questa annotazione evita cicli di serializzazione
+    private List<AppUser> membri = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private AppUser admin;
 
-    //costruttori
+    // Costruttori
     public Group() {}
 
     public Group(String nome, AppUser admin) {
         this.nome = nome;
         this.admin = admin;
     }
+
     public Group(String nome) {
         this.nome = nome;
-        
     }
-    
 
-    public Long getId(){
+    // Getter & Setter
+    public Long getId() {
         return this.id;
     }
-
-    public void setId(Long id){
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
-    
-    public void setNome(String s){
-        this.nome=s;
+    public void setNome(String s) {
+        this.nome = s;
     }
 
-    public List<AppUser> getMembri(){  
+    public List<AppUser> getMembri() {
         return this.membri;
     }
 
-    public AppUser getAdmin(){
+    public AppUser getAdmin() {
         return this.admin;
     }
-
-    public void setAdmin(AppUser Admin){
-        this.admin=Admin;
+    public void setAdmin(AppUser admin) {
+        this.admin = admin;
     }
 
-
-    
-    public void AggiungiMembro(AppUser utente){
-        if(!membri.contains(utente)){
+    // Metodi di utilità
+    public void AggiungiMembro(AppUser utente) {
+        if (!membri.contains(utente)) {
             membri.add(utente);
         } else {
             throw new IllegalArgumentException("L'utente è già nel gruppo");
         }
     }
     
-
-    public void RimuoviMembro(AppUser utente){
-        if(membri.contains(utente)){
+    public void RimuoviMembro(AppUser utente) {
+        if (membri.contains(utente)) {
             membri.remove(utente);
         } else {
-            throw new IllegalArgumentException ("L'utente non è nel gruppo");
+            throw new IllegalArgumentException("L'utente non è nel gruppo");
         }
     }
 
-    public boolean ContieneMembro(AppUser utente){
+    public boolean ContieneMembro(AppUser utente) {
         return membri.contains(utente);
     }
-
-    
 }
