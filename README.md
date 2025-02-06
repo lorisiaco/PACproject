@@ -4,7 +4,7 @@
 Grazie a un'interfaccia intuitiva e a potenti strumenti di analisi, Spendly ti aiuta a monitorare le tue entrate e uscite, a dividere le spese con amici e a tenere sotto controllo il tuo budget. 🔥  
 
 <p align="center">
-  <img src="spendly/src/main/resources/static/images/logo.png" alt="Spendly Logo" />
+  <img src="spendlyapi\frontend\public\images\logo.png" alt="Spendly Logo" />
 </p>
 
 ---
