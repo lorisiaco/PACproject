@@ -1,19 +1,53 @@
 \subsection{Testing}
 \subsubsection{Analisi Statica - CodMR}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet arcu quis purus porttitor ullamcorper. Nullam eget tincidunt ligula. Nulla facilisi. Phasellus vehicula, quam ac auctor pharetra, augue justo gravida velit, at tristique urna ligula a felis. Vestibulum fermentum vehicula turpis, ut sagittis dolor pharetra in. Suspendisse potenti. Duis non felis eget erat volutpat consequat. Curabitur a enim nec eros fermentum interdum a vel dui. 
+L'analisi statica del codice è stata gestita tramite il tool CodeMR.
 
-Vivamus scelerisque varius massa, eget tristique risus pellentesque ac. Integer vitae dolor id quam suscipit scelerisque non in eros. Maecenas id felis eget ligula vestibulum condimentum. Ut in tellus eget metus suscipit gravida. In faucibus arcu eget libero laoreet, non eleifend tortor maximus. Aenean vitae purus et velit eleifend venenatis. Quisque nec metus a arcu tincidunt ultricies. Morbi sit amet felis auctor, consequat erat id, ultricies sapien. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CodeMR_graph1.png}
+    \caption{Metriche del progetto}
+    \label{fig:CodeMR_1}
+\end{figure}
 
-Curabitur tristique neque at mauris auctor, sit amet vehicula arcu tincidunt. Integer ac bibendum lectus. Phasellus eu orci at lorem scelerisque tempor sed vel leo. Nullam elementum vel tortor a tempus. Aliquam erat volutpat. Pellentesque in consectetur justo. Donec id leo neque. Duis scelerisque pharetr
+Dall'analisi dell'immagine si può notare che i livelli di coupling e complexity sono tendelzialmente bassi.
+Per quanto riguarda il coupling, solo le classi SecurityConfig e AccountController presentano dei valori medio-alti. 
+Invece, per la complessità l'unica classe con un valore elevato è la ResourceNotFoundException.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/CodeMR_graph2.png}
+    \caption{Struttura dei package}
+    \label{fig:CodeMR_2}
+\end{figure}
 
 
 \subsubsection{Analisi Dinamica - JUnit}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet arcu quis purus porttitor ullamcorper. Nullam eget tincidunt ligula. Nulla facilisi. Phasellus vehicula, quam ac auctor pharetra, augue justo gravida velit, at tristique urna ligula a felis. Vestibulum fermentum vehicula turpis, ut sagittis dolor pharetra in. Suspendisse potenti. Duis non felis eget erat volutpat consequat. Curabitur a enim nec eros fermentum interdum a vel dui. 
 
-Vivamus scelerisque varius massa, eget tristique risus pellentesque ac. Integer vitae dolor id quam suscipit scelerisque non in eros. Maecenas id felis eget ligula vestibulum condimentum. Ut in tellus eget metus suscipit gravida. In faucibus arcu eget libero laoreet, non eleifend tortor maximus. Aenean vitae purus et velit eleifend venenatis. Quisque nec metus a arcu tincidunt ultricies. Morbi sit amet felis auctor, consequat erat id, ultricies sapien. 
+L'analisi dinamica del codice è stata condotta utilizzando JUnit per l'esecuzione di test automatizzati sui metodi delle principali classi, e Postman per verificare il corretto funzionamento delle API implementate nei controller.
+In particolare, con JUnit sono stati sviluppati test specifici per validare i metodi delle classi relative alla gestione dei gruppi, quali Group, GroupService e GroupController.
 
-Curabitur tristique neque at mauris auctor, sit amet vehicula arcu tincidunt. Integer ac bibendum lectus. Phasellus eu orci at lorem scelerisque tempor sed vel leo. Nullam elementum vel tortor a tempus. Aliquam erat volutpat. Pellentesque in consectetur justo. Donec id leo neque. Duis scelerisque pharetr
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/TestGroup.png}
+    \caption{Test per la classe Group}
+    \label{fig:Group_test}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/TestGroupService.png}
+    \caption{Test per la classe GroupService}
+    \label{fig:GroupService_test}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/TestGroupController.png}
+    \caption{Test per la classe GroupController}
+    \label{fig:GroupController_test}
+\end{figure}
+
 
 \subsubsection{API Esposte}
 
@@ -113,73 +147,3 @@ Questa sezione documenta le API principali del sistema \textbf{Spendly}, include
     \label{fig:api_view_groups}
 \end{figure}
 
-\newpage
-\subsubsection{API Costi}
-
-Questa sezione documenta le API relative alla gestione dei **costi** nel sistema **Spendly**, inclusi la creazione, l'eliminazione e la visualizzazione dei costi di utenti e gruppi. Ogni test verrà mostrato con un'**immagine dei risultati**.
-
-\paragraph{Aggiunta di un Costo}  
-
-\begin{itemize}
-    \item \textbf{Endpoint:} \texttt{POST /api/costs?username=\{username\}}
-    \item \textbf{Descrizione:} Permette all'utente autenticato di aggiungere un nuovo costo, eventualmente associandolo a un gruppo.
-    \item \textbf{Parametri:}
-    \begin{itemize}
-        \item \texttt{importo} (double) - Importo della spesa.
-        \item \texttt{tipologia} (string) - Tipo di spesa.
-        \item \texttt{groupId} (integer, opzionale) - ID del gruppo a cui associare il costo.
-    \end{itemize}
-\end{itemize}
-\newpage
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/createCost.jpeg}
-    \caption{Risultato API Aggiunta Costo}
-    \label{fig:api_add_cost}
-\end{figure}
-
-\paragraph{Eliminazione di un Costo}  
-
-\begin{itemize}
-    \item \textbf{Endpoint:} \texttt{DELETE /api/costs/\{costId\}}
-    \item \textbf{Descrizione:} Permette all'utente autenticato di eliminare un costo precedentemente registrato.
-    \item \textbf{Parametri:}
-    \begin{itemize}
-        \item \texttt{\{costId\}} (integer) - ID del costo da eliminare.
-    \end{itemize}
-\end{itemize}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/deleteCost.jpeg}
-    \caption{Risultato API Eliminazione Costo}
-    \label{fig:api_delete_cost}
-\end{figure}
-
-\paragraph{Visualizzazione Costi Utente}  
-
-\begin{itemize}
-    \item \textbf{Endpoint:} \texttt{GET /api/costs?username=\{username\}}
-    \item \textbf{Descrizione:} Restituisce la lista di tutti i costi registrati dall'utente autenticato.
-\end{itemize}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/getUserCosts.jpeg}
-    \caption{Risultato API Visualizzazione Costi Utente}
-    \label{fig:api_view_user_costs}
-\end{figure}
-
-\paragraph{Visualizzazione Costi di un Gruppo}  
-
-\begin{itemize}
-    \item \textbf{Endpoint:} \texttt{GET /api/costs/group/\{groupId\}}
-    \item \textbf{Descrizione:} Restituisce la lista di tutti i costi associati a un gruppo, accessibile solo dai membri del gruppo.
-\end{itemize}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/getGroupCosts.jpeg}
-    \caption{Risultato API Visualizzazione Costi Gruppo}
-    \label{fig:api_view_group_costs}
-\end{figure}

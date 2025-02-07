@@ -2,12 +2,17 @@
 \babel@toc {italian}{}\relax 
 \contentsline {figure}{\numberline {1}{\ignorespaces Diagramma casi d'uso }}{7}{}%
 \contentsline {figure}{\numberline {2}{\ignorespaces M-V-C Pattern }}{9}{}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Risultato API Registrazione}}{27}{}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Risultato API Login}}{28}{}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Risultato API Creazione Gruppo}}{29}{}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Risultato API Inserimento utente}}{30}{}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Risultato API Visualizzazione Gruppi}}{31}{}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Risultato API Aggiunta Costo}}{33}{}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Risultato API Eliminazione Costo}}{33}{}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Risultato API Visualizzazione Costi Utente}}{34}{}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Risultato API Visualizzazione Costi Gruppo}}{35}{}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Metriche del progetto}}{26}{}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Struttura dei package}}{27}{}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Test per la classe Group}}{27}{}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Test per la classe GroupService}}{28}{}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Test per la classe GroupController}}{28}{}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Risultato API Registrazione}}{29}{}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Risultato API Login}}{30}{}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Risultato API Creazione Gruppo}}{31}{}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Risultato API Inserimento utente}}{32}{}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Risultato API Visualizzazione Gruppi}}{33}{}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Risultato API Aggiunta Costo}}{43}{}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Risultato API Eliminazione Costo}}{43}{}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Risultato API Visualizzazione Costi Utente}}{44}{}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Risultato API Visualizzazione Costi Gruppo}}{45}{}%

@@ -21,7 +21,7 @@ import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Group;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.GroupRepository;
-import bmt.spendly.services.GroupService;
+
 
 @ExtendWith(MockitoExtension.class)
 public class GroupServiceTest {

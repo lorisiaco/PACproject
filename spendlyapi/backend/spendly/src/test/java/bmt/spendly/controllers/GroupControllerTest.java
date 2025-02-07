@@ -2,7 +2,6 @@ package bmt.spendly.controllers;
 
 
 import static org.mockito.Mockito.*;
-import bmt.spendly.controllers.GroupController;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Group;
 import bmt.spendly.services.CostService;
