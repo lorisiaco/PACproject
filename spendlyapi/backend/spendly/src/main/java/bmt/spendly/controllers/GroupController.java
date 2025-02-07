@@ -17,7 +17,7 @@ import bmt.spendly.services.CostService;
 import bmt.spendly.services.GroupService;
 
 @RestController
-@RequestMapping("/api/groups")  // Modificato per seguire best practice REST
+@RequestMapping("/api/groups")  
 public class GroupController {
     
     private static final Logger logger = LoggerFactory.getLogger(GroupController.class);
@@ -28,9 +28,7 @@ public class GroupController {
     @Autowired
     private CostService costService;
 
-    // ===========================
-    // 1) Recupera i gruppi di un utente
-    // ===========================
+    
     @GetMapping
     public ResponseEntity<?> getAllGroups(@RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -40,9 +38,7 @@ public class GroupController {
         return ResponseEntity.ok(groups);
     }
 
-    // ===========================
-    // 2) Crea un nuovo gruppo
-    // ===========================
+    
     @PostMapping
     public ResponseEntity<?> addGroup(@RequestBody Group group, @RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -59,9 +55,7 @@ public class GroupController {
         }
     }
 
-    // ===========================
-    // 3) Elimina un gruppo
-    // ===========================
+    
     @DeleteMapping("/{groupId}")
     public ResponseEntity<String> eliminaGruppo(@PathVariable Long groupId, @RequestParam String username) {
         try {
@@ -86,9 +80,7 @@ public class GroupController {
         }
     }
 
-    // ===========================
-    // 4) Aggiunge un membro a un gruppo
-    // ===========================
+    
     @PostMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId,
@@ -123,9 +115,7 @@ public class GroupController {
         }
     }
 
-    // ===========================
-    // 5) Rimuove un membro
-    // ===========================
+    
     @DeleteMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId,
@@ -159,9 +149,7 @@ public class GroupController {
         }
     }
 
-    // ===========================
-    // 6) Restituisce un gruppo singolo
-    // ===========================
+    
     @GetMapping("/{groupId}")
     public ResponseEntity<?> showGroup(@PathVariable Long groupId) {
         try {
@@ -174,9 +162,7 @@ public class GroupController {
         }
     }
 
-    // ===========================
-    // 7) Restituisce i Cost di un gruppo
-    // ===========================
+    
     @GetMapping("/costs/{groupId}")
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
