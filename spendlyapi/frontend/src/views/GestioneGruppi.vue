@@ -390,4 +390,5 @@ function updateDashboard() {
   flex-direction: column;
   justify-content: center;
 }
+
 </style>
