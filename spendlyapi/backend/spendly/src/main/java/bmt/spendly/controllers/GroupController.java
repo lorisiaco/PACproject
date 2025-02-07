@@ -49,7 +49,7 @@ public class GroupController {
             return ResponseEntity.status(HttpStatus.CREATED).body(newGroup);
         } catch (Exception e) {
             logger.error("Error creating Group: " + e.getMessage(), e);
-            // Se vuoi restituire il messaggio specifico dell'eccezione:
+            
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                                  .body("Impossibile creare il gruppo: " + e.getMessage());
         }
@@ -109,7 +109,7 @@ public class GroupController {
             return ResponseEntity.ok("Member added successfully");
         } catch (Exception e) {
             logger.error("Error adding member to Group: " + e.getMessage(), e);
-            // Ritorniamo direttamente l'eccezione, se vuoi
+            
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                                  .body("Failed to add member: " + e.getMessage());
         }
