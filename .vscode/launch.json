@@ -30,6 +30,16 @@
             "projectName": "spendly",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpendlyApplication<BookStore>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "bmt.spendly.SpendlyApplication",
+            "projectName": "BookStore",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

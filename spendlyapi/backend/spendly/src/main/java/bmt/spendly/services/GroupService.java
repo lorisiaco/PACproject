@@ -1,12 +1,15 @@
 package bmt.spendly.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Group;
+import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.GroupRepository;
 
@@ -18,6 +21,9 @@ public class GroupService {
 
     @Autowired
     private AppUserRepository userRepository;
+
+    @Autowired
+    private AlertRepository alertRepository;
 
 
     /**
@@ -138,4 +144,29 @@ public class GroupService {
     public AppUser getUserByUsername(String username){
         return userRepository.findByUsernameIgnoreCase(username);
     }
+
+    public Alert creaAlert(String nome,double importo, Long groupId){
+        Group gruppo = groupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
+        Alert a=new Alert(nome,importo,gruppo);
+        gruppo.addAlert(a);
+       return alertRepository.save(a);
+    }
+
+    public void EliminaAlert(Long AlertId){
+        Alert alert = alertRepository.findById(AlertId)
+        .orElseThrow(() -> new RuntimeException("Alert non trovato"));
+        Group gruppo=alert.getGroup();
+        gruppo.removeAlert(alert);
+        alertRepository.delete(alert);
+    }
+
+    public List<Alert> getAlertsForGroup(Long groupId){
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
+
+        return group.getAlerts();
+    }
+
+
 }
