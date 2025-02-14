@@ -200,7 +200,7 @@ public class GroupController {
         }
     }
 
-    @DeleteMapping("/{groupId}/alerts/{AlertId}")
+    @DeleteMapping("/{groupId}/alerts/{alertId}")
     public ResponseEntity<String> DeleteAlert( @RequestParam String adminUsername, @PathVariable Long alertId, @PathVariable Long groupId) {
         try {
             Group group = groupService.getGroupById(groupId);

@@ -22,8 +22,7 @@ public class Alert {
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "Group_Id", nullable = false)
-    @JsonIgnore
+    @JoinColumn(name = "group_id")
     private Group group;
 
     public Alert(){}

@@ -12,6 +12,7 @@ import bmt.spendly.models.Group;
 import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.GroupRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class GroupService {
@@ -153,13 +154,20 @@ public class GroupService {
        return alertRepository.save(a);
     }
 
-    public void EliminaAlert(Long AlertId){
-        Alert alert = alertRepository.findById(AlertId)
-        .orElseThrow(() -> new RuntimeException("Alert non trovato"));
-        Group gruppo=alert.getGroup();
-        gruppo.removeAlert(alert);
-        alertRepository.delete(alert);
+    @Transactional
+    public void EliminaAlert(Long alertId) {
+        Alert alert = alertRepository.findById(alertId)
+            .orElseThrow(() -> new RuntimeException("Alert non trovato"));
+
+        Group gruppo = alert.getGroup();
+    
+        if (gruppo != null) {
+            gruppo.getAlerts().remove(alert); // Rimuove l'alert dalla lista
+            groupRepository.save(gruppo); // Salva la modifica nel database
     }
+
+    alertRepository.delete(alert); // Elimina l'alert dal database
+}
 
     public List<Alert> getAlertsForGroup(Long groupId){
         Group group = groupRepository.findById(groupId)
