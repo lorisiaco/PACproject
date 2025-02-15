@@ -135,10 +135,10 @@ const addExpense = async () => {
   }
 
   const payload = {
-    importo: newExpense.value.importo,
-    tipologia: newExpense.value.tipologia,
-    date: newExpense.value.date,
-    groupId: newExpense.value.groupId || null // Se l'utente non inserisce un ID gruppo, inviamo null
+  importo: newExpense.value.importo,
+  tipologia: newExpense.value.tipologia,
+  date: newExpense.value.date,
+  group: newExpense.value.groupId ? { id: parseInt(newExpense.value.groupId) } : null, // 👈 Qui annidiamo groupId dentro "group"
   };
 
   try {
