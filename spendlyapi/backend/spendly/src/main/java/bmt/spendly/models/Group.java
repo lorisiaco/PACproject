@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +43,10 @@ public class Group {
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private AppUser admin;
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true )
+    @JsonIgnoreProperties("group") // Evita cicli infiniti nella serializzazione JSON
+    private List<Alert> alerts = new ArrayList<>();
 
     // Costruttori
     public Group() {}
@@ -80,6 +86,10 @@ public class Group {
         this.admin = admin;
     }
 
+    public List<Alert> getAlerts(){
+        return this.alerts;
+    }
+
     // Metodi di utilità
     public void AggiungiMembro(AppUser utente) {
         if (!membri.contains(utente)) {
@@ -99,5 +109,13 @@ public class Group {
 
     public boolean ContieneMembro(AppUser utente) {
         return membri.contains(utente);
+    }
+
+    public void addAlert(Alert alert) {
+        this.alerts.add(alert);
+    }
+    
+    public void removeAlert(Alert alert) {
+        this.alerts.remove(alert);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
 import bmt.spendly.models.Group;
@@ -167,5 +168,59 @@ public class GroupController {
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
+    }
+
+    @GetMapping("/{groupId}/alerts")
+    public ResponseEntity<List<Alert>> getAlertsByGroup(@PathVariable Long groupId) {
+        List<Alert> alerts = groupService.getAlertsForGroup(groupId);
+        return ResponseEntity.ok(alerts);
+    }
+
+    @PostMapping("/{groupId}/alerts")
+    public ResponseEntity<?> addAlertToGroup(@PathVariable Long groupId, @RequestParam String adminUsername, @RequestBody Alert alertRequest) {
+        try {
+            Group group = groupService.getGroupById(groupId);
+            if (group == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
+            }
+            AppUser user = groupService.getUserByUsername(adminUsername);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            }
+            if (group.getAdmin().getId() != user.getId()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can create Alert");
+            }
+            Alert newAlert = groupService.creaAlert(alertRequest.getNome(), alertRequest.getLimite(),groupId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newAlert);
+        }
+        catch (Exception e) {
+            logger.error("Error creating an Alert: " + e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to create an Alert: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{groupId}/alerts/{alertId}")
+    public ResponseEntity<String> DeleteAlert( @RequestParam String adminUsername, @PathVariable Long alertId, @PathVariable Long groupId) {
+        try {
+            Group group = groupService.getGroupById(groupId);
+            if (group == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
+            }
+            AppUser user = groupService.getUserByUsername(adminUsername);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            }
+            if (group.getAdmin().getId() != user.getId()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete Alert");
+            }
+            groupService.EliminaAlert(alertId);
+            return ResponseEntity.ok("Alert deleted successfully");
+        }
+        catch (Exception e) {
+            logger.error("Error creating an Alert: " + e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to create an Alert: " + e.getMessage());
+        }
     }
 }

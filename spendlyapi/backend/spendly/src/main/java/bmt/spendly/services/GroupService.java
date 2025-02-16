@@ -2,13 +2,17 @@ package bmt.spendly.services;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Group;
+import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.GroupRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class GroupService {
@@ -18,6 +22,9 @@ public class GroupService {
 
     @Autowired
     private AppUserRepository userRepository;
+
+    @Autowired
+    private AlertRepository alertRepository;
 
 
     /**
@@ -138,4 +145,36 @@ public class GroupService {
     public AppUser getUserByUsername(String username){
         return userRepository.findByUsernameIgnoreCase(username);
     }
+
+    public Alert creaAlert(String nome,double importo, Long groupId){
+        Group gruppo = groupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
+        Alert a=new Alert(nome,importo,gruppo);
+        gruppo.addAlert(a);
+       return alertRepository.save(a);
+    }
+
+    @Transactional
+    public void EliminaAlert(Long alertId) {
+        Alert alert = alertRepository.findById(alertId)
+            .orElseThrow(() -> new RuntimeException("Alert non trovato"));
+
+        Group gruppo = alert.getGroup();
+    
+        if (gruppo != null) {
+            gruppo.getAlerts().remove(alert); // Rimuove l'alert dalla lista
+            groupRepository.save(gruppo); // Salva la modifica nel database
+    }
+
+    alertRepository.delete(alert); // Elimina l'alert dal database
+}
+
+    public List<Alert> getAlertsForGroup(Long groupId){
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
+
+        return group.getAlerts();
+    }
+
+
 }
