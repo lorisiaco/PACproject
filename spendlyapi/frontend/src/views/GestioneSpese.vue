@@ -42,7 +42,7 @@
         </tr>
         <tr v-for="expense in expenses" :key="expense.costId">
           <td>{{ formatDate(expense.date) }}</td>
-          <td>{{ expense.tipologia }}</td>
+          <td>{{ expense.tipologia.replace('_', ' ') }}</td>
           <td>€{{ expense.importo ? expense.importo.toFixed(2) : "0.00" }}</td>
           <td>{{ expense.group ? expense.group.id : 'N/A' }}</td>
           <td>
@@ -68,7 +68,12 @@
             <button type="button" class="btn-close" @click="showModal = false"></button>
           </div>
           <div class="modal-body">
-            <input v-model="newExpense.tipologia" type="text" class="form-control mb-2" placeholder="Descrizione" required />
+            <select v-model="newExpense.tipologia" class="form-control mb-2" required>
+              <option value="" disabled>Seleziona la tipologia</option>
+              <option v-for="type in expenseTypes" :key="type" :value="type">
+                {{ type.replace('_', ' ') }}
+              </option>
+            </select>
             <input v-model.number="newExpense.importo" type="number" class="form-control mb-2" placeholder="Importo (€)" required />
             <input v-model="newExpense.date" type="date" class="form-control mb-2" placeholder="Data" required />
             <input v-model="newExpense.groupId" type="number" class="form-control mb-2" placeholder="ID Gruppo (facoltativo)" />
@@ -91,6 +96,18 @@ const averageSpent = ref(0);
 const lastSpent = ref("N/D");
 const showModal = ref(false);
 const newExpense = ref({ tipologia: "", importo: null, date: "", groupId: null });
+
+const expenseTypes = [
+  "ABITAZIONE_AFFITTO", "ABITAZIONE_MUTUO", "ABITAZIONE_BOLLETTE", "ALIMENTARI", 
+  "TRASPORTI_CARBURANTE", "TRASPORTI_PUBBLICO", "TRASPORTI_MANUTENZIONE", "TRASPORTI_ASSICURAZIONE", 
+  "SALUTE_FARMACI", "SALUTE_VISITE", "SALUTE_ASSICURAZIONE", "ISTRUZIONE_TASSE", 
+  "ISTRUZIONE_MATERIALI", "ISTRUZIONE_CORSI", "ASSICURAZIONI_AUTO", "ASSICURAZIONI_CASA",
+  "ASSICURAZIONI_VITA", "TASSE_PROPRIETA", "SVAGO_CINEMA", "SVAGO_TEATRO", "SVAGO_CONCERTI",
+  "SVAGO_HOBBY", "VIAGGI_BIGLIETTI", "VIAGGI_HOTEL", "VIAGGI_ESCURSIONI", "RISTORANTI_PRANZI",
+  "RISTORANTI_CENE", "RISTORANTI_CAFFE", "SHOPPING_ABBIGLIAMENTO", "SHOPPING_ACCESSORI",
+  "SHOPPING_SCARPE", "SHOPPING_COSMETICI", "TECNOLOGIA_SMARTPHONE", "TECNOLOGIA_TABLET",
+  "TECNOLOGIA_COMPUTER", "TECNOLOGIA_ABBONAMENTI"
+];
 
 const fetchExpenses = async () => {
   const username = localStorage.getItem("username");

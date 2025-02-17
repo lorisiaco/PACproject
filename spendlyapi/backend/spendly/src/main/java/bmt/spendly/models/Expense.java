@@ -2,8 +2,7 @@ package bmt.spendly.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -38,10 +37,6 @@ public class Expense {
     @JoinColumn(name = "created_by", nullable = false)
     private AppUser createdBy;
     
-    // Tipo di spesa: ad esempio, GROUP per spese collettive o INDIVIDUAL per spese rivolte a un singolo utente.
-    @Enumerated(EnumType.STRING)
-    @Column(name = "expense_type", nullable = false)
-    private ExpenseType expenseType;
     
     // Se la spesa è individuale, qui viene indicato il beneficiario (facoltativo per spese di gruppo)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -58,7 +53,7 @@ public class Expense {
         this.amount = amount;
         this.group = group;
         this.createdBy = createdBy;
-        this.expenseType = expenseType;
+        
         this.beneficiary = beneficiary;
     }
 
@@ -103,13 +98,7 @@ public class Expense {
         this.createdBy = createdBy;
     }
 
-    public ExpenseType getExpenseType() {
-        return expenseType;
-    }
-
-    public void setExpenseType(ExpenseType expenseType) {
-        this.expenseType = expenseType;
-    }
+    
 
     public AppUser getBeneficiary() {
         return beneficiary;
@@ -120,45 +109,5 @@ public class Expense {
     }
 }
 
-enum ExpenseType {
-    // Spese Essenziali
-    ABITAZIONE_AFFITTO,
-    ABITAZIONE_MUTUO,
-    ABITAZIONE_BOLLETTE,
-    ALIMENTARI,
-    TRASPORTI_CARBURANTE,
-    TRASPORTI_PUBBLICO,
-    TRASPORTI_MANUTENZIONE,
-    TRASPORTI_ASSICURAZIONE,
-    SALUTE_FARMACI,
-    SALUTE_VISITE,
-    SALUTE_ASSICURAZIONE,
-    ISTRUZIONE_TASSE,
-    ISTRUZIONE_MATERIALI,
-    ISTRUZIONE_CORSI,
-    ASSICURAZIONI_AUTO,
-    ASSICURAZIONI_CASA,
-    ASSICURAZIONI_VITA,
-    TASSE_PROPRIETA,
-    
-    // Spese Discrezionali
-    SVAGO_CINEMA,
-    SVAGO_TEATRO,
-    SVAGO_CONCERTI,
-    SVAGO_HOBBY,
-    VIAGGI_BIGLIETTI,
-    VIAGGI_HOTEL,
-    VIAGGI_ESCURSIONI,
-    RISTORANTI_PRANZI,
-    RISTORANTI_CENE,
-    RISTORANTI_CAFFE,
-    SHOPPING_ABBIGLIAMENTO,
-    SHOPPING_ACCESSORI,
-    SHOPPING_SCARPE,
-    SHOPPING_COSMETICI,
-    TECNOLOGIA_SMARTPHONE,
-    TECNOLOGIA_TABLET,
-    TECNOLOGIA_COMPUTER,
-    TECNOLOGIA_ABBONAMENTI
-}
+
 
