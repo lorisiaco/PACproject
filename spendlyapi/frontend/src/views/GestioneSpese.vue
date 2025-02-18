@@ -1,6 +1,8 @@
 <template>
   <div class="container mt-5">
-    <h1 class="mb-4"><i class="fas fa-receipt"></i> Gestione Spese</h1>
+    <h1 class="mb-4">
+      <i class="fas fa-receipt"></i> Gestione Spese
+    </h1>
 
     <!-- Statistiche -->
     <div class="row">
@@ -29,24 +31,24 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Data</th>
-          <th>Descrizione</th>
+          <!-- Rimosso <th>Data</th> -->
+          <th>Tipologia</th>
           <th>Importo (€)</th>
           <th>Gruppo</th>
           <th>Azioni</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-if="expenses.length === 0">
-          <td colspan="5" class="text-center">Nessuna spesa registrata</td>
+        <tr v-if="costs.length === 0">
+          <td colspan="4" class="text-center">Nessuna spesa registrata</td>
         </tr>
-        <tr v-for="expense in expenses" :key="expense.costId">
-          <td>{{ formatDate(expense.date) }}</td>
-          <td>{{ expense.tipologia.replace('_', ' ') }}</td>
-          <td>€{{ expense.importo ? expense.importo.toFixed(2) : "0.00" }}</td>
-          <td>{{ expense.group ? expense.group.id : 'N/A' }}</td>
+        <tr v-for="cost in costs" :key="cost.id">
+          <!-- Rimosso la colonna 'Data' -->
+          <td>{{ cost.tipologia.replace('_', ' ') }}</td>
+          <td>€{{ cost.importo ? cost.importo.toFixed(2) : "0.00" }}</td>
+          <td>{{ cost.group ? cost.group.nome : 'N/A' }}</td>
           <td>
-            <button class="btn btn-danger btn-sm" @click="deleteExpense(expense.costId)">
+            <button class="btn btn-danger btn-sm" @click="deleteCost(cost.id)">
               Elimina
             </button>
           </td>
@@ -68,18 +70,33 @@
             <button type="button" class="btn-close" @click="showModal = false"></button>
           </div>
           <div class="modal-body">
-            <select v-model="newExpense.tipologia" class="form-control mb-2" required>
+            <!-- Tipologia -->
+            <select v-model="newCost.tipologia" class="form-control mb-2" required>
               <option value="" disabled>Seleziona la tipologia</option>
               <option v-for="type in expenseTypes" :key="type" :value="type">
                 {{ type.replace('_', ' ') }}
               </option>
             </select>
-            <input v-model.number="newExpense.importo" type="number" class="form-control mb-2" placeholder="Importo (€)" required />
-            <input v-model="newExpense.date" type="date" class="form-control mb-2" placeholder="Data" required />
-            <input v-model="newExpense.groupId" type="number" class="form-control mb-2" placeholder="ID Gruppo (facoltativo)" />
+
+            <!-- Importo -->
+            <input
+              v-model.number="newCost.importo"
+              type="number"
+              class="form-control mb-2"
+              placeholder="Importo (€)"
+              required
+            />
+
+            <!-- Selezione Gruppo -->
+            <select v-model="newCost.groupId" class="form-control mb-2">
+              <option value="">Nessun gruppo</option>
+              <option v-for="group in groups" :key="group.id" :value="group.id">
+                {{ group.nome }}
+              </option>
+            </select>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" @click="addExpense">Salva</button>
+            <button class="btn btn-success" @click="addCost">Salva</button>
           </div>
         </div>
       </div>
@@ -90,26 +107,44 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const expenses = ref([]);
+/** Lista delle spese caricate */
+const costs = ref([]);
+
+/** Lista dei gruppi a cui l'utente partecipa */
+const groups = ref([]);
+
+/** Variabili per le statistiche */
 const totalSpent = ref(0);
 const averageSpent = ref(0);
 const lastSpent = ref("N/D");
-const showModal = ref(false);
-const newExpense = ref({ tipologia: "", importo: null, date: "", groupId: null });
 
+/** Gestione modale */
+const showModal = ref(false);
+
+/** Nuova spesa da creare */
+const newCost = ref({
+  tipologia: "",
+  importo: null,
+  groupId: null, // Salviamo solo l'ID del gruppo
+});
+
+/** Possibili tipologie di spesa */
 const expenseTypes = [
-  "ABITAZIONE_AFFITTO", "ABITAZIONE_MUTUO", "ABITAZIONE_BOLLETTE", "ALIMENTARI", 
-  "TRASPORTI_CARBURANTE", "TRASPORTI_PUBBLICO", "TRASPORTI_MANUTENZIONE", "TRASPORTI_ASSICURAZIONE", 
-  "SALUTE_FARMACI", "SALUTE_VISITE", "SALUTE_ASSICURAZIONE", "ISTRUZIONE_TASSE", 
+  "ABITAZIONE_AFFITTO", "ABITAZIONE_MUTUO", "ABITAZIONE_BOLLETTE", "ALIMENTARI",
+  "TRASPORTI_CARBURANTE", "TRASPORTI_PUBBLICO", "TRASPORTI_MANUTENZIONE", "TRASPORTI_ASSICURAZIONE",
+  "SALUTE_FARMACI", "SALUTE_VISITE", "SALUTE_ASSICURAZIONE", "ISTRUZIONE_TASSE",
   "ISTRUZIONE_MATERIALI", "ISTRUZIONE_CORSI", "ASSICURAZIONI_AUTO", "ASSICURAZIONI_CASA",
   "ASSICURAZIONI_VITA", "TASSE_PROPRIETA", "SVAGO_CINEMA", "SVAGO_TEATRO", "SVAGO_CONCERTI",
   "SVAGO_HOBBY", "VIAGGI_BIGLIETTI", "VIAGGI_HOTEL", "VIAGGI_ESCURSIONI", "RISTORANTI_PRANZI",
   "RISTORANTI_CENE", "RISTORANTI_CAFFE", "SHOPPING_ABBIGLIAMENTO", "SHOPPING_ACCESSORI",
   "SHOPPING_SCARPE", "SHOPPING_COSMETICI", "TECNOLOGIA_SMARTPHONE", "TECNOLOGIA_TABLET",
-  "TECNOLOGIA_COMPUTER", "TECNOLOGIA_ABBONAMENTI"
+  "TECNOLOGIA_COMPUTER", "TECNOLOGIA_ABBONAMENTI",
 ];
 
-const fetchExpenses = async () => {
+/**
+ * Carica la lista spese dal backend
+ */
+const fetchCosts = async () => {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
 
@@ -128,34 +163,66 @@ const fetchExpenses = async () => {
     }
 
     const data = await response.json();
-    console.log("Spese ricevute:", data); 
-
-    expenses.value = data;
+    costs.value = data;
     updateDashboard();
   } catch (error) {
     console.error(error);
   }
 };
 
-const addExpense = async () => {
-  if (!newExpense.value.tipologia || !newExpense.value.importo || !newExpense.value.date) {
+/**
+ * Carica i gruppi a cui l'utente partecipa
+ */
+const fetchGroups = async () => {
+  const username = localStorage.getItem("username");
+  const token = localStorage.getItem("token");
+
+  if (!username || !token) {
+    console.error("Utente non autenticato! Username o token mancante.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8080/api/groups?username=${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!response.ok) {
+      throw new Error("Errore nel recupero dei gruppi");
+    }
+
+    const data = await response.json();
+    groups.value = data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/**
+ * Aggiunge una nuova spesa
+ */
+const addCost = async () => {
+  // Verifica campi obbligatori
+  if (!newCost.value.tipologia || !newCost.value.importo) {
     alert("Compila tutti i campi obbligatori!");
     return;
   }
 
-  const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
-
-  if (!token || !username) {
+  const token = localStorage.getItem("token");
+  if (!username || !token) {
     alert("Utente non autenticato.");
     return;
   }
 
+  // Prepara il payload
   const payload = {
-  importo: newExpense.value.importo,
-  tipologia: newExpense.value.tipologia,
-  date: newExpense.value.date,
-  group: newExpense.value.groupId ? { id: parseInt(newExpense.value.groupId) } : null, // 👈 Qui annidiamo groupId dentro "group"
+    importo: newCost.value.importo,
+    tipologia: newCost.value.tipologia,
+    // Se l'utente ha selezionato un gruppo, passiamo un oggetto group con { id: ... }
+    group: newCost.value.groupId
+      ? { id: parseInt(newCost.value.groupId) }
+      : null,
   };
 
   try {
@@ -169,21 +236,25 @@ const addExpense = async () => {
     });
 
     if (response.ok) {
-      fetchExpenses();
-      newExpense.value = { tipologia: "", importo: null, date: "", groupId: null };
+      // Ricarica la lista spese
+      await fetchCosts();
+      // Chiudi la modale e ripulisci il form
       showModal.value = false;
+      newCost.value = { tipologia: "", importo: null, groupId: null };
     } else {
       const errorData = await response.json();
-      alert(`Errore: ${errorData.message}`);
+      alert(`Errore: ${errorData.message || "Impossibile aggiungere la spesa."}`);
     }
   } catch (error) {
     console.error("Errore nell'aggiunta della spesa:", error);
   }
 };
 
-const deleteExpense = async (id) => {
+/**
+ * Elimina una spesa
+ */
+const deleteCost = async (id) => {
   const token = localStorage.getItem("token");
-
   if (!token) {
     alert("Utente non autenticato.");
     return;
@@ -198,7 +269,8 @@ const deleteExpense = async (id) => {
     });
 
     if (response.ok) {
-      fetchExpenses();
+      // Aggiorna la lista
+      await fetchCosts();
     } else {
       alert("Errore nella cancellazione della spesa.");
     }
@@ -207,29 +279,45 @@ const deleteExpense = async (id) => {
   }
 };
 
+/**
+ * Aggiorna le statistiche (totale, media, ultima spesa)
+ */
 const updateDashboard = () => {
-  let total = expenses.value.reduce((sum, e) => sum + e.importo, 0);
+  if (costs.value.length === 0) {
+    totalSpent.value = 0;
+    averageSpent.value = 0;
+    lastSpent.value = "N/D";
+    return;
+  }
+
+  const total = costs.value.reduce((sum, c) => sum + c.importo, 0);
   totalSpent.value = total.toFixed(2);
-  averageSpent.value = expenses.value.length > 0 ? (total / expenses.value.length).toFixed(2) : 0;
-  lastSpent.value =
-    expenses.value.length > 0 ? `€${expenses.value[expenses.value.length - 1].importo.toFixed(2)}` : "N/D";
+  averageSpent.value = (total / costs.value.length).toFixed(2);
+  lastSpent.value = `€${costs.value[costs.value.length - 1].importo.toFixed(2)}`;
 };
 
-// ✅ Funzione per formattare la data nel formato leggibile
-const formatDate = (date) => {
-  if (!date) return "N/D";
-  return new Date(date).toLocaleDateString();
-};
-
-onMounted(fetchExpenses);
+/**
+ * Al montaggio del componente, recupera spese e gruppi
+ */
+onMounted(() => {
+  fetchCosts();
+  fetchGroups();
+});
 </script>
 
 <style scoped>
 .container {
   max-width: 800px;
 }
+
 .modal {
   background: rgba(0, 0, 0, 0.5);
 }
 
+.dashboard-card {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 </style>

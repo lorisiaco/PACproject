@@ -44,13 +44,12 @@
 \contentsline {subsubsection}{\numberline {3.1.6}UC15: Modifica Spesa}{36}{}%
 \contentsline {subsubsection}{\numberline {3.1.7}UC16: Visualizzazione Spese}{36}{}%
 \contentsline {subsubsection}{\numberline {3.1.8}UC17: Ricalcolo Debiti}{37}{}%
-\contentsline {subsection}{\numberline {3.2}UML Component Diagram}{38}{}%
-\contentsline {subsection}{\numberline {3.3}UML Class Diagram per tipi di dato}{40}{}%
-\contentsline {subsection}{\numberline {3.4}Testing}{43}{}%
-\contentsline {subsubsection}{\numberline {3.4.1}Analisi Statica - CodMR}{43}{}%
-\contentsline {subsubsection}{\numberline {3.4.2}Analisi Dinamica - JUnit}{43}{}%
-\contentsline {subsubsection}{\numberline {3.4.3}API Costi}{44}{}%
-\contentsline {paragraph}{Aggiunta di un Costo}{44}{}%
-\contentsline {paragraph}{Eliminazione di un Costo}{45}{}%
-\contentsline {paragraph}{Visualizzazione Costi Utente}{46}{}%
-\contentsline {paragraph}{Visualizzazione Costi di un Gruppo}{46}{}%
+\contentsline {subsection}{\numberline {3.2}UML Class Diagram per tipi di dato}{38}{}%
+\contentsline {subsection}{\numberline {3.3}Testing}{41}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Analisi Statica - CodMR}{41}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Analisi Dinamica - JUnit}{41}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}API Costi}{42}{}%
+\contentsline {paragraph}{Aggiunta di un Costo}{42}{}%
+\contentsline {paragraph}{Eliminazione di un Costo}{43}{}%
+\contentsline {paragraph}{Visualizzazione Costi Utente}{44}{}%
+\contentsline {paragraph}{Visualizzazione Costi di un Gruppo}{44}{}%
