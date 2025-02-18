@@ -3,6 +3,7 @@ package bmt.spendly.models;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ public class GestioneSpese {
         for (Cost item : listaSpese) {
             String pagante = item.getUser().getUsername();       
             List<String> beneficiari = item.getGroup().getUsernames();
+            System.out.println(beneficiari.toString());
             double importo = item.getImporto();
             double quota = importo / beneficiari.size();
 
@@ -55,26 +57,24 @@ public class GestioneSpese {
 
         for (Map.Entry<String, Double> creditore : creditori) {
             double credito = creditore.getValue();
-            int i = 0;
-
-            while (i < debitori.size() && credito > 0) {
-                Map.Entry<String, Double> debitore = debitori.get(i);
+            Iterator<Map.Entry<String, Double>> iter = debitori.iterator();
+        
+            while (iter.hasNext() && credito > 0) {
+                Map.Entry<String, Double> debitore = iter.next();
                 double debitoAssoluto = Math.abs(debitore.getValue());
-
+        
                 if (debitoAssoluto <= credito) {
                     transazioni.add(new Transazione(debitore.getKey(), creditore.getKey(), debitoAssoluto));
                     credito -= debitoAssoluto;
-                    debitori.remove(i);
+                    iter.remove(); // Usa l'iterator per rimuovere l'elemento senza problemi
                 } else {
                     transazioni.add(new Transazione(debitore.getKey(), creditore.getKey(), credito));
                     debitore.setValue(debitore.getValue() + credito);
                     credito = 0;
                 }
-                if (credito == 0) break;
-                i++;
             }
         }
-
+        System.out.println(transazioni.toString());
         return transazioni;
     }
 
