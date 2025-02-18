@@ -1,5 +1,6 @@
 package bmt.spendly.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,12 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import bmt.spendly.models.Alert;
+import bmt.spendly.models.GestioneSpese;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
 import bmt.spendly.models.Group;
 import bmt.spendly.models.GroupResponseDTO;
+import bmt.spendly.models.Transazione;
 import bmt.spendly.services.CostService;
 import bmt.spendly.services.GroupService;
+
 
 @RestController
 @RequestMapping("/api/groups")  
@@ -228,4 +232,13 @@ public class GroupController {
                                  .body("Failed to create an Alert: " + e.getMessage());
         }
     }
+
+    @GetMapping("/{groupId}/OttimizzaDebiti")
+    public ResponseEntity<List<Transazione>> OttimizzaDebiti(@PathVariable Long groupId) {
+        System.out.println("ciao");
+        List <Cost> spese=costService.getCostsByGroup(groupId);
+        List<Transazione> transazioni = GestioneSpese.calcolaDebiti(spese);
+        return ResponseEntity.ok(transazioni);
+    }
+    
 }

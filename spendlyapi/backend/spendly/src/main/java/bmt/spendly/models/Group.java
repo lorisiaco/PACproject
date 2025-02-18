@@ -118,4 +118,12 @@ public class Group {
     public void removeAlert(Alert alert) {
         this.alerts.remove(alert);
     }
+
+    public List<String> getUsernames() {
+        List<String> usernames = new ArrayList<>();
+        for (AppUser user : membri) {
+            usernames.add(user.getUsername());
+        }
+        return usernames;
+    }
 }
