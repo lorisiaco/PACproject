@@ -24,6 +24,96 @@
         </h2>
       </div>
 
+      <!-- Sezione ALERT -->
+      <div class="mt-4">
+        <h5><i class="fas fa-bell me-1"></i> Alert del Gruppo</h5>
+        <button class="btn btn-success" @click="openModal">
+          <i class="fas fa-plus"></i> Aggiungi Alert
+        </button>
+
+        <ul v-if="alerts.length > 0" class="list-group">
+          <li v-for="alert in alerts" :key="alert.id" class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+              <i class="fas fa-exclamation-circle text-danger me-2"></i>
+              {{ alert.nome }} - Limite: €{{ alert.limite.toFixed(2) }}
+            </span>
+            <!-- Pulsante per eliminare l'alert -->
+            <button class="btn btn-sm btn-danger" @click="deleteAlert(alert.id)">
+              <i class="fas fa-trash"></i> Elimina
+            </button>
+          </li>
+        </ul>
+        <p v-else class="text-muted"><i class="fas fa-check-circle text-success"></i> Nessun alert presente.</p>
+
+        <!-- Modale per aggiungere un nuovo Alert -->
+        <div v-if="showModal" class="modal fade show d-block" tabindex="-1" style="background: rgba(0, 0, 0, 0.5);">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Aggiungi un nuovo Alert</h5>
+                <button type="button" class="btn-close" @click="closeModal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label">Nome Alert</label>
+                  <input v-model="newAlert.nome" type="text" class="form-control" placeholder="Nome alert">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Importo Limite (€)</label>
+                  <input v-model.number="newAlert.limite" type="number" class="form-control" placeholder="Importo limite">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">ID Gruppo</label>
+                  <input v-model="groupId" type="text" class="form-control" readonly>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="closeModal">Chiudi</button>
+                <button type="button" class="btn btn-success" @click="confirmAddAlert">Aggiungi Alert</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Sezione SPESE -->
+      <div class="mt-4">
+        <h5><i class="fas fa-wallet me-1"></i> Spese del Gruppo</h5>
+        <table v-if="costs.length > 0" class="table table-striped">
+          <thead class="table-light">
+            <tr>
+              <th>Importo</th>
+              <th>Categoria</th>
+              <th>Utente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="cost in costs" :key="cost.costId">
+              <td>€ {{ cost.importo.toFixed(2) }}</td>
+              <td>{{ cost.tipologia.replace('_', ' ') }}</td>
+              <td>{{ cost.user.username }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p v-else class="text-muted"><i class="fas fa-money-bill-wave"></i> Nessuna spesa registrata.</p>
+      </div>
+      <!-- Sezione per aggiungere un membro -->
+      <div class="mt-4">
+        <h5><i class="fas fa-user-plus me-1"></i> Aggiungi un membro</h5>
+        <div class="d-flex align-items-center">
+          <select class="form-select" v-model="selectedMember" style="max-width: 250px;">
+            <option value="" disabled>Seleziona un utente</option>
+            <option v-for="user in allUsers" :key="user.id" :value="user.username">
+              {{ user.username }}
+            </option>
+          </select>
+          <button class="btn btn-primary ms-2" @click="addMemberToGroup(groupId, selectedMember)">
+            Aggiungi
+          </button>
+        </div>
+      </div>
+
       <!-- Card principale con bordo arrotondato e ombra -->
       <div class="card shadow-lg mb-5 border-0">
         <!-- Header della card con gradiente blu -->
@@ -127,21 +217,53 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 const groupId = route.params.groupId
+const showModal = ref(false);
 
-// Stato del gruppo
+// Stati
 const group = ref({})
+const costs = ref([])
+const alerts = ref([])
+const allUsers = ref([]) // Tutti gli utenti disponibili
+const selectedMember = ref('') // Utente selezionato per aggiunta
+const newAlert = ref({ nome: '', limite: 0 })
 
-// Al caricamento del componente, effettuiamo la GET /api/groups/:groupId
+const adminUsername = localStorage.getItem('username')
+const token = localStorage.getItem('token')
+
+
+
+
+// Al caricamento
 onMounted(() => {
   fetchGroup()
+  fetchUsers() // Carichiamo gli utenti disponibili
 })
 
+function openModal() {
+  showModal.value = true;
+}
+
+// Funzione per chiudere il modale
+function closeModal() {
+  showModal.value = false;
+}
+
+// Funzione per aggiungere un alert
+async function confirmAddAlert() {
+  // Chiamata alla funzione che aggiunge l'alert
+  await addAlert();
+  await fetchGroup();
+  // Chiudi il modale dopo aver aggiunto l'alert
+  closeModal();
+}
+
+// Recupera i dettagli del gruppo
 async function fetchGroup() {
   try {
     const token = localStorage.getItem('token')
     if (!token) {
       alert('Token mancante. Devi essere autenticato.')
-      router.push({ name: 'Login' }) // Opzionale
+      router.push({ name: 'Login' })
       return
     }
     const res = await fetch(`http://localhost:8080/api/groups/${groupId}`, {
@@ -151,17 +273,125 @@ async function fetchGroup() {
       throw new Error('Errore nel recupero del gruppo.')
     }
     const data = await res.json()
-    group.value = data
+    group.value = data.group
+    costs.value = data.costs
+    alerts.value = data.alerts
   } catch (error) {
     console.error(error)
     alert('Impossibile caricare il dettaglio del gruppo.')
   }
 }
 
-/**
- * Rimuove un membro dal gruppo
- * DELETE /api/groups/{groupId}/members?adminUsername=...&memberUsername=...
- */
+async function addAlert() {
+  try {
+    const res = await fetch(`http://localhost:8080/api/groups/${groupId}/alerts?adminUsername=${adminUsername}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(newAlert.value)
+    })
+
+    if (!res.ok) {
+      const errorMsg = await res.text()
+      throw new Error(errorMsg)
+    }
+
+    await fetchGroup()
+    newAlert.value = { nome: '', limite: 0 }
+  } catch (error) {
+    alert(`Errore nella creazione dell'alert: ${error.message}`)
+    console.error('addAlert:', error)
+  }
+}
+
+async function deleteAlert(alertId) {
+  try {
+    const res = await fetch(`http://localhost:8080/api/groups/${groupId}/alerts/${alertId}?adminUsername=${adminUsername}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    })
+
+    if (!res.ok) {
+      const errorMsg = await res.text()
+      throw new Error(errorMsg)
+    }
+
+    await fetchGroup()
+  } catch (error) {
+    alert(`Errore nell'eliminazione dell'alert: ${error.message}`)
+    console.error('deleteAlert:', error)
+  }
+}
+
+// Recupera tutti gli utenti disponibili per l'aggiunta
+async function fetchUsers() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("Token mancante. Non posso caricare gli utenti.");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:8080/account/users", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!res.ok) {
+      throw new Error("Errore nel recupero degli utenti");
+    }
+
+    const data = await res.json();
+    allUsers.value = data;
+  } catch (err) {
+    console.error("Errore fetchAllUsers:", err);
+  }
+}
+
+// funzione per aggiungere membri al gruppo
+async function addMemberToGroup(groupId, memberUsername) {
+  const adminUsername = localStorage.getItem("username");
+  const token = localStorage.getItem("token");
+  memberUsername = selectedMember.value; // Prendiamo il valore selezionato
+
+  if (!adminUsername || !token) {
+    alert("Utente non autenticato o token mancante.");
+    return;
+  }
+
+  if (!memberUsername) {
+    alert("Seleziona l'utente dal menu a tendina.");
+    return;
+  }
+  try {
+    const response = await fetch(
+      `http://localhost:8080/api/groups/${groupId}/members?adminUsername=${adminUsername}&memberUsername=${memberUsername}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+
+    // Ricarichiamo i gruppi per vedere il membro aggiunto
+    fetchGroup();
+
+    // Resettiamo la select
+    selectedMember.value = "";
+  } catch (error) {
+    alert(`Errore aggiunta membro: ${error}`);
+    console.error("Errore durante l'aggiunta del membro:", error);
+  }
+}
+
+//funzione per rimuovere i membri dal gruppo
 async function removeMember(memberUsername) {
   try {
     const token = localStorage.getItem('token')
@@ -171,6 +401,7 @@ async function removeMember(memberUsername) {
       alert('Utente non autenticato o token mancante.')
       return
     }
+
     const url = `http://localhost:8080/api/groups/${groupId}/members?adminUsername=${adminUsername}&memberUsername=${memberUsername}`
 
     const response = await fetch(url, {
@@ -190,33 +421,5 @@ async function removeMember(memberUsername) {
     console.error('removeMember:', error)
   }
 }
+
 </script>
-
-<style>
-/* Manteniamo gli stili del dettaglio gruppo */
-.group-detail-page .card {
-  border-radius: 8px;
-}
-
-.group-detail-page .table-hover tbody tr:hover {
-  background-color: #f1f9ff;
-}
-
-/* Stili del footer, copiati dal tuo esempio */
-.footer {
-  background: #1e293b;
-  color: white;
-  text-align: center;
-  padding: 1.5rem 1rem;
-}
-
-.footer-link {
-  color: #38bdf8;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.footer-link:hover {
-  text-decoration: underline;
-}
-</style>
