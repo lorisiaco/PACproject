@@ -1,9 +1,13 @@
 <template>
   <div class="group-detail-page">
-    <!-- Contenitore principale -->
     <div
       class="container my-4 py-4 text-dark"
-      style="max-width: 900px; background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc); border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+      style="
+        max-width: 1300px; /* <-- Allargato da 1200px a 1300px */
+        background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc);
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      "
     >
       <!-- Banner in alto -->
       <div class="text-center mb-4">
@@ -13,14 +17,13 @@
           class="img-fluid rounded shadow-sm"
           style="max-height: 300px; object-fit: cover;"
         />
-        <!-- Il nome del gruppo viene inserito automaticamente -->
         <h2 class="mt-4 fw-bold" style="font-family: 'Comic Sans MS', cursive;">
           Dettaglio Gruppo {{ group.nome }}
         </h2>
       </div>
 
-      <!-- Sezione ALERT -->
-      <div class="mt-4">
+      <!-- Sezione ALERT (posizionata sopra a tutto) -->
+      <div class="mb-4">
         <h5>
           <i class="fas fa-bell me-1"></i> Alert del Gruppo (per Macroarea)
         </h5>
@@ -28,7 +31,6 @@
           <i class="fas fa-plus"></i> Aggiungi Alert
         </button>
 
-        <!-- Elenco alert -->
         <ul v-if="alerts.length > 0" class="list-group mt-3">
           <li
             v-for="alert in alerts"
@@ -48,224 +50,116 @@
         <p v-else class="text-muted mt-3">
           <i class="fas fa-check-circle text-success"></i> Nessun alert presente.
         </p>
+      </div>
 
-        <!-- Modale per aggiungere un nuovo Alert (centrata) -->
-        <div
-          v-if="showAlertModal"
-          class="modal fade show d-block"
-          tabindex="-1"
-          style="background: rgba(0, 0, 0, 0.5);"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Aggiungi un nuovo Alert</h5>
-                <button type="button" class="btn-close" @click="closeAlertModal"></button>
+      <!-- Divisione in due colonne -->
+      <div class="row">
+        <!-- Colonna sinistra: Spese Gruppo + Grafico Andamento -->
+        <div class="col-md-6">
+          <div class="mb-4">
+            <h5><i class="fas fa-wallet me-1"></i> Spese del Gruppo</h5>
+            <!-- Dashboard statistica -->
+            <div class="row mb-3">
+              <div class="col-md-4 mb-2">
+                <div class="p-2 text-white rounded" style="background-color: #0d6efd;">
+                  <h6 class="mb-1">
+                    <i class="fas fa-euro-sign"></i> Totale Spese
+                  </h6>
+                  <p class="mb-0">€{{ totalSpent }}</p>
+                </div>
               </div>
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label class="form-label">Nome Alert</label>
-                  <input
-                    v-model="newAlert.nome"
-                    type="text"
-                    class="form-control"
-                    placeholder="Nome alert"
-                  />
+              <div class="col-md-4 mb-2">
+                <div class="p-2 text-white rounded" style="background-color: #198754;">
+                  <h6 class="mb-1">
+                    <i class="fas fa-calculator"></i> Spesa Media
+                  </h6>
+                  <p class="mb-0">€{{ averageSpent }}</p>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Importo Limite (€)</label>
-                  <input
-                    v-model.number="newAlert.limite"
-                    type="number"
-                    class="form-control"
-                    placeholder="Importo limite"
-                  />
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="p-2 text-dark rounded" style="background-color: #ffc107;">
+                  <h6 class="mb-1">
+                    <i class="fas fa-history"></i> Ultima Spesa
+                  </h6>
+                  <p class="mb-0">{{ lastSpent }}</p>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Macroarea</label>
-                  <select v-model="newAlert.macroArea" class="form-select">
-                    <option value="" disabled>Seleziona la macroarea</option>
-                    <option
-                      v-for="(types, macro) in macroAreaMapping"
-                      :key="macro"
-                      :value="macro"
+              </div>
+            </div>
+            <!-- Tabella delle spese -->
+            <table v-if="costs.length > 0" class="table table-striped table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>Importo</th>
+                  <th>Categoria</th>
+                  <th>Utente</th>
+                  <th>Azioni</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="cost in costs" :key="cost.costId">
+                  <td>€ {{ cost.importo.toFixed(2) }}</td>
+                  <td>{{ cost.tipologia.replace('_', ' ') }}</td>
+                  <td>{{ cost.user.username }}</td>
+                  <td>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      @click="deleteCost(cost.costId)"
                     >
-                      {{ macro }}
-                    </option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">ID Gruppo</label>
-                  <input
-                    v-model="groupId"
-                    type="text"
-                    class="form-control"
-                    readonly
-                  />
-                </div>
+                      <i class="fas fa-trash"></i> Elimina
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p v-else class="text-muted">
+              <i class="fas fa-money-bill-wave"></i> Nessuna spesa registrata.
+            </p>
+            <!-- Bottone per aprire il form "Aggiungi Spesa" -->
+            <button class="btn btn-primary mt-2" @click="showCostModal = true">
+              <i class="fas fa-plus"></i> Aggiungi Spesa
+            </button>
+          </div>
+          <!-- Grafico Andamento Spese -->
+          <div class="mb-4">
+            <h5 class="mb-3"><i class="fas fa-chart-area me-1"></i> Andamento Spese</h5>
+            <div style="height: 300px;">
+              <canvas id="trendChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonna destra: Macroaree -->
+        <div class="col-md-6">
+          <!-- Elenco testuale per Macroaree -->
+          <div class="mb-4">
+            <h5><i class="fas fa-chart-bar me-1"></i> Spesa per Macroaree</h5>
+            <ul class="list-group">
+              <li
+                v-for="(sum, macro) in macroAreaSums"
+                :key="macro"
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                {{ macro }}:
+                <span>€{{ sum.toFixed(2) }}</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Grafici: Istogramma e Grafico a Torta -->
+          <div class="mb-4">
+            <h5 class="mb-3"><i class="fas fa-chart-line me-1"></i> Rappresentazione per Macroaree</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <canvas id="barChart"></canvas>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="closeAlertModal">
-                  Chiudi
-                </button>
-                <button type="button" class="btn btn-success" @click="confirmAddAlert">
-                  Aggiungi Alert
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sezione SPESE -->
-      <div class="mt-4">
-        <h5><i class="fas fa-wallet me-1"></i> Spese del Gruppo</h5>
-
-        <!-- Dashboard statistica -->
-        <div class="row mb-3">
-          <div class="col-md-4 mb-2">
-            <div class="p-2 text-white rounded" style="background-color: #0d6efd;">
-              <h6 class="mb-1">
-                <i class="fas fa-euro-sign"></i> Totale Spese
-              </h6>
-              <p class="mb-0">€{{ totalSpent }}</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="p-2 text-white rounded" style="background-color: #198754;">
-              <h6 class="mb-1">
-                <i class="fas fa-calculator"></i> Spesa Media
-              </h6>
-              <p class="mb-0">€{{ averageSpent }}</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-2">
-            <div class="p-2 text-dark rounded" style="background-color: #ffc107;">
-              <h6 class="mb-1">
-                <i class="fas fa-history"></i> Ultima Spesa
-              </h6>
-              <p class="mb-0">{{ lastSpent }}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tabella delle spese -->
-        <table v-if="costs.length > 0" class="table table-striped">
-          <thead class="table-light">
-            <tr>
-              <th>Importo</th>
-              <th>Categoria</th>
-              <th>Utente</th>
-              <th>Azioni</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="cost in costs" :key="cost.costId">
-              <td>€ {{ cost.importo.toFixed(2) }}</td>
-              <td>{{ cost.tipologia.replace('_', ' ') }}</td>
-              <td>{{ cost.user.username }}</td>
-              <td>
-                <button
-                  class="btn btn-danger btn-sm"
-                  @click="deleteCost(cost.costId)"
-                >
-                  <i class="fas fa-trash"></i> Elimina
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p v-else class="text-muted">
-          <i class="fas fa-money-bill-wave"></i> Nessuna spesa registrata.
-        </p>
-
-        <!-- Bottone per aprire il form "Aggiungi Spesa" -->
-        <button class="btn btn-primary mt-2" @click="showCostModal = true">
-          <i class="fas fa-plus"></i> Aggiungi Spesa
-        </button>
-
-        <!-- Sezione: Andamento Spese (Grafico Lineare) -->
-        <div class="mt-4">
-          <h5 class="mb-3"><i class="fas fa-chart-area me-1"></i> Andamento Spese</h5>
-          <!-- Il grafico è contenuto in un div con altezza fissa per renderlo proporzionale -->
-          <div style="height: 300px;">
-            <canvas id="trendChart"></canvas>
-          </div>
-        </div>
-
-        <!-- Sezione Spesa per Macroaree con elenco testuale -->
-        <div class="mt-4">
-          <h5><i class="fas fa-chart-bar me-1"></i> Spesa per Macroaree</h5>
-          <ul class="list-group">
-            <li
-              v-for="(sum, macro) in macroAreaSums"
-              :key="macro"
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              {{ macro }}:
-              <span>€{{ sum.toFixed(2) }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Visualizzazione grafica: Istogramma e Grafico a Torta -->
-        <div class="mt-4">
-          <h5 class="mb-3"><i class="fas fa-chart-line me-1"></i> Rappresentazione per Macroaree</h5>
-          <div class="row">
-            <div class="col-md-6">
-              <canvas id="barChart"></canvas>
-            </div>
-            <div class="col-md-6">
-              <canvas id="pieChart"></canvas>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modale per Aggiungere Spesa (centrata) -->
-        <div
-          v-if="showCostModal"
-          class="modal fade show d-block"
-          tabindex="-1"
-          style="background: rgba(0, 0, 0, 0.5);"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Aggiungi Spesa</h5>
-                <button type="button" class="btn-close" @click="showCostModal = false"></button>
-              </div>
-              <div class="modal-body">
-                <!-- Tipologia -->
-                <select
-                  v-model="newCost.tipologia"
-                  class="form-control mb-3"
-                  required
-                >
-                  <option value="" disabled>Seleziona la tipologia</option>
-                  <option v-for="type in expenseTypes" :key="type" :value="type">
-                    {{ type.replace('_', ' ') }}
-                  </option>
-                </select>
-                <!-- Importo -->
-                <input
-                  v-model.number="newCost.importo"
-                  type="number"
-                  class="form-control mb-3"
-                  placeholder="Importo (€)"
-                  required
-                />
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-success" @click="addCost">
-                  Salva
-                </button>
+              <div class="col-md-6">
+                <canvas id="pieChart"></canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Sezione per aggiungere un membro -->
+      <!-- Sezione sotto le due colonne: Aggiungi membro e Tabella Gruppo -->
       <div class="mt-4">
         <h5>
           <i class="fas fa-user-plus me-1"></i> Aggiungi un membro
@@ -283,7 +177,7 @@
         </div>
       </div>
 
-      <!-- Card principale con info gruppo -->
+      <!-- Card Gruppo: Informazioni e membri -->
       <div class="card shadow-lg mb-5 border-0 mt-4">
         <div
           class="card-header text-white d-flex justify-content-between align-items-center"
@@ -335,7 +229,6 @@
               <i class="fas fa-exclamation-triangle"></i> Nessun membro presente.
             </p>
           </div>
-          <!-- Admin del gruppo, se presente -->
           <div class="mt-4" v-if="group.admin">
             <strong class="me-2">Admin:</strong>
             <span class="text-muted">{{ group.admin.username }}</span>
@@ -364,12 +257,10 @@
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <!-- Header con sfondo rosso e testo bianco -->
           <div class="modal-header bg-danger text-white">
             <h5 class="modal-title">Attenzione!</h5>
             <button type="button" class="btn-close" @click="showThresholdWarning = false"></button>
           </div>
-          <!-- Corpo con l'icona esclamativo e messaggio -->
           <div class="modal-body">
             <div class="d-flex align-items-start">
               <img
@@ -383,6 +274,114 @@
           <div class="modal-footer">
             <button class="btn btn-secondary" @click="showThresholdWarning = false">
               Chiudi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALE per Aggiungere Alert -->
+    <div
+      v-if="showAlertModal"
+      class="modal fade show d-block"
+      tabindex="-1"
+      style="background: rgba(0, 0, 0, 0.5);"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Aggiungi un nuovo Alert</h5>
+            <button type="button" class="btn-close" @click="closeAlertModal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Nome Alert</label>
+              <input
+                v-model="newAlert.nome"
+                type="text"
+                class="form-control"
+                placeholder="Nome alert"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Importo Limite (€)</label>
+              <input
+                v-model.number="newAlert.limite"
+                type="number"
+                class="form-control"
+                placeholder="Importo limite"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Macroarea</label>
+              <select v-model="newAlert.macroArea" class="form-select">
+                <option value="" disabled>Seleziona la macroarea</option>
+                <option
+                  v-for="(types, macro) in macroAreaMapping"
+                  :key="macro"
+                  :value="macro"
+                >
+                  {{ macro }}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">ID Gruppo</label>
+              <input
+                v-model="groupId"
+                type="text"
+                class="form-control"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="closeAlertModal">
+              Chiudi
+            </button>
+            <button type="button" class="btn btn-success" @click="confirmAddAlert">
+              Aggiungi Alert
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALE per Aggiungere Spesa -->
+    <div
+      v-if="showCostModal"
+      class="modal fade show d-block"
+      tabindex="-1"
+      style="background: rgba(0, 0, 0, 0.5);"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Aggiungi Spesa</h5>
+            <button type="button" class="btn-close" @click="showCostModal = false"></button>
+          </div>
+          <div class="modal-body">
+            <select
+              v-model="newCost.tipologia"
+              class="form-control mb-3"
+              required
+            >
+              <option value="" disabled>Seleziona la tipologia</option>
+              <option v-for="type in expenseTypes" :key="type" :value="type">
+                {{ type.replace('_', ' ') }}
+              </option>
+            </select>
+            <input
+              v-model.number="newCost.importo"
+              type="number"
+              class="form-control mb-3"
+              placeholder="Importo (€)"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" @click="addCost">
+              Salva
             </button>
           </div>
         </div>
@@ -780,7 +779,6 @@ function checkAlertThresholds() {
 
   if (!alerts.value || alerts.value.length === 0) return
 
-  // Controlla ogni alert in base alla macroarea
   for (let a of alerts.value) {
     const macroTotal = macroAreaSums.value[a.macroArea] || 0
     if (macroTotal >= 0.8 * a.limite) {
@@ -903,5 +901,23 @@ function updateTrendChart() {
 canvas {
   width: 100% !important;
   min-height: 300px;
+}
+
+/* Effetto hover sulle righe delle tabelle (zoom leggero) */
+.table-hover tbody tr:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+  background-color: #f8f9fa; /* Colore di sfondo in hover (opzionale) */
+  z-index: 1;
+  position: relative;
+}
+
+/* Effetto hover anche sugli elementi list-group per la tabella Macroaree */
+.list-group-item:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+  background-color: #f8f9fa;
+  z-index: 1;
+  position: relative;
 }
 </style>
