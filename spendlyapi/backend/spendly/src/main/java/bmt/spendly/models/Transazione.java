@@ -1,0 +1,44 @@
+package bmt.spendly.models;
+
+public class Transazione {
+    private String debitore;
+    private String creditore;
+    private double importo;
+
+    public Transazione(String debitore, String creditore, double importo) {
+        this.debitore = debitore;
+        this.creditore = creditore;
+        this.importo = importo;
+    }
+
+    @Override
+    public String toString() {
+        return debitore + " deve pagare " + importo + " a " + creditore;
+    }
+
+    public String getDebitore(){
+        return this.debitore;
+    }
+
+    public String getCreditore(){
+        return this.creditore;
+    }
+
+    public double getImporto(){
+        return this.importo;
+    }
+
+    public void setDebitore(String deb){
+        this.debitore=deb;
+    }
+
+    public void setcreditore(String cred){
+        this.creditore=cred;
+    }
+
+    public void setImporto(double imp){
+        this.importo=imp;
+    }
+
+
+}

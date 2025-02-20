@@ -1,5 +1,6 @@
 package bmt.spendly.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,11 +11,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import bmt.spendly.models.Alert;
+import bmt.spendly.models.GestioneSpese;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
 import bmt.spendly.models.Group;
+import bmt.spendly.models.GroupResponseDTO;
+import bmt.spendly.models.Transazione;
 import bmt.spendly.services.CostService;
 import bmt.spendly.services.GroupService;
+
 
 @RestController
 @RequestMapping("/api/groups")  
@@ -28,7 +34,7 @@ public class GroupController {
     @Autowired
     private CostService costService;
 
-    
+    //  api per visualizzare la lista dei gruppi in cui è presente l'utente
     @GetMapping
     public ResponseEntity<?> getAllGroups(@RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -38,7 +44,7 @@ public class GroupController {
         return ResponseEntity.ok(groups);
     }
 
-    
+    // api per creare un gruppo
     @PostMapping
     public ResponseEntity<?> addGroup(@RequestBody Group group, @RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -55,7 +61,7 @@ public class GroupController {
         }
     }
 
-    
+    //api per eliminare un gruppo ( solo per amministratore)
     @DeleteMapping("/{groupId}")
     public ResponseEntity<String> eliminaGruppo(@PathVariable Long groupId, @RequestParam String username) {
         try {
@@ -80,7 +86,7 @@ public class GroupController {
         }
     }
 
-    
+    // api per aggiungere membri (solo per amministratore)
     @PostMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId,
@@ -115,7 +121,7 @@ public class GroupController {
         }
     }
 
-    
+    //api per eliminare membri (solo per amministratore)
     @DeleteMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId,
@@ -149,12 +155,15 @@ public class GroupController {
         }
     }
 
-    
+    // api per entrare nei dettagli del gruppo
     @GetMapping("/{groupId}")
     public ResponseEntity<?> showGroup(@PathVariable Long groupId) {
         try {
             Group group = groupService.getGroupById(groupId);
-            return ResponseEntity.ok(group);
+            List<Cost> costs = costService.getCostsByGroup(groupId);
+            List<Alert> alerts = groupService.getAlertsForGroup(groupId);
+            GroupResponseDTO responseDTO = new GroupResponseDTO(group, costs, alerts);
+            return ResponseEntity.ok(responseDTO);
         } catch (Exception e) {
             logger.error("Error retrieving Group: " + e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -163,9 +172,73 @@ public class GroupController {
     }
 
     
+    // api per visualizzare le spese del gruppo
     @GetMapping("/costs/{groupId}")
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }
+    //api per visualizzare gli alerts del gruppo
+    @GetMapping("/{groupId}/alerts")
+    public ResponseEntity<List<Alert>> getAlertsByGroup(@PathVariable Long groupId) {
+        List<Alert> alerts = groupService.getAlertsForGroup(groupId);
+        return ResponseEntity.ok(alerts);
+    }
+    //api per aggiungere alert ( solo per amministratore)
+    @PostMapping("/{groupId}/alerts")
+    public ResponseEntity<?> addAlertToGroup(@PathVariable Long groupId, @RequestParam String adminUsername, @RequestBody Alert alertRequest) {
+        try {
+            Group group = groupService.getGroupById(groupId);
+            if (group == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
+            }
+            AppUser user = groupService.getUserByUsername(adminUsername);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            }
+            if (group.getAdmin().getId() != user.getId()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can create Alert");
+            }
+            Alert newAlert = groupService.creaAlert(alertRequest.getNome(), alertRequest.getLimite(),groupId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newAlert);
+        }
+        catch (Exception e) {
+            logger.error("Error creating an Alert: " + e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to create an Alert: " + e.getMessage());
+        }
+    }
+    //api per eliminare alert (solo per amministratore)
+    @DeleteMapping("/{groupId}/alerts/{alertId}")
+    public ResponseEntity<String> DeleteAlert( @RequestParam String adminUsername, @PathVariable Long alertId, @PathVariable Long groupId) {
+        try {
+            Group group = groupService.getGroupById(groupId);
+            if (group == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Group not found");
+            }
+            AppUser user = groupService.getUserByUsername(adminUsername);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
+            }
+            if (group.getAdmin().getId() != user.getId()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can delete Alert");
+            }
+            groupService.EliminaAlert(alertId);
+            return ResponseEntity.ok("Alert deleted successfully");
+        }
+        catch (Exception e) {
+            logger.error("Error creating an Alert: " + e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Failed to create an Alert: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{groupId}/OttimizzaDebiti")
+    public ResponseEntity<List<Transazione>> OttimizzaDebiti(@PathVariable Long groupId) {
+        System.out.println("ciao");
+        List <Cost> spese=costService.getCostsByGroup(groupId);
+        List<Transazione> transazioni = GestioneSpese.calcolaDebiti(spese);
+        return ResponseEntity.ok(transazioni);
+    }
+    
 }

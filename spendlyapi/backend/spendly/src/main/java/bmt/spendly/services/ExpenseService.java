@@ -36,7 +36,7 @@ public class ExpenseService {
         expense.setAmount(expenseDetails.getAmount());
         expense.setGroup(expenseDetails.getGroup());
         expense.setCreatedBy(expenseDetails.getCreatedBy());
-        expense.setExpenseType(expenseDetails.getExpenseType());
+        
         expense.setBeneficiary(expenseDetails.getBeneficiary());
         
         return expenseRepository.save(expense);

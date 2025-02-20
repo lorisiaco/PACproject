@@ -1,0 +1,543 @@
+2025.02.18 16:49:37 WARN  no build tool detected in workspace 'C:\Users\loris\OneDrive\Desktop\PACproject'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2025.02.18 16:49:37 WARN  Build server is not auto-connectable.
+2025.02.18 16:49:37 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\SpendlyApplication.java
+2025.02.18 16:49:37 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\controllers\GroupController.java
+feb 18, 2025 4:49:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:50:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:50:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:50:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:50:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:51:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:52:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:52:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:52:37 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:53:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:55:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:55:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:55:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:56:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:35 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:57:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:58:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:58:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:58:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:59:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 16:59:09 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java
+2025.02.18 16:59:09 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:14 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVVERTENZA: Unmatched cancel notification for request id 2
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\SpendlyApplication.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:14 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVVERTENZA: Unmatched cancel notification for request id 13
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVVERTENZA: Unmatched cancel notification for request id 12
+2025.02.18 16:59:14 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:17 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:17 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:18 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:20 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-20-932.md
+feb 18, 2025 4:59:20 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: next on empty iterator
+java.util.NoSuchElementException: next on empty iterator
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	at scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	at scala.collection.IterableOps.head(Iterable.scala:222)
+	at scala.collection.IterableOps.head$(Iterable.scala:222)
+	at scala.collection.AbstractIterable.head(Iterable.scala:935)
+	at dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:164)
+	at dotty.tools.pc.CachingDriver.run(CachingDriver.scala:45)
+	at dotty.tools.pc.HoverProvider$.hover(HoverProvider.scala:40)
+	at dotty.tools.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:389)
+
+feb 18, 2025 4:59:20 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: next on empty iterator
+java.util.NoSuchElementException: next on empty iterator
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	at scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	at scala.collection.IterableOps.head(Iterable.scala:222)
+	at scala.collection.IterableOps.head$(Iterable.scala:222)
+	at scala.collection.AbstractIterable.head(Iterable.scala:935)
+	at dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:164)
+	at dotty.tools.pc.CachingDriver.run(CachingDriver.scala:45)
+	at dotty.tools.pc.HoverProvider$.hover(HoverProvider.scala:40)
+	at dotty.tools.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:389)
+
+feb 18, 2025 4:59:20 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: next on empty iterator
+java.util.NoSuchElementException: next on empty iterator
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	at scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	at scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	at scala.collection.IterableOps.head(Iterable.scala:222)
+	at scala.collection.IterableOps.head$(Iterable.scala:222)
+	at scala.collection.AbstractIterable.head(Iterable.scala:935)
+	at dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:164)
+	at dotty.tools.pc.CachingDriver.run(CachingDriver.scala:45)
+	at dotty.tools.pc.HoverProvider$.hover(HoverProvider.scala:40)
+	at dotty.tools.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:389)
+
+2025.02.18 16:59:22 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:22 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:23 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-23-715.md
+2025.02.18 16:59:24 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:24 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-24-693.md
+2025.02.18 16:59:24 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:25 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-25-345.md
+2025.02.18 16:59:25 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:25 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:25 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-25-816.md
+feb 18, 2025 4:59:26 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-26-038.md
+2025.02.18 16:59:26 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:27 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-27-432.md
+2025.02.18 16:59:28 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:28 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-28-804.md
+2025.02.18 16:59:30 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:30 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:31 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-31-209.md
+2025.02.18 16:59:31 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:31 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-31-904.md
+feb 18, 2025 4:59:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 4:59:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 16:59:38 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:38 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java
+2025.02.18 16:59:38 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:39 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:39 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-39-514.md
+2025.02.18 16:59:40 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:40 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-40-533.md
+2025.02.18 16:59:46 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java
+2025.02.18 16:59:46 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:46 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:46 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-46-975.md
+2025.02.18 16:59:49 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:49 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:49 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-49-846.md
+2025.02.18 16:59:52 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 16:59:52 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java
+2025.02.18 16:59:52 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:53 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-53-173.md
+2025.02.18 16:59:55 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 4:59:56 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_16-59-56-256.md
+2025.02.18 16:59:59 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:00:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:00:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 17:00:15 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java
+2025.02.18 17:00:15 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 17:00:15 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:00:16 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_17-00-16-780.md
+2025.02.18 17:00:16 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Group.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:00:18 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVVERTENZA: Unmatched cancel notification for request id 118
+feb 18, 2025 5:00:18 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVVERTENZA: Unmatched cancel notification for request id 120
+feb 18, 2025 5:00:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:01:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:25 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:02:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:03:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:07:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:07:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:08:21 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:08:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 17:08:42 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\GroupResponseDTO.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 17:08:42 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java
+2025.02.18 17:08:42 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 17:08:42 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 17:08:42 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:08:43 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_17-08-43-172.md
+2025.02.18 17:08:44 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:08:44 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_17-08-44-217.md
+feb 18, 2025 5:08:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:09:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:10:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:10:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:10:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:10:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:10:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:11:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:13:38 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:13:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:13:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:14:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:14:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:15:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:16:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:16:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:16:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:18:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:51 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:22:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 17:23:13 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Cost.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:23:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:21 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:35 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:23:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:19 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:24:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:25:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:25:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:25:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:25:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:26:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:29:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:29:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 17:29:52 WARN  no build target for: C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java
+2025.02.18 17:29:52 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java. Using presentation compiler with project's scala-library version: 3.3.5
+2025.02.18 17:29:52 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:29:53 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_17-29-53-055.md
+2025.02.18 17:29:53 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:29:53 PM scala.meta.internal.pc.CompilerAccess handleError
+GRAVE: A severe compiler error occurred, full details of the error can be found in the error report C:\Users\loris\OneDrive\Desktop\PACproject\.metals\.reports\metals-full\2025-02-18\r_compiler-error_17-29-53-645.md
+2025.02.18 17:29:55 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 5:30:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:31:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:31:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:32:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:36:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:36:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:36:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:38:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:39:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:39:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:42:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:43:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:43:19 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:43:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:43:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:43:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:44:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:45:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:45:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:45:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:46:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:46:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:46:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:46:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:49:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:49:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:37 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:50:59 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:51:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:51:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:51:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:52:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:52:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:52:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:52:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:53:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 5:54:56 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:00:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:00:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 18:00:26 INFO  no build target found for C:\Users\loris\OneDrive\Desktop\PACproject\spendlyapi\backend\spendly\src\main\java\bmt\spendly\models\Alert.java. Using presentation compiler with project's scala-library version: 3.3.5
+feb 18, 2025 6:00:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:01:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:02:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:02:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:02:59 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:03:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:03:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:03:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:03:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:04:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:05:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:05:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+feb 18, 2025 6:05:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+AVVERTENZA: Unsupported notification method: metals/windowStateDidChange
+2025.02.18 18:05:32 INFO  Shutting down server
+2025.02.18 18:05:32 INFO  shutting down Metals
+2025.02.18 18:05:32 INFO  Exiting server

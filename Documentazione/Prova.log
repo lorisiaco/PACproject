@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.14)  7 FEB 2025 09:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.14)  7 FEB 2025 13:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -608,16 +608,16 @@ File: images/sfondolatex.png Graphic file (type png)
 Package pdftex.def Info: images/sfondolatex.png  used on input line 87.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [21] (Iterazione1/ComponentDiagram.tex
-<images/ComponentDiagramV1.1.png, id=86, 768.8725pt x 1004.75375pt>
-File: images/ComponentDiagramV1.1.png Graphic file (type png)
-<use images/ComponentDiagramV1.1.png>
-Package pdftex.def Info: images/ComponentDiagramV1.1.png  used on input line 5.
-(pdftex.def)             Requested size: 345.98943pt x 452.13501pt.
+<images/ComponentDiagramV1.2.png, id=86, 673.51625pt x 1004.75375pt>
+File: images/ComponentDiagramV1.2.png Graphic file (type png)
+<use images/ComponentDiagramV1.2.png>
+Package pdftex.def Info: images/ComponentDiagramV1.2.png  used on input line 5.
+(pdftex.def)             Requested size: 303.07951pt x 452.13501pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 13.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [22 <./images/ComponentDiagramV1.1.png>])
+ [22 <./images/ComponentDiagramV1.2.png>])
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 89.
@@ -924,7 +924,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,776b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\loris\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/loris/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Prova.pdf (46 pages, 2318145 bytes).
+Output written on Prova.pdf (46 pages, 2310012 bytes).
 PDF statistics:
  225 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
