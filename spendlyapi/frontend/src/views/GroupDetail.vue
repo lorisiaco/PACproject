@@ -13,8 +13,9 @@
           class="img-fluid rounded shadow-sm"
           style="max-height: 300px; object-fit: cover;"
         />
+        <!-- Il nome del gruppo viene inserito automaticamente -->
         <h2 class="mt-4 fw-bold" style="font-family: 'Comic Sans MS', cursive;">
-          Dettaglio Gruppo
+          Dettaglio Gruppo {{ group.nome }}
         </h2>
       </div>
 
@@ -48,14 +49,14 @@
           <i class="fas fa-check-circle text-success"></i> Nessun alert presente.
         </p>
 
-        <!-- Modale per aggiungere un nuovo Alert -->
+        <!-- Modale per aggiungere un nuovo Alert (centrata) -->
         <div
           v-if="showAlertModal"
           class="modal fade show d-block"
           tabindex="-1"
           style="background: rgba(0, 0, 0, 0.5);"
         >
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Aggiungi un nuovo Alert</h5>
@@ -183,7 +184,16 @@
           <i class="fas fa-plus"></i> Aggiungi Spesa
         </button>
 
-        <!-- Sezione Spesa per Macroaree -->
+        <!-- Sezione: Andamento Spese (Grafico Lineare) -->
+        <div class="mt-4">
+          <h5 class="mb-3"><i class="fas fa-chart-area me-1"></i> Andamento Spese</h5>
+          <!-- Il grafico è contenuto in un div con altezza fissa per renderlo proporzionale -->
+          <div style="height: 300px;">
+            <canvas id="trendChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Sezione Spesa per Macroaree con elenco testuale -->
         <div class="mt-4">
           <h5><i class="fas fa-chart-bar me-1"></i> Spesa per Macroaree</h5>
           <ul class="list-group">
@@ -198,14 +208,27 @@
           </ul>
         </div>
 
-        <!-- Modale per Aggiungere Spesa -->
+        <!-- Visualizzazione grafica: Istogramma e Grafico a Torta -->
+        <div class="mt-4">
+          <h5 class="mb-3"><i class="fas fa-chart-line me-1"></i> Rappresentazione per Macroaree</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <canvas id="barChart"></canvas>
+            </div>
+            <div class="col-md-6">
+              <canvas id="pieChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modale per Aggiungere Spesa (centrata) -->
         <div
           v-if="showCostModal"
           class="modal fade show d-block"
           tabindex="-1"
           style="background: rgba(0, 0, 0, 0.5);"
         >
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Aggiungi Spesa</h5>
@@ -332,14 +355,14 @@
       <router-link to="/contact" class="footer-link">Contattaci</router-link>
     </footer>
 
-    <!-- MODALE DI AVVISO SE SI SUPERANO LE SOGLIE ALERT -->
+    <!-- MODALE DI AVVISO SE SI SUPERANO LE SOGLIE ALERT (centrata) -->
     <div
       v-if="showThresholdWarning"
       class="modal fade show d-block"
       tabindex="-1"
       style="background: rgba(0, 0, 0, 0.5);"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <!-- Header con sfondo rosso e testo bianco -->
           <div class="modal-header bg-danger text-white">
@@ -369,8 +392,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import Chart from 'chart.js/auto'
 
 /** Router e parametri */
 const route = useRoute()
@@ -453,11 +477,57 @@ const macroAreaSums = computed(() => {
   return sums
 })
 
+/** Computed: Etichette e dati per i grafici delle macroaree */
+const macroLabels = computed(() => Object.keys(macroAreaSums.value))
+const macroValues = computed(() => Object.values(macroAreaSums.value))
+
+/** Computed: Etichette e dati per il grafico andamento spese (trend cumulativo) */
+const expenseTrendLabels = computed(() => costs.value.map((_, i) => `Spesa ${i + 1}`))
+const expenseTrendData = computed(() => {
+  let sum = 0
+  return costs.value.map(c => {
+    sum += c.importo
+    return sum
+  })
+})
+
+/** Variabili per le istanze dei grafici */
+let barChartInstance = null
+let pieChartInstance = null
+let trendChartInstance = null
+
+/** Array di colori per i grafici */
+const chartColors = [
+  'rgba(255, 99, 132, 0.6)',
+  'rgba(54, 162, 235, 0.6)',
+  'rgba(255, 206, 86, 0.6)',
+  'rgba(75, 192, 192, 0.6)',
+  'rgba(153, 102, 255, 0.6)',
+  'rgba(255, 159, 64, 0.6)',
+  'rgba(199, 199, 199, 0.6)',
+  'rgba(83, 102, 255, 0.6)',
+  'rgba(255, 102, 255, 0.6)',
+  'rgba(102, 255, 102, 0.6)'
+]
+
 /** Al mount del componente */
 onMounted(() => {
   fetchGroup()
   fetchUsers()
+  renderBarChart()
+  renderPieChart()
+  renderTrendChart()
 })
+
+/** Watch per aggiornare i grafici delle macroaree quando cambiano i dati */
+watch(macroAreaSums, () => {
+  updateCharts()
+}, { deep: true })
+
+/** Watch per aggiornare il grafico andamento spese quando cambiano le spese */
+watch(costs, () => {
+  updateTrendChart()
+}, { deep: true })
 
 function openAlertModal() {
   showAlertModal.value = true
@@ -697,11 +767,9 @@ function updateDashboard() {
     const total = costs.value.reduce((acc, c) => acc + c.importo, 0)
     totalSpent.value = total.toFixed(2)
     averageSpent.value = (total / costs.value.length).toFixed(2)
-
     const last = costs.value[costs.value.length - 1]
     lastSpent.value = `€${last.importo.toFixed(2)}`
   }
-
   checkAlertThresholds()
 }
 
@@ -723,6 +791,95 @@ function checkAlertThresholds() {
     }
   }
 }
+
+/* --- Grafici con Chart.js --- */
+function renderBarChart() {
+  const ctx = document.getElementById('barChart').getContext('2d')
+  barChartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: macroLabels.value,
+      datasets: [{
+        label: 'Spesa per Macroarea',
+        data: macroValues.value,
+        backgroundColor: chartColors.slice(0, macroLabels.value.length)
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  })
+}
+
+function renderPieChart() {
+  const ctx = document.getElementById('pieChart').getContext('2d')
+  pieChartInstance = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: macroLabels.value,
+      datasets: [{
+        label: 'Spesa per Macroarea',
+        data: macroValues.value,
+        backgroundColor: chartColors.slice(0, macroLabels.value.length)
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  })
+}
+
+function renderTrendChart() {
+  const ctx = document.getElementById('trendChart').getContext('2d')
+  trendChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: expenseTrendLabels.value,
+      datasets: [{
+        label: 'Andamento Spese',
+        data: expenseTrendData.value,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  })
+}
+
+function updateCharts() {
+  if (barChartInstance) {
+    barChartInstance.data.labels = macroLabels.value
+    barChartInstance.data.datasets[0].data = macroValues.value
+    barChartInstance.data.datasets[0].backgroundColor = chartColors.slice(0, macroLabels.value.length)
+    barChartInstance.update()
+  }
+  if (pieChartInstance) {
+    pieChartInstance.data.labels = macroLabels.value
+    pieChartInstance.data.datasets[0].data = macroValues.value
+    pieChartInstance.data.datasets[0].backgroundColor = chartColors.slice(0, macroLabels.value.length)
+    pieChartInstance.update()
+  }
+}
+
+function updateTrendChart() {
+  if (trendChartInstance) {
+    trendChartInstance.data.labels = expenseTrendLabels.value
+    trendChartInstance.data.datasets[0].data = expenseTrendData.value
+    trendChartInstance.update()
+  }
+}
 </script>
 
 <style scoped>
@@ -740,5 +897,11 @@ function checkAlertThresholds() {
 /* Modal overlay stile bootstrap "show" */
 .modal {
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Impostazioni per i grafici: assicurare un'altezza minima */
+canvas {
+  width: 100% !important;
+  min-height: 300px;
 }
 </style>
