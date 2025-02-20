@@ -15,10 +15,15 @@ import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Group;
+import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.GroupRepository;
 
@@ -31,17 +36,23 @@ public class GroupServiceTest {
     @Mock
     private AppUserRepository userRepository;
 
+    @Mock
+    private AlertRepository alertRepository;
+
     @InjectMocks
     private GroupService groupService;
 
     private AppUser user;
     private Group group;
+    private Alert testAlert;
 
     @BeforeEach
     void setUp() {
         user = new AppUser();
         user.setUsername("testUser");
         group = new Group("Test Group", user);
+        testAlert = new Alert("Test Alert", 50.0, group);
+        group.addAlert(testAlert);
     }
 
     @Test
@@ -142,5 +153,46 @@ public class GroupServiceTest {
 
         List<Group> groups = groupService.getAllGroupsForUser("testUser");
         assertEquals(1, groups.size());
+    }
+
+    @Test
+    void testCreaAlert() {
+        when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
+        when(alertRepository.save(any(Alert.class))).thenReturn(testAlert);
+
+        Alert result = groupService.creaAlert("Test Alert", 50.0, 1L);
+
+        assertNotNull(result);
+        assertEquals("Test Alert", result.getNome());
+        assertEquals(50.0, result.getLimite());
+        assertEquals(group, result.getGroup());
+
+        verify(groupRepository, times(1)).findById(1L);
+        verify(alertRepository, times(1)).save(any(Alert.class));
+    }
+
+    // ✅ Test per il metodo eliminaAlert
+    @Test
+    void testEliminaAlert() {
+        when(alertRepository.findById(1L)).thenReturn(Optional.of(testAlert));
+
+        groupService.EliminaAlert(1L);
+
+        verify(alertRepository, times(1)).delete(testAlert);
+        verify(groupRepository, times(1)).save(group); // Deve salvare il gruppo aggiornato
+    }
+
+    // ✅ Test per il metodo getAlertsForGroup
+    @Test
+    void testGetAlertsForGroup() {
+        when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
+
+        List<Alert> alerts = groupService.getAlertsForGroup(1L);
+
+        assertNotNull(alerts);
+        assertEquals(1, alerts.size());
+        assertEquals("Test Alert", alerts.get(0).getNome());
+
+        verify(groupRepository, times(1)).findById(1L);
     }
 }

@@ -15,12 +15,14 @@ public class GroupTest {
     private Group group;
     private AppUser user1;
     private AppUser user2;
+    private Alert alert;
 
     @BeforeEach
     void setUp() {   
         user1 = new AppUser();
         user2 = new AppUser();
         group =new Group("Test Group");
+        alert=new Alert();
     }
     /**
      *  Test for the Group constructor
@@ -85,5 +87,18 @@ public class GroupTest {
         group.AggiungiMembro(user1);
         assertTrue(group.ContieneMembro(user1));
         assertFalse(group.ContieneMembro(user2));
+    }
+
+    @Test
+    void testAggiungiAlert() {
+        group.addAlert(alert);
+        assertNotNull(group.getAlerts());
+    }
+
+    @Test
+    void testRimuoviAlert() {
+        group.addAlert(alert);
+        group.removeAlert(alert);
+        assertTrue(group.getAlerts().isEmpty());
     }
 }
