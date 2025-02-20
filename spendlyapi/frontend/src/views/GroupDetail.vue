@@ -3,12 +3,7 @@
     <!-- Contenitore principale -->
     <div
       class="container my-4 py-4 text-dark"
-      style="
-        max-width: 900px;
-        background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc);
-        border-radius: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      "
+      style="max-width: 900px; background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc); border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
     >
       <!-- Banner in alto -->
       <div class="text-center mb-4">
@@ -25,7 +20,9 @@
 
       <!-- Sezione ALERT -->
       <div class="mt-4">
-        <h5><i class="fas fa-bell me-1"></i> Alert del Gruppo</h5>
+        <h5>
+          <i class="fas fa-bell me-1"></i> Alert del Gruppo (per Macroarea)
+        </h5>
         <button class="btn btn-success" @click="openAlertModal">
           <i class="fas fa-plus"></i> Aggiungi Alert
         </button>
@@ -39,19 +36,16 @@
           >
             <span>
               <i class="fas fa-exclamation-circle text-danger me-2"></i>
-              {{ alert.nome }} - Limite: €{{ alert.limite.toFixed(2) }}
+              {{ alert.nome }} - Limite: €{{ alert.limite.toFixed(2) }} -
+              Macroarea: {{ alert.macroArea }}
             </span>
-            <button
-              class="btn btn-sm btn-danger"
-              @click="deleteAlert(alert.id)"
-            >
+            <button class="btn btn-sm btn-danger" @click="deleteAlert(alert.id)">
               <i class="fas fa-trash"></i> Elimina
             </button>
           </li>
         </ul>
         <p v-else class="text-muted mt-3">
-          <i class="fas fa-check-circle text-success"></i> Nessun alert
-          presente.
+          <i class="fas fa-check-circle text-success"></i> Nessun alert presente.
         </p>
 
         <!-- Modale per aggiungere un nuovo Alert -->
@@ -65,11 +59,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Aggiungi un nuovo Alert</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  @click="closeAlertModal"
-                ></button>
+                <button type="button" class="btn-close" @click="closeAlertModal"></button>
               </div>
               <div class="modal-body">
                 <div class="mb-3">
@@ -91,6 +81,19 @@
                   />
                 </div>
                 <div class="mb-3">
+                  <label class="form-label">Macroarea</label>
+                  <select v-model="newAlert.macroArea" class="form-select">
+                    <option value="" disabled>Seleziona la macroarea</option>
+                    <option
+                      v-for="(types, macro) in macroAreaMapping"
+                      :key="macro"
+                      :value="macro"
+                    >
+                      {{ macro }}
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-3">
                   <label class="form-label">ID Gruppo</label>
                   <input
                     v-model="groupId"
@@ -101,18 +104,10 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  @click="closeAlertModal"
-                >
+                <button type="button" class="btn btn-secondary" @click="closeAlertModal">
                   Chiudi
                 </button>
-                <button
-                  type="button"
-                  class="btn btn-success"
-                  @click="confirmAddAlert"
-                >
+                <button type="button" class="btn btn-success" @click="confirmAddAlert">
                   Aggiungi Alert
                 </button>
               </div>
@@ -128,29 +123,26 @@
         <!-- Dashboard statistica -->
         <div class="row mb-3">
           <div class="col-md-4 mb-2">
-            <div
-              class="p-2 text-white rounded"
-              style="background-color: #0d6efd;"
-            >
-              <h6 class="mb-1"><i class="fas fa-euro-sign"></i> Totale Spese</h6>
+            <div class="p-2 text-white rounded" style="background-color: #0d6efd;">
+              <h6 class="mb-1">
+                <i class="fas fa-euro-sign"></i> Totale Spese
+              </h6>
               <p class="mb-0">€{{ totalSpent }}</p>
             </div>
           </div>
           <div class="col-md-4 mb-2">
-            <div
-              class="p-2 text-white rounded"
-              style="background-color: #198754;"
-            >
-              <h6 class="mb-1"><i class="fas fa-calculator"></i> Spesa Media</h6>
+            <div class="p-2 text-white rounded" style="background-color: #198754;">
+              <h6 class="mb-1">
+                <i class="fas fa-calculator"></i> Spesa Media
+              </h6>
               <p class="mb-0">€{{ averageSpent }}</p>
             </div>
           </div>
           <div class="col-md-4 mb-2">
-            <div
-              class="p-2 text-dark rounded"
-              style="background-color: #ffc107;"
-            >
-              <h6 class="mb-1"><i class="fas fa-history"></i> Ultima Spesa</h6>
+            <div class="p-2 text-dark rounded" style="background-color: #ffc107;">
+              <h6 class="mb-1">
+                <i class="fas fa-history"></i> Ultima Spesa
+              </h6>
               <p class="mb-0">{{ lastSpent }}</p>
             </div>
           </div>
@@ -191,6 +183,21 @@
           <i class="fas fa-plus"></i> Aggiungi Spesa
         </button>
 
+        <!-- Sezione Spesa per Macroaree -->
+        <div class="mt-4">
+          <h5><i class="fas fa-chart-bar me-1"></i> Spesa per Macroaree</h5>
+          <ul class="list-group">
+            <li
+              v-for="(sum, macro) in macroAreaSums"
+              :key="macro"
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              {{ macro }}:
+              <span>€{{ sum.toFixed(2) }}</span>
+            </li>
+          </ul>
+        </div>
+
         <!-- Modale per Aggiungere Spesa -->
         <div
           v-if="showCostModal"
@@ -202,25 +209,20 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Aggiungi Spesa</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  @click="showCostModal = false"
-                ></button>
+                <button type="button" class="btn-close" @click="showCostModal = false"></button>
               </div>
               <div class="modal-body">
                 <!-- Tipologia -->
-                <select v-model="newCost.tipologia" class="form-control mb-3" required>
+                <select
+                  v-model="newCost.tipologia"
+                  class="form-control mb-3"
+                  required
+                >
                   <option value="" disabled>Seleziona la tipologia</option>
-                  <option
-                    v-for="type in expenseTypes"
-                    :key="type"
-                    :value="type"
-                  >
+                  <option v-for="type in expenseTypes" :key="type" :value="type">
                     {{ type.replace('_', ' ') }}
                   </option>
                 </select>
-
                 <!-- Importo -->
                 <input
                   v-model.number="newCost.importo"
@@ -231,10 +233,7 @@
                 />
               </div>
               <div class="modal-footer">
-                <button
-                  class="btn btn-success"
-                  @click="addCost"
-                >
+                <button class="btn btn-success" @click="addCost">
                   Salva
                 </button>
               </div>
@@ -245,22 +244,17 @@
 
       <!-- Sezione per aggiungere un membro -->
       <div class="mt-4">
-        <h5><i class="fas fa-user-plus me-1"></i> Aggiungi un membro</h5>
+        <h5>
+          <i class="fas fa-user-plus me-1"></i> Aggiungi un membro
+        </h5>
         <div class="d-flex align-items-center">
-          <select
-            class="form-select"
-            v-model="selectedMember"
-            style="max-width: 250px;"
-          >
+          <select class="form-select" v-model="selectedMember" style="max-width: 250px;">
             <option value="" disabled>Seleziona un utente</option>
             <option v-for="user in allUsers" :key="user.id" :value="user.username">
               {{ user.username }}
             </option>
           </select>
-          <button
-            class="btn btn-primary ms-2"
-            @click="addMemberToGroup(groupId, selectedMember)"
-          >
+          <button class="btn btn-primary ms-2" @click="addMemberToGroup(groupId, selectedMember)">
             Aggiungi
           </button>
         </div>
@@ -270,29 +264,18 @@
       <div class="card shadow-lg mb-5 border-0 mt-4">
         <div
           class="card-header text-white d-flex justify-content-between align-items-center"
-          style="
-            background: linear-gradient(to right, #007bff, #0056b3);
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-          "
+          style="background: linear-gradient(to right, #007bff, #0056b3); border-top-left-radius: 8px; border-top-right-radius: 8px;"
         >
           <h4 class="mb-0">
             <i class="fas fa-users me-2"></i>{{ group.nome }}
           </h4>
-          <span
-            class="badge bg-light text-primary fs-6 d-flex align-items-center"
-            style="border-radius: 20px;"
-          >
+          <span class="badge bg-light text-primary fs-6 d-flex align-items-center" style="border-radius: 20px;">
             <i class="fas fa-user-friends me-1"></i>
             {{ group.membri ? group.membri.length : 0 }} membri
           </span>
         </div>
-
         <div class="card-body position-relative">
-          <div
-            v-if="group.membri && group.membri.length > 0"
-            class="table-responsive mt-2"
-          >
+          <div v-if="group.membri && group.membri.length > 0" class="table-responsive mt-2">
             <h5 class="mb-3">
               <i class="fas fa-address-card me-1"></i> Membri del Gruppo
             </h5>
@@ -316,10 +299,7 @@
                     </div>
                   </td>
                   <td class="text-center">
-                    <button
-                      class="btn btn-outline-danger btn-sm"
-                      @click="removeMember(member.username)"
-                    >
+                    <button class="btn btn-outline-danger btn-sm" @click="removeMember(member.username)">
                       <i class="fas fa-user-minus"></i> Rimuovi
                     </button>
                   </td>
@@ -332,14 +312,12 @@
               <i class="fas fa-exclamation-triangle"></i> Nessun membro presente.
             </p>
           </div>
-
           <!-- Admin del gruppo, se presente -->
           <div class="mt-4" v-if="group.admin">
             <strong class="me-2">Admin:</strong>
             <span class="text-muted">{{ group.admin.username }}</span>
           </div>
         </div>
-
         <div class="card-footer d-flex justify-content-end border-0">
           <router-link to="/groups" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i> Torna alla lista gruppi
@@ -366,22 +344,16 @@
           <!-- Header con sfondo rosso e testo bianco -->
           <div class="modal-header bg-danger text-white">
             <h5 class="modal-title">Attenzione!</h5>
-            <button
-              type="button"
-              class="btn-close"
-              @click="showThresholdWarning = false"
-            ></button>
+            <button type="button" class="btn-close" @click="showThresholdWarning = false"></button>
           </div>
           <!-- Corpo con l'icona esclamativo e messaggio -->
           <div class="modal-body">
             <div class="d-flex align-items-start">
-              <!-- Immagine con punto esclamativo rosso -->
               <img
                 src="/images/esclamativo.jpg"
                 alt="Attenzione!"
                 style="width: 160px; margin-right: 40px;"
               />
-              <!-- Messaggio soglia -->
               <p class="mb-0">{{ thresholdWarningMessage }}</p>
             </div>
           </div>
@@ -397,7 +369,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 /** Router e parametri */
@@ -412,7 +384,7 @@ const alerts = ref([])
 
 /** Modal per ALERT */
 const showAlertModal = ref(false)
-const newAlert = ref({ nome: '', limite: 0 })
+const newAlert = ref({ nome: '', limite: 0, macroArea: '' })
 
 /** Modal per SPESA */
 const showCostModal = ref(false)
@@ -447,6 +419,39 @@ const token = localStorage.getItem('token')
 /** Variabili per avviso "state spendendo troppo" */
 const showThresholdWarning = ref(false)
 const thresholdWarningMessage = ref('')
+
+/** Mapping delle macroaree */
+const macroAreaMapping = {
+  ABITAZIONE: ['ABITAZIONE_AFFITTO', 'ABITAZIONE_MUTUO', 'ABITAZIONE_BOLLETTE'],
+  TRASPORTI: ['TRASPORTI_CARBURANTE', 'TRASPORTI_PUBBLICO', 'TRASPORTI_MANUTENZIONE', 'TRASPORTI_ASSICURAZIONE'],
+  SALUTE: ['SALUTE_FARMACI', 'SALUTE_VISITE', 'SALUTE_ASSICURAZIONE'],
+  ISTRUZIONE: ['ISTRUZIONE_TASSE', 'ISTRUZIONE_MATERIALI', 'ISTRUZIONE_CORSI'],
+  ASSICURAZIONI: ['ASSICURAZIONI_AUTO', 'ASSICURAZIONI_CASA', 'ASSICURAZIONI_VITA'],
+  TASSE: ['TASSE_PROPRIETA'],
+  SVAGO_E_CULTURA: ['SVAGO_CINEMA', 'SVAGO_TEATRO', 'SVAGO_CONCERTI', 'SVAGO_HOBBY'],
+  VIAGGI: ['VIAGGI_BIGLIETTI', 'VIAGGI_HOTEL', 'VIAGGI_ESCURSIONI'],
+  RISTORAZIONE_E_ALIMENTARI: ['ALIMENTARI', 'RISTORANTI_PRANZI', 'RISTORANTI_CENE', 'RISTORANTI_CAFFE'],
+  SHOPPING: ['SHOPPING_ABBIGLIAMENTO', 'SHOPPING_ACCESSORI', 'SHOPPING_SCARPE', 'SHOPPING_COSMETICI'],
+  TECNOLOGIA: ['TECNOLOGIA_SMARTPHONE', 'TECNOLOGIA_TABLET', 'TECNOLOGIA_COMPUTER', 'TECNOLOGIA_ABBONAMENTI']
+}
+
+/** Computed: Somma costi per Macroaree */
+const macroAreaSums = computed(() => {
+  const sums = {}
+  // Inizializza ogni macroarea a 0
+  for (const macro in macroAreaMapping) {
+    sums[macro] = 0
+  }
+  // Per ogni spesa, controlla a quale macroarea appartiene e somma l'importo
+  costs.value.forEach(cost => {
+    for (const macro in macroAreaMapping) {
+      if (macroAreaMapping[macro].includes(cost.tipologia)) {
+        sums[macro] += cost.importo
+      }
+    }
+  })
+  return sums
+})
 
 /** Al mount del componente */
 onMounted(() => {
@@ -531,7 +536,7 @@ async function addAlert() {
     }
 
     // reset form
-    newAlert.value = { nome: '', limite: 0 }
+    newAlert.value = { nome: '', limite: 0, macroArea: '' }
   } catch (error) {
     alert(`Errore nella creazione dell'alert: ${error.message}`)
     console.error('addAlert:', error)
@@ -700,21 +705,21 @@ function updateDashboard() {
   checkAlertThresholds()
 }
 
-/** Se totalSpent >= 80% di un Alert.limite, mostra la modale di avviso */
+/** Controlla se, per ciascun Alert, il totale speso nella relativa macroarea supera l'80% del limite */
 function checkAlertThresholds() {
   showThresholdWarning.value = false
   thresholdWarningMessage.value = ''
 
-  const currentSpending = parseFloat(totalSpent.value) || 0
   if (!alerts.value || alerts.value.length === 0) return
 
+  // Controlla ogni alert in base alla macroarea
   for (let a of alerts.value) {
-    if (currentSpending >= 0.8 * a.limite) {
+    const macroTotal = macroAreaSums.value[a.macroArea] || 0
+    if (macroTotal >= 0.8 * a.limite) {
       thresholdWarningMessage.value =
-        `Attenzione! Avete già speso €${currentSpending.toFixed(2)} 
-         su un limite di €${a.limite.toFixed(2)} (Alert: ${a.nome}).`
+        `Attenzione! Nella macroarea ${a.macroArea} hai speso €${macroTotal.toFixed(2)} su un limite di €${a.limite.toFixed(2)} (Alert: ${a.nome}).`
       showThresholdWarning.value = true
-      break // Se vuoi più di un avviso, togli il break
+      break
     }
   }
 }
@@ -737,4 +742,3 @@ function checkAlertThresholds() {
   background: rgba(0, 0, 0, 0.5);
 }
 </style>
-

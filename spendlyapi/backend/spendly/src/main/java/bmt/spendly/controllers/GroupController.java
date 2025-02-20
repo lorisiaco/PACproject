@@ -186,7 +186,9 @@ public class GroupController {
     }
     //api per aggiungere alert ( solo per amministratore)
     @PostMapping("/{groupId}/alerts")
-    public ResponseEntity<?> addAlertToGroup(@PathVariable Long groupId, @RequestParam String adminUsername, @RequestBody Alert alertRequest) {
+    public ResponseEntity<?> addAlertToGroup(@PathVariable Long groupId, 
+                                            @RequestParam String adminUsername, 
+                                            @RequestBody Alert alertRequest) {
         try {
             Group group = groupService.getGroupById(groupId);
             if (group == null) {
@@ -196,18 +198,22 @@ public class GroupController {
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Admin not found");
             }
-            if (group.getAdmin().getId() != user.getId()) {
+            if (group.getAdmin().getId() != user.getId())  {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Only the admin can create Alert");
             }
-            Alert newAlert = groupService.creaAlert(alertRequest.getNome(), alertRequest.getLimite(),groupId);
+            // Il JSON della request deve includere: nome, limite e macroArea (es. "ABITAZIONE")
+            Alert newAlert = groupService.creaAlert(alertRequest.getNome(), 
+                                                    alertRequest.getLimite(), 
+                                                    alertRequest.getMacroArea(), 
+                                                    groupId);
             return ResponseEntity.status(HttpStatus.CREATED).body(newAlert);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error("Error creating an Alert: " + e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                                 .body("Failed to create an Alert: " + e.getMessage());
+                                .body("Failed to create an Alert: " + e.getMessage());
         }
     }
+
     //api per eliminare alert (solo per amministratore)
     @DeleteMapping("/{groupId}/alerts/{alertId}")
     public ResponseEntity<String> DeleteAlert( @RequestParam String adminUsername, @PathVariable Long alertId, @PathVariable Long groupId) {

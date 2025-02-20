@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
+import bmt.spendly.models.ExpenseMacroArea;
 import bmt.spendly.models.Group;
 import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
@@ -146,13 +147,14 @@ public class GroupService {
         return userRepository.findByUsernameIgnoreCase(username);
     }
 
-    public Alert creaAlert(String nome,double importo, Long groupId){
+    public Alert creaAlert(String nome, double importo, ExpenseMacroArea macroArea, Long groupId) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
-        Alert a=new Alert(nome,importo,gruppo);
+        Alert a = new Alert(nome, importo, macroArea, gruppo);
         gruppo.addAlert(a);
-       return alertRepository.save(a);
+        return alertRepository.save(a);
     }
+
 
     @Transactional
     public void EliminaAlert(Long alertId) {
