@@ -125,7 +125,7 @@
       <div class="mt-4">
         <h5><i class="fas fa-wallet me-1"></i> Spese del Gruppo</h5>
 
-        <!-- Dashboard statistica (facoltativa) -->
+        <!-- Dashboard statistica -->
         <div class="row mb-3">
           <div class="col-md-4 mb-2">
             <div
@@ -353,6 +353,46 @@
       <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
       <router-link to="/contact" class="footer-link">Contattaci</router-link>
     </footer>
+
+    <!-- MODALE DI AVVISO SE SI SUPERANO LE SOGLIE ALERT -->
+    <div
+      v-if="showThresholdWarning"
+      class="modal fade show d-block"
+      tabindex="-1"
+      style="background: rgba(0, 0, 0, 0.5);"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Header con sfondo rosso e testo bianco -->
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">Attenzione!</h5>
+            <button
+              type="button"
+              class="btn-close"
+              @click="showThresholdWarning = false"
+            ></button>
+          </div>
+          <!-- Corpo con l'icona esclamativo e messaggio -->
+          <div class="modal-body">
+            <div class="d-flex align-items-start">
+              <!-- Immagine con punto esclamativo rosso -->
+              <img
+                src="/images/esclamativo.jpg"
+                alt="Attenzione!"
+                style="width: 160px; margin-right: 40px;"
+              />
+              <!-- Messaggio soglia -->
+              <p class="mb-0">{{ thresholdWarningMessage }}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" @click="showThresholdWarning = false">
+              Chiudi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -376,12 +416,6 @@ const newAlert = ref({ nome: '', limite: 0 })
 
 /** Modal per SPESA */
 const showCostModal = ref(false)
-/**
- * newCost con i campi necessari:
- * - tipologia
- * - importo
- * (e group se vuoi passare group:{id:..} al backend)
- */
 const newCost = ref({ tipologia: '', importo: null })
 
 /** Possibili categorie di spesa */
@@ -410,13 +444,16 @@ const selectedMember = ref('')
 const adminUsername = localStorage.getItem('username')
 const token = localStorage.getItem('token')
 
-/** Lifecycle: carica dati gruppo e utenti */
+/** Variabili per avviso "state spendendo troppo" */
+const showThresholdWarning = ref(false)
+const thresholdWarningMessage = ref('')
+
+/** Al mount del componente */
 onMounted(() => {
   fetchGroup()
   fetchUsers()
 })
 
-/** Apertura/chiusura modale Alert */
 function openAlertModal() {
   showAlertModal.value = true
 }
@@ -429,7 +466,7 @@ async function confirmAddAlert() {
   closeAlertModal()
 }
 
-/** Recupera dettagli gruppo (con costs e alerts) */
+/** Carica i dettagli del gruppo e relative spese/alerts */
 async function fetchGroup() {
   try {
     if (!token) {
@@ -444,9 +481,6 @@ async function fetchGroup() {
       throw new Error('Errore nel recupero del gruppo.')
     }
     const data = await res.json()
-
-    // Nel tuo GroupController, showGroup() restituisce
-    // un GroupResponseDTO => { group, costs, alerts }
     group.value = data.group
     costs.value = data.costs
     alerts.value = data.alerts
@@ -458,7 +492,7 @@ async function fetchGroup() {
   }
 }
 
-/** Recupera tutti gli utenti per la select "Aggiungi membro" */
+/** Carica tutti gli utenti per la select di aggiunta membri */
 async function fetchUsers() {
   if (!token) {
     console.error('Token mancante. Non posso caricare gli utenti.')
@@ -478,7 +512,7 @@ async function fetchUsers() {
   }
 }
 
-/** Aggiunge un Alert (POST /api/groups/{groupId}/alerts?adminUsername=...) */
+/** Crea un nuovo alert per il gruppo */
 async function addAlert() {
   try {
     const url = `http://localhost:8080/api/groups/${groupId}/alerts?adminUsername=${adminUsername}`
@@ -496,8 +530,7 @@ async function addAlert() {
       throw new Error(errorMsg)
     }
 
-    // Ricarica e resetta
-    await fetchGroup()
+    // reset form
     newAlert.value = { nome: '', limite: 0 }
   } catch (error) {
     alert(`Errore nella creazione dell'alert: ${error.message}`)
@@ -505,7 +538,7 @@ async function addAlert() {
   }
 }
 
-/** Elimina un alert (DELETE /api/groups/{groupId}/alerts/{alertId}?adminUsername=...) */
+/** Elimina un Alert */
 async function deleteAlert(alertId) {
   try {
     const url = `http://localhost:8080/api/groups/${groupId}/alerts/${alertId}?adminUsername=${adminUsername}`
@@ -519,14 +552,14 @@ async function deleteAlert(alertId) {
       throw new Error(errorMsg)
     }
 
-    await fetchGroup()
+    fetchGroup()
   } catch (error) {
     alert(`Errore nell'eliminazione dell'alert: ${error.message}`)
     console.error('deleteAlert:', error)
   }
 }
 
-/** Aggiunge un membro (POST /api/groups/{groupId}/members?adminUsername=...&memberUsername=...) */
+/** Aggiunge un membro al gruppo */
 async function addMemberToGroup(groupId, memberUsername) {
   if (!adminUsername || !token) {
     alert('Utente non autenticato o token mancante.')
@@ -549,16 +582,15 @@ async function addMemberToGroup(groupId, memberUsername) {
       throw new Error(errorText)
     }
 
-    // Aggiorna
     fetchGroup()
     selectedMember.value = ''
   } catch (error) {
     alert(`Errore aggiunta membro: ${error}`)
-    console.error('Errore durante l\'aggiunta del membro:', error)
+    console.error('Errore durante l aggiunta del membro:', error)
   }
 }
 
-/** Rimuove un membro (DELETE /api/groups/{groupId}/members?adminUsername=...&memberUsername=...) */
+/** Rimuove un membro */
 async function removeMember(memberUsername) {
   try {
     if (!token || !adminUsername) {
@@ -583,7 +615,7 @@ async function removeMember(memberUsername) {
   }
 }
 
-/** Aggiunge una spesa (POST /api/costs?username=...) -- rotta ipotizzata in CostController */
+/** Aggiunge una spesa (Cost) al gruppo */
 async function addCost() {
   if (!newCost.value.tipologia || !newCost.value.importo) {
     alert('Compila tutti i campi spesa!')
@@ -594,7 +626,6 @@ async function addCost() {
     return
   }
 
-  // Esempio di payload con group -> { id: groupId }
   const payload = {
     importo: newCost.value.importo,
     tipologia: newCost.value.tipologia,
@@ -617,8 +648,7 @@ async function addCost() {
       throw new Error(errorData || 'Errore nella creazione della spesa.')
     }
 
-    // Ricarica dati gruppo e chiudi modale
-    await fetchGroup()
+    fetchGroup()
     showCostModal.value = false
     newCost.value = { tipologia: '', importo: null }
   } catch (error) {
@@ -627,7 +657,7 @@ async function addCost() {
   }
 }
 
-/** Elimina una spesa (DELETE /api/costs/{costId}) -- rotta ipotizzata in CostController */
+/** Elimina una spesa */
 async function deleteCost(costId) {
   if (!token || !adminUsername) {
     alert('Utente non autenticato o token mancante.')
@@ -645,7 +675,6 @@ async function deleteCost(costId) {
       throw new Error(errorText)
     }
 
-    // Aggiorna
     fetchGroup()
   } catch (error) {
     alert('Errore nella cancellazione della spesa: ' + error.message)
@@ -653,20 +682,41 @@ async function deleteCost(costId) {
   }
 }
 
-/** Aggiorna le statistiche (totalSpent, averageSpent, lastSpent) */
+/** Aggiorna le statistiche e controlla se abbiamo superato la soglia di qualche Alert */
 function updateDashboard() {
   if (costs.value.length === 0) {
     totalSpent.value = 0
     averageSpent.value = 0
     lastSpent.value = 'N/D'
-    return
-  }
-  const total = costs.value.reduce((acc, c) => acc + c.importo, 0)
-  totalSpent.value = total.toFixed(2)
-  averageSpent.value = (total / costs.value.length).toFixed(2)
+  } else {
+    const total = costs.value.reduce((acc, c) => acc + c.importo, 0)
+    totalSpent.value = total.toFixed(2)
+    averageSpent.value = (total / costs.value.length).toFixed(2)
 
-  const last = costs.value[costs.value.length - 1]
-  lastSpent.value = `€${last.importo.toFixed(2)}`
+    const last = costs.value[costs.value.length - 1]
+    lastSpent.value = `€${last.importo.toFixed(2)}`
+  }
+
+  checkAlertThresholds()
+}
+
+/** Se totalSpent >= 80% di un Alert.limite, mostra la modale di avviso */
+function checkAlertThresholds() {
+  showThresholdWarning.value = false
+  thresholdWarningMessage.value = ''
+
+  const currentSpending = parseFloat(totalSpent.value) || 0
+  if (!alerts.value || alerts.value.length === 0) return
+
+  for (let a of alerts.value) {
+    if (currentSpending >= 0.8 * a.limite) {
+      thresholdWarningMessage.value =
+        `Attenzione! Avete già speso €${currentSpending.toFixed(2)} 
+         su un limite di €${a.limite.toFixed(2)} (Alert: ${a.nome}).`
+      showThresholdWarning.value = true
+      break // Se vuoi più di un avviso, togli il break
+    }
+  }
 }
 </script>
 
@@ -687,3 +737,4 @@ function updateDashboard() {
   background: rgba(0, 0, 0, 0.5);
 }
 </style>
+
