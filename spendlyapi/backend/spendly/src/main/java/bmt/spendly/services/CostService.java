@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
 import bmt.spendly.models.Group;
+import bmt.spendly.models.PaymentStatus;
 import bmt.spendly.repositories.AppUserRepository;
 import bmt.spendly.repositories.CostRepository;
 import bmt.spendly.repositories.GroupRepository;
@@ -23,6 +24,9 @@ public class CostService {
 
     @Autowired
     private AppUserRepository userRepository;
+
+    @Autowired
+    private BudgetService budgetService;
 
     public Cost createCost(Cost cost, Long groupId, String username) { // MODIFICATO da Integer a Long
         username = username.trim();
@@ -74,18 +78,41 @@ public class CostService {
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
-    public Cost updateCost(Long id, Cost updatedCost) { // MODIFICATO da int a Long
+    public Cost updateCost(Long id, Cost updatedCost) {
         Cost existingCost = getCostById(id);
         existingCost.setImporto(updatedCost.getImporto());
         existingCost.setTipologia(updatedCost.getTipologia());
+        
+        // Aggiorniamo anche lo stato di pagamento
+        existingCost.setPaymentStatus(updatedCost.getPaymentStatus());
+    
         return costRepository.save(existingCost);
     }
-
+    
     public void deleteCost(Long id) { // MODIFICATO da int a Long
         if (!costRepository.existsById(id)) {
             throw new IllegalArgumentException("La spesa con ID " + id + " non esiste.");
         }
         costRepository.deleteById(id);
+    }
+
+    public Cost payCostFromBudget(Long costId, String username) {
+        // 1) Recupera la spesa
+        Cost cost = getCostById(costId);
+        
+        // 2) Verifica che la spesa appartenga all'utente (o che l'utente abbia i permessi)
+        if (!cost.getUser().getUsername().equalsIgnoreCase(username)) {
+            throw new IllegalArgumentException("Non puoi pagare il costo di un altro utente!");
+        }
+        
+        // 3) Scala i fondi dal budget (se insufficienti, lancio un'eccezione)
+        budgetService.subtractFunds(username, cost.getImporto());
+
+        // 4) Segna la spesa come PAGATA
+        cost.setPaymentStatus(PaymentStatus.PAGATO);
+
+        // 5) Salva e restituisci
+        return costRepository.save(cost);
     }
 }
 

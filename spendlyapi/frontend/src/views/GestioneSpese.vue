@@ -6,49 +6,71 @@
 
     <!-- Statistiche -->
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="dashboard-card bg-primary text-white p-3 rounded">
-          <h3><i class="fas fa-euro-sign"></i> Totale Spese</h3>
-          <p>€{{ totalSpent }}</p>
+          <h3 class="h5"><i class="fas fa-euro-sign"></i> Totale Spese</h3>
+          <p class="fs-5 m-0">€{{ totalSpent }}</p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="dashboard-card bg-success text-white p-3 rounded">
-          <h3><i class="fas fa-coins"></i> Spesa Media</h3>
-          <p>€{{ averageSpent }}</p>
+          <h3 class="h5"><i class="fas fa-coins"></i> Spesa Media</h3>
+          <p class="fs-5 m-0">€{{ averageSpent }}</p>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="dashboard-card bg-warning text-dark p-3 rounded">
-          <h3><i class="fas fa-history"></i> Ultima Spesa</h3>
-          <p>{{ lastSpent }}</p>
+          <h3 class="h5"><i class="fas fa-history"></i> Ultima Spesa</h3>
+          <p class="fs-5 m-0">{{ lastSpent }}</p>
         </div>
       </div>
     </div>
 
     <!-- Tabella Spese -->
-    <h2 class="mt-4">Storico Spese</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <!-- Rimosso <th>Data</th> -->
-          <th>Tipologia</th>
-          <th>Importo (€)</th>
-          <th>Gruppo</th>
-          <th>Azioni</th>
+    <h2 class="mt-4 mb-3">Storico Spese</h2>
+    <table class="table table-bordered table-hover table-striped align-middle">
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th scope="col">Tipologia</th>
+          <th scope="col">Importo (€)</th>
+          <th scope="col">Gruppo</th>
+          <th scope="col">Stato Pagamento</th>
+          <th scope="col">Azioni</th>
         </tr>
       </thead>
       <tbody>
         <tr v-if="costs.length === 0">
-          <td colspan="4" class="text-center">Nessuna spesa registrata</td>
+          <td colspan="5" class="text-center">Nessuna spesa registrata</td>
         </tr>
-        <tr v-for="cost in costs" :key="cost.id">
-          <!-- Rimosso la colonna 'Data' -->
-          <td>{{ cost.tipologia.replace('_', ' ') }}</td>
-          <td>€{{ cost.importo ? cost.importo.toFixed(2) : "0.00" }}</td>
+        <!-- Usare cost.costId come chiave -->
+        <tr v-for="cost in costs" :key="cost.costId" class="text-center">
+          <td>{{ cost.tipologia.replaceAll('_', ' ') }}</td>
+          <td>€{{ cost.importo ? cost.importo.toFixed(2) : '0.00' }}</td>
           <td>{{ cost.group ? cost.group.nome : 'N/A' }}</td>
           <td>
-            <button class="btn btn-danger btn-sm" @click="deleteCost(cost.id)">
+            <!-- Badge colorato in base allo stato -->
+            <span 
+              :class="{
+                'badge': true,
+                'bg-success': cost.paymentStatus === 'PAGATO',
+                'bg-danger': cost.paymentStatus === 'DA_SALDARE'
+              }"
+            >
+              {{ cost.paymentStatus === 'PAGATO' ? 'Pagato' : 'Da saldare' }}
+            </span>
+          </td>
+          <td>
+            <!-- Pulsante per SALDARE o RIPRISTINARE lo stato di pagamento -->
+            <button
+              class="btn btn-sm me-2"
+              :class="cost.paymentStatus === 'PAGATO' ? 'btn-warning' : 'btn-success'"
+              @click="togglePaymentStatus(cost)"
+            >
+              {{ cost.paymentStatus === 'PAGATO' ? 'Segna come Da Saldare' : 'Segna come Pagato' }}
+            </button>
+
+            <!-- Pulsante per Eliminare la spesa -->
+            <button class="btn btn-danger btn-sm" @click="deleteCost(cost.costId)">
               Elimina
             </button>
           </td>
@@ -57,9 +79,11 @@
     </table>
 
     <!-- Bottone per Aggiungere Spesa -->
-    <button class="btn btn-primary" @click="showModal = true">
-      <i class="fas fa-plus"></i> Aggiungi Spesa
-    </button>
+    <div class="mb-5">
+      <button class="btn btn-primary" @click="showModal = true">
+        <i class="fas fa-plus"></i> Aggiungi Spesa
+      </button>
+    </div>
 
     <!-- Modale per Aggiungere Spesa -->
     <div v-if="showModal" class="modal fade show" tabindex="-1" style="display: block;">
@@ -71,32 +95,55 @@
           </div>
           <div class="modal-body">
             <!-- Tipologia -->
-            <select v-model="newCost.tipologia" class="form-control mb-2" required>
-              <option value="" disabled>Seleziona la tipologia</option>
-              <option v-for="type in expenseTypes" :key="type" :value="type">
-                {{ type.replace('_', ' ') }}
-              </option>
-            </select>
+            <div class="mb-3">
+              <label class="form-label">Tipologia</label>
+              <select v-model="newCost.tipologia" class="form-select" required>
+                <option value="" disabled>Seleziona la tipologia</option>
+                <option v-for="type in expenseTypes" :key="type" :value="type">
+                  {{ type.replaceAll('_', ' ') }}
+                </option>
+              </select>
+            </div>
 
             <!-- Importo -->
-            <input
-              v-model.number="newCost.importo"
-              type="number"
-              class="form-control mb-2"
-              placeholder="Importo (€)"
-              required
-            />
+            <div class="mb-3">
+              <label class="form-label">Importo (€)</label>
+              <input
+                v-model.number="newCost.importo"
+                type="number"
+                class="form-control"
+                placeholder="Importo (€)"
+                required
+              />
+            </div>
 
             <!-- Selezione Gruppo -->
-            <select v-model="newCost.groupId" class="form-control mb-2">
-              <option value="">Nessun gruppo</option>
-              <option v-for="group in groups" :key="group.id" :value="group.id">
-                {{ group.nome }}
-              </option>
-            </select>
+            <div class="mb-3">
+              <label class="form-label">Gruppo</label>
+              <select v-model="newCost.groupId" class="form-select">
+                <option value="">Nessun gruppo</option>
+                <option v-for="group in groups" :key="group.id" :value="group.id">
+                  {{ group.nome }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Stato Pagamento (opzionale) -->
+            <div class="mb-3">
+              <label class="form-label">Stato Pagamento</label>
+              <select v-model="newCost.paymentStatus" class="form-select">
+                <option value="DA_SALDARE">Da saldare</option>
+                <option value="PAGATO">Pagato</option>
+              </select>
+            </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success" @click="addCost">Salva</button>
+            <button class="btn btn-secondary" @click="showModal = false">
+              Annulla
+            </button>
+            <button class="btn btn-success" @click="addCost">
+              Salva
+            </button>
           </div>
         </div>
       </div>
@@ -109,7 +156,6 @@ import { ref, onMounted } from "vue";
 
 /** Lista delle spese caricate */
 const costs = ref([]);
-
 /** Lista dei gruppi a cui l'utente partecipa */
 const groups = ref([]);
 
@@ -118,96 +164,87 @@ const totalSpent = ref(0);
 const averageSpent = ref(0);
 const lastSpent = ref("N/D");
 
-/** Gestione modale */
+/** Gestione modale di aggiunta spesa */
 const showModal = ref(false);
 
 /** Nuova spesa da creare */
 const newCost = ref({
   tipologia: "",
   importo: null,
-  groupId: null, // Salviamo solo l'ID del gruppo
+  groupId: null,
+  paymentStatus: "DA_SALDARE",
 });
 
-/** Possibili tipologie di spesa */
+/** Possibili tipologie di spesa (il tuo enum) */
 const expenseTypes = [
-  "ABITAZIONE_AFFITTO", "ABITAZIONE_MUTUO", "ABITAZIONE_BOLLETTE", "ALIMENTARI",
-  "TRASPORTI_CARBURANTE", "TRASPORTI_PUBBLICO", "TRASPORTI_MANUTENZIONE", "TRASPORTI_ASSICURAZIONE",
-  "SALUTE_FARMACI", "SALUTE_VISITE", "SALUTE_ASSICURAZIONE", "ISTRUZIONE_TASSE",
-  "ISTRUZIONE_MATERIALI", "ISTRUZIONE_CORSI", "ASSICURAZIONI_AUTO", "ASSICURAZIONI_CASA",
-  "ASSICURAZIONI_VITA", "TASSE_PROPRIETA", "SVAGO_CINEMA", "SVAGO_TEATRO", "SVAGO_CONCERTI",
-  "SVAGO_HOBBY", "VIAGGI_BIGLIETTI", "VIAGGI_HOTEL", "VIAGGI_ESCURSIONI", "RISTORANTI_PRANZI",
-  "RISTORANTI_CENE", "RISTORANTI_CAFFE", "SHOPPING_ABBIGLIAMENTO", "SHOPPING_ACCESSORI",
-  "SHOPPING_SCARPE", "SHOPPING_COSMETICI", "TECNOLOGIA_SMARTPHONE", "TECNOLOGIA_TABLET",
-  "TECNOLOGIA_COMPUTER", "TECNOLOGIA_ABBONAMENTI",
+  "ABITAZIONE_AFFITTO","ABITAZIONE_MUTUO","ABITAZIONE_BOLLETTE","ALIMENTARI",
+  "TRASPORTI_CARBURANTE","TRASPORTI_PUBBLICO","TRASPORTI_MANUTENZIONE","TRASPORTI_ASSICURAZIONE",
+  "SALUTE_FARMACI","SALUTE_VISITE","SALUTE_ASSICURAZIONE","ISTRUZIONE_TASSE",
+  "ISTRUZIONE_MATERIALI","ISTRUZIONE_CORSI","ASSICURAZIONI_AUTO","ASSICURAZIONI_CASA",
+  "ASSICURAZIONI_VITA","TASSE_PROPRIETA","SVAGO_CINEMA","SVAGO_TEATRO","SVAGO_CONCERTI",
+  "SVAGO_HOBBY","VIAGGI_BIGLIETTI","VIAGGI_HOTEL","VIAGGI_ESCURSIONI","RISTORANTI_PRANZI",
+  "RISTORANTI_CENE","RISTORANTI_CAFFE","SHOPPING_ABBIGLIAMENTO","SHOPPING_ACCESSORI",
+  "SHOPPING_SCARPE","SHOPPING_COSMETICI","TECNOLOGIA_SMARTPHONE","TECNOLOGIA_TABLET",
+  "TECNOLOGIA_COMPUTER","TECNOLOGIA_ABBONAMENTI",
 ];
 
-/**
- * Carica la lista spese dal backend
- */
-const fetchCosts = async () => {
+/** Al montaggio del componente, recupera spese e gruppi dal backend */
+onMounted(() => {
+  fetchCosts();
+  fetchGroups();
+});
+
+/** Funzione per recuperare l'elenco delle spese */
+async function fetchCosts() {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
-
   if (!username || !token) {
     console.error("Utente non autenticato! Username o token mancante.");
     return;
   }
-
   try {
     const response = await fetch(`http://localhost:8080/api/costs?username=${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-
     if (!response.ok) {
       throw new Error("Errore nel recupero delle spese");
     }
-
     const data = await response.json();
     costs.value = data;
     updateDashboard();
   } catch (error) {
     console.error(error);
   }
-};
+}
 
-/**
- * Carica i gruppi a cui l'utente partecipa
- */
-const fetchGroups = async () => {
+/** Funzione per recuperare i gruppi */
+async function fetchGroups() {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
-
   if (!username || !token) {
     console.error("Utente non autenticato! Username o token mancante.");
     return;
   }
-
   try {
     const response = await fetch(`http://localhost:8080/api/groups?username=${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-
     if (!response.ok) {
       throw new Error("Errore nel recupero dei gruppi");
     }
-
     const data = await response.json();
     groups.value = data;
   } catch (error) {
     console.error(error);
   }
-};
+}
 
-/**
- * Aggiunge una nuova spesa
- */
-const addCost = async () => {
-  // Verifica campi obbligatori
+/** Aggiunge una nuova spesa */
+async function addCost() {
   if (!newCost.value.tipologia || !newCost.value.importo) {
     alert("Compila tutti i campi obbligatori!");
     return;
   }
-
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
   if (!username || !token) {
@@ -219,10 +256,8 @@ const addCost = async () => {
   const payload = {
     importo: newCost.value.importo,
     tipologia: newCost.value.tipologia,
-    // Se l'utente ha selezionato un gruppo, passiamo un oggetto group con { id: ... }
-    group: newCost.value.groupId
-      ? { id: parseInt(newCost.value.groupId) }
-      : null,
+    paymentStatus: newCost.value.paymentStatus,
+    group: newCost.value.groupId ? { id: parseInt(newCost.value.groupId) } : null,
   };
 
   try {
@@ -234,13 +269,12 @@ const addCost = async () => {
       },
       body: JSON.stringify(payload),
     });
-
     if (response.ok) {
-      // Ricarica la lista spese
+      // Ricarichiamo la lista delle spese
       await fetchCosts();
-      // Chiudi la modale e ripulisci il form
+      // Chiudiamo la modale e resettiamo il form
       showModal.value = false;
-      newCost.value = { tipologia: "", importo: null, groupId: null };
+      newCost.value = { tipologia: "", importo: null, groupId: null, paymentStatus: "DA_SALDARE" };
     } else {
       const errorData = await response.json();
       alert(`Errore: ${errorData.message || "Impossibile aggiungere la spesa."}`);
@@ -248,28 +282,23 @@ const addCost = async () => {
   } catch (error) {
     console.error("Errore nell'aggiunta della spesa:", error);
   }
-};
+}
 
-/**
- * Elimina una spesa
- */
-const deleteCost = async (id) => {
+/** Elimina una spesa */
+async function deleteCost(costId) {
   const token = localStorage.getItem("token");
   if (!token) {
     alert("Utente non autenticato.");
     return;
   }
-
   try {
-    const response = await fetch(`http://localhost:8080/api/costs/${id}`, {
+    const response = await fetch(`http://localhost:8080/api/costs/${costId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
     if (response.ok) {
-      // Aggiorna la lista
       await fetchCosts();
     } else {
       alert("Errore nella cancellazione della spesa.");
@@ -277,47 +306,99 @@ const deleteCost = async (id) => {
   } catch (error) {
     console.error("Errore nella cancellazione della spesa:", error);
   }
-};
+}
 
-/**
- * Aggiorna le statistiche (totale, media, ultima spesa)
- */
-const updateDashboard = () => {
+/** Quando l'utente clicca "Segna come Pagato"/"Segna come Da Saldare" */
+async function togglePaymentStatus(cost) {
+  const username = localStorage.getItem("username");
+  const token = localStorage.getItem("token");
+  if (!username || !token) {
+    alert("Utente non autenticato.");
+    return;
+  }
+
+  // Se la spesa è DA_SALDARE e l'utente clicca "Segna come Pagato", usiamo l'endpoint /pay
+  if (cost.paymentStatus === "DA_SALDARE") {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/costs/${cost.costId}/pay?username=${username}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      if (!response.ok) {
+        const errorText = await response.text();
+        alert("Errore nel pagamento: " + errorText);
+      } else {
+        // Ricarichiamo la lista
+        await fetchCosts();
+      }
+    } catch (error) {
+      console.error("Errore nel pagamento:", error);
+      alert("Errore nel pagamento.");
+    }
+  } 
+  // Se la spesa era PAGATO e l'utente vuole "Segna come Da Saldare", 
+  // facciamo una PUT generica su /api/costs/{costId}
+  else {
+    cost.paymentStatus = "DA_SALDARE";
+    try {
+      const response = await fetch(`http://localhost:8080/api/costs/${cost.costId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(cost),
+      });
+      if (!response.ok) {
+        alert("Errore nel riportare la spesa a Da Saldare.");
+      } else {
+        updateDashboard();
+      }
+    } catch (error) {
+      console.error("Errore nell'aggiornamento dello stato di pagamento:", error);
+    }
+  }
+}
+
+/** Calcola statistiche (totale, media, ultima) */
+function updateDashboard() {
   if (costs.value.length === 0) {
     totalSpent.value = 0;
     averageSpent.value = 0;
     lastSpent.value = "N/D";
     return;
   }
-
   const total = costs.value.reduce((sum, c) => sum + c.importo, 0);
   totalSpent.value = total.toFixed(2);
   averageSpent.value = (total / costs.value.length).toFixed(2);
   lastSpent.value = `€${costs.value[costs.value.length - 1].importo.toFixed(2)}`;
-};
-
-/**
- * Al montaggio del componente, recupera spese e gruppi
- */
-onMounted(() => {
-  fetchCosts();
-  fetchGroups();
-});
+}
 </script>
 
 <style scoped>
 .container {
-  max-width: 800px;
+  max-width: 900px;
 }
 
+/* Sfondo scuro dietro la modale */
 .modal {
   background: rgba(0, 0, 0, 0.5);
 }
 
+/* Card delle statistiche */
 .dashboard-card {
-  min-height: 120px;
+  min-height: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.table > :not(caption) > * > * {
+  vertical-align: middle; /* allinea il testo verticalmente */
 }
 </style>
