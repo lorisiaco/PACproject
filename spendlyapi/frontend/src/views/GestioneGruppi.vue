@@ -1,11 +1,7 @@
 <template>
-  <div class="container mt-5">
-    <h1 class="mb-4">
-      <i class="fas fa-users"></i> Gestione Gruppi
-    </h1>
-
+  <div class="container mt-5 p-4">
     <!-- Statistiche -->
-    <div class="row">
+    <div class="row mb-4">
       <div class="col-md-4">
         <div class="dashboard-card bg-primary text-white p-3 rounded">
           <h3><i class="fas fa-users"></i> Numero Gruppi</h3>
@@ -26,81 +22,52 @@
       </div>
     </div>
 
-    <!-- Tabella Gruppi -->
-    <h2 class="mt-4">Elenco Gruppi</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Admin</th>
-          <!-- Colonna Membri (solo il numero, cliccabile) -->
-          <th>Membri</th>
-          <th>Aggiungi Membro</th>
-          <th>Azioni</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Se non ci sono gruppi -->
-        <tr v-if="groups.length === 0">
-          <td colspan="6" class="text-center">Nessun gruppo registrato</td>
-        </tr>
-        <!-- Elenco gruppi -->
-        <tr v-for="group in groups" :key="group.id">
-          <td>{{ group.id }}</td>
-          <td>{{ group.nome }}</td>
-          <td>{{ group.admin ? group.admin.username : 'N/D' }}</td>
+    <!-- Titolo centrato per l'elenco dei gruppi -->
+    <h2 class="text-center mb-3">Elenco Gruppi</h2>
+    <div class="row">
+      <!-- Messaggio se non ci sono gruppi -->
+      <div v-if="groups.length === 0" class="col-12">
+        <p class="text-center">Nessun gruppo registrato</p>
+      </div>
 
-          <!-- MOSTRA SOLO IL NUMERO DI MEMBRI E CLICCANDO CI PORTA AL DETTAGLIO -->
-          <td>
-            <router-link
-              :to="{ name: 'GroupDetail', params: { groupId: group.id } }"
-              class="text-decoration-underline"
-            >
-              {{ group.membri ? group.membri.length : 0 }}
-            </router-link>
-          </td>
-
-          <!-- Seleziona un utente dal menu a tendina per aggiungerlo come membro -->
-          <td>
-            <div class="d-flex align-items-center">
-              <select
-                class="form-select"
-                v-model="selectedMember[group.id]"
-              >
-                <option value="" disabled>Seleziona utente</option>
-                <option
-                  v-for="user in allUsers"
-                  :key="user.id"
-                  :value="user.username"
-                >
-                  {{ user.username }}
-                </option>
-              </select>
-              <button
-                class="btn btn-primary ms-2"
-                @click="addMemberToGroup(group.id, selectedMember[group.id])"
-              >
-                Aggiungi
+      <!-- Card per ogni gruppo -->
+      <div v-for="group in groups" :key="group.id" class="col-md-4 mb-4">
+        <div class="card card-hover h-100">
+          <!-- Immagine casuale con Picsum -->
+          <img
+            class="card-img-top"
+            :src="`https://picsum.photos/300/200?random=${group.id}`"
+            alt="Immagine casuale"
+          />
+          <div class="card-header">
+            <h5 class="card-title mb-0">{{ group.nome }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="mb-1"><strong>ID:</strong> {{ group.id }}</p>
+            <p class="mb-1">
+              <strong>Admin:</strong> {{ group.admin ? group.admin.username : 'N/D' }}
+            </p>
+            <p class="mb-0">
+              <strong>Membri:</strong> {{ group.membri ? group.membri.length : 0 }}
+            </p>
+          </div>
+          <div class="card-footer d-flex">
+            <!-- Bottoni centrati -->
+            <div class="mx-auto">
+              <button class="btn btn-custom-detail me-2" @click="goToGroupDetail(group.id)">
+                Dettagli
+              </button>
+              <button class="btn btn-custom-delete" @click="deleteGroup(group.id)">
+                Elimina
               </button>
             </div>
-          </td>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <!-- Azioni (Elimina Gruppo) -->
-          <td>
-            <button
-              class="btn btn-danger btn-sm"
-              @click="deleteGroup(group.id)"
-            >
-              Elimina
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Bottone per Aggiungere Gruppo -->
-    <button class="btn btn-primary" @click="showModal = true">
+    <!-- Bottone per Aggiungere Gruppo con blu scuro -->
+    <button class="btn btn-custom-add" @click="showModal = true">
       <i class="fas fa-plus"></i> Aggiungi Gruppo
     </button>
 
@@ -134,6 +101,9 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 /** Lista reattiva dei gruppi */
 const groups = ref([]);
@@ -147,29 +117,13 @@ const lastGroup = ref("N/D");
 const showModal = ref(false);
 const newGroup = ref({ nome: "" });
 
-/** 
- * Array di tutti gli utenti che arrivano dal DB 
- * (tramite /account/users o /api/users).
- */
-const allUsers = ref([]);
-
-/** 
- * Mappa reattiva groupId -> username 
- * (l'utente selezionato per l'aggiunta come membro) 
- */
-const selectedMember = ref({});
-
-/**
- * Al montaggio del componente, recupera i gruppi e gli utenti
- */
+/** Al montaggio del componente, recupera i gruppi */
 onMounted(() => {
   fetchGroups();
   fetchAllUsers();
 });
 
-/**
- * Carica la lista dei gruppi
- */
+/** Carica la lista dei gruppi */
 async function fetchGroups() {
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
@@ -193,23 +147,13 @@ async function fetchGroups() {
 
     const data = await response.json();
     groups.value = data;
-
-    // Inizializza un campo selectedMember[group.id] = "" per ogni gruppo
-    data.forEach((g) => {
-      if (!selectedMember.value[g.id]) {
-        selectedMember.value[g.id] = "";
-      }
-    });
-
     updateDashboard();
   } catch (error) {
     console.error("Errore fetchGroups:", error);
   }
 }
 
-/**
- * Carica la lista di TUTTI gli utenti dal DB 
- */
+/** Carica la lista di TUTTI gli utenti dal DB (se necessario) */
 async function fetchAllUsers() {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -226,16 +170,13 @@ async function fetchAllUsers() {
       throw new Error("Errore nel recupero degli utenti");
     }
 
-    const data = await res.json();
-    allUsers.value = data;
+    await res.json();
   } catch (err) {
     console.error("Errore fetchAllUsers:", err);
   }
 }
 
-/**
- * Aggiunge un nuovo gruppo
- */
+/** Aggiunge un nuovo gruppo */
 async function addGroup() {
   if (!newGroup.value.nome) {
     alert("Compila il nome del gruppo!");
@@ -264,7 +205,6 @@ async function addGroup() {
     );
 
     if (response.ok) {
-      // Ricarica i gruppi e resetta il form
       await fetchGroups();
       newGroup.value.nome = "";
       showModal.value = false;
@@ -277,9 +217,7 @@ async function addGroup() {
   }
 }
 
-/**
- * Elimina un gruppo (solo se l'utente loggato è admin di quel gruppo)
- */
+/** Elimina un gruppo */
 async function deleteGroup(groupId) {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
@@ -311,53 +249,12 @@ async function deleteGroup(groupId) {
   }
 }
 
-/**
- * Aggiunge un membro al gruppo
- */
-async function addMemberToGroup(groupId, memberUsername) {
-  const adminUsername = localStorage.getItem("username");
-  const token = localStorage.getItem("token");
-
-  if (!adminUsername || !token) {
-    alert("Utente non autenticato o token mancante.");
-    return;
-  }
-
-  if (!memberUsername) {
-    alert("Seleziona l'utente dal menu a tendina.");
-    return;
-  }
-
-  try {
-    const response = await fetch(
-      `http://localhost:8080/api/groups/${groupId}/members?adminUsername=${adminUsername}&memberUsername=${memberUsername}`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(errorText);
-    }
-
-    // Ricarichiamo i gruppi per vedere il membro aggiunto
-    await fetchGroups();
-
-    // Resettiamo la select
-    selectedMember.value[groupId] = "";
-  } catch (error) {
-    alert(`Errore aggiunta membro: ${error}`);
-    console.error("Errore durante l'aggiunta del membro:", error);
-  }
+/** Naviga alla pagina dei dettagli del gruppo */
+function goToGroupDetail(groupId) {
+  router.push({ name: "GroupDetail", params: { groupId } });
 }
 
-/**
- * Aggiorna le statistiche (numero gruppi, membri medi, ultimo gruppo)
- */
+/** Aggiorna le statistiche */
 function updateDashboard() {
   totalGroups.value = groups.value.length;
 
@@ -366,7 +263,6 @@ function updateDashboard() {
       return sum + (g.membri ? g.membri.length : 0);
     }, 0);
     averageMembers.value = (totalMembers / groups.value.length).toFixed(2);
-
     const last = groups.value[groups.value.length - 1];
     lastGroup.value = last.nome;
   } else {
@@ -377,18 +273,119 @@ function updateDashboard() {
 </script>
 
 <style scoped>
-.container {
-  max-width: 800px;
+/* Impostazioni base per html e body */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-/* Sovrascrive sfondo quando appare la modale "show" */
+
+/* Sfondo con gradiente intenso */
+body {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenitore principale con fondo bianco e box-shadow */
+.container {
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+}
+
+/* Modale semi-trasparente */
 .modal {
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* Card statistiche */
 .dashboard-card {
   min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 8px;
 }
 
+/* Stili per le card dei gruppi */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  padding: 0.75rem 1rem;
+}
+
+/* Centra i bottoni nel footer della card */
+.card-footer .mx-auto {
+  display: flex;
+  justify-content: center;
+}
+
+/* Bottoni personalizzati */
+.btn-custom-detail {
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom-detail:hover {
+  background-color: #1c86ee;
+}
+
+.btn-custom-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom-delete:hover {
+  background-color: #c82333;
+}
+
+/* Bottone Aggiungi Gruppo in blu scuro personalizzato */
+.btn-custom-add {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.btn-custom-add:hover {
+  background-color: #002244;
+}
 </style>
