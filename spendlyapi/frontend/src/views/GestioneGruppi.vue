@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5 p-4">
-    <!-- Statistiche -->
+    <!-- Le statistiche rimangono in alto -->
     <div class="row mb-4">
       <div class="col-md-4">
         <div class="dashboard-card bg-primary text-white p-3 rounded">
@@ -66,8 +66,8 @@
       </div>
     </div>
 
-    <!-- Bottone per Aggiungere Gruppo con blu scuro -->
-    <button class="btn btn-custom-add" @click="showModal = true">
+    <!-- Bottone per Aggiungere Gruppo -->
+    <button class="btn btn-primary" @click="showModal = true">
       <i class="fas fa-plus"></i> Aggiungi Gruppo
     </button>
 
@@ -120,7 +120,7 @@ const newGroup = ref({ nome: "" });
 /** Al montaggio del componente, recupera i gruppi */
 onMounted(() => {
   fetchGroups();
-  fetchAllUsers();
+  fetchAllUsers(); // Se in futuro servirà la lista utenti
 });
 
 /** Carica la lista dei gruppi */
@@ -153,7 +153,7 @@ async function fetchGroups() {
   }
 }
 
-/** Carica la lista di TUTTI gli utenti dal DB (se necessario) */
+/** Carica la lista di TUTTI gli utenti dal DB (se dovesse servire) */
 async function fetchAllUsers() {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -280,7 +280,7 @@ html, body {
   padding: 0;
 }
 
-/* Sfondo con gradiente intenso */
+/* Sfondo con gradiente più intenso */
 body {
   background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
   font-family: 'Arial', sans-serif;
@@ -371,21 +371,5 @@ body {
 
 .btn-custom-delete:hover {
   background-color: #c82333;
-}
-
-/* Bottone Aggiungi Gruppo in blu scuro personalizzato */
-.btn-custom-add {
-  background-color: #003366;
-  color: #fff;
-  border: none;
-  padding: 0.65rem 1.5rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 1.5rem;
-}
-
-.btn-custom-add:hover {
-  background-color: #002244;
 }
 </style>

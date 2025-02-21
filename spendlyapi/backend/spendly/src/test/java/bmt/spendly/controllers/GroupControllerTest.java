@@ -9,6 +9,7 @@ import static org.mockito.Mockito.*;
 import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
+import bmt.spendly.models.ExpenseMacroArea;
 import bmt.spendly.models.Group;
 import bmt.spendly.models.Transazione;
 import bmt.spendly.services.CostService;
@@ -42,6 +43,7 @@ class GroupControllerTest {
 
     private AppUser user;
     private Group group;
+    
 
     @BeforeEach
     void setUp() {
@@ -129,11 +131,11 @@ class GroupControllerTest {
         adminUser.setId(1);
         mockGroup.setAdmin(adminUser);
 
-        Alert mockAlert = new Alert("Spesa Alta", 100.0, mockGroup);
+        Alert mockAlert = new Alert("Spesa Alta", 100.0, ExpenseMacroArea.ABITAZIONE,mockGroup);
 
         when(groupService.getGroupById(groupId)).thenReturn(mockGroup);
         when(groupService.getUserByUsername(adminUsername)).thenReturn(adminUser);
-        when(groupService.creaAlert(anyString(), anyDouble(), eq(groupId))).thenReturn(mockAlert);
+        when(groupService.creaAlert(anyString(), anyDouble(),any(), eq(groupId))).thenReturn(mockAlert);
 
         ResponseEntity<?> response = groupController.addAlertToGroup(groupId, adminUsername, mockAlert);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
