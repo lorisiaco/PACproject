@@ -200,6 +200,7 @@
           </button>
         </div>
       </div>
+ 
 
       <!-- Card Gruppo: Informazioni e membri -->
       <div class="card shadow-lg mb-5 border-0 mt-4">
@@ -260,6 +261,26 @@
             <i class="fas fa-arrow-left"></i> Torna alla lista gruppi
           </router-link>
         </div>
+      </div>
+
+      <!-- Sezione Transazioni-->
+      <div>
+        <h5>Transazioni</h5>
+    
+        <!-- Pulsante per aggiornare i dati -->
+        <button @click="ottimizzaDebiti" class="btn">
+          Calcolo Debiti
+        </button>
+
+        <!-- Lista delle transazioni -->
+        <div v-if="transactions.length">
+          <div v-for="(trans, index) in transactions" :key="index" class="card">
+            <p><strong>{{ trans.debitore }}</strong> → <strong>{{ trans.creditore }}</strong></p>
+            <p>💰 {{ trans.importo.toFixed(2) }} €</p>
+          </div>
+        </div>
+
+        <p v-else>Nessuna transazione da mostrare.</p>
       </div>
     </div>
 
@@ -393,6 +414,7 @@ const groupId = route.params.groupId
 const group = ref({})
 const costs = ref([])
 const alerts = ref([])
+const transactions = ref([])
 
 /** Modal per ALERT */
 const showAlertModal = ref(false)
@@ -857,6 +879,18 @@ function updateTrendChart() {
     trendChartInstance.update()
   }
 }
+
+async function ottimizzaDebiti() {
+  try {
+    const response = await fetch(`http://localhost:8080/api/groups/${groupId}/OttimizzaDebiti`)
+    if (!response.ok) throw new Error("Errore nel recupero delle transazioni")
+
+    transactions.value = await response.json()
+  } catch (error) {
+    console.error("Errore nel caricamento:", error)
+  }
+}
+
 </script>
 
 <style scoped>
@@ -1039,5 +1073,22 @@ ul.alert-list {
 .modal-warning .warning-img {
   width: 160px;
   margin-right: 40px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.card {
+  border: 1px solid #e2c20e;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: white;
 }
 </style>
