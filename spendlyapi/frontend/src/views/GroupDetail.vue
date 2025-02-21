@@ -1,41 +1,64 @@
 <template>
-  <div class="group-detail-page">
-    <div
-      class="container my-4 py-4 text-dark"
-      style="
-        max-width: 1300px; /* <-- Allargato da 1200px a 1300px */
-        background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc);
-        border-radius: 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      "
-    >
+  <div class="group-detail-page d-flex flex-column min-vh-100">
+    <!-- CONTENUTO PRINCIPALE (hero, alert, tabelle, grafici, ecc.) -->
+    <div class="container my-4 py-4 text-dark flex-grow-1" style="max-width: 1300px;">
       <!-- Banner in alto -->
       <div class="text-center mb-4">
         <img
           src="/images/banner.jpg"
           alt="Banner Share"
-          class="img-fluid rounded shadow-sm"
-          style="max-height: 300px; object-fit: cover;"
+          class="img-fluid rounded shadow-sm banner-img"
         />
-        <h2 class="mt-4 fw-bold" style="font-family: 'Comic Sans MS', cursive;">
+        <h2 class="mt-4 fw-bold banner-title">
           Dettaglio Gruppo {{ group.nome }}
         </h2>
       </div>
 
-      <!-- Sezione ALERT (posizionata sopra a tutto) -->
+      <!-- Sezione ALERT (modale multipla, v-for sui warning) -->
+      <div
+        v-for="(warning, index) in thresholdWarnings"
+        :key="index"
+        class="modal fade show d-block modal-warning"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+              <h5 class="modal-title">Attenzione!</h5>
+              <button type="button" class="btn-close" @click="removeWarning(index)"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex align-items-start">
+                <img
+                  src="/images/esclamativo.jpg"
+                  alt="Attenzione!"
+                  class="warning-img"
+                />
+                <p class="mb-0">{{ warning }}</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" @click="removeWarning(index)">
+                Chiudi
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sezione Alert del Gruppo -->
       <div class="mb-4">
         <h5>
-          <i class="fas fa-bell me-1"></i> Alert del Gruppo (per Macroarea)
+          <i class="fas fa-bell me-1"></i> Alert del Gruppo
         </h5>
         <button class="btn btn-success" @click="openAlertModal">
           <i class="fas fa-plus"></i> Aggiungi Alert
         </button>
 
-        <ul v-if="alerts.length > 0" class="list-group mt-3">
+        <ul v-if="alerts.length > 0" class="alert-list mt-3">
           <li
             v-for="alert in alerts"
             :key="alert.id"
-            class="list-group-item d-flex justify-content-between align-items-center"
+            class="alert-list-item d-flex justify-content-between align-items-center"
           >
             <span>
               <i class="fas fa-exclamation-circle text-danger me-2"></i>
@@ -61,7 +84,7 @@
             <!-- Dashboard statistica -->
             <div class="row mb-3">
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-white rounded" style="background-color: #0d6efd;">
+                <div class="p-2 text-white rounded stat-card" style="background-color: #0d6efd;">
                   <h6 class="mb-1">
                     <i class="fas fa-euro-sign"></i> Totale Spese
                   </h6>
@@ -69,7 +92,7 @@
                 </div>
               </div>
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-white rounded" style="background-color: #198754;">
+                <div class="p-2 text-white rounded stat-card" style="background-color: #198754;">
                   <h6 class="mb-1">
                     <i class="fas fa-calculator"></i> Spesa Media
                   </h6>
@@ -77,7 +100,7 @@
                 </div>
               </div>
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-dark rounded" style="background-color: #ffc107;">
+                <div class="p-2 text-dark rounded stat-card" style="background-color: #ffc107;">
                   <h6 class="mb-1">
                     <i class="fas fa-history"></i> Ultima Spesa
                   </h6>
@@ -86,8 +109,8 @@
               </div>
             </div>
             <!-- Tabella delle spese -->
-            <table v-if="costs.length > 0" class="table table-striped table-hover">
-              <thead class="table-light">
+            <table v-if="costs.length > 0" class="table custom-table">
+              <thead>
                 <tr>
                   <th>Importo</th>
                   <th>Categoria</th>
@@ -101,10 +124,7 @@
                   <td>{{ cost.tipologia.replace('_', ' ') }}</td>
                   <td>{{ cost.user.username }}</td>
                   <td>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      @click="deleteCost(cost.costId)"
-                    >
+                    <button class="btn btn-danger btn-sm" @click="deleteCost(cost.costId)">
                       <i class="fas fa-trash"></i> Elimina
                     </button>
                   </td>
@@ -122,7 +142,7 @@
           <!-- Grafico Andamento Spese -->
           <div class="mb-4">
             <h5 class="mb-3"><i class="fas fa-chart-area me-1"></i> Andamento Spese</h5>
-            <div style="height: 300px;">
+            <div class="chart-container bigger-chart">
               <canvas id="trendChart"></canvas>
             </div>
           </div>
@@ -133,11 +153,11 @@
           <!-- Elenco testuale per Macroaree -->
           <div class="mb-4">
             <h5><i class="fas fa-chart-bar me-1"></i> Spesa per Macroaree</h5>
-            <ul class="list-group">
+            <ul class="macro-list">
               <li
                 v-for="(sum, macro) in macroAreaSums"
                 :key="macro"
-                class="list-group-item d-flex justify-content-between align-items-center"
+                class="macro-list-item d-flex justify-content-between align-items-center"
               >
                 {{ macro }}:
                 <span>€{{ sum.toFixed(2) }}</span>
@@ -149,10 +169,14 @@
             <h5 class="mb-3"><i class="fas fa-chart-line me-1"></i> Rappresentazione per Macroaree</h5>
             <div class="row">
               <div class="col-md-6">
-                <canvas id="barChart"></canvas>
+                <div class="chart-container bigger-chart">
+                  <canvas id="barChart"></canvas>
+                </div>
               </div>
               <div class="col-md-6">
-                <canvas id="pieChart"></canvas>
+                <div class="chart-container bigger-chart">
+                  <canvas id="pieChart"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -179,10 +203,7 @@
 
       <!-- Card Gruppo: Informazioni e membri -->
       <div class="card shadow-lg mb-5 border-0 mt-4">
-        <div
-          class="card-header text-white d-flex justify-content-between align-items-center"
-          style="background: linear-gradient(to right, #007bff, #0056b3); border-top-left-radius: 8px; border-top-right-radius: 8px;"
-        >
+        <div class="card-header text-white d-flex justify-content-between align-items-center header-gradient">
           <h4 class="mb-0">
             <i class="fas fa-users me-2"></i>{{ group.nome }}
           </h4>
@@ -196,8 +217,8 @@
             <h5 class="mb-3">
               <i class="fas fa-address-card me-1"></i> Membri del Gruppo
             </h5>
-            <table class="table table-hover table-striped align-middle">
-              <thead class="table-light">
+            <table class="table custom-table align-middle">
+              <thead>
                 <tr>
                   <th class="text-center" style="width: 70%">Username</th>
                   <th class="text-center" style="width: 30%">Azione</th>
@@ -210,7 +231,7 @@
                       <img
                         src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
                         alt="Avatar"
-                        style="width: 30px; margin-right: 8px;"
+                        class="avatar-img"
                       />
                       {{ member.username }}
                     </div>
@@ -242,43 +263,11 @@
       </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (come nello snippet Home) -->
     <footer class="footer">
       <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
       <router-link to="/contact" class="footer-link">Contattaci</router-link>
     </footer>
-
-    <!-- MODALE DI AVVISO SE SI SUPERANO LE SOGLIE ALERT (centrata) -->
-    <div
-      v-if="showThresholdWarning"
-      class="modal fade show d-block"
-      tabindex="-1"
-      style="background: rgba(0, 0, 0, 0.5);"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">Attenzione!</h5>
-            <button type="button" class="btn-close" @click="showThresholdWarning = false"></button>
-          </div>
-          <div class="modal-body">
-            <div class="d-flex align-items-start">
-              <img
-                src="/images/esclamativo.jpg"
-                alt="Attenzione!"
-                style="width: 160px; margin-right: 40px;"
-              />
-              <p class="mb-0">{{ thresholdWarningMessage }}</p>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" @click="showThresholdWarning = false">
-              Chiudi
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- MODALE per Aggiungere Alert -->
     <div
@@ -439,9 +428,8 @@ const selectedMember = ref('')
 const adminUsername = localStorage.getItem('username')
 const token = localStorage.getItem('token')
 
-/** Variabili per avviso "state spendendo troppo" */
-const showThresholdWarning = ref(false)
-const thresholdWarningMessage = ref('')
+/** Variabili per alert soglia */
+const thresholdWarnings = ref([])
 
 /** Mapping delle macroaree */
 const macroAreaMapping = {
@@ -461,11 +449,9 @@ const macroAreaMapping = {
 /** Computed: Somma costi per Macroaree */
 const macroAreaSums = computed(() => {
   const sums = {}
-  // Inizializza ogni macroarea a 0
   for (const macro in macroAreaMapping) {
     sums[macro] = 0
   }
-  // Per ogni spesa, controlla a quale macroarea appartiene e somma l'importo
   costs.value.forEach(cost => {
     for (const macro in macroAreaMapping) {
       if (macroAreaMapping[macro].includes(cost.tipologia)) {
@@ -476,11 +462,11 @@ const macroAreaSums = computed(() => {
   return sums
 })
 
-/** Computed: Etichette e dati per i grafici delle macroaree */
+/** Computed: Etichette e dati per grafici macroaree */
 const macroLabels = computed(() => Object.keys(macroAreaSums.value))
 const macroValues = computed(() => Object.values(macroAreaSums.value))
 
-/** Computed: Etichette e dati per il grafico andamento spese (trend cumulativo) */
+/** Computed: Etichette e dati per il grafico trend spese */
 const expenseTrendLabels = computed(() => costs.value.map((_, i) => `Spesa ${i + 1}`))
 const expenseTrendData = computed(() => {
   let sum = 0
@@ -495,7 +481,21 @@ let barChartInstance = null
 let pieChartInstance = null
 let trendChartInstance = null
 
-/** Array di colori per i grafici */
+/** Nuovo set di colori per il grafico a torta (tonalità pastello) */
+const pieChartColors = [
+  'rgba(135, 206, 250, 0.8)',
+  'rgba(144, 238, 144, 0.8)',
+  'rgba(255, 182, 193, 0.8)',
+  'rgba(255, 218, 185, 0.8)',
+  'rgba(221, 160, 221, 0.8)',
+  'rgba(176, 196, 222, 0.8)',
+  'rgba(240, 230, 140, 0.8)',
+  'rgba(152, 251, 152, 0.8)',
+  'rgba(255, 160, 122, 0.8)',
+  'rgba(175, 238, 238, 0.8)'
+]
+
+/** Array di colori per gli altri grafici */
 const chartColors = [
   'rgba(255, 99, 132, 0.6)',
   'rgba(54, 162, 235, 0.6)',
@@ -518,16 +518,37 @@ onMounted(() => {
   renderTrendChart()
 })
 
-/** Watch per aggiornare i grafici delle macroaree quando cambiano i dati */
+/** Watch per aggiornare i grafici macroaree quando cambiano i dati */
 watch(macroAreaSums, () => {
   updateCharts()
 }, { deep: true })
 
-/** Watch per aggiornare il grafico andamento spese quando cambiano le spese */
+/** Watch per aggiornare il grafico trend quando cambiano le spese */
 watch(costs, () => {
   updateTrendChart()
+  checkAlertThresholds() // Aggiorna i warning
 }, { deep: true })
 
+/** Genera i warning per ogni alert che soddisfa il criterio */
+function checkAlertThresholds() {
+  thresholdWarnings.value = []
+  if (!alerts.value || alerts.value.length === 0) return
+  alerts.value.forEach(a => {
+    const macroTotal = macroAreaSums.value[a.macroArea] || 0
+    if (macroTotal >= 0.8 * a.limite) {
+      thresholdWarnings.value.push(
+        `Attenzione! Nella macroarea ${a.macroArea} hai speso €${macroTotal.toFixed(2)} su un limite di €${a.limite.toFixed(2)} (Alert: ${a.nome}).`
+      )
+    }
+  })
+}
+
+/** Rimuove un warning */
+function removeWarning(index) {
+  thresholdWarnings.value.splice(index, 1)
+}
+
+/** Apertura/Chiusura modale Alert */
 function openAlertModal() {
   showAlertModal.value = true
 }
@@ -540,7 +561,7 @@ async function confirmAddAlert() {
   closeAlertModal()
 }
 
-/** Carica i dettagli del gruppo e relative spese/alerts */
+/** Carica i dettagli del gruppo */
 async function fetchGroup() {
   try {
     if (!token) {
@@ -551,22 +572,20 @@ async function fetchGroup() {
     const res = await fetch(`http://localhost:8080/api/groups/${groupId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    if (!res.ok) {
-      throw new Error('Errore nel recupero del gruppo.')
-    }
+    if (!res.ok) throw new Error('Errore nel recupero del gruppo.')
     const data = await res.json()
     group.value = data.group
     costs.value = data.costs
     alerts.value = data.alerts
-
     updateDashboard()
+    checkAlertThresholds()
   } catch (error) {
     console.error(error)
     alert('Impossibile caricare il dettaglio del gruppo.')
   }
 }
 
-/** Carica tutti gli utenti per la select di aggiunta membri */
+/** Carica gli utenti per la select */
 async function fetchUsers() {
   if (!token) {
     console.error('Token mancante. Non posso caricare gli utenti.')
@@ -576,9 +595,7 @@ async function fetchUsers() {
     const res = await fetch('http://localhost:8080/account/users', {
       headers: { Authorization: `Bearer ${token}` }
     })
-    if (!res.ok) {
-      throw new Error('Errore nel recupero degli utenti')
-    }
+    if (!res.ok) throw new Error('Errore nel recupero degli utenti')
     const data = await res.json()
     allUsers.value = data
   } catch (err) {
@@ -586,7 +603,7 @@ async function fetchUsers() {
   }
 }
 
-/** Crea un nuovo alert per il gruppo */
+/** Crea un nuovo alert */
 async function addAlert() {
   try {
     const url = `http://localhost:8080/api/groups/${groupId}/alerts?adminUsername=${adminUsername}`
@@ -598,13 +615,10 @@ async function addAlert() {
       },
       body: JSON.stringify(newAlert.value)
     })
-
     if (!res.ok) {
       const errorMsg = await res.text()
       throw new Error(errorMsg)
     }
-
-    // reset form
     newAlert.value = { nome: '', limite: 0, macroArea: '' }
   } catch (error) {
     alert(`Errore nella creazione dell'alert: ${error.message}`)
@@ -612,7 +626,7 @@ async function addAlert() {
   }
 }
 
-/** Elimina un Alert */
+/** Elimina un alert */
 async function deleteAlert(alertId) {
   try {
     const url = `http://localhost:8080/api/groups/${groupId}/alerts/${alertId}?adminUsername=${adminUsername}`
@@ -620,12 +634,10 @@ async function deleteAlert(alertId) {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     })
-
     if (!res.ok) {
       const errorMsg = await res.text()
       throw new Error(errorMsg)
     }
-
     fetchGroup()
   } catch (error) {
     alert(`Errore nell'eliminazione dell'alert: ${error.message}`)
@@ -643,19 +655,16 @@ async function addMemberToGroup(groupId, memberUsername) {
     alert('Seleziona l\'utente dal menu a tendina.')
     return
   }
-
   try {
     const url = `http://localhost:8080/api/groups/${groupId}/members?adminUsername=${adminUsername}&memberUsername=${memberUsername}`
     const response = await fetch(url, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` }
     })
-
     if (!response.ok) {
       const errorText = await response.text()
       throw new Error(errorText)
     }
-
     fetchGroup()
     selectedMember.value = ''
   } catch (error) {
@@ -676,12 +685,10 @@ async function removeMember(memberUsername) {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     })
-
     if (!response.ok) {
       const errorMsg = await response.text()
       throw new Error(errorMsg)
     }
-
     fetchGroup()
   } catch (error) {
     alert('Errore nella rimozione del membro: ' + error.message)
@@ -689,7 +696,7 @@ async function removeMember(memberUsername) {
   }
 }
 
-/** Aggiunge una spesa (Cost) al gruppo */
+/** Aggiunge una spesa al gruppo */
 async function addCost() {
   if (!newCost.value.tipologia || !newCost.value.importo) {
     alert('Compila tutti i campi spesa!')
@@ -699,13 +706,11 @@ async function addCost() {
     alert('Utente non autenticato o token mancante.')
     return
   }
-
   const payload = {
     importo: newCost.value.importo,
     tipologia: newCost.value.tipologia,
     group: { id: groupId }
   }
-
   try {
     const url = `http://localhost:8080/api/costs?username=${adminUsername}`
     const response = await fetch(url, {
@@ -716,12 +721,10 @@ async function addCost() {
       },
       body: JSON.stringify(payload)
     })
-
     if (!response.ok) {
       const errorData = await response.text()
       throw new Error(errorData || 'Errore nella creazione della spesa.')
     }
-
     fetchGroup()
     showCostModal.value = false
     newCost.value = { tipologia: '', importo: null }
@@ -743,12 +746,10 @@ async function deleteCost(costId) {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     })
-
     if (!response.ok) {
       const errorText = await response.text()
       throw new Error(errorText)
     }
-
     fetchGroup()
   } catch (error) {
     alert('Errore nella cancellazione della spesa: ' + error.message)
@@ -756,7 +757,7 @@ async function deleteCost(costId) {
   }
 }
 
-/** Aggiorna le statistiche e controlla se abbiamo superato la soglia di qualche Alert */
+/** Aggiorna le statistiche e controlla le soglie */
 function updateDashboard() {
   if (costs.value.length === 0) {
     totalSpent.value = 0
@@ -770,24 +771,6 @@ function updateDashboard() {
     lastSpent.value = `€${last.importo.toFixed(2)}`
   }
   checkAlertThresholds()
-}
-
-/** Controlla se, per ciascun Alert, il totale speso nella relativa macroarea supera l'80% del limite */
-function checkAlertThresholds() {
-  showThresholdWarning.value = false
-  thresholdWarningMessage.value = ''
-
-  if (!alerts.value || alerts.value.length === 0) return
-
-  for (let a of alerts.value) {
-    const macroTotal = macroAreaSums.value[a.macroArea] || 0
-    if (macroTotal >= 0.8 * a.limite) {
-      thresholdWarningMessage.value =
-        `Attenzione! Nella macroarea ${a.macroArea} hai speso €${macroTotal.toFixed(2)} su un limite di €${a.limite.toFixed(2)} (Alert: ${a.nome}).`
-      showThresholdWarning.value = true
-      break
-    }
-  }
 }
 
 /* --- Grafici con Chart.js --- */
@@ -806,9 +789,7 @@ function renderBarChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: {
-        y: { beginAtZero: true }
-      }
+      scales: { y: { beginAtZero: true } }
     }
   })
 }
@@ -822,7 +803,7 @@ function renderPieChart() {
       datasets: [{
         label: 'Spesa per Macroarea',
         data: macroValues.value,
-        backgroundColor: chartColors.slice(0, macroLabels.value.length)
+        backgroundColor: pieChartColors.slice(0, macroLabels.value.length)
       }]
     },
     options: {
@@ -849,9 +830,7 @@ function renderTrendChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: {
-        y: { beginAtZero: true }
-      }
+      scales: { y: { beginAtZero: true } }
     }
   })
 }
@@ -866,7 +845,7 @@ function updateCharts() {
   if (pieChartInstance) {
     pieChartInstance.data.labels = macroLabels.value
     pieChartInstance.data.datasets[0].data = macroValues.value
-    pieChartInstance.data.datasets[0].backgroundColor = chartColors.slice(0, macroLabels.value.length)
+    pieChartInstance.data.datasets[0].backgroundColor = pieChartColors.slice(0, macroLabels.value.length)
     pieChartInstance.update()
   }
 }
@@ -881,43 +860,184 @@ function updateTrendChart() {
 </script>
 
 <style scoped>
-.group-detail-page .footer {
-  text-align: center;
-  margin-top: 40px;
-  color: #666;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
-.footer-link {
-  margin-left: 10px;
-  text-decoration: underline;
+/* Layout flessibile per spingere il footer in basso */
+.group-detail-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Modal overlay stile bootstrap "show" */
-.modal {
-  background: rgba(0, 0, 0, 0.5);
+body {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
-/* Impostazioni per i grafici: assicurare un'altezza minima */
-canvas {
-  width: 100% !important;
-  min-height: 300px;
+.container {
+  background: linear-gradient(to bottom right, #f0f9ff, #cfe4fc);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
-/* Effetto hover sulle righe delle tabelle (zoom leggero) */
-.table-hover tbody tr:hover {
+/* Banner */
+.banner-img {
+  max-height: 300px;
+  object-fit: cover;
+}
+.banner-title {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Statistiche */
+.stat-card {
+  transition: transform 0.3s ease;
+}
+.stat-card:hover {
   transform: scale(1.02);
-  transition: transform 0.2s ease-in-out;
-  background-color: #f8f9fa; /* Colore di sfondo in hover (opzionale) */
-  z-index: 1;
-  position: relative;
 }
 
-/* Effetto hover anche sugli elementi list-group per la tabella Macroaree */
-.list-group-item:hover {
+/* Tabella custom */
+table.custom-table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  font-weight: 500;
+}
+table.custom-table thead {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+}
+table.custom-table thead th {
+  padding: 1rem;
+  text-align: left;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+table.custom-table tbody tr {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+table.custom-table tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+table.custom-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+/* Macroaree */
+ul.macro-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.macro-list-item {
+  background: linear-gradient(90deg, #e8f5e9, #c8e6c9);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  font-weight: 600;
+}
+.macro-list-item:hover {
+  transform: translateX(5px);
+  background: linear-gradient(90deg, #c8e6c9, #a5d6a7);
+}
+
+/* Alert list */
+ul.alert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.alert-list-item {
+  background: linear-gradient(90deg, #ffe1e1, #ffc9c9);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+}
+.alert-list-item:hover {
+  transform: translateX(5px);
+  background: linear-gradient(90deg, #ffc9c9, #ffb3b3);
+}
+
+/* Effetto hover generico */
+.table-hover tbody tr:hover,
+.list-group-item:hover,
+.list-item-hover {
   transform: scale(1.02);
   transition: transform 0.2s ease-in-out;
   background-color: #f8f9fa;
   z-index: 1;
   position: relative;
+  cursor: pointer;
+}
+
+/* Avatar */
+.avatar-img {
+  width: 30px;
+  margin-right: 8px;
+}
+
+/* Header card */
+.header-gradient {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Footer card */
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  padding: 0.75rem 1rem;
+}
+
+/* Container per i grafici con dimensioni maggiori */
+.chart-container.bigger-chart {
+  min-height: 400px; /* Aumenta la dimensione */
+  margin-bottom: 1.5rem;
+}
+
+/* FOOTER come nello snippet Home */
+.footer {
+  background: #1e293b;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto; /* Per spingerlo in basso se la pagina è corta */
+}
+.footer-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Modal overlay */
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-warning .warning-img {
+  width: 160px;
+  margin-right: 40px;
 }
 </style>
