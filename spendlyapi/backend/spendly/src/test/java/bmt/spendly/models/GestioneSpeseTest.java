@@ -1,12 +1,9 @@
 package bmt.spendly.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,14 +50,9 @@ public class GestioneSpeseTest {
     @Test
     void testCalcolaDebiti() {
         List<Transazione> transazioni = GestioneSpese.calcolaDebiti(listaSpese);
-        
         assertNotNull(transazioni);
-        assertFalse(transazioni.isEmpty());
-        
-        
         boolean foundCharlieToAlice = transazioni.stream()
             .anyMatch(t -> t.getDebitore().equals("Charlie") && t.getCreditore().equals("Alice") && t.getImporto() == 30.0);
-        
         assertTrue(foundCharlieToAlice);
     }
 }

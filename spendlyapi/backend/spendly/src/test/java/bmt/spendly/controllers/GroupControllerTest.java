@@ -161,10 +161,7 @@ class GroupControllerTest {
     void testOttimizzaDebiti() {
         Long groupId = 1L;
         List<Cost> mockSpese = Collections.emptyList();
-        List<Transazione> mockTransazioni = Collections.emptyList();
-
         when(costService.getCostsByGroup(groupId)).thenReturn(mockSpese);
-
         ResponseEntity<List<Transazione>> response = groupController.OttimizzaDebiti(groupId);
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
