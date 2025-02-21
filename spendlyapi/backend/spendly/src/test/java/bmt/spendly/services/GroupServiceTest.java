@@ -22,6 +22,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import bmt.spendly.models.Alert;
 import bmt.spendly.models.AppUser;
+import bmt.spendly.models.ExpenseMacroArea;
 import bmt.spendly.models.Group;
 import bmt.spendly.repositories.AlertRepository;
 import bmt.spendly.repositories.AppUserRepository;
@@ -45,13 +46,15 @@ public class GroupServiceTest {
     private AppUser user;
     private Group group;
     private Alert testAlert;
+    
 
     @BeforeEach
     void setUp() {
         user = new AppUser();
         user.setUsername("testUser");
         group = new Group("Test Group", user);
-        testAlert = new Alert("Test Alert", 50.0, group);
+        
+        testAlert = new Alert("Test Alert", 50.0,ExpenseMacroArea.ABITAZIONE,group);
         group.addAlert(testAlert);
     }
 
@@ -160,7 +163,7 @@ public class GroupServiceTest {
         when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
         when(alertRepository.save(any(Alert.class))).thenReturn(testAlert);
 
-        Alert result = groupService.creaAlert("Test Alert", 50.0, 1L);
+        Alert result = groupService.creaAlert("Test Alert", 50.0,ExpenseMacroArea.ABITAZIONE, 1L);
 
         assertNotNull(result);
         assertEquals("Test Alert", result.getNome());
