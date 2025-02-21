@@ -28,10 +28,9 @@
 
     <!-- Tabella Spese -->
     <h2 class="mt-4">Storico Spese</h2>
-    <table class="table table-striped">
+    <table class="table custom-table">
       <thead>
         <tr>
-          <!-- Rimosso <th>Data</th> -->
           <th>Tipologia</th>
           <th>Importo (€)</th>
           <th>Gruppo</th>
@@ -39,14 +38,15 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Nessuna spesa -->
         <tr v-if="costs.length === 0">
           <td colspan="4" class="text-center">Nessuna spesa registrata</td>
         </tr>
+        <!-- Righe spese -->
         <tr v-for="cost in costs" :key="cost.id">
-          <!-- Rimosso la colonna 'Data' -->
           <td>{{ cost.tipologia.replace('_', ' ') }}</td>
           <td>€{{ cost.importo ? cost.importo.toFixed(2) : "0.00" }}</td>
-          <td>{{ cost.group ? cost.group.nome : 'N/A' }}</td>
+          <td>{{ cost.group ? cost.group.nome : 'Personale' }}</td>
           <td>
             <button class="btn btn-danger btn-sm" @click="deleteCost(cost.id)">
               Elimina
@@ -54,6 +54,13 @@
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="1"><strong>Totale Spese</strong></td>
+          <td>€{{ totalSpent }}</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
     </table>
 
     <!-- Bottone per Aggiungere Spesa -->
@@ -62,7 +69,12 @@
     </button>
 
     <!-- Modale per Aggiungere Spesa -->
-    <div v-if="showModal" class="modal fade show" tabindex="-1" style="display: block;">
+    <div
+      v-if="showModal"
+      class="modal fade show"
+      tabindex="-1"
+      style="display: block; background: rgba(0, 0, 0, 0.5);"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -125,7 +137,7 @@ const showModal = ref(false);
 const newCost = ref({
   tipologia: "",
   importo: null,
-  groupId: null, // Salviamo solo l'ID del gruppo
+  groupId: null,
 });
 
 /** Possibili tipologie di spesa */
@@ -219,10 +231,7 @@ const addCost = async () => {
   const payload = {
     importo: newCost.value.importo,
     tipologia: newCost.value.tipologia,
-    // Se l'utente ha selezionato un gruppo, passiamo un oggetto group con { id: ... }
-    group: newCost.value.groupId
-      ? { id: parseInt(newCost.value.groupId) }
-      : null,
+    group: newCost.value.groupId ? { id: parseInt(newCost.value.groupId) } : null,
   };
 
   try {
@@ -236,8 +245,7 @@ const addCost = async () => {
     });
 
     if (response.ok) {
-      // Ricarica la lista spese
-      await fetchCosts();
+      await fetchCosts(); // Ricarica la lista spese
       // Chiudi la modale e ripulisci il form
       showModal.value = false;
       newCost.value = { tipologia: "", importo: null, groupId: null };
@@ -263,13 +271,10 @@ const deleteCost = async (id) => {
   try {
     const response = await fetch(`http://localhost:8080/api/costs/${id}`, {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     if (response.ok) {
-      // Aggiorna la lista
       await fetchCosts();
     } else {
       alert("Errore nella cancellazione della spesa.");
@@ -310,14 +315,67 @@ onMounted(() => {
   max-width: 800px;
 }
 
+/* Modal overlay */
 .modal {
   background: rgba(0, 0, 0, 0.5);
 }
 
+/* Dashboard Card */
 .dashboard-card {
   min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* Aggiunta animazione hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Tabella "cartellino" con sfumatura blu */
+table.custom-table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  font-weight: 500;
+}
+
+/* Header blu */
+table.custom-table thead {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+}
+table.custom-table thead th {
+  padding: 1rem;
+  text-align: left;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Righe del corpo con gradiente blu */
+table.custom-table tbody tr {
+  background: linear-gradient(90deg, #E1F5FE, #B3E5FC);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+table.custom-table tbody tr:hover {
+  transform: translateX(5px);
+  background: linear-gradient(90deg, #B3E5FC, #81D4FA);
+}
+
+table.custom-table td {
+  padding: 1rem;
+  text-align: left;
+  border-top: none !important; /* Per un look più "cartellino" */
+}
+
+/* Footer della tabella */
+table.custom-table tfoot td {
+  padding: 1rem;
 }
 </style>
