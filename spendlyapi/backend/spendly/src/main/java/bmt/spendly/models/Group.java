@@ -40,10 +40,10 @@ public class Group {
     // questa annotazione evita cicli di serializzazione
     private List<AppUser> membri = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id", nullable = false)
     private AppUser admin;
-
+    
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true )
     @JsonIgnoreProperties("group") // Evita cicli infiniti nella serializzazione JSON
     private List<Alert> alerts = new ArrayList<>();

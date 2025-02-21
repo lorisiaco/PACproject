@@ -38,6 +38,9 @@ public class Cost {
     @JoinColumn(name = "user_id", nullable = false) // Chiave esterna per l'utente
     private AppUser user;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_status", nullable = false)
+    private PaymentStatus paymentStatus = PaymentStatus.DA_SALDARE;  // default: "da saldare"
     
 
     public Long getCostId() {
@@ -79,6 +82,18 @@ public class Cost {
     public void setUser(AppUser user) {
         this.user = user;
     }   
+
+
+
+    // Getter e Setter
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
 
 }
 
@@ -123,3 +138,4 @@ enum ExpenseType {
     TECNOLOGIA_COMPUTER,
     TECNOLOGIA_ABBONAMENTI
 }
+

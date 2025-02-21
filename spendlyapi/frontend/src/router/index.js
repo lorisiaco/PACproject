@@ -9,57 +9,83 @@ import Dashboard from '../views/Dashboard.vue';
 import Contact from '../views/Contact.vue';
 import GestioneSpese from '../views/GestioneSpese.vue';
 import GroupsView from '../views/GestioneGruppi.vue'; 
-import GroupDetail from '../views/GroupDetail.vue'; // <--- Import del componente di dettaglio
+import GroupDetail from '../views/GroupDetail.vue';
+import GestioneBudget from '../views/GestioneBudget.vue'; // <-- import del componente Budget
 
 const routes = [
+  // Rotta home
   { path: '/', name: 'Home', component: Home },
+
+  // Rotte di autenticazione
   { path: '/login', name: 'Login', component: Login },
   { path: '/register', name: 'Register', component: Register },
+
+  // Esempio di rotta che richiede autenticazione
   {
     path: '/profile',
     name: 'Profile',
     component: Profile,
     meta: { requiresAuth: true },
   },
+
+  // Rotta admin (richiede ruolo 'ROLE_admin')
   {
     path: '/admin',
     name: 'Admin',
     component: Admin,
     meta: { requiresAuth: true, roles: ['ROLE_admin'] },
   },
+
+  // Rotta client (richiede ruolo 'ROLE_client')
   {
     path: '/client',
     name: 'Client',
     component: Client,
     meta: { requiresAuth: true, roles: ['ROLE_client'] },
   },
+
+  // Rotta generica per utenti loggati
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
     meta: { requiresAuth: true },
   },
+
+  // Contatti
   { path: '/contact', name: 'Contact', component: Contact },
+
+  // Gestione spese
   {
     path: '/gestione-spese',
     name: 'GestioneSpese',
     component: GestioneSpese,
     meta: { requiresAuth: true },
   },
+
+  // Gestione Budget
+  {
+    path: '/gestioneBudget',
+    name: 'GestioneBudget',
+    component: GestioneBudget,
+    meta: { requiresAuth: true },
+  },
+
+  // Gestione gruppi
   {
     path: '/groups',
     name: 'Groups',
     component: GroupsView,
     meta: { requiresAuth: true },
   },
-  // Nuova rotta per la pagina di dettaglio di un gruppo
   {
     path: '/groups/:groupId',
     name: 'GroupDetail',
     component: GroupDetail,
     meta: { requiresAuth: true },
   },
-  // Rotta di fallback
+
+  // Rotta di default se la pagina non esiste
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
 
@@ -68,18 +94,21 @@ const router = createRouter({
   routes,
 });
 
-// Navigation Guard Globale
+// Navigation Guard globale
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('token');
-  const userRole = localStorage.getItem('role');
+  const isAuthenticated = localStorage.getItem('token'); // controlliamo se c'è un token
+  const userRole = localStorage.getItem('role');         // eventualmente controlliamo anche il ruolo
 
+  // Se la rotta richiede autenticazione ma l'utente non è autenticato
   if (to.meta.requiresAuth && !isAuthenticated) {
-    // Se la rotta richiede auth ma non siamo autenticati, reindirizza a Login
     next({ name: 'Login' });
-  } else if (to.meta.roles && (!userRole || !to.meta.roles.includes(userRole))) {
-    // Se la rotta richiede un ruolo specifico e l'utente non lo ha, reindirizza a Home
+  }
+  // Se la rotta richiede uno specifico ruolo e l'utente non lo ha
+  else if (to.meta.roles && (!userRole || !to.meta.roles.includes(userRole))) {
     next({ name: 'Home' });
-  } else {
+  }
+  // Altrimenti va avanti
+  else {
     next();
   }
 });

@@ -101,5 +101,19 @@ public class CostController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cost not found.");
         }
     }
+
+    @PutMapping("/{id}/pay")
+    public ResponseEntity<?> payCost(@PathVariable Long id,
+                                     @RequestParam String username) {
+        try {
+            Cost updated = costService.payCostFromBudget(id, username);
+            return ResponseEntity.ok(updated);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    
+
+
 }
 
