@@ -26,7 +26,7 @@ public class Cost {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipologia", nullable = false)
-    private ExpenseType tipologia;   //Per ora metto string, magari poi fare Enum
+    private ExpenseType tipologia;  
 
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = true)

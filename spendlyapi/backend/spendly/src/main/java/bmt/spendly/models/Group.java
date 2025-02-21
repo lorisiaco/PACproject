@@ -40,7 +40,7 @@ public class Group {
     // questa annotazione evita cicli di serializzazione
     private List<AppUser> membri = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     private AppUser admin;
     

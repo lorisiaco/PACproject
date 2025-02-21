@@ -1,6 +1,6 @@
 <template>
   <div class="group-detail-page d-flex flex-column min-vh-100">
-    <!-- CONTENUTO PRINCIPALE (hero, alert, tabelle, grafici, ecc.) -->
+    <!-- CONTENUTO PRINCIPALE -->
     <div class="container my-4 py-4 text-dark flex-grow-1" style="max-width: 1300px;">
       <!-- Banner in alto -->
       <div class="text-center mb-4">
@@ -37,8 +37,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-secondary" @click="removeWarning(index)">
-                Chiudi
+              <button class="btn btn-danger btn-sm" @click="removeWarning(index)">
+                <i class="fas fa-times"></i> Chiudi
               </button>
             </div>
           </div>
@@ -65,7 +65,7 @@
               {{ alert.nome }} - Limite: €{{ alert.limite.toFixed(2) }} -
               Macroarea: {{ alert.macroArea }}
             </span>
-            <button class="btn btn-sm btn-danger" @click="deleteAlert(alert.id)">
+            <button class="btn btn-danger btn-sm" @click="deleteAlert(alert.id)">
               <i class="fas fa-trash"></i> Elimina
             </button>
           </li>
@@ -84,7 +84,7 @@
             <!-- Dashboard statistica -->
             <div class="row mb-3">
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-white rounded stat-card" style="background-color: #0d6efd;">
+                <div class="p-2 rounded stat-card" style="background-color: #f8d7da; color: #721c24;">
                   <h6 class="mb-1">
                     <i class="fas fa-euro-sign"></i> Totale Spese
                   </h6>
@@ -92,7 +92,7 @@
                 </div>
               </div>
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-white rounded stat-card" style="background-color: #198754;">
+                <div class="p-2 rounded stat-card" style="background-color: #d4edda; color: #155724;">
                   <h6 class="mb-1">
                     <i class="fas fa-calculator"></i> Spesa Media
                   </h6>
@@ -100,7 +100,7 @@
                 </div>
               </div>
               <div class="col-md-4 mb-2">
-                <div class="p-2 text-dark rounded stat-card" style="background-color: #ffc107;">
+                <div class="p-2 rounded stat-card" style="background-color: #fff3cd; color: #856404;">
                   <h6 class="mb-1">
                     <i class="fas fa-history"></i> Ultima Spesa
                   </h6>
@@ -200,7 +200,6 @@
           </button>
         </div>
       </div>
- 
 
       <!-- Card Gruppo: Informazioni e membri -->
       <div class="card shadow-lg mb-5 border-0 mt-4">
@@ -238,7 +237,7 @@
                     </div>
                   </td>
                   <td class="text-center">
-                    <button class="btn btn-outline-danger btn-sm" @click="removeMember(member.username)">
+                    <button class="btn btn-danger btn-sm" @click="removeMember(member.username)">
                       <i class="fas fa-user-minus"></i> Rimuovi
                     </button>
                   </td>
@@ -266,25 +265,22 @@
       <!-- Sezione Transazioni-->
       <div>
         <h5>Transazioni</h5>
-    
         <!-- Pulsante per aggiornare i dati -->
-        <button @click="ottimizzaDebiti" class="btn">
+        <button @click="ottimizzaDebiti" class="btn btn-primary">
           Calcolo Debiti
         </button>
-
         <!-- Lista delle transazioni -->
         <div v-if="transactions.length">
-          <div v-for="(trans, index) in transactions" :key="index" class="card">
+          <div v-for="(trans, index) in transactions" :key="index" class="card mb-2 p-2">
             <p><strong>{{ trans.debitore }}</strong> → <strong>{{ trans.creditore }}</strong></p>
             <p>💰 {{ trans.importo.toFixed(2) }} €</p>
           </div>
         </div>
-
         <p v-else>Nessuna transazione da mostrare.</p>
       </div>
     </div>
 
-    <!-- FOOTER (come nello snippet Home) -->
+    <!-- FOOTER -->
     <footer class="footer">
       <p>&copy; 2025 Spendly. Tutti i diritti riservati.</p>
       <router-link to="/contact" class="footer-link">Contattaci</router-link>
@@ -884,13 +880,11 @@ async function ottimizzaDebiti() {
   try {
     const response = await fetch(`http://localhost:8080/api/groups/${groupId}/OttimizzaDebiti`)
     if (!response.ok) throw new Error("Errore nel recupero delle transazioni")
-
     transactions.value = await response.json()
   } catch (error) {
     console.error("Errore nel caricamento:", error)
   }
 }
-
 </script>
 
 <style scoped>
@@ -903,7 +897,7 @@ html, body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Layout flessibile per spingere il footer in basso */
+/* Layout flessibile per far stare il footer in fondo */
 .group-detail-page {
   display: flex;
   flex-direction: column;
@@ -1044,17 +1038,17 @@ ul.alert-list {
 
 /* Container per i grafici con dimensioni maggiori */
 .chart-container.bigger-chart {
-  min-height: 400px; /* Aumenta la dimensione */
+  min-height: 400px;
   margin-bottom: 1.5rem;
 }
 
-/* FOOTER come nello snippet Home */
+/* FOOTER */
 .footer {
   background: #1e293b;
   color: white;
   text-align: center;
   padding: 1.5rem 1rem;
-  margin-top: auto; /* Per spingerlo in basso se la pagina è corta */
+  margin-top: auto;
 }
 .footer-link {
   color: #38bdf8;
@@ -1075,20 +1069,42 @@ ul.alert-list {
   margin-right: 40px;
 }
 
-.btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+/* Bottoni personalizzati */
+.btn-custom-detail {
+  background-color: #1e90ff;
+  color: #fff;
   border: none;
-  cursor: pointer;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
-.card {
-  border: 1px solid #e2c20e;
-  padding: 10px;
-  margin: 5px;
+.btn-custom-detail:hover {
+  background-color: #1c86ee;
+}
+.btn-custom-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  background-color: white;
+  transition: background-color 0.3s ease;
+}
+.btn-custom-delete:hover {
+  background-color: #c82333;
+}
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Wrapper per far stare il footer in fondo */
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

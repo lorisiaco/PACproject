@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <!-- CONTENITORE PRINCIPALE -->
+  <div class="dashboard-wrapper d-flex flex-column min-vh-100">
     <div class="container mt-5 p-4">
-      <!-- STATISTICHE (in ordine: 1. Numero Gruppi (blu), 2. Membri Medi (verde), 3. Ultimo Gruppo (giallo)) -->
+      <!-- STATISTICHE -->
       <div class="row mb-4">
         <!-- 1) Numero Gruppi (BLU) -->
         <div class="col-md-4">
@@ -13,7 +12,6 @@
             </div>
           </div>
         </div>
-
         <!-- 2) Membri Medi (VERDE) -->
         <div class="col-md-4">
           <div class="card result-card card-ultima-spesa shadow-sm text-center p-3">
@@ -23,7 +21,6 @@
             </div>
           </div>
         </div>
-
         <!-- 3) Ultimo Gruppo (GIALLO) -->
         <div class="col-md-4">
           <div class="card result-card card-totale-spese shadow-sm text-center p-3">
@@ -76,7 +73,7 @@
             </div>
           </div>
         </div>
-        <!-- Frecce di navigazione (testo < e >) -->
+        <!-- Frecce di navigazione -->
         <button class="arrow left" @click="scrollLeft">&lt;</button>
         <button class="arrow right" @click="scrollRight">&gt;</button>
       </div>
@@ -175,11 +172,9 @@ async function fetchGroups() {
       `http://localhost:8080/api/groups?username=${username}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
-
     if (!response.ok) {
       throw new Error("Errore nel recupero dei gruppi");
     }
-
     const data = await response.json();
     groups.value = data;
     updateDashboard();
@@ -195,12 +190,10 @@ async function fetchAllUsers() {
     console.error("Token mancante. Non posso caricare gli utenti.");
     return;
   }
-
   try {
     const res = await fetch("http://localhost:8080/account/users", {
       headers: { Authorization: `Bearer ${token}` },
     });
-
     if (!res.ok) {
       throw new Error("Errore nel recupero degli utenti");
     }
@@ -216,15 +209,12 @@ async function addGroup() {
     alert("Compila il nome del gruppo!");
     return;
   }
-
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
-
   if (!token || !username) {
     alert("Utente non autenticato.");
     return;
   }
-
   try {
     const response = await fetch(
       `http://localhost:8080/api/groups?username=${username}`,
@@ -237,7 +227,6 @@ async function addGroup() {
         body: JSON.stringify({ nome: newGroup.value.nome }),
       }
     );
-
     if (response.ok) {
       await fetchGroups();
       newGroup.value.nome = "";
@@ -255,12 +244,10 @@ async function addGroup() {
 async function deleteGroup(groupId) {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
-
   if (!token || !username) {
     alert("Utente non autenticato.");
     return;
   }
-
   try {
     const response = await fetch(
       `http://localhost:8080/api/groups/${groupId}?username=${username}`,
@@ -269,7 +256,6 @@ async function deleteGroup(groupId) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-
     if (response.ok) {
       fetchGroups();
     } else {
@@ -289,14 +275,12 @@ function goToGroupDetail(groupId) {
 /** Aggiorna le statistiche */
 function updateDashboard() {
   totalGroups.value = groups.value.length;
-
   if (groups.value.length > 0) {
     const totalMembers = groups.value.reduce(
       (sum, g) => sum + (g.membri ? g.membri.length : 0),
       0
     );
     averageMembers.value = (totalMembers / groups.value.length).toFixed(2);
-
     const last = groups.value[groups.value.length - 1];
     lastGroup.value = last.nome;
   } else {
@@ -378,6 +362,15 @@ body {
 .btn-custom-delete:hover {
   background-color: #c82333;
 }
+/* Animazione e cursore per le card statistiche */
+.result-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.result-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 /* Card Numero Gruppi (BLU) */
 .card-gruppi-attivi {
   background-color: #cce5ff;
@@ -447,15 +440,22 @@ body {
   background: #111827;
   color: white;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   margin-top: auto;
 }
 .footer-link {
-  color: #1e90ff;
+  color: #3b82f6;
   text-decoration: none;
+  font-weight: bold;
   margin-left: 0.5rem;
 }
 .footer-link:hover {
   text-decoration: underline;
+}
+/* Wrapper per far stare il footer in fondo */
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

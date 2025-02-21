@@ -247,7 +247,7 @@ export default {
           title: "Budget",
           desc: "Gestisci il tuo budget",
           // rotta definita come { path: '/budget', name: 'Budget' } (assicurati di averla!)
-          route: { name: "Profile" }
+          route: { name: "GestioneBudget" }
         },
         {
           icon: "fas fa-user",

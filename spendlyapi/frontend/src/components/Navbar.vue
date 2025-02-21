@@ -11,9 +11,8 @@
       <ul class="navbar-links">
         <template v-if="isAuthenticated">
           <li><router-link to="/groups">I Tuoi Gruppi</router-link></li>
-          <li><router-link to="/gestione-spese">Gestione Spese</router-link></li> <!-- Aggiungi il link a Gestione Spese -->
-          <li><router-link to="/gestioneBudget">Gestione Budget</router-link></li> <!-- updated link -->
-          <li><router-link to="/alerts">Alert</router-link></li>
+          <li><router-link to="/gestione-spese">Le Tue Spese</router-link></li> <!-- Aggiungi il link a Gestione Spese -->
+          <li><router-link to="/gestioneBudget">Il Tuo Budget</router-link></li> <!-- updated link -->
           <li><router-link to="/profile">Profilo</router-link></li>
         </template>
         <template v-else>
