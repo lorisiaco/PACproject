@@ -11,45 +11,51 @@
 \contentsline {subsubsection}{\numberline {1.4.3}Controller}{11}{}%
 \contentsline {subsubsection}{\numberline {1.4.4}Flusso delle Richieste}{11}{}%
 \contentsline {subsection}{\numberline {1.5}Priorità casi d'uso}{11}{}%
-\contentsline {subsection}{\numberline {1.6}Strumenti Utilizzati}{15}{}%
-\contentsline {section}{\numberline {2}Iterazione 1}{18}{}%
-\contentsline {subsection}{\numberline {2.1}Casi d'Uso Implementati }{18}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}UC1: Login}{18}{}%
-\contentsline {subsubsection}{\numberline {2.1.2}UC2: Registrazione}{18}{}%
-\contentsline {subsubsection}{\numberline {2.1.3}UC3: Logout}{19}{}%
-\contentsline {subsubsection}{\numberline {2.1.4}UC7: Creazione Gruppo}{19}{}%
-\contentsline {subsubsection}{\numberline {2.1.5}UC8: Invita Membri}{20}{}%
-\contentsline {subsubsection}{\numberline {2.1.6}UC9: Elimina Membri}{20}{}%
-\contentsline {subsubsection}{\numberline {2.1.7}UC10: Modifica Membri}{20}{}%
-\contentsline {subsubsection}{\numberline {2.1.8}UC11: Eliminazione Gruppo}{21}{}%
-\contentsline {subsubsection}{\numberline {2.1.9}UC12: Accesso a un Gruppo}{21}{}%
-\contentsline {subsection}{\numberline {2.2}UML Component Diagram}{22}{}%
-\contentsline {subsection}{\numberline {2.3}UML Class Diagram per tipi di dato}{24}{}%
-\contentsline {subsection}{\numberline {2.4}Testing}{26}{}%
-\contentsline {subsubsection}{\numberline {2.4.1}Analisi Statica - CodMR}{26}{}%
-\contentsline {subsubsection}{\numberline {2.4.2}Analisi Dinamica - JUnit}{27}{}%
-\contentsline {subsubsection}{\numberline {2.4.3}API Esposte}{28}{}%
-\contentsline {paragraph}{Registrazione Utente}{28}{}%
-\contentsline {paragraph}{Login Utente}{29}{}%
-\contentsline {paragraph}{Creazione di un Gruppo}{30}{}%
-\contentsline {paragraph}{Inserimento di un utente in un gruppo}{31}{}%
-\contentsline {paragraph}{Visualizzazione dei Gruppi}{32}{}%
-\contentsline {section}{\numberline {3}Iterazione 2}{34}{}%
-\contentsline {subsection}{\numberline {3.1}Casi d'Uso Implementati }{34}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}UC4: Creazione Alert di Gruppo}{34}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}UC5: Modifica Alert}{35}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}UC6: Eliminazione Alert}{35}{}%
-\contentsline {subsubsection}{\numberline {3.1.4}UC13: Inserimento Spesa}{35}{}%
-\contentsline {subsubsection}{\numberline {3.1.5}UC14: Eliminazione Spesa}{36}{}%
-\contentsline {subsubsection}{\numberline {3.1.6}UC15: Modifica Spesa}{36}{}%
-\contentsline {subsubsection}{\numberline {3.1.7}UC16: Visualizzazione Spese}{36}{}%
-\contentsline {subsubsection}{\numberline {3.1.8}UC17: Ricalcolo Debiti}{37}{}%
-\contentsline {subsection}{\numberline {3.2}UML Class Diagram per tipi di dato}{38}{}%
-\contentsline {subsection}{\numberline {3.3}Testing}{41}{}%
-\contentsline {subsubsection}{\numberline {3.3.1}Analisi Statica - CodMR}{41}{}%
-\contentsline {subsubsection}{\numberline {3.3.2}Analisi Dinamica - JUnit}{41}{}%
-\contentsline {subsubsection}{\numberline {3.3.3}API Costi}{42}{}%
-\contentsline {paragraph}{Aggiunta di un Costo}{42}{}%
-\contentsline {paragraph}{Eliminazione di un Costo}{43}{}%
-\contentsline {paragraph}{Visualizzazione Costi Utente}{44}{}%
-\contentsline {paragraph}{Visualizzazione Costi di un Gruppo}{44}{}%
+\contentsline {subsection}{\numberline {1.6}Topologia del Sistema}{14}{}%
+\contentsline {subsubsection}{\numberline {1.6.1}Gestione delle comunicazioni}{14}{}%
+\contentsline {subsubsection}{\numberline {1.6.2}Architettura a Microservizi}{15}{}%
+\contentsline {subsection}{\numberline {1.7}Strumenti Utilizzati}{16}{}%
+\contentsline {section}{\numberline {2}Iterazione 1}{19}{}%
+\contentsline {subsection}{\numberline {2.1}Casi d'Uso Implementati }{19}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}UC1: Login}{19}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}UC2: Registrazione}{19}{}%
+\contentsline {subsubsection}{\numberline {2.1.3}UC3: Logout}{20}{}%
+\contentsline {subsubsection}{\numberline {2.1.4}UC7: Creazione Gruppo}{20}{}%
+\contentsline {subsubsection}{\numberline {2.1.5}UC8: Invita Membri}{21}{}%
+\contentsline {subsubsection}{\numberline {2.1.6}UC9: Elimina Membri}{21}{}%
+\contentsline {subsubsection}{\numberline {2.1.7}UC10: Modifica Membri}{21}{}%
+\contentsline {subsubsection}{\numberline {2.1.8}UC11: Eliminazione Gruppo}{22}{}%
+\contentsline {subsubsection}{\numberline {2.1.9}UC12: Accesso a un Gruppo}{22}{}%
+\contentsline {subsection}{\numberline {2.2}UML Component Diagram}{23}{}%
+\contentsline {subsection}{\numberline {2.3}UML Class Diagram per tipi di dato}{25}{}%
+\contentsline {subsection}{\numberline {2.4}Testing}{27}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analisi Statica - CodMR}{27}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Analisi Dinamica - JUnit}{28}{}%
+\contentsline {subsubsection}{\numberline {2.4.3}API Esposte}{29}{}%
+\contentsline {paragraph}{Registrazione Utente}{29}{}%
+\contentsline {paragraph}{Login Utente}{30}{}%
+\contentsline {paragraph}{Creazione di un Gruppo}{31}{}%
+\contentsline {paragraph}{Inserimento di un utente in un gruppo}{32}{}%
+\contentsline {paragraph}{Visualizzazione dei Gruppi}{33}{}%
+\contentsline {section}{\numberline {3}Iterazione 2}{35}{}%
+\contentsline {subsection}{\numberline {3.1}Casi d'Uso Implementati }{35}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}UC4: Creazione Alert di Gruppo}{35}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}UC6: Eliminazione Alert}{35}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}UC13: Inserimento Spesa}{36}{}%
+\contentsline {subsubsection}{\numberline {3.1.4}UC14: Eliminazione Spesa}{36}{}%
+\contentsline {subsubsection}{\numberline {3.1.5}UC15: Modifica Spesa}{37}{}%
+\contentsline {subsubsection}{\numberline {3.1.6}UC16: Visualizzazione Spese}{37}{}%
+\contentsline {subsubsection}{\numberline {3.1.7}UC17: Ricalcolo Debiti}{37}{}%
+\contentsline {subsection}{\numberline {3.2}UML Class Diagram per tipi di dato}{39}{}%
+\contentsline {subsection}{\numberline {3.3}Testing}{42}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Analisi Statica - CodMR}{42}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Analisi Dinamica - JUnit}{42}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}API Costi}{43}{}%
+\contentsline {paragraph}{Aggiunta di un Costo}{43}{}%
+\contentsline {paragraph}{Eliminazione di un Costo}{44}{}%
+\contentsline {paragraph}{Visualizzazione Costi Utente}{45}{}%
+\contentsline {paragraph}{Visualizzazione Costi di un Gruppo}{45}{}%
+\contentsline {subsection}{\numberline {3.4}Algoritmo ottimizza debiti}{46}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}PseudoCodice}{46}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}Descrizione}{48}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Complessita}{49}{}%
