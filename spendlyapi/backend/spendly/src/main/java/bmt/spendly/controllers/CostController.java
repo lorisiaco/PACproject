@@ -37,6 +37,7 @@ public class CostController {
     public ResponseEntity<List<Cost>> getAllCosts(@RequestParam(value = "username", required = false) String username) {
         List<Cost> costs;
         if (username != null && !username.trim().isEmpty()) {
+            // Assicurarsi che il metodo getCostsByUsername() restituisca tutte le spese (sia pagate che non pagate)
             costs = costService.getCostsByUsername(username);
         } else {
             costs = costService.getAllCosts();
@@ -49,20 +50,18 @@ public class CostController {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }
-    
 
     @PostMapping
     public ResponseEntity<?> createCost(@RequestBody Cost cost,
                                        @RequestParam(value = "username", required = true) String username) {
         logger.info("Creating cost: {}, GroupId: {}, Username: {}", cost, cost.getGroup(), username);
-    
+
         if (username == null || username.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username is required.");
         }
-    
+
         try {
             Long groupId = (cost.getGroup() != null) ? cost.getGroup().getId() : null;
-    
             Cost newCost = costService.createCost(cost, groupId, username);
             return ResponseEntity.status(HttpStatus.CREATED).body(newCost);
         } catch (Exception e) {
@@ -70,7 +69,6 @@ public class CostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating cost.");
         }
     }
-    
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCostById(@PathVariable Long id) {
@@ -106,14 +104,11 @@ public class CostController {
     public ResponseEntity<?> payCost(@PathVariable Long id,
                                      @RequestParam String username) {
         try {
+            // Il metodo payCostFromBudget deve aggiornare solo lo stato della spesa senza escluderla dallo storico
             Cost updated = costService.payCostFromBudget(id, username);
             return ResponseEntity.ok(updated);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    
-
-
 }
-

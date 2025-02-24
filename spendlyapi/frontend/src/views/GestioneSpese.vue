@@ -5,24 +5,21 @@
         <i class="fas fa-receipt"></i> Gestione Spese
       </h1>
 
-      <!-- Statistiche -->
+      <!-- Statistiche (totale, media, ultima) -->
       <div class="row">
         <div class="col-md-4 mb-3">
-          <!-- Card Numero Gruppi (BLU) -->
           <div class="dashboard-card card-gruppi-attivi p-3 rounded">
             <h3 class="h5"><i class="fas fa-euro-sign"></i> Totale Spese</h3>
             <p class="fs-5 m-0">€{{ totalSpent }}</p>
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <!-- Card Membri Medi (VERDE) -->
           <div class="dashboard-card card-ultima-spesa p-3 rounded">
             <h3 class="h5"><i class="fas fa-coins"></i> Spesa Media</h3>
             <p class="fs-5 m-0">€{{ averageSpent }}</p>
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <!-- Card Ultimo Gruppo (GIALLO) -->
           <div class="dashboard-card card-totale-spese p-3 rounded">
             <h3 class="h5"><i class="fas fa-history"></i> Ultima Spesa</h3>
             <p class="fs-5 m-0">{{ lastSpent }}</p>
@@ -30,8 +27,8 @@
         </div>
       </div>
 
-      <!-- Tabella Spese in stile card -->
-      <h2 class="mt-4 mb-3">Storico Spese</h2>
+      <!-- TABELLA SPESAMENTRE DA SALDARE (paymentStatus=DA_SALDARE) -->
+      <h2 class="mt-4 mb-3">Spese da Saldare</h2>
       <div class="table-card mb-4">
         <table class="table table-hover align-middle mb-0">
           <thead>
@@ -44,11 +41,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-if="costs.length === 0">
-              <td colspan="5" class="text-center">Nessuna spesa registrata</td>
+            <!-- Se non ci sono spese DA SALDARE -->
+            <tr v-if="costs.filter(c => c.paymentStatus === 'DA_SALDARE').length === 0">
+              <td colspan="5" class="text-center">Nessuna spesa da saldare</td>
             </tr>
+
+            <!-- Ciclo sulle sole spese DA_SALDARE -->
             <tr
-              v-for="cost in costs"
+              v-for="cost in costs.filter(c => c.paymentStatus === 'DA_SALDARE')"
               :key="cost.costId"
               class="table-row text-center"
             >
@@ -67,6 +67,7 @@
                 </span>
               </td>
               <td>
+                <!-- Pulsante per pagare la spesa (o segnarla come pagata) -->
                 <button
                   class="btn btn-sm me-2"
                   :class="cost.paymentStatus === 'PAGATO' ? 'btn-warning' : 'btn-success'"
@@ -74,13 +75,56 @@
                 >
                   {{ cost.paymentStatus === 'PAGATO' ? 'Segna come Da Saldare' : 'Segna come Pagato' }}
                 </button>
-                <!-- Nuovo tasto Modifica -->
+                <!-- Modifica e Elimina -->
                 <button class="btn btn-info btn-sm me-2" @click="openEditModal(cost)">
                   <i class="fas fa-edit"></i> Modifica
                 </button>
                 <button class="btn btn-danger btn-sm" @click="deleteCost(cost.costId)">
                   <i class="fas fa-trash"></i> Elimina
                 </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TABELLA STORICO SPESE (SOLO SPESE PAGATE) -->
+      <h2 class="mt-4 mb-3">Storico Spese</h2>
+      <div class="table-card mb-4">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr class="text-center">
+              <th>Tipologia</th>
+              <th>Importo (€)</th>
+              <th>Gruppo</th>
+              <th>Stato Pagamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Se non ci sono spese PAGATE -->
+            <tr v-if="costs.filter(c => c.paymentStatus === 'PAGATO').length === 0">
+              <td colspan="5" class="text-center">Nessuna spesa saldata</td>
+            </tr>
+
+            <!-- Ciclo sulle sole spese PAGATE -->
+            <tr
+              v-for="cost in costs.filter(c => c.paymentStatus === 'PAGATO')"
+              :key="cost.costId"
+              class="table-row text-center"
+            >
+              <td>{{ cost.tipologia.replaceAll('_', ' ') }}</td>
+              <td>€{{ cost.importo ? cost.importo.toFixed(2) : '0.00' }}</td>
+              <td>{{ cost.group ? cost.group.nome : 'Personale' }}</td>
+              <td>
+                <span
+                  :class="{
+                    'badge': true,
+                    'bg-success': cost.paymentStatus === 'PAGATO',
+                    'bg-danger': cost.paymentStatus === 'DA_SALDARE'
+                  }"
+                >
+                  Pagato
+                </span>
               </td>
             </tr>
           </tbody>
@@ -195,10 +239,14 @@
                   </option>
                 </select>
               </div>
-              <!-- Stato Pagamento -->
+              <!-- Stato Pagamento (disabilitato se è PAGATO) -->
               <div class="mb-3">
                 <label class="form-label">Stato Pagamento</label>
-                <select v-model="editCost.paymentStatus" class="form-select">
+                <select
+                  v-model="editCost.paymentStatus"
+                  class="form-select"
+                  :disabled="editCost.paymentStatus === 'PAGATO'"
+                >
                   <option value="DA_SALDARE">Da saldare</option>
                   <option value="PAGATO">Pagato</option>
                 </select>
@@ -256,6 +304,7 @@ const editCost = ref({
   paymentStatus: "DA_SALDARE",
 })
 
+// Lista tipologie
 const expenseTypes = [
   "ABITAZIONE_AFFITTO","ABITAZIONE_MUTUO","ABITAZIONE_BOLLETTE","ALIMENTARI",
   "TRASPORTI_CARBURANTE","TRASPORTI_PUBBLICO","TRASPORTI_MANUTENZIONE","TRASPORTI_ASSICURAZIONE",
@@ -361,8 +410,11 @@ async function deleteCost(costId) {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     })
-    if (response.ok) await fetchCosts()
-    else alert("Errore nella cancellazione della spesa.")
+    if (response.ok) {
+      await fetchCosts()
+    } else {
+      alert("Errore nella cancellazione della spesa.")
+    }
   } catch (error) {
     console.error("Errore nella cancellazione della spesa:", error)
   }
@@ -375,6 +427,7 @@ async function togglePaymentStatus(cost) {
     alert("Utente non autenticato.")
     return
   }
+  // Se la spesa è da saldare, effettua il pagamento
   if (cost.paymentStatus === "DA_SALDARE") {
     try {
       const response = await fetch(`http://localhost:8080/api/costs/${cost.costId}/pay?username=${username}`, {
@@ -384,24 +437,29 @@ async function togglePaymentStatus(cost) {
       if (!response.ok) {
         const errorText = await response.text()
         alert("Errore nel pagamento: " + errorText)
-      } else await fetchCosts()
+      } else {
+        await fetchCosts()
+      }
     } catch (error) {
       console.error("Errore nel pagamento:", error)
       alert("Errore nel pagamento.")
     }
   } else {
-    cost.paymentStatus = "DA_SALDARE"
+    // Se la spesa è pagata, la rimettiamo a DA_SALDARE (usato solo nella prima tabella)
     try {
+      const updatedCost = { ...cost, paymentStatus: "DA_SALDARE" }
       const response = await fetch(`http://localhost:8080/api/costs/${cost.costId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(cost),
+        body: JSON.stringify(updatedCost),
       })
       if (!response.ok) alert("Errore nel riportare la spesa a Da Saldare.")
-      else updateDashboard()
+      else {
+        await fetchCosts()
+      }
     } catch (error) {
       console.error("Errore nell'aggiornamento dello stato di pagamento:", error)
     }
@@ -423,7 +481,6 @@ function updateDashboard() {
 
 /* MODALE PER MODIFICARE SPESA */
 function openEditModal(cost) {
-  // Pre-riempi il modello editCost con i dati della spesa selezionata
   editCost.value = {
     costId: cost.costId,
     tipologia: cost.tipologia,
@@ -474,7 +531,8 @@ async function updateCost() {
 
 <style scoped>
 .container {
-  max-width: 900px;
+  max-width: 1200px; /* o 1400px, o 100%, in base a quanto vuoi allargare */
+  margin: 0 auto;    /* per centrarlo orizzontalmente */
 }
 
 /* Sfondo scuro dietro la modale */
@@ -496,21 +554,21 @@ async function updateCost() {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Card Numero Gruppi (BLU) */
+/* Card Totale Spese (BLU) */
 .card-gruppi-attivi {
   background-color: #cce5ff;
   border: 1px solid #b8daff;
   color: #004085;
 }
 
-/* Card Membri Medi (VERDE) */
+/* Card Spesa Media (VERDE) */
 .card-ultima-spesa {
   background-color: #d4edda;
   border: 1px solid #c3e6cb;
   color: #155724;
 }
 
-/* Card Ultimo Gruppo (GIALLO) */
+/* Card Ultima Spesa (GIALLO) */
 .card-totale-spese {
   background-color: #fff3cd;
   border: 1px solid #ffeeba;
