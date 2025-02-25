@@ -13,7 +13,7 @@ import bmt.spendly.repositories.SavingsRepository;
 
 @Service
 @Transactional
-public class SavingsService {
+public class SavingsService implements SavingsMngtIF {
 
     @Autowired
     private SavingsRepository savingsRepository;
@@ -24,6 +24,7 @@ public class SavingsService {
     @Autowired
     private BudgetService budgetService;
 
+    @Override
     public Savings createSaving(String username, String name, double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("L'importo deve essere positivo.");
@@ -38,6 +39,7 @@ public class SavingsService {
         return savingsRepository.save(saving);
     }
 
+    @Override
     public List<Savings> getUserSavings(String username) {
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
         if (user == null) {
@@ -46,7 +48,7 @@ public class SavingsService {
         return savingsRepository.findByUser(user);
     }
 
-    // New method to add funds to a saving (transfer from Budget to saving)
+    @Override
     public Savings addFundsToSaving(String username, Long savingId, double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("L'importo deve essere positivo.");
@@ -62,7 +64,7 @@ public class SavingsService {
         return savingsRepository.save(saving);
     }
 
-    // New method to remove funds from a saving (return funds to Budget)
+    @Override
     public Savings removeFundsFromSaving(String username, Long savingId, double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("L'importo da rimuovere deve essere positivo.");
@@ -81,7 +83,7 @@ public class SavingsService {
         return savingsRepository.save(saving);
     }
 
-    // New method to delete a saving and return its funds to Budget
+    @Override
     public void deleteSaving(String username, Long savingId) {
         Savings saving = savingsRepository.findById(savingId)
                 .orElseThrow(() -> new IllegalArgumentException("Risparmio non trovato."));

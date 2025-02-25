@@ -14,7 +14,7 @@ import bmt.spendly.repositories.CostRepository;
 import bmt.spendly.repositories.GroupRepository;
 
 @Service
-public class CostService {
+public class CostService implements CostMngtIF {
     
     @Autowired
     private CostRepository costRepository;
@@ -28,6 +28,7 @@ public class CostService {
     @Autowired
     private BudgetService budgetService;
 
+    @Override
     public Cost createCost(Cost cost, Long groupId, String username) { // MODIFICATO da Integer a Long
         username = username.trim();
         System.out.println("DEBUG: Cerco l'utente con username pulito: '" + username + "'");
@@ -53,6 +54,7 @@ public class CostService {
         return costRepository.save(cost);
     }
 
+    @Override
     public List<Cost> getCostsByUsername(String username) {
         username = username.trim();
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
@@ -62,22 +64,25 @@ public class CostService {
         return costRepository.findByUserId(user.getId());
     }
 
-    // ✅ Metodo per ottenere i costi di un gruppo specifico
+    @Override
     public List<Cost> getCostsByGroup(Long groupId) { // MODIFICATO da Integer a Long
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste."));
         return costRepository.findByGroupId(group.getId());  // 🔥 FIX QUI
     }
 
+    @Override
     public List<Cost> getAllCosts() {
         return costRepository.findAll();
     }
 
+    @Override
     public Cost getCostById(Long id) { // MODIFICATO da int a Long
         return costRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("La spesa con ID " + id + " non esiste."));
     }
 
+    @Override
     public Cost updateCost(Long id, Cost updatedCost) {
         Cost existingCost = getCostById(id);
         existingCost.setImporto(updatedCost.getImporto());
@@ -89,6 +94,7 @@ public class CostService {
         return costRepository.save(existingCost);
     }
     
+    @Override
     public void deleteCost(Long id) { // MODIFICATO da int a Long
         if (!costRepository.existsById(id)) {
             throw new IllegalArgumentException("La spesa con ID " + id + " non esiste.");
@@ -96,6 +102,7 @@ public class CostService {
         costRepository.deleteById(id);
     }
 
+    @Override
     public Cost payCostFromBudget(Long costId, String username) {
         // 1) Recupera la spesa
         Cost cost = getCostById(costId);
