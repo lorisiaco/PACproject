@@ -73,7 +73,7 @@
                   :class="cost.paymentStatus === 'PAGATO' ? 'btn-warning' : 'btn-success'"
                   @click="togglePaymentStatus(cost)"
                 >
-                  {{ cost.paymentStatus === 'PAGATO' ? 'Segna come Da Saldare' : 'Segna come Pagato' }}
+                  {{ cost.paymentStatus === 'PAGATO' ? 'Segna come Da Saldare' : 'PAGA' }}
                 </button>
                 <!-- Modifica e Elimina -->
                 <button class="btn btn-info btn-sm me-2" @click="openEditModal(cost)">
