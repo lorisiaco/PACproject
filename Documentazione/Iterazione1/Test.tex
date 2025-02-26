@@ -5,20 +5,35 @@ L'analisi statica del codice è stata gestita tramite il tool CodeMR.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/CodeMR_graph1.png}
-    \caption{Metriche del progetto}
-    \label{fig:CodeMR_1}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/complexity_iter1.png}
+        \caption{Complexity}
+        \label{fig:Complexity_iterazione1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/coupling_iter1.png}
+        \caption{Coupling}
+        \label{fig:Coupling_iterazione1}
+    \end{minipage}
 \end{figure}
 
-Dall'analisi dell'immagine si può notare che i livelli di coupling e complexity sono tendelzialmente bassi.
-Per quanto riguarda il coupling, solo le classi SecurityConfig e AccountController presentano dei valori medio-alti. 
-Invece, per la complessità l'unica classe con un valore elevato è la ResourceNotFoundException.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Problem_iter1.png}
+    \caption{Problemi classi}
+    \label{fig:Problemi_iterazione1}
+\end{figure}
+
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/CodeMR_graph2.png}
     \caption{Struttura dei package}
-    \label{fig:CodeMR_2}
+    \label{fig:Package_iterazione1}
 \end{figure}
 
 
