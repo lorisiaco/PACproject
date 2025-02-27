@@ -26,13 +26,65 @@
 \end{figure}
 
 
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/Package_iter2.png}
+    \includegraphics[width=0.8\textwidth]{images/Package_iter2.png}
     \caption{Struttura dei package}
     \label{fig:Package_iterazione2}
 \end{figure}
+
+\subsubsection{Analisi Dinamica - JUnit}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CalcolaDebitiTest.png}
+    \caption{Test per ottimizzare Debiti}
+    \label{fig:CalcolaDebitiTest}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/GroupTest_iter2.png}
+    \caption{Test aggiornati per la classe Group}
+    \label{fig:GroupTest_iter2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/GroupServiceTest_iter2.png}
+    \caption{Test aggiornati per la classe GroupService}
+    \label{fig:GroupServiceTest_iter2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/GroupControllerTest_iter2.png}
+    \caption{Test aggiornati per la classe GroupController}
+    \label{fig:GroupControllerTest_iter2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CostServiceTest_iter2.png}
+    \caption{Test per la classe CostService}
+    \label{fig:GroupControllerTest_iter2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CostServiceTest_iter2.png}
+    \caption{Test per la classe CostService}
+    \label{fig:CostServiceTest_iter2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CostControllerTest_iter2.png}
+    \caption{Test per la classe CostController}
+    \label{fig:CostControllerTest_iter2}
+\end{figure}
+
+
 
 \subsubsection{API Costi}
 
@@ -94,12 +146,55 @@ Questa sezione documenta le API relative alla gestione dei **costi** nel sistema
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{GET /api/costs/group/\{groupId\}}
-    \item \textbf{Descrizione:} Restituisce la lista di tutti i costi associati a un gruppo, accessibile solo dai membri del gruppo.
+    \item \textbf{Descrizione:} Restituisce la lista di tutti i costi registrati del gruppo.
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/getGroupCosts.jpeg}
     \caption{Risultato API Visualizzazione Costi Gruppo}
     \label{fig:api_view_group_costs}
+\end{figure}
+
+
+\paragraph{Creazione Alert} 
+
+\begin{itemize}
+    \item \textbf{Endpoint:} \texttt{POST /api/groups/\{groupId\}/alerts?username=\{username\}}
+    \item \textbf{Descrizione:} Permette all'amministratore del gruppo di creare un Alert
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/createAlert.png}
+    \caption{Risultato API Creazione Alert}
+    \label{fig:api_createAlert}
+\end{figure}
+
+\paragraph{Eliminazione Alert}
+
+\begin{itemize}
+    \item \textbf{Endpoint:} \texttt{DELETE /api/groups/{groupId}/alerts/{alertId}?username={username}}
+    \item \textbf{Descrizione:} Permette all'amministratore del gruppo di eliminare un Alert.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/DeleteAlert.png}
+    \caption{Risultato API eliminazione Alert}
+    \label{fig:api_deleteAlert}
+\end{figure}
+
+\paragraph{Visualizza Alert di Gruppo}
+
+\begin{itemize}
+    \item \textbf{Endpoint:} \texttt{GET /api/groups/{groupId}/alerts}
+    \item \textbf{Descrizione:} Restituisce la lista di tutti gli alerts del gruppo.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/GetAlertsForGroup.png}  
+    \caption{Risultato API Visualizzazione Alert di Gruppo}
+    \label{fig:api_view_group_alerts}  
 \end{figure}
