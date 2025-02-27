@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Spese") 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Cost {
+public class Cost implements CostIF {
     
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -43,42 +43,52 @@ public class Cost {
     private PaymentStatus paymentStatus = PaymentStatus.DA_SALDARE;  // default: "da saldare"
     
 
+    @Override
     public Long getCostId() {
         return CostId;
     }
 
+    @Override
     public void setCostId(Long costId) {
         CostId = costId;
     }
 
+    @Override
     public double getImporto() {
         return importo;
     }
 
+    @Override
     public void setImporto(double importo) {
         this.importo = importo;
     }
 
+    @Override
     public ExpenseType getTipologia() {
         return tipologia;
     }
 
+    @Override
     public void setTipologia(ExpenseType tipologia) {
         this.tipologia = tipologia;
     }
 
+    @Override
     public Group getGroup() {
         return group;
     }
 
+    @Override
     public void setGroup(Group group) {
         this.group = group;
     }
 
+    @Override
     public AppUser getUser() {
         return user;
     }
 
+    @Override
     public void setUser(AppUser user) {
         this.user = user;
     }   
@@ -86,10 +96,12 @@ public class Cost {
 
 
     // Getter e Setter
+    @Override
     public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
 
+    @Override
     public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
     }

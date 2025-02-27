@@ -21,7 +21,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Gruppi")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Group {
+public class Group implements GroupIF {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,36 +61,45 @@ public class Group {
     }
 
     // Getter & Setter
+    @Override
     public Long getId() {
         return this.id;
     }
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
 
+    @Override
     public String getNome() {
         return this.nome;
     }
+    @Override
     public void setNome(String s) {
         this.nome = s;
     }
 
+    @Override
     public List<AppUser> getMembri() {
         return this.membri;
     }
 
+    @Override
     public AppUser getAdmin() {
         return this.admin;
     }
+    @Override
     public void setAdmin(AppUser admin) {
         this.admin = admin;
     }
 
+    @Override
     public List<Alert> getAlerts(){
         return this.alerts;
     }
 
     // Metodi di utilità
+    @Override
     public void AggiungiMembro(AppUser utente) {
         if (!membri.contains(utente)) {
             membri.add(utente);
@@ -99,6 +108,7 @@ public class Group {
         }
     }
     
+    @Override
     public void RimuoviMembro(AppUser utente) {
         if (membri.contains(utente)) {
             membri.remove(utente);
@@ -107,18 +117,22 @@ public class Group {
         }
     }
 
+    @Override
     public boolean ContieneMembro(AppUser utente) {
         return membri.contains(utente);
     }
 
+    @Override
     public void addAlert(Alert alert) {
         this.alerts.add(alert);
     }
     
+    @Override
     public void removeAlert(Alert alert) {
         this.alerts.remove(alert);
     }
 
+    @Override
     public List<String> getUsernames() {
         List<String> usernames = new ArrayList<>();
         for (AppUser user : membri) {
