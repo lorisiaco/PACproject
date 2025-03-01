@@ -6,8 +6,11 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -136,6 +139,7 @@ public class GroupServiceTest {
 
         Group updatedGroup = groupService.aggiungiMembro(1L, "testUser");
         assertNotNull(updatedGroup);
+        assertTrue(updatedGroup.ContieneMembro(user));
     }
     
     @Test
@@ -147,6 +151,7 @@ public class GroupServiceTest {
 
         Group updatedGroup = groupService.rimuoviMembro(1L, "testUser");
         assertNotNull(updatedGroup);
+        assertFalse(updatedGroup.ContieneMembro(user));
     }
 
     @Test
