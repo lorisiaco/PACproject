@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.29)  27 FEB 2025 11:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.29)  1 MAR 2025 14:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1241,9 +1241,40 @@ Overfull \hbox (39.00238pt too wide) in paragraph at lines 5--6
 )
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 134.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 132.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [74 <./images/DeployementDiagramIterazione3.drawio.png>] (Prova.aux)
+ [74 <./images/DeployementDiagramIterazione3.drawio.png>] (Iterazione3/Test3.tex
+<images/SavingServiceTest.png, id=338, 307.74976pt x 120.45pt>
+File: images/SavingServiceTest.png Graphic file (type png)
+<use images/SavingServiceTest.png>
+Package pdftex.def Info: images/SavingServiceTest.png  used on input line 8.
+(pdftex.def)             Requested size: 350.99762pt x 137.38976pt.
+<images/SavingControllerTest.png, id=339, 299.31825pt x 127.677pt>
+File: images/SavingControllerTest.png Graphic file (type png)
+<use images/SavingControllerTest.png>
+Package pdftex.def Info: images/SavingControllerTest.png  used on input line 15.
+(pdftex.def)             Requested size: 350.99762pt x 149.72241pt.
+<images/BudgetServiceTest.png, id=340, 305.34074pt x 127.677pt>
+File: images/BudgetServiceTest.png Graphic file (type png)
+<use images/BudgetServiceTest.png>
+Package pdftex.def Info: images/BudgetServiceTest.png  used on input line 22.
+(pdftex.def)             Requested size: 350.99762pt x 146.78064pt.
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 26.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [75 <./images/SavingServiceTest.png> <./images/SavingControllerTest.png>]
+<images/BudgetControllerTest.png, id=346, 305.34074pt x 127.07475pt>
+File: images/BudgetControllerTest.png Graphic file (type png)
+<use images/BudgetControllerTest.png>
+Package pdftex.def Info: images/BudgetControllerTest.png  used on input line 29.
+(pdftex.def)             Requested size: 350.99762pt x 146.08827pt.
+)
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 136.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [76 <./images/BudgetServiceTest.png> <./images/BudgetControllerTest.png>] (Prova.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1257,17 +1288,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15793 strings out of 474486
- 326139 string characters out of 5743755
+ 15835 strings out of 474486
+ 327534 string characters out of 5743755
  1939542 words of memory out of 5000000
- 37752 multiletter control sequences out of 15000+600000
+ 37791 multiletter control sequences out of 15000+600000
  563782 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,776b,874s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\diego\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Prova.pdf (75 pages, 3231223 bytes).
+Output written on Prova.pdf (77 pages, 3266337 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
+ 393 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 248 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 
