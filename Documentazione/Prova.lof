@@ -43,3 +43,12 @@
 \contentsline {figure}{\numberline {41}{\ignorespaces Test per la classe SavingController}}{75}{}%
 \contentsline {figure}{\numberline {42}{\ignorespaces Test per la classe BudgetService}}{76}{}%
 \contentsline {figure}{\numberline {43}{\ignorespaces Test per la classe BudgetController}}{76}{}%
+\contentsline {figure}{\numberline {44}{\ignorespaces API creazione budget}}{77}{}%
+\contentsline {figure}{\numberline {45}{\ignorespaces API visualizza budget di un utente}}{78}{}%
+\contentsline {figure}{\numberline {46}{\ignorespaces API per aggiungere fondi al budget}}{79}{}%
+\contentsline {figure}{\numberline {47}{\ignorespaces API per sottrarre fondi al budget}}{80}{}%
+\contentsline {figure}{\numberline {48}{\ignorespaces API per creare un risparmio}}{82}{}%
+\contentsline {figure}{\numberline {49}{\ignorespaces API per ottenere i risparmi dell'utente}}{83}{}%
+\contentsline {figure}{\numberline {50}{\ignorespaces API per aggiungere fondi ai risparmi dell'utente}}{84}{}%
+\contentsline {figure}{\numberline {51}{\ignorespaces API per togliere fondi ai risparmi dell'utente}}{85}{}%
+\contentsline {figure}{\numberline {52}{\ignorespaces API per eliminare un risparmio}}{86}{}%

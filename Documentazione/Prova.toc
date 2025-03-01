@@ -89,3 +89,12 @@
 \contentsline {subsubsection}{\numberline {4.7.1}Analisi Statica - CodeMR}{75}{}%
 \contentsline {subsubsection}{\numberline {4.7.2}Analisi Dinamica - JUnit}{75}{}%
 \contentsline {subsubsection}{\numberline {4.7.3}API}{76}{}%
+\contentsline {paragraph}{Crea di un budget}{76}{}%
+\contentsline {paragraph}{Visualizza budget utente}{77}{}%
+\contentsline {paragraph}{Incrementa budget}{78}{}%
+\contentsline {paragraph}{Decrementa budget}{79}{}%
+\contentsline {paragraph}{Crea risparmio}{81}{}%
+\contentsline {paragraph}{Visualizza risparmi utente}{82}{}%
+\contentsline {paragraph}{Aggiungi fondo al risparmio}{83}{}%
+\contentsline {paragraph}{Rimuovi fondo al risparmio}{84}{}%
+\contentsline {paragraph}{Elimina risparmio}{85}{}%
