@@ -68,7 +68,9 @@
               </td>
               <td>
                 <!-- Pulsante per pagare la spesa (o segnarla come pagata) -->
+                <!-- NEW: v-if per nascondere il pagamento se la spesa appartiene a un gruppo -->
                 <button
+                  v-if="!cost.group"
                   class="btn btn-sm me-2"
                   :class="cost.paymentStatus === 'PAGATO' ? 'btn-warning' : 'btn-success'"
                   @click="togglePaymentStatus(cost)"
@@ -86,6 +88,13 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Bottone per Aggiungere Spesa -->
+       <div class="mb-5">
+        <button class="btn btn-primary" @click="showModal = true">
+          <i class="fas fa-plus"></i> Aggiungi Spesa
+        </button>
       </div>
 
       <!-- TABELLA STORICO SPESE (SOLO SPESE PAGATE) -->
@@ -131,12 +140,7 @@
         </table>
       </div>
 
-      <!-- Bottone per Aggiungere Spesa -->
-      <div class="mb-5">
-        <button class="btn btn-primary" @click="showModal = true">
-          <i class="fas fa-plus"></i> Aggiungi Spesa
-        </button>
-      </div>
+
 
       <!-- Modale per Aggiungere Spesa -->
       <div v-if="showModal" class="modal fade show" tabindex="-1" style="display: block;">

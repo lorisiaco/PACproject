@@ -107,6 +107,11 @@ public class CostService implements CostMngtIF {
         // 1) Recupera la spesa
         Cost cost = getCostById(costId);
         
+        // NEW: Impedisci il pagamento se la spesa appartiene a un gruppo
+        if(cost.getGroup() != null) {
+            throw new IllegalArgumentException("Non puoi saldare una spesa di gruppo manualmente.");
+        }
+        
         // 2) Verifica che la spesa appartenga all'utente (o che l'utente abbia i permessi)
         if (!cost.getUser().getUsername().equalsIgnoreCase(username)) {
             throw new IllegalArgumentException("Non puoi pagare il costo di un altro utente!");
