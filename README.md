@@ -56,13 +56,13 @@ Spendly è costruito con tecnologie **moderne e scalabili**, garantendo elevate 
 git clone [https://github.com/lorisiaco/PACproject.git]
 cd PACproject
 ```
-### **2 Avvia SpringBootApplication **
-### **3 Esegui il frontend **
+### 2 Avvia SpringBootApplication 
+### 3 Esegui il frontend 
 ```bash
 cd PACproject/spendlyapi/frontend
 npm run dev
 ```
-### **4 Visita il link **
+### 4 Visita il link 
 ```bash
 http://localhost:5173
 ```
