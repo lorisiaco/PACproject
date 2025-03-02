@@ -45,14 +45,24 @@ Spendly è costruito con tecnologie **moderne e scalabili**, garantendo elevate 
 - **JPA/Hibernate** 📚 – ORM per una gestione fluida dei dati  
 
 ### **Deployment e DevOps** ⚙️  
-- **Docker** 🐳 – Contenitori per una distribuzione facile e scalabile  
 - **GitHub Actions** 🤖 – CI/CD automatizzato per test e deploy  
-- **AWS / Heroku** ☁️ – Hosting cloud con scalabilità garantita  
+  
 
 ---
 
 ## 📦 **Installazione e Setup**
-### **1️⃣ Clona il repository**
+### **1 Clona il repository**
 ```bash
 git clone [https://github.com/lorisiaco/PACproject.git]
 cd PACproject
+```
+### **2 Avvia SpringBootApplication **
+### **3 Esegui il frontend **
+```bash
+cd PACproject/spendlyapi/frontend
+npm run dev
+```
+### **4 Visita il link **
+```bash
+http://localhost:5173/
+```
