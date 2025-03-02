@@ -375,6 +375,9 @@ async function addCost() {
     alert("Utente non autenticato.")
     return
   }
+  if (newCost.value.groupId) {
+    newCost.value.paymentStatus = "DA_SALDARE";
+  }
   const payload = {
     importo: newCost.value.importo,
     tipologia: newCost.value.tipologia,
@@ -505,6 +508,9 @@ async function updateCost() {
   if (!username || !token) {
     alert("Utente non autenticato.")
     return
+  }
+  if (editCost.value.groupId) {
+    editCost.value.paymentStatus = "DA_SALDARE";
   }
   try {
     const response = await fetch(`http://localhost:8080/api/costs/${editCost.value.costId}`, {
