@@ -64,5 +64,5 @@ npm run dev
 ```
 ### **4 Visita il link **
 ```bash
-http://localhost:5173/
+http://localhost:5173
 ```
