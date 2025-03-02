@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.29)  2 MAR 2025 17:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.4.29)  2 MAR 2025 18:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -338,6 +338,12 @@ LaTeX Warning: Label `fig:uml-deployment-diagram' multiply defined.
 
 
 LaTeX Warning: Label `fig:uml-deployment-diagram' multiply defined.
+
+
+LaTeX Warning: Label `fig:Problemi_iterazione 3' multiply defined.
+
+
+LaTeX Warning: Label `fig:Package_iterazione2' multiply defined.
 
 )
 \openout1 = `Prova.aux'.
@@ -1242,132 +1248,172 @@ File: images/sfondolatex.png Graphic file (type png)
 Package pdftex.def Info: images/sfondolatex.png  used on input line 132.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
  [75 <./images/DeployementDiagramIterazione3.drawio.png>] (Iterazione3/Test3.tex
-<images/SavingServiceTest.png, id=343, 307.74976pt x 120.45pt>
+<images/Complexity_iter3.png, id=343, 217.41225pt x 473.3685pt>
+File: images/Complexity_iter3.png Graphic file (type png)
+<use images/Complexity_iter3.png>
+Package pdftex.def Info: images/Complexity_iter3.png  used on input line 11.
+(pdftex.def)             Requested size: 175.49881pt x 382.11902pt.
+<images/Coupling_iter3.png, id=344, 202.95825pt x 472.76625pt>
+File: images/Coupling_iter3.png Graphic file (type png)
+<use images/Coupling_iter3.png>
+Package pdftex.def Info: images/Coupling_iter3.png  used on input line 18.
+(pdftex.def)             Requested size: 175.49881pt x 408.80733pt.
+<images/Problem2_iter3.png, id=345, 599.23875pt x 240.9pt>
+File: images/Problem2_iter3.png Graphic file (type png)
+<use images/Problem2_iter3.png>
+Package pdftex.def Info: images/Problem2_iter3.png  used on input line 26.
+(pdftex.def)             Requested size: 390.0pt x 156.78531pt.
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 30.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [76 <./images/Complexity_iter3.png> <./images/Coupling_iter3.png>]
+<images/Problem3_iter3.png, id=351, 948.54375pt x 118.64325pt>
+File: images/Problem3_iter3.png Graphic file (type png)
+<use images/Problem3_iter3.png>
+Package pdftex.def Info: images/Problem3_iter3.png  used on input line 33.
+(pdftex.def)             Requested size: 390.0pt x 48.77982pt.
+<images/Package_iter3.png, id=352, 479.99326pt x 475.7775pt>
+File: images/Package_iter3.png Graphic file (type png)
+<use images/Package_iter3.png>
+Package pdftex.def Info: images/Package_iter3.png  used on input line 41.
+(pdftex.def)             Requested size: 350.99762pt x 347.9245pt.
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 45.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [77 <./images/Problem2_iter3.png> <./images/Problem3_iter3.png>]
+<images/SavingServiceTest.png, id=358, 307.74976pt x 120.45pt>
 File: images/SavingServiceTest.png Graphic file (type png)
 <use images/SavingServiceTest.png>
-Package pdftex.def Info: images/SavingServiceTest.png  used on input line 8.
+Package pdftex.def Info: images/SavingServiceTest.png  used on input line 52.
 (pdftex.def)             Requested size: 350.99762pt x 137.38976pt.
-<images/SavingControllerTest.png, id=344, 299.31825pt x 127.677pt>
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 56.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [78 <./images/Package_iter3.png>]
+<images/SavingControllerTest.png, id=364, 299.31825pt x 127.677pt>
 File: images/SavingControllerTest.png Graphic file (type png)
 <use images/SavingControllerTest.png>
-Package pdftex.def Info: images/SavingControllerTest.png  used on input line 15.
+Package pdftex.def Info: images/SavingControllerTest.png  used on input line 59.
 (pdftex.def)             Requested size: 350.99762pt x 149.72241pt.
-<images/BudgetServiceTest.png, id=345, 305.34074pt x 127.677pt>
+<images/BudgetServiceTest.png, id=365, 305.34074pt x 127.677pt>
 File: images/BudgetServiceTest.png Graphic file (type png)
 <use images/BudgetServiceTest.png>
-Package pdftex.def Info: images/BudgetServiceTest.png  used on input line 22.
+Package pdftex.def Info: images/BudgetServiceTest.png  used on input line 66.
 (pdftex.def)             Requested size: 350.99762pt x 146.78064pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 26.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 70.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [76 <./images/SavingServiceTest.png> <./images/SavingControllerTest.png>]
-<images/BudgetControllerTest.png, id=351, 305.34074pt x 127.07475pt>
+ [79 <./images/SavingServiceTest.png> <./images/SavingControllerTest.png>]
+<images/BudgetControllerTest.png, id=371, 305.34074pt x 127.07475pt>
 File: images/BudgetControllerTest.png Graphic file (type png)
 <use images/BudgetControllerTest.png>
-Package pdftex.def Info: images/BudgetControllerTest.png  used on input line 29.
+Package pdftex.def Info: images/BudgetControllerTest.png  used on input line 73.
 (pdftex.def)             Requested size: 350.99762pt x 146.08827pt.
-<images/CreateBudgetAPI.png, id=352, 508.90125pt x 513.117pt>
+File: images/sfondolatex.png Graphic file (type png)
+<use images/sfondolatex.png>
+Package pdftex.def Info: images/sfondolatex.png  used on input line 90.
+(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
+ [80 <./images/BudgetServiceTest.png> <./images/BudgetControllerTest.png>]
+<images/CreateBudgetAPI.png, id=377, 508.90125pt x 513.117pt>
 File: images/CreateBudgetAPI.png Graphic file (type png)
 <use images/CreateBudgetAPI.png>
-Package pdftex.def Info: images/CreateBudgetAPI.png  used on input line 50.
+Package pdftex.def Info: images/CreateBudgetAPI.png  used on input line 96.
 (pdftex.def)             Requested size: 350.99762pt x 353.91801pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 54.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 109.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [77 <./images/BudgetServiceTest.png> <./images/BudgetControllerTest.png>]
-<images/GetBudgetAPI.png, id=358, 397.485pt x 473.97075pt>
+ [81 <./images/CreateBudgetAPI.png>]
+<images/GetBudgetAPI.png, id=382, 397.485pt x 473.97075pt>
 File: images/GetBudgetAPI.png Graphic file (type png)
 <use images/GetBudgetAPI.png>
-Package pdftex.def Info: images/GetBudgetAPI.png  used on input line 68.
+Package pdftex.def Info: images/GetBudgetAPI.png  used on input line 114.
 (pdftex.def)             Requested size: 350.99762pt x 418.54922pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 72.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 124.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [78 <./images/CreateBudgetAPI.png>]
-File: images/sfondolatex.png Graphic file (type png)
-<use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 81.
-(pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [79 <./images/GetBudgetAPI.png>]
-<images/AddBudgetAPI.png, id=368, 398.6895pt x 476.37975pt>
+ [82 <./images/GetBudgetAPI.png>]
+<images/AddBudgetAPI.png, id=387, 398.6895pt x 476.37975pt>
 File: images/AddBudgetAPI.png Graphic file (type png)
 <use images/AddBudgetAPI.png>
-Package pdftex.def Info: images/AddBudgetAPI.png  used on input line 87.
+Package pdftex.def Info: images/AddBudgetAPI.png  used on input line 133.
 (pdftex.def)             Requested size: 350.99762pt x 419.38992pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 97.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 141.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [80 <./images/AddBudgetAPI.png>]
-<images/SubtractBudgetAPI.png, id=373, 398.6895pt x 412.54124pt>
+ [83 <./images/AddBudgetAPI.png>]
+<images/SubtractBudgetAPI.png, id=392, 398.6895pt x 412.54124pt>
 File: images/SubtractBudgetAPI.png Graphic file (type png)
 <use images/SubtractBudgetAPI.png>
-Package pdftex.def Info: images/SubtractBudgetAPI.png  used on input line 106.
+Package pdftex.def Info: images/SubtractBudgetAPI.png  used on input line 152.
 (pdftex.def)             Requested size: 350.99762pt x 363.18849pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 115.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 160.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [81 <./images/SubtractBudgetAPI.png>]
-<images/CreateSavingAPI.png, id=378, 397.485pt x 419.76825pt>
+ [84 <./images/SubtractBudgetAPI.png>]
+<images/CreateSavingAPI.png, id=398, 397.485pt x 419.76825pt>
 File: images/CreateSavingAPI.png Graphic file (type png)
 <use images/CreateSavingAPI.png>
-Package pdftex.def Info: images/CreateSavingAPI.png  used on input line 126.
+Package pdftex.def Info: images/CreateSavingAPI.png  used on input line 172.
 (pdftex.def)             Requested size: 350.99762pt x 370.68462pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 130.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 176.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [82]
-<images/GetSavingsAPI.png, id=382, 420.3705pt x 449.2785pt>
+ [85]
+<images/GetSavingsAPI.png, id=402, 420.3705pt x 449.2785pt>
 File: images/GetSavingsAPI.png Graphic file (type png)
 <use images/GetSavingsAPI.png>
-Package pdftex.def Info: images/GetSavingsAPI.png  used on input line 144.
+Package pdftex.def Info: images/GetSavingsAPI.png  used on input line 190.
 (pdftex.def)             Requested size: 350.99762pt x 375.15648pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 148.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 194.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [83 <./images/CreateSavingAPI.png>]
+ [86 <./images/CreateSavingAPI.png>]
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 159.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 205.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [84 <./images/GetSavingsAPI.png>]
-<images/AddFundsSavingAPI.png, id=392, 398.6895pt x 398.08725pt>
+ [87 <./images/GetSavingsAPI.png>]
+<images/AddFundsSavingAPI.png, id=411, 398.6895pt x 398.08725pt>
 File: images/AddFundsSavingAPI.png Graphic file (type png)
 <use images/AddFundsSavingAPI.png>
-Package pdftex.def Info: images/AddFundsSavingAPI.png  used on input line 164.
+Package pdftex.def Info: images/AddFundsSavingAPI.png  used on input line 210.
 (pdftex.def)             Requested size: 350.99762pt x 350.46364pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 180.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 226.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [85 <./images/AddFundsSavingAPI.png>]
-<images/RemoveFundsSavingAPI.png, id=397, 402.303pt x 400.49625pt>
+ [88 <./images/AddFundsSavingAPI.png>]
+<images/RemoveFundsSavingAPI.png, id=416, 402.303pt x 400.49625pt>
 File: images/RemoveFundsSavingAPI.png Graphic file (type png)
 <use images/RemoveFundsSavingAPI.png>
-Package pdftex.def Info: images/RemoveFundsSavingAPI.png  used on input line 185.
+Package pdftex.def Info: images/RemoveFundsSavingAPI.png  used on input line 231.
 (pdftex.def)             Requested size: 350.99762pt x 349.43726pt.
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
-Package pdftex.def Info: images/sfondolatex.png  used on input line 199.
+Package pdftex.def Info: images/sfondolatex.png  used on input line 245.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [86 <./images/RemoveFundsSavingAPI.png>]
-<images/DeleteSavingAPI.png, id=402, 329.43076pt x 242.70676pt>
+ [89 <./images/RemoveFundsSavingAPI.png>]
+<images/DeleteSavingAPI.png, id=421, 329.43076pt x 242.70676pt>
 File: images/DeleteSavingAPI.png Graphic file (type png)
 <use images/DeleteSavingAPI.png>
-Package pdftex.def Info: images/DeleteSavingAPI.png  used on input line 204.
+Package pdftex.def Info: images/DeleteSavingAPI.png  used on input line 250.
 (pdftex.def)             Requested size: 350.99762pt x 258.61224pt.
 )
 File: images/sfondolatex.png Graphic file (type png)
 <use images/sfondolatex.png>
 Package pdftex.def Info: images/sfondolatex.png  used on input line 136.
 (pdftex.def)             Requested size: 614.27586pt x 794.95042pt.
- [87 <./images/DeleteSavingAPI.png>] (Prova.aux)
+ [90 <./images/DeleteSavingAPI.png>] (Prova.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1381,17 +1427,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15936 strings out of 474486
- 330505 string characters out of 5743755
+ 15980 strings out of 474486
+ 331839 string characters out of 5743755
  1939542 words of memory out of 5000000
- 37892 multiletter control sequences out of 15000+600000
+ 37936 multiletter control sequences out of 15000+600000
  563782 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,776b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\diego\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Prova.pdf (88 pages, 3615208 bytes).
+Output written on Prova.pdf (91 pages, 3815785 bytes).
 PDF statistics:
- 448 PDF objects out of 1000 (max. 8388607)
+ 468 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 343 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -87,14 +87,14 @@
 \contentsline {subsection}{\numberline {4.6}UML Deployment Diagram}{75}{}%
 \contentsline {subsection}{\numberline {4.7}Testing}{76}{}%
 \contentsline {subsubsection}{\numberline {4.7.1}Analisi Statica - CodeMR}{76}{}%
-\contentsline {subsubsection}{\numberline {4.7.2}Analisi Dinamica - JUnit}{76}{}%
-\contentsline {subsubsection}{\numberline {4.7.3}API}{77}{}%
-\contentsline {paragraph}{Crea di un budget}{77}{}%
-\contentsline {paragraph}{Visualizza budget utente}{78}{}%
-\contentsline {paragraph}{Incrementa budget}{79}{}%
-\contentsline {paragraph}{Decrementa budget}{80}{}%
-\contentsline {paragraph}{Crea risparmio}{82}{}%
-\contentsline {paragraph}{Visualizza risparmi utente}{83}{}%
-\contentsline {paragraph}{Aggiungi fondo al risparmio}{84}{}%
-\contentsline {paragraph}{Rimuovi fondo al risparmio}{85}{}%
-\contentsline {paragraph}{Elimina risparmio}{86}{}%
+\contentsline {subsubsection}{\numberline {4.7.2}Analisi Dinamica - JUnit}{78}{}%
+\contentsline {subsubsection}{\numberline {4.7.3}API}{80}{}%
+\contentsline {paragraph}{Creazione di un budget}{80}{}%
+\contentsline {paragraph}{Visualizza budget utente}{81}{}%
+\contentsline {paragraph}{Incrementa budget}{82}{}%
+\contentsline {paragraph}{Decrementa budget}{84}{}%
+\contentsline {paragraph}{Crea risparmio}{85}{}%
+\contentsline {paragraph}{Visualizza risparmi utente}{86}{}%
+\contentsline {paragraph}{Aggiungi fondo al risparmio}{87}{}%
+\contentsline {paragraph}{Rimuovi fondo al risparmio}{88}{}%
+\contentsline {paragraph}{Elimina risparmio}{89}{}%

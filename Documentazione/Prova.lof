@@ -39,16 +39,21 @@
 \contentsline {figure}{\numberline {37}{\ignorespaces Funzione CalcolaDebiti}}{64}{}%
 \contentsline {figure}{\numberline {38}{\ignorespaces Diagramma dei casi d'uso aggiornato per riflettere l'integrazione relativa alla gestione del risparmio.}}{67}{}%
 \contentsline {figure}{\numberline {39}{\ignorespaces UML Deployment Diagram}}{75}{}%
-\contentsline {figure}{\numberline {40}{\ignorespaces Test per la classe SavingService}}{76}{}%
-\contentsline {figure}{\numberline {41}{\ignorespaces Test per la classe SavingController}}{76}{}%
-\contentsline {figure}{\numberline {42}{\ignorespaces Test per la classe BudgetService}}{77}{}%
-\contentsline {figure}{\numberline {43}{\ignorespaces Test per la classe BudgetController}}{77}{}%
-\contentsline {figure}{\numberline {44}{\ignorespaces API creazione budget}}{78}{}%
-\contentsline {figure}{\numberline {45}{\ignorespaces API visualizza budget di un utente}}{79}{}%
-\contentsline {figure}{\numberline {46}{\ignorespaces API per aggiungere fondi al budget}}{80}{}%
-\contentsline {figure}{\numberline {47}{\ignorespaces API per sottrarre fondi al budget}}{81}{}%
-\contentsline {figure}{\numberline {48}{\ignorespaces API per creare un risparmio}}{83}{}%
-\contentsline {figure}{\numberline {49}{\ignorespaces API per ottenere i risparmi dell'utente}}{84}{}%
-\contentsline {figure}{\numberline {50}{\ignorespaces API per aggiungere fondi ai risparmi dell'utente}}{85}{}%
-\contentsline {figure}{\numberline {51}{\ignorespaces API per togliere fondi ai risparmi dell'utente}}{86}{}%
-\contentsline {figure}{\numberline {52}{\ignorespaces API per eliminare un risparmio}}{87}{}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Complexity}}{76}{}%
+\contentsline {figure}{\numberline {41}{\ignorespaces Coupling}}{76}{}%
+\contentsline {figure}{\numberline {42}{\ignorespaces Problemi classi}}{77}{}%
+\contentsline {figure}{\numberline {43}{\ignorespaces Problemi classi}}{77}{}%
+\contentsline {figure}{\numberline {44}{\ignorespaces Struttura dei package}}{78}{}%
+\contentsline {figure}{\numberline {45}{\ignorespaces Test per la classe SavingService}}{79}{}%
+\contentsline {figure}{\numberline {46}{\ignorespaces Test per la classe SavingController}}{79}{}%
+\contentsline {figure}{\numberline {47}{\ignorespaces Test per la classe BudgetService}}{80}{}%
+\contentsline {figure}{\numberline {48}{\ignorespaces Test per la classe BudgetController}}{80}{}%
+\contentsline {figure}{\numberline {49}{\ignorespaces API creazione budget}}{81}{}%
+\contentsline {figure}{\numberline {50}{\ignorespaces API visualizza budget di un utente}}{82}{}%
+\contentsline {figure}{\numberline {51}{\ignorespaces API per aggiungere fondi al budget}}{83}{}%
+\contentsline {figure}{\numberline {52}{\ignorespaces API per sottrarre fondi al budget}}{84}{}%
+\contentsline {figure}{\numberline {53}{\ignorespaces API per creare un risparmio}}{86}{}%
+\contentsline {figure}{\numberline {54}{\ignorespaces API per ottenere i risparmi dell'utente}}{87}{}%
+\contentsline {figure}{\numberline {55}{\ignorespaces API per aggiungere fondi ai risparmi dell'utente}}{88}{}%
+\contentsline {figure}{\numberline {56}{\ignorespaces API per togliere fondi ai risparmi dell'utente}}{89}{}%
+\contentsline {figure}{\numberline {57}{\ignorespaces API per eliminare un risparmio}}{90}{}%
