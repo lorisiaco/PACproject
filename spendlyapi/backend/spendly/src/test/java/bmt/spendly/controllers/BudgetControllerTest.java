@@ -28,7 +28,6 @@ import bmt.spendly.services.BudgetService;
     @BeforeEach
     void setUp() {
         budget = new Budget();
-        //budget.setId(1L);
         budget.setAmount(1000.0);
     }
 

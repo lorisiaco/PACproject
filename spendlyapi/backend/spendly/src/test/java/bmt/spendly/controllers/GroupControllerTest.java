@@ -50,6 +50,7 @@ class GroupControllerTest {
         user = new AppUser();
         user.setUsername("testUser");
         group = new Group("Test Group", user);
+        
     }
 
     @Test
@@ -84,23 +85,30 @@ class GroupControllerTest {
 
     @Test
     void testAddMemberToGroup() {
-        when(groupService.getGroupById(1L)).thenReturn(group);
-        when(groupService.getUserByUsername("adminUser")).thenReturn(user);
-        when(groupService.getUserByUsername("testUser")).thenReturn(user);
-        when(groupService.aggiungiMembro(1L, "testUser")).thenReturn(group);
 
-        ResponseEntity<String> response = groupController.addMemberToGroup(1L, "adminUser", "testUser");
+        AppUser user2=new AppUser();
+        user2.setId(2);
+        user2.setUsername("user2");
+        when(groupService.getGroupById(1L)).thenReturn(group);
+        when(groupService.getUserByUsername("user2")).thenReturn(user2);
+        when(groupService.getUserByUsername("testUser")).thenReturn(user);
+        when(groupService.aggiungiMembro(1L, "user2")).thenReturn(group);
+
+        ResponseEntity<String> response = groupController.addMemberToGroup(1L, "testUser", "user2");
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
     @Test
     void testRemoveMemberFromGroup() {
+        AppUser user2=new AppUser();
+        user2.setId(2);
+        user2.setUsername("user2");
         when(groupService.getGroupById(1L)).thenReturn(group);
-        when(groupService.getUserByUsername("adminUser")).thenReturn(user);
+        when(groupService.getUserByUsername("user2")).thenReturn(user2);
         when(groupService.getUserByUsername("testUser")).thenReturn(user);
-        when(groupService.rimuoviMembro(1L, "testUser")).thenReturn(group);
+        when(groupService.rimuoviMembro(1L, "user2")).thenReturn(group);
 
-        ResponseEntity<String> response = groupController.removeMemberFromGroup(1L, "adminUser", "testUser");
+        ResponseEntity<String> response = groupController.removeMemberFromGroup(1L, "testUser", "user2");
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
@@ -116,9 +124,11 @@ class GroupControllerTest {
     @Test
     void testGetAlertsByGroup() {
         Long groupId = 1L;
-        when(groupService.getAlertsForGroup(groupId)).thenReturn(Collections.emptyList());
+        Alert alert=new Alert();
+        when(groupService.getAlertsForGroup(groupId)).thenReturn(Arrays.asList(alert));
 
         ResponseEntity<List<Alert>> response = groupController.getAlertsByGroup(groupId);
+        assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 

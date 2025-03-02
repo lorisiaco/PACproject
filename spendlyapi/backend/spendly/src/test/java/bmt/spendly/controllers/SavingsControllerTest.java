@@ -39,7 +39,6 @@ public class SavingsControllerTest {
         testUser.setUsername("testUser");
 
         testSaving = new Savings(testUser, "Viaggio", 200.0);
-        //testSaving.setId(1L);
     }
 
     @Test
