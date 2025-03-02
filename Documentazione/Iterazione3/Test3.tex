@@ -1,7 +1,51 @@
 \subsection{Testing}
 
 \subsubsection{Analisi Statica - CodeMR}
+
+Questa sezione documenta l'analisi statica eseguita con CodeMR per l'iterzione 3.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Complexity_iter3.png}
+        \caption{Complexity}
+        \label{fig:Complexity_iterazione 3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Coupling_iter3.png}
+        \caption{Coupling}
+        \label{fig:Coupling_iterazione 3}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Problem2_iter3.png}
+    \caption{Problemi classi}
+    \label{fig:Problemi_iterazione 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Problem3_iter3.png}
+    \caption{Problemi classi}
+    \label{fig:Problemi_iterazione 3}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/Package_iter3.png}
+    \caption{Struttura dei package}
+    \label{fig:Package_iterazione2}
+\end{figure}
+
 \subsubsection{Analisi Dinamica - JUnit}
+
+Questa sezione documenta i test d'unità sviluppati per l'iterzione 3. Sono stati implementati i test riguardanti budget e risparmio.
 
 \begin{figure}[H]
     \centering
@@ -33,7 +77,9 @@
 
 \subsubsection{API}
 
-\paragraph{Crea di un budget} 
+Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. Le API sviluppate riguardano budget e risparmio.
+
+\paragraph{Creazione di un budget} 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{POST /api/budget/create}
@@ -74,7 +120,7 @@
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{PUT /api/budget/add}
-    \item \textbf{Descrizione:} Permette di incrementare il valore  del budget
+    \item \textbf{Descrizione:} Permette di incrementare il valore del budget
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
@@ -93,7 +139,7 @@
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{PUT /api/budget/subtract}
-    \item \textbf{Descrizione:} Permette di incrementare il valore  del budget
+    \item \textbf{Descrizione:} Permette di decrementare il valore del budget.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
@@ -112,12 +158,12 @@
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{POST /api/savings/create}
-    \item \textbf{Descrizione:} Permette di creare un risparmio
+    \item \textbf{Descrizione:} Permette di creare un risparmio.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{name} (String) - Nome del risparmio
-        \item \texttt{amount} (duble) - Valore del risparmio
+        \item \texttt{name} (String) - Nome del risparmio.
+        \item \texttt{amount} (duble) - Valore del risparmio.
     \end{itemize}
 \end{itemize}
 
@@ -132,7 +178,7 @@
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{GET /api/savings}
-    \item \textbf{Descrizione:} Permette di ottenere i risparmi degll'utente
+    \item \textbf{Descrizione:} Permette di ottenere i risparmi dell'utente.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.

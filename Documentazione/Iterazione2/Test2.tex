@@ -1,6 +1,8 @@
 \subsection{Testing}
 \subsubsection{Analisi Statica - CodeMR}
 
+Questa sezione documenta l'analisi statica del codice eseguita con CodeMR per l'iterazione 2.
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.45\textwidth}
@@ -20,7 +22,7 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/Problem_iter2.png}
+    \includegraphics[width=1\textwidth]{images/Problem_iter2.png}
     \caption{Problemi classi}
     \label{fig:Problemi_iterazione2}
 \end{figure}
@@ -34,6 +36,8 @@
 \end{figure}
 
 \subsubsection{Analisi Dinamica - JUnit}
+
+Questa sezione documenta i test d'unità implementati per l'iterazione 2. Sono stati aggiornati i test riguardanti i gruppi e sono stati implementati i test relativi ai costi.
 
 \begin{figure}[H]
     \centering
@@ -67,13 +71,6 @@
     \centering
     \includegraphics[width=0.9\textwidth]{images/CostServiceTest_iter2.png}
     \caption{Test per la classe CostService}
-    \label{fig:GroupControllerTest_iter2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/CostServiceTest_iter2.png}
-    \caption{Test per la classe CostService}
     \label{fig:CostServiceTest_iter2}
 \end{figure}
 
@@ -88,7 +85,7 @@
 
 \subsubsection{API Costi}
 
-Questa sezione documenta le API relative alla gestione dei **costi** nel sistema **Spendly**, inclusi la creazione, l'eliminazione e la visualizzazione dei costi di utenti e gruppi. Ogni test verrà mostrato con un'**immagine dei risultati**.
+Questa sezione documenta le API relative alla gestione dei **costi** e degli **alert**  nel sistema **Spendly**, inclusi la creazione, l'eliminazione e la visualizzazione dei costi di utenti e gruppi. Ogni test verrà mostrato con un'**immagine dei risultati**.
 
 \paragraph{Aggiunta di un Costo}  
 
@@ -160,8 +157,15 @@ Questa sezione documenta le API relative alla gestione dei **costi** nel sistema
 \paragraph{Creazione Alert} 
 
 \begin{itemize}
-    \item \textbf{Endpoint:} \texttt{POST /api/groups/\{groupId\}/alerts?username=\{username\}}
-    \item \textbf{Descrizione:} Permette all'amministratore del gruppo di creare un Alert
+    \item \textbf{Endpoint:} \texttt{POST /api/groups/\{groupId\}/alerts}
+    \item \textbf{Descrizione:} Permette all'amministratore del gruppo di creare un Alert.
+    \item \textbf{Parametri:}
+    \begin{itemize}
+        \item \texttt{adminUsername} (String) - Username admin del gruppo.
+        \item \texttt{nome} (String) -Nome alert.
+        \item \texttt{limite} (double) - Limite alert.
+        \item \texttt{macroArea} (enum) - Area alert.
+    \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -174,8 +178,12 @@ Questa sezione documenta le API relative alla gestione dei **costi** nel sistema
 \paragraph{Eliminazione Alert}
 
 \begin{itemize}
-    \item \textbf{Endpoint:} \texttt{DELETE /api/groups/{groupId}/alerts/{alertId}?username={username}}
+    \item \textbf{Endpoint:} \texttt{DELETE /api/groups/{groupId}/alerts/{alertId}}
     \item \textbf{Descrizione:} Permette all'amministratore del gruppo di eliminare un Alert.
+    \item \textbf{Parametri:}
+    \begin{itemize}
+        \item \texttt{adminUsername} (String) - Username admin del gruppo.
+    \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
