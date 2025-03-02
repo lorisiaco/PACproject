@@ -8,19 +8,11 @@ La topologia del sistema è rappresentata nel seguente schema:
 \caption{Diagramma dell’architettura della webapp Spendly}
 \end{figure}
 
+Il sistema è basato unicamente su un’architettura \textbf{web}, in cui i client interagiscono con un \textbf{web server} sviluppato in \textbf{Spring Boot}. I client utilizzano un browser, comunicando con il server attraverso \textbf{REST-API HTTP}, con dati in formato \textbf{JSON}. 
 
-Il sistema è basato su un’architettura \textbf{Client-Server}, in cui i client interagiscono con un \textbf{web server} sviluppato utilizzando il framework \textbf{Spring Boot}. I client possono essere:
+\subsubsection{Protocollo HTTP e REST-API}
 
-\begin{itemize}
-\item \textbf{Applicazione Web}: gli utenti accedono a Spendly tramite un browser, comunicando con il server attraverso \textbf{API REST/HTTP}.
-\item \textbf{Applicazione Mobile}: gli utenti interagiscono con il sistema tramite un’app mobile che utilizza \textbf{REST/HTTP} per le richieste e \textbf{SMTP} per le notifiche via email.
-\end{itemize}
-
-
-Il \textbf{web server}, sviluppato con \textbf{Spring Boot}, gestisce le richieste dei client e include al suo interno il database \textbf{PostgreSQL}, che garantisce la persistenza e la gestione efficiente dei dati. Questa integrazione semplifica la gestione delle risorse e riduce la latenza nelle operazioni di lettura e scrittura.
-
-\subsubsection{Gestione delle comunicazioni}
-Il sistema utilizza il protocollo \textbf{REST/HTTP} per lo scambio di dati in formato \textbf{JSON}, assicurando l’interoperabilità tra diverse piattaforme. Per l’invio delle notifiche agli utenti, viene impiegato il protocollo \textbf{SMTP}.
+HTTP è un protocollo di trasferimento ipertestuale che offre un meccanismo semplice e universale per inviare e ricevere dati. È ideale per le nostre REST-API poiché assicura la compatibilità con i browser e l’interscambio di dati in JSON su qualsiasi piattaforma.
 
 \subsubsection{Caratteristiche dell’architettura}
 
