@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "savings")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Savings {
+public class Savings implements SavingsIF {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,30 +35,37 @@ public class Savings {
         this.amount = amount;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public double getAmount() {
         return amount;
     }
 
+    @Override
     public AppUser getUser() {
         return user;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setAmount(double amount) {
         this.amount = amount;
     }
 
+    @Override
     public void setUser(AppUser user) {
         this.user = user;
     }

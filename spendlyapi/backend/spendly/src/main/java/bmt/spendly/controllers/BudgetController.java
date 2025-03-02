@@ -14,7 +14,7 @@ import bmt.spendly.services.BudgetService;
 
 @RestController
 @RequestMapping("/api/budget")
-public class BudgetController {
+public class BudgetController implements BudgetControllerIF {
 
     @Autowired
     private BudgetService budgetService;
@@ -22,6 +22,7 @@ public class BudgetController {
     /**
      * Ottieni il budget di un utente.
      */
+    @Override
     @GetMapping
     public ResponseEntity<?> getBudget(@RequestParam String username) {
         try {
@@ -38,6 +39,7 @@ public class BudgetController {
     /**
      * Crea (o inizializza) un budget per un utente, con un importo iniziale.
      */
+    @Override
     @PostMapping("/create")
     public ResponseEntity<?> createBudget(@RequestParam String username,
                                           @RequestParam double initialAmount) {
@@ -52,6 +54,7 @@ public class BudgetController {
     /**
      * Aggiunge fondi al budget di un utente.
      */
+    @Override
     @PutMapping("/add")
     public ResponseEntity<?> addFunds(@RequestParam String username,
                                       @RequestParam double amount) {
@@ -66,6 +69,7 @@ public class BudgetController {
     /**
      * Sottrae fondi dal budget (ad esempio in caso di pagamento).
      */
+    @Override
     @PutMapping("/subtract")
     public ResponseEntity<?> subtractFunds(@RequestParam String username,
                                            @RequestParam double amount) {

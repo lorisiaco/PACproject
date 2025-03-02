@@ -2,7 +2,6 @@ package bmt.spendly.services;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ import bmt.spendly.repositories.GroupRepository;
 import jakarta.transaction.Transactional;
 
 @Service
-public class GroupService {
+public class GroupService implements GroupMngtIF {
     
     @Autowired
     private GroupRepository groupRepository;
@@ -27,12 +26,12 @@ public class GroupService {
     @Autowired
     private AlertRepository alertRepository;
 
-
     /**
      * 
      * @param nome
      * @return Return the new Group created
      */
+    @Override
     public Group creaGruppo(String nome, String username){
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
         if (user == null) {
@@ -50,11 +49,13 @@ public class GroupService {
      * 
      * @return return the all Groups
      */
+    @Override
     public List<Group> getAllGroups() {
         List<Group> groups = groupRepository.findAll();
         return groups;
     }
 
+    @Override
     public List<Group> getAllGroupsForUser(String username) {
         AppUser utente = userRepository.findByUsernameIgnoreCase(username);     //andrebbe aggiunta un' eccezione anche qua se inserisco un utente che non esiste
         if (utente == null) {
@@ -72,6 +73,7 @@ public class GroupService {
      * @param id
      * @return return the Group through the Id 
      */
+    @Override
     public Group getGroupById(Long id) { // MODIFICATO da int a Long
         return groupRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Gruppo non trovato con ID: " + id));
@@ -81,6 +83,7 @@ public class GroupService {
      * Metohod for Deleting a Group
      * @param groupId
      */
+    @Override
     public void eliminaGruppo(Long groupId){ // MODIFICATO da int a Long
         if (!groupRepository.existsById(groupId)) {
             throw new IllegalArgumentException("Il gruppo con ID " + groupId + " non esiste.");
@@ -94,6 +97,7 @@ public class GroupService {
      * @param mail
      * @return Return the Group with the User added
      */
+    @Override
     public Group aggiungiMembro(Long groupId, String username){ // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
         .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
@@ -115,6 +119,7 @@ public class GroupService {
      * @param mail
      * @return return the Group with the User removed
      */
+    @Override
     public Group rimuoviMembro(Long groupId, String username) { // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
@@ -137,16 +142,19 @@ public class GroupService {
      * @return reutnr the members's list of the Group
      */
 
+    @Override
     public List<AppUser> getMembri(Long groupId) { // MODIFICATO da int a Long
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
         return gruppo.getMembri();
     }
 
+    @Override
     public AppUser getUserByUsername(String username){
         return userRepository.findByUsernameIgnoreCase(username);
     }
 
+    @Override
     public Alert creaAlert(String nome, double importo, ExpenseMacroArea macroArea, Long groupId) {
         Group gruppo = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));
@@ -156,6 +164,7 @@ public class GroupService {
     }
 
 
+    @Override
     @Transactional
     public void EliminaAlert(Long alertId) {
         Alert alert = alertRepository.findById(alertId)
@@ -171,6 +180,7 @@ public class GroupService {
     alertRepository.delete(alert); // Elimina l'alert dal database
 }
 
+    @Override
     public List<Alert> getAlertsForGroup(Long groupId){
         Group group = groupRepository.findById(groupId)
                 .orElseThrow(() -> new RuntimeException("Gruppo non trovato"));

@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Alert")
-public class Alert {
+public class Alert implements AlertIF {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,38 +37,47 @@ public class Alert {
         this.group = group;
     }
 
+    @Override
     public Long getId() {
         return this.id;
     }
     
+    @Override
     public double getLimite() {
         return this.limite;
     }
 
+    @Override
     public void setLimite(double limite) {
         this.limite = limite;
     }
 
+    @Override
     public String getNome() {
         return this.nome;
     }
 
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    @Override
     public ExpenseMacroArea getMacroArea() {
         return this.macroArea;
     }
 
+    @Override
     public void setMacroArea(ExpenseMacroArea macroArea) {
         this.macroArea = macroArea;
     }
 
+    @Override
     public Group getGroup() {
         return this.group;
     }
 
+    @Override
     public void setGroup(Group group) {
         this.group = group;
     }

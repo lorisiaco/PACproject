@@ -32,7 +32,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/account")
-public class AccountController {
+public class AccountController implements AccountControllerIF {
 
 	@Value("${security.jwt.secret-key}")
     private String jwtSecretKey;
@@ -49,12 +49,14 @@ public class AccountController {
 	
 	
 	
+	@Override
 	@PreAuthorize("hasRole('admin')")
 	@GetMapping("/admin")
     public String helloAdmin(Authentication auth) {
     	return "Hello Admin: " + auth.getName();
     }
 	
+	@Override
 	@PreAuthorize("hasRole('client')")
 	@GetMapping("/client")
     public String helloClient(Authentication auth) {
@@ -62,6 +64,7 @@ public class AccountController {
     }
 	
 	
+	@Override
 	@GetMapping("/profile")
     public ResponseEntity<Object>  profile(Authentication auth) {
 		var response = new HashMap<String, Object>();
@@ -75,6 +78,7 @@ public class AccountController {
     }
 	
 	
+	@Override
 	@PostMapping("/register")
     public ResponseEntity<Object> register(
     		@Valid @RequestBody RegisterDto registerDto
@@ -140,6 +144,7 @@ public class AccountController {
 	}
 	
 	
+	@Override
 	@PostMapping("/login")
     public ResponseEntity<Object> login(
     		@Valid @RequestBody LoginDto loginDto
@@ -205,6 +210,7 @@ public class AccountController {
 		return encoder.encode(params).getTokenValue();
 	}
 
+	@Override
 	@GetMapping("/users")
 	public ResponseEntity<?> getAllUsers() {
 		// Recupera tutti gli utenti

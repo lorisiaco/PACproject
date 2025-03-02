@@ -11,7 +11,7 @@ import bmt.spendly.repositories.BudgetRepository;
 
 @Service
 @Transactional
-public class BudgetService {
+public class BudgetService implements BudgetMngtIF {
 
     @Autowired
     private BudgetRepository budgetRepository;
@@ -22,6 +22,7 @@ public class BudgetService {
     /**
      * Crea o inizializza un budget per un utente specifico.
      */
+    @Override
     public Budget createOrGetUserBudget(String username, double initialAmount) {
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
         if (user == null) {
@@ -44,6 +45,7 @@ public class BudgetService {
     /**
      * Restituisce il budget di un utente (null se non presente).
      */
+    @Override
     public Budget getUserBudget(String username) {
         AppUser user = userRepository.findByUsernameIgnoreCase(username);
         if (user == null) {
@@ -55,6 +57,7 @@ public class BudgetService {
     /**
      * Aggiunge fondi al budget di un utente.
      */
+    @Override
     public Budget addFunds(String username, double amountToAdd) {
         if (amountToAdd <= 0) {
             throw new IllegalArgumentException("L'importo da aggiungere deve essere positivo.");
@@ -67,6 +70,7 @@ public class BudgetService {
     /**
      * Scala fondi dal budget, se sufficiente.
      */
+    @Override
     public Budget subtractFunds(String username, double amountToSubtract) {
         if (amountToSubtract <= 0) {
             throw new IllegalArgumentException("L'importo da sottrarre deve essere positivo.");

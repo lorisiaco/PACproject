@@ -1,8 +1,9 @@
 package bmt.spendly.models;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,11 +12,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "expenses")
-public class Expense {
+public class Expense implements ExpenseIF {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,52 +57,62 @@ public class Expense {
     }
 
     // Getters e Setters
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public BigDecimal getAmount() {
         return amount;
     }
 
+    @Override
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
+    @Override
     public Group getGroup() {
         return group;
     }
 
+    @Override
     public void setGroup(Group group) {
         this.group = group;
     }
 
+    @Override
     public AppUser getCreatedBy() {
         return createdBy;
     }
 
+    @Override
     public void setCreatedBy(AppUser createdBy) {
         this.createdBy = createdBy;
     }
 
-    
-
+    @Override
     public AppUser getBeneficiary() {
         return beneficiary;
     }
 
+    @Override
     public void setBeneficiary(AppUser beneficiary) {
         this.beneficiary = beneficiary;
     }
