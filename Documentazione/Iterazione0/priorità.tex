@@ -1,68 +1,47 @@
 \subsection{Priorità casi d'uso}
-    I casi d'uso possono essere suddivisi in tre categorie, a seconda della loro priorità nel processo di sviluppo:
+I casi d'uso sono suddivisi in tre categorie, in linea con l'ordine stabilito in \textbf{Casi d'Uso}:
+
+\begin{itemize}
+    \item \textbf{Coda ad alta priorità:} 
     \begin{itemize}
-        \item \textbf{Coda ad alta priorità:} 
-        Contiene i requisiti essenziali per il corretto funzionamento dell'applicativo. Questi includono la creazione dei profili utente, la creazione di nuovi gruppi spese, con le funzionalità annesse(invita,elimina membri ecc ecc) ed infine la gestione spesa con l'algoritmo di calcolo debiti.
-    
-        \item \textbf{Coda a media priorità:} 
-        Questa coda include funzionalità di supporto, principalmente orientate alla gestione spese personali.
-    
-        \item \textbf{Coda a bassa priorità:} 
-        Contiene le funzionalità meno rilevanti ossia la tematica del budget , per le quali non è prevista una loro implementazione immediata. Tuttavia, potrebbero essere implementate in futuro, a seconda dell'andamento del progetto.
+        \item UC1 - Login
+        \item UC2 - Registrazione
+        \item UC3 - Logout
+        \item UC7 - Crea gruppo
+        \item UC8 - Invita membri
+        \item UC9 - Elimina membri
+        \item UC10 - Modifica membri
+        \item UC11 - Elimina gruppo
+        \item UC12 - Accedi gruppo
+        \item UC13 - Inserisci spesa
+        \item UC14 - Elimina spesa
+        \item UC15 - Modifica spesa
+        \item UC16 - Scegli tipologia spesa
+        \item UC17 - Visualizza spese
+        \item UC18 - Ricalcolo debiti
     \end{itemize}
+    
+    \item \textbf{Coda a media priorità:} 
+    \begin{itemize}
+        \item UC4 - Crea alert di gruppo
+        \item UC5 - Modifica alert
+        \item UC6 - Elimina alert
+        \item UC19 - Inserisci spesa personale
+        \item UC20 - Elimina spesa personale
+        \item UC21 - Modifica spesa personale
+        \item UC22 - Scegli tipologia spesa personale
+        \item UC23 - Paga spesa personale
+        \item UC24 - Visualizza spesa personale
+    \end{itemize}
+    
+    \item \textbf{Coda a bassa priorità:} 
+    \begin{itemize}
+        \item UC25 - Aggiungi denaro a budget
+        \item UC26 - Togli denaro da budget
+        \item UC27 - Visualizza budget
+    \end{itemize}
+\end{itemize}
 
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|c|l|}
-        \hline
-        \textbf{ID} & \textbf{Titolo} \\ \hline
-        UC1 & Login\\ \hline
-        UC2 & Registrazione \\ \hline
-        UC3 & Logout \\ \hline
-        UC7 & Crea gruppo \\ \hline
-        UC8 & Invita membri \\ \hline
-        UC9 & Elimina membri \\ \hline
-        UC10 & Modifica membri \\ \hline
-        UC11 & Elimina gruppo \\ \hline
-        UC12 & Accedi gruppo \\ \hline
-        UC13 & Inserisci spesa \\ \hline
-        UC14 & Elimina spesa \\ \hline
-        UC15 & Modifica spesa \\ \hline
-        UC16 & scegli tipologia spesa \\ \hline
-        UC17 & Visualizza spese \\ \hline
-        UC18 & Ricalcolo debiti \\ \hline
-        \end{tabular}
-        \caption{Coda alta priorità}
-    \end{table}
-
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|c|l|}
-        \hline
-        \textbf{ID} & \textbf{Titolo} \\ \hline
-        UC4 & Crea alert di gruppo\\ \hline
-        UC5 & Modica alert \\ \hline
-        UC6 & Elimina alert \\ \hline
-        UC19 & Inserisci spesa personale \\ \hline
-        UC20 & Elimina spesa personale \\ \hline
-        UC21 & Modifica spesa personale \\ \hline
-        UC22 & scegli tipologia spesa personale \\ \hline
-        UC23 & Visualizza spesa personale \\ \hline
-        \end{tabular}
-        \caption{Coda media priorità}
-    \end{table}
-
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|c|l|}
-        \hline
-        \textbf{ID} & \textbf{Titolo} \\ \hline
-        UC24 & Aggiungi denaro a budget \\ \hline
-        UC25 & Togli denaro da budget \\ \hline
-        UC26 & Visualizza budget \\ \hline
-        \end{tabular}
-        \caption{Coda bassa priorità}
-    \end{table}
 \textbf{Perché si dividono in code di priorità i casi d'uso?}
 \\
 \\
