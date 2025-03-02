@@ -1,51 +1,68 @@
 \subsection{Priorità casi d'uso}
 I casi d'uso sono suddivisi in tre categorie, in linea con l'ordine stabilito in \textbf{Casi d'Uso}:
 
-\begin{itemize}
-    \item \textbf{Coda ad alta priorità:} 
-    \begin{itemize}
-        \item UC1 - Login
-        \item UC2 - Registrazione
-        \item UC3 - Logout
-        \item UC7 - Crea gruppo
-        \item UC8 - Invita membri
-        \item UC9 - Elimina membri
-        \item UC10 - Modifica membri
-        \item UC11 - Elimina gruppo
-        \item UC12 - Accedi gruppo
-        \item UC13 - Inserisci spesa
-        \item UC14 - Elimina spesa
-        \item UC15 - Modifica spesa
-        \item UC16 - Scegli tipologia spesa
-        \item UC17 - Visualizza spese
-        \item UC18 - Ricalcolo debiti
-    \end{itemize}
-    
-    \item \textbf{Coda a media priorità:} 
-    \begin{itemize}
-        \item UC4 - Crea alert di gruppo
-        \item UC5 - Modifica alert
-        \item UC6 - Elimina alert
-        \item UC19 - Inserisci spesa personale
-        \item UC20 - Elimina spesa personale
-        \item UC21 - Modifica spesa personale
-        \item UC22 - Scegli tipologia spesa personale
-        \item UC23 - Paga spesa personale
-        \item UC24 - Visualizza spesa personale
-    \end{itemize}
-    
-    \item \textbf{Coda a bassa priorità:} 
-    \begin{itemize}
-        \item UC25 - Aggiungi denaro a budget
-        \item UC26 - Togli denaro da budget
-        \item UC27 - Visualizza budget
-    \end{itemize}
-\end{itemize}
+% Tabella per la Coda ad alta priorità
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|p{10cm}|}
+        \hline
+        \textbf{ID} & \textbf{Titolo} \\ \hline
+        UC1  & Login \\ \hline
+        UC2  & Registrazione \\ \hline
+        UC3  & Logout \\ \hline
+        UC8  & Crea gruppo \\ \hline
+        UC9  & Invita membri \\ \hline
+        UC10 & Modifica membri \\ \hline
+        UC11 & Elimina gruppo \\ \hline
+        UC13 & Accedi gruppo \\ \hline
+        UC14 & Inserisci spesa \\ \hline
+        UC15 & Elimina spesa \\ \hline
+        UC16 & Modifica spesa \\ \hline
+        UC17 & Scegli tipologia spesa \\ \hline
+        UC18 & Visualizza spese \\ \hline
+        UC19 & Ricalcolo debiti \\ \hline
+    \end{tabular}
+    \caption{Coda alta priorità}
+\end{table}
+
+% Tabella per la Coda a media priorità
+\begin{table}[H]
+   \centering
+   \begin{tabular}{|c|p{10cm}|}
+       \hline
+       \textbf{ID} & \textbf{Titolo} \\ \hline
+       UC4  & Crea alert di gruppo \\ \hline
+       UC5  & Modifica alert \\ \hline
+       UC6  & Elimina alert \\ \hline
+       UC7  & Scegli tipologia alert \\ \hline
+       UC20 & Inserisci spesa personale \\ \hline
+       UC21 & Elimina spesa personale \\ \hline
+       UC22 & Modifica spesa personale \\ \hline
+       UC23 & Scegli tipologia spesa personale \\ \hline
+       UC24 & Paga spesa personale \\ \hline
+       UC25 & Visualizza spesa personale \\ \hline
+   \end{tabular}
+   \caption{Coda a media priorità}
+\end{table}
+
+% Tabella per la Coda a bassa priorità
+\begin{table}[H]
+   \centering
+   \begin{tabular}{|c|p{10cm}|}
+       \hline
+       \textbf{ID} & \textbf{Titolo} \\ \hline
+       UC26 & Aggiungi denaro a budget \\ \hline
+       UC27 & Togli denaro da budget \\ \hline
+       UC28 & Visualizza budget \\ \hline
+   \end{tabular}
+   \caption{Coda a bassa priorità}
+\end{table}
+
 
 \textbf{Perché si dividono in code di priorità i casi d'uso?}
 \\
 \\
-In quanto lo sviluppo del progetto viene sviluppato tramite il processo Agile Model-Driven Developmen.
+In quanto lo sviluppo del progetto viene sviluppato tramite il processo Agile Model-Driven Development.
 \\
 AMDD combina i principi della modellazione guidata dallo sviluppo con la flessibilità dei metodi agili, che a differenza dello sviluppo tradizionale, in cui tutta l’analisi viene completata prima di iniziare la programmazione, prevede una modellazione iniziale leggera e iterativa, concentrata solo sugli aspetti essenziali per l’iterazione corrente.
 \newline
