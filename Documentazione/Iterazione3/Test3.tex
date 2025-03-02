@@ -87,7 +87,7 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{amount} (duble) - Valore budget.
+        \item \texttt{amount} (double) - Valore budget.
     \end{itemize}
 \end{itemize}
 
@@ -124,7 +124,7 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{amount} (duble) - Valore da aggiungere al budget.
+        \item \texttt{amount} (double) - Valore da aggiungere al budget.
     \end{itemize}
 \end{itemize}
 
@@ -143,7 +143,7 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{amount} (duble) - Valore da sottrarre al budget.
+        \item \texttt{amount} (double) - Valore da sottrarre al budget.
     \end{itemize}
 \end{itemize}
 
@@ -158,19 +158,19 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{POST /api/savings/create}
-    \item \textbf{Descrizione:} Permette di creare un risparmio.
+    \item \textbf{Descrizione:} Permette di creare un piano di risparmio.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{name} (String) - Nome del risparmio.
-        \item \texttt{amount} (duble) - Valore del risparmio.
+        \item \texttt{name} (String) - Nome del piano di risparmio.
+        \item \texttt{amount} (double) - Valore del piano di risparmio.
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/CreateSavingAPI.png}
-    \caption{API per creare un risparmio}
+    \caption{API per creare un piano di risparmio}
     \label{fig: CreateSavingAPI}
 \end{figure}
 
@@ -178,7 +178,7 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{GET /api/savings}
-    \item \textbf{Descrizione:} Permette di ottenere i risparmi dell'utente.
+    \item \textbf{Descrizione:} Permette di ottenere i piani di risparmio dell'utente.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
@@ -188,7 +188,7 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/GetSavingsAPI.png}
-    \caption{API per ottenere i risparmi dell'utente}
+    \caption{API per ottenere i piani di risparmio dell'utente}
     \label{fig: GetSavingAPI}
 \end{figure}
 
@@ -196,19 +196,19 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{PUT /api/savings/addFunds}
-    \item \textbf{Descrizione:} Permette di aggiungere fondi ai risparmi degli utenti.
+    \item \textbf{Descrizione:} Permette di aggiungere fondi al piano di risparmio dell'utente.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
         \item \texttt{savingId} (Long) - Id del risparmio.
-        \item \texttt{amount} (double) - Valore da aggiungere al risparmio.
+        \item \texttt{amount} (double) - Valore da aggiungere al piano di risparmio dell'utente.
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/AddFundsSavingAPI.png}
-    \caption{API per aggiungere fondi ai risparmi dell'utente}
+    \caption{API per aggiungere fondi al piano di risparmio dell'utente}
     \label{fig:AddFundsSavingAPI}
 \end{figure}
 
@@ -217,19 +217,19 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{PUT /api/savings/removeFunds}
-    \item \textbf{Descrizione:} Permette di togliere fondi ai risparmi degli utenti.
+    \item \textbf{Descrizione:} Permette di togliere fondi al piano di risparmio dell'utente.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{savingId} (Long) - Id del risparmio.
-        \item \texttt{amount} (double) - Valore da togliere al risparmio.
+        \item \texttt{savingId} (Long) - Id del piano di risparmio.
+        \item \texttt{amount} (double) - Valore da togliere al piano di  risparmio.
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/RemoveFundsSavingAPI.png}
-    \caption{API per togliere fondi ai risparmi dell'utente}
+    \caption{API per togliere fondi al piano di risparmio dell'utente}
     \label{fig:RemoveFundsSavingAPI}
 \end{figure}
 
@@ -237,17 +237,17 @@ Questa sezione documenta il testing delle API sviluppate durante l'terazione 3. 
 
 \begin{itemize}
     \item \textbf{Endpoint:} \texttt{DELETE /api/savings/delete}
-    \item \textbf{Descrizione:} Permette di eliminare un risparmio.
+    \item \textbf{Descrizione:} Permette di eliminare un piano di risparmio.
     \item \textbf{Parametri:}
     \begin{itemize}
         \item \texttt{username} (String) - Username utente.
-        \item \texttt{savingId} (Long) - Id del risparmio.
+        \item \texttt{savingId} (Long) - Id del piano di risparmio.
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/DeleteSavingAPI.png}
-    \caption{API per eliminare un risparmio}
+    \caption{API per eliminare un piano di risparmio}
     \label{fig:DeleteSavingAPI}
 \end{figure}
