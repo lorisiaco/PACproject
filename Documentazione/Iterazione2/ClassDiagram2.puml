@@ -110,11 +110,31 @@ package "bmt.spendly.models" {
         + void setUser(AppUser user)
     }
 
+    class Alert {
+        - Long id
+        - double limite
+        - String nome
+        - ExpenseMacroArea macroArea
+        - Group group
+
+        + Long getId()
+        + void setId(Long id)
+        + double getLimite()
+        + void setLimite(double limite)
+        + String getNome()
+        + void setNome(String nome)
+        + ExpenseMacroArea getMacroArea()
+        + void setMacroArea(ExpenseMacroArea macroArea)
+        + Group getGroup()
+        + void setGroup(Group group)
+    }
+
     RegisterDto ..> AppUser : "Crea"
     LoginDto ..> AppUser : "Autentica"
     Group "1" -- "*" AppUser : membri
     Group "1" -- "1" AppUser : admin
     Cost "1" -- "1" Group : group
     Cost "1" -- "*" AppUser : user
+    Alert "*" -- "1" Group : group
 }
 @enduml

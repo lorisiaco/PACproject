@@ -1,0 +1,169 @@
+@startuml
+package "bmt.spendly.models" {
+    class AppUser {
+        - int id
+        - String firstName
+        - String lastName
+        - String username
+        - String email
+        - String phone
+        - String address
+        - String password
+        - String role
+        - Date createdAt
+
+        + int getId()
+        + void setId(int id)
+        + String getFirstName()
+        + void setFirstName(String firstName)
+        + String getLastName()
+        + void setLastName(String lastName)
+        + String getUsername()
+        + void setUsername(String username)
+        + String getEmail()
+        + void setEmail(String email)
+        + String getPhone()
+        + void setPhone(String phone)
+        + String getAddress()
+        + void setAddress(String address)
+        + String getPassword()
+        + void setPassword(String password)
+        + String getRole()
+        + void setRole(String role)
+        + Date getCreatedAt()
+        + void setCreatedAt(Date createdAt)
+    }
+
+    class LoginDto {
+        - String username
+        - String password
+
+        + String getUsername()
+        + void setUsername(String username)
+        + String getPassword()
+        + void setPassword(String password)
+    }
+
+    class RegisterDto {
+        - String firstName
+        - String lastName
+        - String username
+        - String email
+        - String phone
+        - String address
+        - String password
+
+        + String getFirstName()
+        + void setFirstName(String firstName)
+        + String getLastName()
+        + void setLastName(String lastName)
+        + String getUsername()
+        + void setUsername(String username)
+        + String getEmail()
+        + void setEmail(String email)
+        + String getPhone()
+        + void setPhone(String phone)
+        + String getAddress()
+        + void setAddress(String address)
+        + String getPassword()
+        + void setPassword(String password)
+    }
+
+    class Group {
+        - Long id
+        - String nome
+        - List<AppUser> membri
+        - AppUser admin
+
+        + Group()
+        + Group(String nome, AppUser admin)
+        + Group(String nome)
+
+        + Long getId()
+        + void setId(Long id)
+        + String getNome()
+        + void setNome(String nome)
+        + List<AppUser> getMembri()
+        + AppUser getAdmin()
+        + void setAdmin(AppUser admin)
+        + void AggiungiMembro(AppUser utente)
+        + void RimuoviMembro(AppUser utente)
+        + boolean ContieneMembro(AppUser utente)
+    }
+
+    class Cost {
+        - Long CostId
+        - double importo
+        - String tipologia
+        - Group group
+        - AppUser user
+
+        + Long getCostId()
+        + void setCostId(Long costId)
+        + double getImporto()
+        + void setImporto(double importo)
+        + String getTipologia()
+        + void setTipologia(String tipologia)
+        + Group getGroup()
+        + void setGroup(Group group)
+        + AppUser getUser()
+        + void setUser(AppUser user)
+    }
+
+    class Alert {
+        - Long id
+        - double limite
+        - String nome
+        - ExpenseMacroArea macroArea
+        - Group group
+
+        + Long getId()
+        + void setId(Long id)
+        + double getLimite()
+        + void setLimite(double limite)
+        + String getNome()
+        + void setNome(String nome)
+        + ExpenseMacroArea getMacroArea()
+        + void setMacroArea(ExpenseMacroArea macroArea)
+        + Group getGroup()
+        + void setGroup(Group group)
+    }
+    
+    // Nuove classi aggiunte in Iterazione3
+    class Budget {
+        - Long id
+        - double amount
+        - AppUser user
+        + Long getId()
+        + double getAmount()
+        + void setAmount(double amount)
+        + AppUser getUser()
+        + void setUser(AppUser user)
+    }
+
+    class Savings {
+        - Long id
+        - String name
+        - double amount
+        - AppUser user
+        + Long getId()
+        + String getName()
+        + double getAmount()
+        + AppUser getUser()
+        + void setName(String name)
+        + void setAmount(double amount)
+        + void setUser(AppUser user)
+    }
+    
+    // Relazioni
+    RegisterDto ..> AppUser : "Crea"
+    LoginDto ..> AppUser : "Autentica"
+    Group "1" -- "*" AppUser : membri
+    Group "1" -- "1" AppUser : admin
+    Cost "1" -- "1" Group : group
+    Cost "1" -- "*" AppUser : user
+    Alert "*" -- "1" Group : group
+    Budget "1" -- "1" AppUser : user
+    Savings "*" -- "1" AppUser : user
+}
+@enduml
