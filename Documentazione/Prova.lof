@@ -7,48 +7,48 @@
 \contentsline {figure}{\numberline {5}{\ignorespaces Complexity}}{31}{}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Coupling}}{31}{}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Problemi classi}}{32}{}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Struttura dei package}}{32}{}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Test per la classe Group}}{33}{}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Test per la classe GroupService}}{33}{}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Test per la classe GroupController}}{34}{}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Risultato API Registrazione}}{35}{}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Risultato API Login}}{36}{}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Risultato API Creazione Gruppo}}{37}{}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Risultato API Inserimento utente}}{38}{}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Risultato API Visualizzazione Gruppi}}{39}{}%
-\contentsline {figure}{\numberline {17}{\ignorespaces UML Deployment Diagram}}{49}{}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Complexity}}{50}{}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Coupling}}{50}{}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Problemi classi}}{51}{}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Struttura dei package}}{51}{}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Test per ottimizzare Debiti}}{52}{}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Test aggiornati per la classe Group}}{52}{}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Test aggiornati per la classe GroupService}}{53}{}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Test aggiornati per la classe GroupController}}{53}{}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Test per la classe CostService}}{54}{}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Test per la classe CostService}}{54}{}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Problemi classi}}{32}{}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Struttura dei package}}{33}{}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Test per la classe Group}}{34}{}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Test per la classe GroupService}}{34}{}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Test per la classe GroupController}}{34}{}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Risultato API Registrazione}}{36}{}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Risultato API Login}}{37}{}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Risultato API Creazione Gruppo}}{38}{}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Risultato API Inserimento utente}}{39}{}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Risultato API Visualizzazione Gruppi}}{40}{}%
+\contentsline {figure}{\numberline {18}{\ignorespaces UML Deployment Diagram}}{50}{}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Complexity}}{51}{}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Coupling}}{51}{}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Problemi classi}}{52}{}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Struttura dei package}}{52}{}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Test per ottimizzare Debiti}}{53}{}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Test aggiornati per la classe Group}}{53}{}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Test aggiornati per la classe GroupService}}{54}{}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Test aggiornati per la classe GroupController}}{54}{}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Test per la classe CostService}}{55}{}%
 \contentsline {figure}{\numberline {28}{\ignorespaces Test per la classe CostController}}{55}{}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Risultato API Aggiunta Costo}}{56}{}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Risultato API Eliminazione Costo}}{56}{}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Risultato API Visualizzazione Costi Utente}}{57}{}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Risultato API Visualizzazione Costi Gruppo}}{58}{}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Risultato API Creazione Alert}}{59}{}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Risultato API eliminazione Alert}}{60}{}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Risultato API Visualizzazione Alert di Gruppo}}{61}{}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Funzione CreaDizionario}}{62}{}%
-\contentsline {figure}{\numberline {37}{\ignorespaces Funzione CalcolaDebiti}}{63}{}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Diagramma dei casi d'uso aggiornato per riflettere l'integrazione relativa alla gestione del risparmio.}}{66}{}%
-\contentsline {figure}{\numberline {39}{\ignorespaces UML Deployment Diagram}}{74}{}%
-\contentsline {figure}{\numberline {40}{\ignorespaces Test per la classe SavingService}}{75}{}%
-\contentsline {figure}{\numberline {41}{\ignorespaces Test per la classe SavingController}}{75}{}%
-\contentsline {figure}{\numberline {42}{\ignorespaces Test per la classe BudgetService}}{76}{}%
-\contentsline {figure}{\numberline {43}{\ignorespaces Test per la classe BudgetController}}{76}{}%
-\contentsline {figure}{\numberline {44}{\ignorespaces API creazione budget}}{77}{}%
-\contentsline {figure}{\numberline {45}{\ignorespaces API visualizza budget di un utente}}{78}{}%
-\contentsline {figure}{\numberline {46}{\ignorespaces API per aggiungere fondi al budget}}{79}{}%
-\contentsline {figure}{\numberline {47}{\ignorespaces API per sottrarre fondi al budget}}{80}{}%
-\contentsline {figure}{\numberline {48}{\ignorespaces API per creare un risparmio}}{82}{}%
-\contentsline {figure}{\numberline {49}{\ignorespaces API per ottenere i risparmi dell'utente}}{83}{}%
-\contentsline {figure}{\numberline {50}{\ignorespaces API per aggiungere fondi ai risparmi dell'utente}}{84}{}%
-\contentsline {figure}{\numberline {51}{\ignorespaces API per togliere fondi ai risparmi dell'utente}}{85}{}%
-\contentsline {figure}{\numberline {52}{\ignorespaces API per eliminare un risparmio}}{86}{}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Risultato API Aggiunta Costo}}{57}{}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Risultato API Eliminazione Costo}}{57}{}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Risultato API Visualizzazione Costi Utente}}{58}{}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Risultato API Visualizzazione Costi Gruppo}}{59}{}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Risultato API Creazione Alert}}{60}{}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Risultato API eliminazione Alert}}{61}{}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Risultato API Visualizzazione Alert di Gruppo}}{62}{}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Funzione CreaDizionario}}{63}{}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Funzione CalcolaDebiti}}{64}{}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Diagramma dei casi d'uso aggiornato per riflettere l'integrazione relativa alla gestione del risparmio.}}{67}{}%
+\contentsline {figure}{\numberline {39}{\ignorespaces UML Deployment Diagram}}{75}{}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Test per la classe SavingService}}{76}{}%
+\contentsline {figure}{\numberline {41}{\ignorespaces Test per la classe SavingController}}{76}{}%
+\contentsline {figure}{\numberline {42}{\ignorespaces Test per la classe BudgetService}}{77}{}%
+\contentsline {figure}{\numberline {43}{\ignorespaces Test per la classe BudgetController}}{77}{}%
+\contentsline {figure}{\numberline {44}{\ignorespaces API creazione budget}}{78}{}%
+\contentsline {figure}{\numberline {45}{\ignorespaces API visualizza budget di un utente}}{79}{}%
+\contentsline {figure}{\numberline {46}{\ignorespaces API per aggiungere fondi al budget}}{80}{}%
+\contentsline {figure}{\numberline {47}{\ignorespaces API per sottrarre fondi al budget}}{81}{}%
+\contentsline {figure}{\numberline {48}{\ignorespaces API per creare un risparmio}}{83}{}%
+\contentsline {figure}{\numberline {49}{\ignorespaces API per ottenere i risparmi dell'utente}}{84}{}%
+\contentsline {figure}{\numberline {50}{\ignorespaces API per aggiungere fondi ai risparmi dell'utente}}{85}{}%
+\contentsline {figure}{\numberline {51}{\ignorespaces API per togliere fondi ai risparmi dell'utente}}{86}{}%
+\contentsline {figure}{\numberline {52}{\ignorespaces API per eliminare un risparmio}}{87}{}%
