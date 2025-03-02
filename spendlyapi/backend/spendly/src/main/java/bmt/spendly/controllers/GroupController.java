@@ -8,12 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import bmt.spendly.models.Alert;
-import bmt.spendly.models.GestioneSpese;
 import bmt.spendly.models.AppUser;
 import bmt.spendly.models.Cost;
+import bmt.spendly.models.GestioneSpese;
 import bmt.spendly.models.Group;
 import bmt.spendly.models.GroupResponseDTO;
 import bmt.spendly.models.Transazione;
@@ -23,7 +30,7 @@ import bmt.spendly.services.GroupService;
 
 @RestController
 @RequestMapping("/api/groups")  
-public class GroupController {
+public class GroupController implements GroupControllerIF {
     
     private static final Logger logger = LoggerFactory.getLogger(GroupController.class);
 
@@ -34,6 +41,7 @@ public class GroupController {
     private CostService costService;
 
     //  api per visualizzare la lista dei gruppi in cui è presente l'utente
+    @Override
     @GetMapping
     public ResponseEntity<?> getAllGroups(@RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -44,6 +52,7 @@ public class GroupController {
     }
 
     // api per creare un gruppo
+    @Override
     @PostMapping
     public ResponseEntity<?> addGroup(@RequestBody Group group, @RequestParam String username) {
         if (username == null || username.isEmpty()) {
@@ -61,6 +70,7 @@ public class GroupController {
     }
 
     //api per eliminare un gruppo ( solo per amministratore)
+    @Override
     @DeleteMapping("/{groupId}")
     public ResponseEntity<String> eliminaGruppo(@PathVariable Long groupId, @RequestParam String username) {
         try {
@@ -86,6 +96,7 @@ public class GroupController {
     }
 
     // api per aggiungere membri (solo per amministratore)
+    @Override
     @PostMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> addMemberToGroup(@PathVariable Long groupId,
@@ -121,6 +132,7 @@ public class GroupController {
     }
 
     //api per eliminare membri (solo per amministratore)
+    @Override
     @DeleteMapping("/{groupId}/members")
     @Transactional
     public ResponseEntity<String> removeMemberFromGroup(@PathVariable Long groupId,
@@ -155,6 +167,7 @@ public class GroupController {
     }
 
     // api per entrare nei dettagli del gruppo
+    @Override
     @GetMapping("/{groupId}")
     public ResponseEntity<?> showGroup(@PathVariable Long groupId) {
         try {
@@ -172,18 +185,21 @@ public class GroupController {
 
     
     // api per visualizzare le spese del gruppo
+    @Override
     @GetMapping("/costs/{groupId}")
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }
     //api per visualizzare gli alerts del gruppo
+    @Override
     @GetMapping("/{groupId}/alerts")
     public ResponseEntity<List<Alert>> getAlertsByGroup(@PathVariable Long groupId) {
         List<Alert> alerts = groupService.getAlertsForGroup(groupId);
         return ResponseEntity.ok(alerts);
     }
     //api per aggiungere alert ( solo per amministratore)
+    @Override
     @PostMapping("/{groupId}/alerts")
     public ResponseEntity<?> addAlertToGroup(@PathVariable Long groupId, 
                                             @RequestParam String adminUsername, 
@@ -214,6 +230,7 @@ public class GroupController {
     }
 
     //api per eliminare alert (solo per amministratore)
+    @Override
     @DeleteMapping("/{groupId}/alerts/{alertId}")
     public ResponseEntity<String> DeleteAlert( @RequestParam String adminUsername, @PathVariable Long alertId, @PathVariable Long groupId) {
         try {
@@ -238,6 +255,7 @@ public class GroupController {
         }
     }
 
+    @Override
     @GetMapping("/{groupId}/OttimizzaDebiti")
     public ResponseEntity<List<Transazione>> OttimizzaDebiti(@PathVariable Long groupId) {
         System.out.println("ciao");

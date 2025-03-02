@@ -124,8 +124,17 @@
                   <td>{{ cost.tipologia.replace('_', ' ') }}</td>
                   <td>{{ cost.user.username }}</td>
                   <td>
+                    <!-- Show Edit always -->
+                    <button class="btn btn-info btn-sm me-2" @click="openEditModal(cost)">
+                      <i class="fas fa-edit"></i> Modifica
+                    </button>
+                    <!-- Show Delete always -->
                     <button class="btn btn-danger btn-sm" @click="deleteCost(cost.costId)">
                       <i class="fas fa-trash"></i> Elimina
+                    </button>
+                    <!-- Toggle Payment only if expense is personal (group is null) -->
+                    <button v-if="!cost.group" class="btn btn-sm ms-2" :class="cost.paymentStatus === 'PAGATO' ? 'btn-warning' : 'btn-success'" @click="togglePaymentStatus(cost)">
+                      {{ cost.paymentStatus === 'PAGATO' ? 'Segna come Da Saldare' : 'PAGA' }}
                     </button>
                   </td>
                 </tr>
@@ -389,6 +398,45 @@
             <button class="btn btn-success" @click="addCost">
               Salva
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal per Modifica Spesa: ora mostra solo Tipologia e Importo -->
+    <div v-if="showEditModal" class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5);">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modifica Spesa</h5>
+            <button type="button" class="btn-close" @click="closeEditModal"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Tipologia -->
+            <div class="mb-3">
+              <label class="form-label">Tipologia</label>
+              <select v-model="editCost.tipologia" class="form-select" required>
+                <option value="" disabled>Seleziona la tipologia</option>
+                <option v-for="type in expenseTypes" :key="type" :value="type">
+                  {{ type.replace('_', ' ') }}
+                </option>
+              </select>
+            </div>
+            <!-- Importo -->
+            <div class="mb-3">
+              <label class="form-label">Importo (€)</label>
+              <input
+                v-model.number="editCost.importo"
+                type="number"
+                class="form-control"
+                placeholder="Importo (€)"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" @click="closeEditModal">Annulla</button>
+            <button class="btn btn-success" @click="updateCost">Salva Modifica</button>
           </div>
         </div>
       </div>
@@ -883,6 +931,55 @@ async function ottimizzaDebiti() {
     transactions.value = await response.json()
   } catch (error) {
     console.error("Errore nel caricamento:", error)
+  }
+}
+
+const showEditModal = ref(false)
+const editCost = ref({
+  costId: null,
+  tipologia: '',
+  importo: null,
+  groupId: null,
+  paymentStatus: 'DA_SALDARE',
+})
+
+// Function to open modal and prefill editCost
+function openEditModal(cost) {
+  editCost.value = {
+    costId: cost.costId,
+    tipologia: cost.tipologia,
+    importo: cost.importo,
+    groupId: cost.group ? cost.group.id : null,
+    paymentStatus: cost.paymentStatus
+  }
+  showEditModal.value = true
+}
+
+function closeEditModal() {
+  showEditModal.value = false
+}
+
+async function updateCost() {
+  try {
+    const url = `http://localhost:8080/api/costs/${editCost.value.costId}`
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      // Invia solo tipologia e importo; gli altri campi rimangono invariati lato server
+      body: JSON.stringify({
+        importo: editCost.value.importo,
+        tipologia: editCost.value.tipologia
+      })
+    })
+    if (!response.ok) throw new Error(await response.text())
+    await fetchGroup()
+    closeEditModal()
+  } catch (error) {
+    alert(`Errore nella modifica della spesa: ${error.message}`)
+    console.error('updateCost:', error)
   }
 }
 </script>

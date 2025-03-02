@@ -23,7 +23,7 @@ import bmt.spendly.services.CostService;
 
 @RestController
 @RequestMapping("/api/costs")
-public class CostController {
+public class CostController implements CostControllerIF {
 
     private static final Logger logger = LoggerFactory.getLogger(CostController.class);
 
@@ -33,6 +33,7 @@ public class CostController {
     @Autowired
     private CostRepository costRepository;
 
+    @Override
     @GetMapping
     public ResponseEntity<List<Cost>> getAllCosts(@RequestParam(value = "username", required = false) String username) {
         List<Cost> costs;
@@ -45,12 +46,14 @@ public class CostController {
         return ResponseEntity.ok(costs);
     }
 
+    @Override
     @GetMapping("/group/{groupId}")
     public ResponseEntity<List<Cost>> getCostsByGroup(@PathVariable Long groupId) {
         List<Cost> costs = costService.getCostsByGroup(groupId);
         return ResponseEntity.ok(costs);
     }
 
+    @Override
     @PostMapping
     public ResponseEntity<?> createCost(@RequestBody Cost cost,
                                        @RequestParam(value = "username", required = true) String username) {
@@ -70,6 +73,7 @@ public class CostController {
         }
     }
 
+    @Override
     @GetMapping("/{id}")
     public ResponseEntity<?> getCostById(@PathVariable Long id) {
         try {
@@ -80,6 +84,7 @@ public class CostController {
         }
     }
 
+    @Override
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCost(@PathVariable Long id, @RequestBody Cost updatedCost) {
         try {
@@ -90,6 +95,7 @@ public class CostController {
         }
     }
 
+    @Override
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCost(@PathVariable Long id) {
         try {
@@ -100,6 +106,7 @@ public class CostController {
         }
     }
 
+    @Override
     @PutMapping("/{id}/pay")
     public ResponseEntity<?> payCost(@PathVariable Long id,
                                      @RequestParam String username) {
