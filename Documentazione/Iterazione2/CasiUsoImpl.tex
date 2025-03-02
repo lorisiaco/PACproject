@@ -7,14 +7,15 @@ In questa iterazione sono stati sviluppati i seguenti casi d’uso ritenuti prio
     \begin{tabular}{|c|l|}
     \hline
     \textbf{ID} & \textbf{Titolo} \\ \hline
-    UC4 & Crea alert di gruppo\\ \hline
-    UC6 & Elimina alert \\ \hline
+    UC4  & Crea alert di gruppo \\ \hline
+    UC6  & Elimina alert \\ \hline
     UC12 & Accedi gruppo \\ \hline
     UC13 & Inserisci spesa \\ \hline
     UC14 & Elimina spesa \\ \hline
     UC15 & Modifica spesa \\ \hline
-    UC16 & Visualizza spese \\ \hline
-    UC17 & Ricalcolo debiti \\ \hline
+    UC16 & Scegli tipologia spesa \\ \hline
+    UC17 & Visualizza spese \\ \hline
+    UC18 & Ricalcolo debiti \\ \hline
     \end{tabular}
     \caption{Iterazione2}
 \end{table}
@@ -92,7 +93,22 @@ In questa iterazione sono stati sviluppati i seguenti casi d’uso ritenuti prio
     \item Il sistema aggiorna la spesa e ricalcola i bilanci.
 \end{enumerate}
 
-\subsubsection{UC16: Visualizzazione Spese}
+\subsubsection{UC16: Scegli Tipologia Spesa}
+\textbf{Attori}: Utente, Sistema.
+\newline
+\newline
+\textbf{Descrizione}: Un utente può scegliere la tipologia di spesa da inserire nel gruppo.
+\newline
+\newline
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla pagina del gruppo.
+    \item Clicca su "Scegli Tipologia Spesa".
+    \item Seleziona la tipologia di spesa desiderata.
+    \item Il sistema aggiorna la tipologia di spesa selezionata.
+\end{enumerate}
+
+\subsubsection{UC17: Visualizzazione Spese}
 \textbf{Attori}: Utente, Sistema.
 \newline
 \newline
@@ -106,7 +122,7 @@ In questa iterazione sono stati sviluppati i seguenti casi d’uso ritenuti prio
     \item Il sistema mostra l’elenco delle spese con dettagli su importo, data e partecipanti.
 \end{enumerate}
 
-\subsubsection{UC17: Ricalcolo Debiti}
+\subsubsection{UC18: Ricalcolo Debiti}
 \textbf{Attori}: Utente, Sistema.
 \newline
 \newline

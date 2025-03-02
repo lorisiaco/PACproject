@@ -1,5 +1,7 @@
 \subsubsection{Iterazione 3}
-In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese personali, alla gestione del budget e alla gestione del risparmio. Quest’ultima funzionalità permette all’utente di creare uno o più piani di risparmio con un obiettivo definito, in modo da mettere da parte denaro per esigenze future.
+In questa iterazione sono stati sviluppati i casi d’uso relativi alle \emph{spese personali}, alla \emph{gestione del budget} e alla \emph{gestione del risparmio}. Quest’ultima funzionalità permette all’utente di creare uno o più piani di risparmio con un obiettivo definito, in modo da accantonare denaro per esigenze future.
+
+\textbf{Nota:} I casi \textbf{UC28}, \textbf{UC29}, \textbf{UC30} e \textbf{UC31} dedicati alla gestione del risparmio sono stati aggiunti in questa iterazione e non erano presenti in Iterazione 0.
 
 \begin{table}[h]
     \centering
@@ -18,13 +20,13 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
     UC30 & Modifica risparmio \\ \hline
     UC31 & Elimina risparmio \\ \hline
     \end{tabular}
-    \caption{Iterazione 3 - Casi d’Uso}
+    \caption{Iterazione 3 - Casi d’Uso Implementati.}
 \end{table}
 
+% Descrizioni dei casi d'uso
 \subsubsection{UC19: Inserimento Spesa Personale}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può aggiungere una spesa personale.
-
+\textbf{Descrizione}: Un utente può aggiungere una spesa personale. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione delle spese personali.
@@ -35,8 +37,7 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC20: Eliminazione Spesa Personale}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può eliminare una spesa personale.
-
+\textbf{Descrizione}: Un utente può eliminare una spesa personale. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla lista delle spese personali.
@@ -46,8 +47,7 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC21: Modifica Spesa Personale}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può modificare i dettagli di una spesa personale.
-
+\textbf{Descrizione}: Un utente può modificare i dettagli di una spesa personale. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla lista delle spese personali.
@@ -58,8 +58,7 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC23: Visualizzazione Spese Personali}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può visualizzare tutte le proprie spese personali.
-
+\textbf{Descrizione}: Un utente può visualizzare tutte le proprie spese personali. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione delle spese personali.
@@ -67,21 +66,9 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
     \item Il sistema mostra l’elenco delle spese con dettagli.
 \end{enumerate}
 
-\subsubsection{UC27: Pagamento Spesa Personale}
-\textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può saldare una spesa personale direttamente tramite i metodi di pagamento disponibili.
-
-\textbf{Flusso degli eventi}:
-\begin{enumerate}
-    \item L’utente accede alla lista delle spese personali.
-    \item Seleziona una spesa e clicca su ``Paga''.
-    \item Il sistema elabora il pagamento e aggiorna il budget scalando l’importo.
-\end{enumerate}
-
 \subsubsection{UC24: Aggiunta Denaro al Budget}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può aggiungere denaro al budget disponibile.
-
+\textbf{Descrizione}: Un utente può aggiungere denaro al budget disponibile. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione budget.
@@ -92,18 +79,26 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC26: Visualizzazione Budget}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può visualizzare il budget disponibile e le spese totali.
-
+\textbf{Descrizione}: Un utente può visualizzare il budget disponibile e le spese totali. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione budget.
     \item Il sistema mostra l’importo disponibile e le spese sostenute.
 \end{enumerate}
 
+\subsubsection{UC27: Pagamento Spesa Personale}
+\textbf{Attori}: Utente, Sistema. \\
+\textbf{Descrizione}: Un utente può saldare una spesa personale direttamente tramite i metodi di pagamento disponibili. \\
+\textbf{Flusso degli eventi}:
+\begin{enumerate}
+    \item L’utente accede alla lista delle spese personali.
+    \item Seleziona una spesa e clicca su ``Paga''.
+    \item Il sistema elabora il pagamento e aggiorna il budget scalando l’importo.
+\end{enumerate}
+
 \subsubsection{UC28: Creazione Risparmio}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può creare un piano di risparmio con un obiettivo definito.
-
+\textbf{Descrizione}: Un utente può creare un piano di risparmio con un obiettivo definito. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione risparmi.
@@ -114,8 +109,7 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC29: Visualizzazione Risparmio}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può visualizzare i piani di risparmio esistenti.
-
+\textbf{Descrizione}: Un utente può visualizzare i piani di risparmio esistenti. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla sezione risparmi.
@@ -124,8 +118,7 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
 
 \subsubsection{UC30: Modifica Risparmio}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può modificare i dettagli di un piano di risparmio.
-
+\textbf{Descrizione}: Un utente può modificare i dettagli di un piano di risparmio. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla lista dei risparmi.
@@ -134,14 +127,12 @@ In questa iterazione sono stati sviluppati i casi d’uso relativi alle spese pe
     \item Il sistema aggiorna le informazioni.
 \end{enumerate}
 
-\subsubsection{UC31: Eliminazione Risparmio}
+\subsubsection{UC31: Elimina Risparmio}
 \textbf{Attori}: Utente, Sistema. \\
-\textbf{Descrizione}: Un utente può eliminare un piano di risparmio.
-
+\textbf{Descrizione}: Un utente può eliminare un piano di risparmio, restituendo l’importo relativo al budget. \\
 \textbf{Flusso degli eventi}:
 \begin{enumerate}
     \item L’utente accede alla lista dei risparmi.
     \item Seleziona un risparmio e clicca su ``Elimina''.
-    \item Il sistema chiede conferma e lo rimuove tornando i soldi allocati al budget.
+    \item Il sistema chiede conferma e, se confermato, rimuove il risparmio restaurando l’importo al budget.
 \end{enumerate}
-
